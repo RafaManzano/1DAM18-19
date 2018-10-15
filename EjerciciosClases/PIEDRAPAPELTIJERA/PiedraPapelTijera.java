@@ -33,7 +33,7 @@
  * 	FinMientras
  * Fin
  * 
- * PD LeeryValidarRespuesta //Yeray no aprueba esto //No es necesario puesto que ya esta estudiado en el estudio
+ * PD LeeryValidarRespuesta  //No es necesario puesto que ya esta estudiado en el estudio
  * Inicio
  * 	Repetir
  * 		Escribir("Quieres jugar, sera divertido?")
