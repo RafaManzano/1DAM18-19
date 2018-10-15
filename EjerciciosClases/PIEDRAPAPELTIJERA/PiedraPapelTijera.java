@@ -5,6 +5,11 @@
  * 			- Eleccion
  * 
  * Salida: - Mensaje del ganador
+ * Restricciones: - Respuesta puede ser s o n y S o N
+ * 				  - Eleccion puede ser 1 2 o 3
+ * Reglas: - Piedra gana a tijera y pierde contra papel
+ * 		   - Papel gana a piedra y pierde contra tijera
+ * 		   - Tijera gana a papel y pierde contra piedra
  * 
  * Estudio de los bucles
  * Nombre del bucle: BucleRespuestaSoN y ActualizacionRespuestaSoN
