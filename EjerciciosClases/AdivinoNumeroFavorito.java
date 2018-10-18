@@ -1,5 +1,5 @@
 /*
- * Nombre del programa: 
+ * Nombre del programa: AdivinoNumeroFavorito
  * Breve comentario: Realizar un programa que lea una fecha de nacimiento de la forma dia, mes y anyo y 
  * 					  de como resultado el numero del Tarot. El programa verificara si la fecha es correcta.
  * 					 El numero del Tarot se haya sumando los numeros de la fecha de nacimiento y reduciendolos a un unico digito
@@ -31,9 +31,9 @@
  * Estudio del bucle
  * Nombre del bucle: BucleRespuestaSoN
  * VCB: Centinela
- * Inicialización VCB: Lectura anticipada, antes de la primera iteración
- * Actualización VCB: Lectura final, físicamente al final del bucle
- * Condición de salida: respuesta == 's' || respuesta == 'n' && respuesta == 'S' || respuesta == 'N' //toUpperCase()
+ * Inicializacion VCB: Lectura anticipada, antes de la primera iteración
+ * Actualizacion VCB: Lectura final, fisicamente al final del bucle
+ * Condicion de salida: respuesta == 's' || respuesta == 'n' && respuesta == 'S' || respuesta == 'N' //toUpperCase()
  * 
  * Nombre del bucle: MientrasRespuestaSi
  * VCB: Centinela
@@ -52,11 +52,35 @@
  * 					4 6 9 11 = 30
  */
 
+import java.util.Scanner;
+import java.io.*;
 
-public class sin título {
+public class AdivinoNumeroFavorito {
 	
 	public static void main (String[] args) {
 		
+		char respuesta;
+		int dia;
+		int mes
+		int anyo;
+		Scanner teclado = new Scanner(System.in);
+		
+		//LeeryValidarRespuesta
+		do {
+			System.out.println("Quieres ejecutar el programa");
+			respuesta = teclado.next().charAt(0);
+		}
+		while(respuesta != 's' && respuesta != 'n');
+		
+		while(respuesta == 's') {
+		System.out.println("Hola");
+		}
+		
+		do {
+			System.out.println("Quieres ejecutar el programa");
+			respuesta = teclado.next().charAt(0);
+		}
+		while(respuesta != 's' && respuesta != 'n');
 	}
 }
 
