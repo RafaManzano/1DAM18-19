@@ -16,6 +16,9 @@
  * 				   - Dia tiene que ser del 1 al 31
  * 				   - Mes tiene que ser del 1 al 12
  * 				   - Anyo tiene que ser del 1582 hacia delante
+ * 				   - Los meses  1, 3, 5, 7, 8, 10 y 12 tienen 31 dias
+ * 				   - Los meses 4, 6, 9 y 11 tienen 30 dias
+ * 				   - El mes 2 tiene 28 pero si es bisiesto el año tiene 29
  * 
  * PG Level 0 
  * Inicio
