@@ -201,6 +201,7 @@ public class AdivinoNumeroFavorito {
 			
 			//MostrarResultado
 			System.out.println("Su numero favorito es " + favorito);
+			validar = false;
 			
 					
 			//LeeryValidarRespuesta
