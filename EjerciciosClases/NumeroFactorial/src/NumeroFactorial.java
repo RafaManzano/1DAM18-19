@@ -28,12 +28,17 @@
  * 	Actualizacion VCB: Lectura final
  * 	Condicion de salida: numero > 0
  * 
+ * 	Nombre: RealizarFactorial
+ * 	VCB: Contador
+ * 	Inicializacion VCB: Antes de la primera iteracion 0/1
+ * 	Actualizacion VCB: Al final de cada iteracion
+ * 	Condicion de salida: i >= numero (numero es el numero que el usuario ha deseado)
  * 
  * PG Level 0
  * Inicio
  * 	LeeryValidarRespuesta
  * 	Mientras respuetsa sea si
- * 		ObtenerDatos
+ * 		ObtenerDatosyValidar
  * 		RealizarFactorial
  * 		MostrarResultado
  * 	FinMientras
@@ -62,14 +67,15 @@ public class NumeroFactorial {
 		 //Mientras respuesta sea si
 		 while(respuesta == 's') {
 			 
-			 //ObtenerDatos
+			 //ObtenerDatosyValidar
+			 do {
 			 System.out.println("Dime su numero y calculamos su factoriales");
 			 numero = teclado.nextInt();
 			 auxiliar = numero;
-			 
+			 }
+			 while(numero <= 0);
 			 
 			 //RealizarFactorial
-			 
 			 for (int i = 1; i < auxiliar; i++) {
 				  numero = numero  * i;
 			 }
