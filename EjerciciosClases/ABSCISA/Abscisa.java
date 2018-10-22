@@ -1,6 +1,6 @@
 /*
  * Abscisa.java
- * Breve comentario: Dada la funcion y * y = 1 / 9 x diseñar un programa
+ * Breve comentario: Dada la funcion y2 = 1 / 9 x diseñar un programa
  * 	que para cada valor de abscisa leido por teclado de el correspondiente valor
  * 	de la ordenada
  * Analisis:

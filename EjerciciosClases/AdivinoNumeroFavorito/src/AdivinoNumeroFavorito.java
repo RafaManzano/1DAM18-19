@@ -146,7 +146,7 @@ public class AdivinoNumeroFavorito {
 				anyo = teclado.nextInt(); //Leer(anyo)
 				
 				//do {
-				if (anyo > 1581) { //Si año es mayor 1582
+				if (anyo > 1581 && anyo < 9956) { //Si año es mayor 1582 y anyo menor que 9956 //Asi no da mas de 4 cifras
 			
 					/*if ((anyo % 4 == 0) && ((anyo % 100 != 0) || (anyo % 400 == 0))) {
 						if (mes== 2) {
@@ -199,6 +199,12 @@ public class AdivinoNumeroFavorito {
 			cuarto = numero % 10000 / 1000;
 			favorito = primero + segundo + tercero + cuarto;
 			
+			if (favorito > 9) {
+				primero = favorito % 10;
+				segundo = favorito % 100 / 10;
+				favorito = primero + segundo;
+			}
+			
 			//MostrarResultado
 			System.out.println("Su numero favorito es " + favorito);
 			validar = false;
@@ -215,4 +221,3 @@ public class AdivinoNumeroFavorito {
 		System.out.println("Cerrando programa...");
 	}
 }
-
