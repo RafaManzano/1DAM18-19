@@ -33,7 +33,7 @@
  * 	VCB: Contador
  * 	Inicializacion VCB: Antes de la primera iteracion 0/1
  * 	Actualizacion VCB: Al final de cada iteracion
- * 	Condicion de salida: i >= numero (numero es el numero que el usuario ha deseado)
+ * 	Condicion de salida: contador >= numero (numero es el numero que el usuario ha deseado)
  * 
  * PG Level 0
  * Inicio
@@ -83,8 +83,8 @@ public class NumeroFactorial {
 			 }
 			 
 			 else {
-				 for (int i = 1; i < auxiliar; i++) {
-					numero = numero  * i;
+				 for (int contador = 1; contador < auxiliar; contador++) {
+					numero = numero  * contador;
 				 }
 			 }
 			
