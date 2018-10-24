@@ -29,13 +29,7 @@
  * 	VCB: Contador
  * 	Inicializacion VCB: Antes de la primera iteracion 0/1
  * 	Actualizacion VCB: Al final de cada iteracion
- * 	Condicion de salida: i > jugar
- * 
- * 	Nombre:
- * 	VCB:
- * 	Inicializacion VCB:
- * 	Actualizacion VCB:
- * 	Condicion de salida:
+ * 	Condicion de salida: contador > jugar
  * 
  * PG Level 0
  * Inicio
@@ -85,7 +79,7 @@ public class MejorCaraoCruz {
 			while(jugar <= 0);
 			
 			//RealizarJuego
-			for(int i = 0; i < jugar; i++) {
+			for(int contador = 0; contador < jugar; contador++) {
 			moneda1 = random.nextInt(2)+1;
 			moneda2 = random.nextInt(2)+1;
 				if (moneda1 == 1 && moneda2 == 1) {

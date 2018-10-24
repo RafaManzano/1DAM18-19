@@ -4,7 +4,7 @@
  * 	que para cada valor de abscisa leido por teclado de el correspondiente valor
  * 	de la ordenada
  * Analisis:
- * 	Entrada: - x
+ * 	Entrada: - El eje X
  * 			 - respuesta
  * 
  * 	Salida: - Mensaje con el usuario

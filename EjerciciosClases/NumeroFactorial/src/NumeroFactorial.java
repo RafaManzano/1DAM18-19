@@ -8,6 +8,7 @@
  * 			- El resultado del numero factorial
  * 
  * 	Requisitos: - El numero no puede ser negativo
+ * 				- respuesta es igual a s o n
  * 
  * Estudio de los bucles
  * 	Nombre: BucleRespuestaSoN
@@ -22,11 +23,11 @@
  * 	Actualizacion VCB: Lectura final
  * 	Condicion de salida: respuesta == 's'
  * 
- * 	Nombre: NegativosNoValidoni0
+ * 	Nombre: NegativosNoValido
  * 	VCB: Centinela
  * 	Inicializacion VCB: Lectura anticipada
  * 	Actualizacion VCB: Lectura final
- * 	Condicion de salida: numero > 0
+ * 	Condicion de salida: numero >= 0
  * 
  * 	Nombre: RealizarFactorial
  * 	VCB: Contador
@@ -73,11 +74,18 @@ public class NumeroFactorial {
 			 numero = teclado.nextInt();
 			 auxiliar = numero;
 			 }
-			 while(numero <= 0);
+			 while(numero < 0);
+			 
 			 
 			 //RealizarFactorial
-			 for (int i = 1; i < auxiliar; i++) {
-				  numero = numero  * i;
+			 if (numero == 0) {
+				 numero = 1;
+			 }
+			 
+			 else {
+				 for (int i = 1; i < auxiliar; i++) {
+					numero = numero  * i;
+				 }
 			 }
 			
 			//MostrarResultado
