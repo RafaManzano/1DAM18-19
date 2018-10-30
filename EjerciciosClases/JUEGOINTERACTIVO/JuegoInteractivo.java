@@ -28,6 +28,7 @@
  * 
  *   		Caso 4: //No hacer nada
  * 			FinCaso4
+ * 
  * 	LeeryValidarRespuesta
  * 	FinMientras
  * 	
@@ -40,6 +41,7 @@ import java.util.*;
 public class JuegoInteractivo {
 	
 	public static void main (String[] args) {
+		//Declaracion de variables
 		int eleccion;
 		int jugador;
 		int rival;
@@ -79,10 +81,10 @@ public class JuegoInteractivo {
 								eleccion = teclado.nextInt();
 								
 								switch (eleccion) {
-								case 1:
+								case 1: //Inflitracion guardia
 								break;
 								
-								case 2:
+								case 2: //Vestido de preso
 								break;
 								}
 						}
@@ -108,7 +110,7 @@ public class JuegoInteractivo {
 								System.out.println("FIN DEL JUEGO");
 							}
 							else {
-								System.out.println("");
+								System.out.println(" ");
 								System.out.println("FIN DEL JUEGO");
 							}
 							
