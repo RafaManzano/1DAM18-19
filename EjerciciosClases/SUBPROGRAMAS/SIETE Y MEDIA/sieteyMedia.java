@@ -25,13 +25,6 @@
  * 	Actualizacion VCB: Lectura final
  * 	Condicion de salida: respuesta == 's'
  * 
- * 	Nombre:
- * 	VCB:
- * 	Inicializacion VCB:
- * 	Actualizacion VCB:
- * 	Condicion de salida:
- * 
- * 
  * PG Level 0
  * Inicio
  * 	LeeryValidarRespuesta
@@ -45,8 +38,8 @@
  * 	LeerJugador1
  * 	LeerJugador2
  * 	Mientras la jugada sea menor de la 7.30 o se haya plantado
- * 		RealizarJugada
- * 		LeeryValidarPlantarseoCarta
+ * 		RealizarJugada *
+ * 		LeeryValidarPlantarseoCarta *
  * 	FinMientras
  * Fin
  */
