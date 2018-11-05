@@ -20,23 +20,29 @@
  * 	Mientras respuesta sea si
  * 		ValidarMonedero
  * 		Mientras haya dinero en el monedero
-	 * 		ValidarApuesta
-	 * 		ValidarElegirVaso
-	 * 		Segun(ElegirVaso) 
-	 * 			Caso1: //PrimerVaso
-	 * 				ComprobarGanador
-	 * 				MostrarGanador
-	 * 			Caso2: //SegundoVaso
-	 * 				ComprobarGanador
-	 * 				MostrarGanador
-	 * 			Caso3: //TercerVaso
-	 * 				ComprobarGanador
-	 * 				MostrarGanador
-	 * 		FinSegun
-	 * 	PreguntaryValidarRespuesta
-	 * FinMientras
+ * 			ValidarApuesta
+ * 			EmpezarJuego
+ * 	PreguntaryValidarRespuesta
+ * 		FinMientras
+ * 	ActualizarMonedero
  * 	FinMientras
  * Fin
+ * 
+ * PG EmpezarJuego
+ * Inicio
+ * 	ValidarElegirVaso
+		Segun(ElegirVaso) 
+ *  		Caso1: //PrimerVaso
+ * 				ComprobarGanador
+ * 				MostrarGanador
+ * 			Caso2: //SegundoVaso
+ * 				ComprobarGanador
+ * 				MostrarGanador
+ * 			Caso3: //TercerVaso
+ * 				ComprobarGanador
+ * 			MostrarGanador
+ * 		FinSegun
+ * 	Fin
  * 
  * Estudio del bucle
  * 	Nombre: BucleRespuestaSoN
