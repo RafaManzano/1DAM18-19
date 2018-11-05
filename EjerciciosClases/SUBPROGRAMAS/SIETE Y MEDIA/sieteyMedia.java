@@ -69,8 +69,11 @@ public class sieteyMedia {
 			
 			//MientrasRespuestaSi
 			while(respuesta == 's') {
+				//Leer Jugador1
 				System.out.println("Dime quien va a ser el primer jugador");
 				nombreJ1 = teclado.next();
+				
+				//Leer Jugador2
 				System.out.println("Dime quien va a ser el primer jugador");
 				nombreJ2 = teclado.next();
 				
