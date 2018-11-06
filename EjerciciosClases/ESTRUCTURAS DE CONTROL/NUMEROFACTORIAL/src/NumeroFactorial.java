@@ -30,7 +30,7 @@
  * 	Condicion de salida: numero >= 0
  * 
  * 	Nombre: RealizarFactorial
- * 	VCB: Contador () //Preguntar Asun
+ * 	VCB: Contador
  * 	Inicializacion VCB: Antes de la primera iteracion 0/1
  * 	Actualizacion VCB: Al final de cada iteracion
  * 	Condicion de salida: contador >= numero (numero es el numero que el usuario ha deseado)
