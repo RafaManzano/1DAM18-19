@@ -69,22 +69,25 @@
  * 
  * Estudio del bucle
  * Nombre del bucle: BucleRespuestaSoN
- * VCB: Centinela
+ * VCB: Centinela (s o n)
  * Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
  * Actualizacion VCB: Lectura final, fisicamente al final del bucle
- * Condicion de salida: respuesta == 's' || respuesta == 'n' && respuesta == 'S' || respuesta == 'N' 
+ * Condicion de salida: respuesta == 's' || respuesta == 'n' 
+ * Condicion de entrada: respuesta != 's' && respuesta != 'n'
  * 
  * Nombre del bucle: MientrasRespuestaSi
- * VCB: Centinela
+ * VCB: Centinela (n)
  * Inicializacion VCB: Lectura Anticipada, antes de la primera iteracion
  * Actualizacion VCB: Lectura final, fisicamente al final de cada bucle
- * Condicion de salida: respuesta == s
+ * Condicion de salida: respuesta == 'n'
+ * Condicion de entrada: respuesta != 'n'
  * 
  * Nombre del bucle: MientrasFechaNoSeaValida
- * VCB: Indicador
+ * VCB: Indicador (false)
  * Inicializacion VCB: Verdadero / falso, antes de la primera iteracion
  * Actualizacion VCB: Cambio de estado cuando ocurra el proceso a evaluar
  * Condicion de salida: validar == false
+ * Condicion de entrada: validar != false
  * 
  * //Fechas posibles 1 3 5 7 8 10 12 = 31
  * 					2 28 - 29

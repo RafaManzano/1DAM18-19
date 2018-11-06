@@ -46,22 +46,25 @@
  * 
  * Estudio del bucle
  * 	Nombre: BucleRespuestaSoN
- * 	VCB: Centinela
- * 	Inicializacion VCB: Lectura anticipada
- * 	Actualizacion VCB: Lectura Final
+ * 	VCB: Centinela (s o n)
+ * 	Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
+ * 	Actualizacion VCB: Lectura Final, fisicamente al final de cada bucle
  * 	Condicion de salida: respuesta == 's' && respuesta == 'n'
+ * 	Condicion de entrada: respuesta != 's' || respuesta != 'n'
  * 
  * 	Nombre: MientrasSeaSi
- * 	VCB: Centinela
- * 	Inicializacion VCB: Lectura anticipada
- * 	Actualizacion VCB: Lectura Final
- * 	Condicion de salida: respuesta == 's'
+ * 	VCB: Centinela (n)
+ * 	Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
+ * 	Actualizacion VCB: Lectura Final, fisicamente al final de cada bucle
+ * 	Condicion de salida: respuesta == 'n'
+ * 	Condicion de entrada: respuesta != 'n'
  * 
  * 	Nombre: ValidarElegirVaso
- * 	VCB: Centinela
- * 	Inicializacion VCB: Lectura anticipada
- * 	Actualizacion VCB: Lectura Final
+ * 	VCB: Centinela (rango 0 a 4)
+ * 	Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
+ * 	Actualizacion VCB: Lectura Final, fisicamente al final de cada bucle
  * 	Condicion de salida: eleccion > 0 && eleccion < 4
+ * 	Condicion de entrada: eleccion <= 0 || eleccion >= 4
  * 	
 */
 

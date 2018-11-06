@@ -13,16 +13,18 @@
  * 
  * Estudio del bucle
  * 	Nombre: BucleRespuestaSoN
- * 	VCB: Centinela
- * 	Inicializacion VCB: Lectura anticipada
- * 	Actualizacion VCB: Lectura final
+ * 	VCB: Centinela (s o n)
+ * 	Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
+ * 	Actualizacion VCB: Lectura final, fisicamente al final del bucle
  * 	Condicion de salida: respuesta == 's' || respuesta == 'n'
+ * 	Condicion de entrada: respuesta != 's' && respuesta != 'n'
  * 
  * 	Nombre: MientrasRespuestaSi
- * 	VCB: Centinela
- * 	Inicializacion VCB: Lectura anticipada
- * 	Actualizacion VCB: Lectura final
- * 	Condicion de salida: respuesta == s
+ * 	VCB: Centinela (n)
+ * 	Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
+ * 	Actualizacion VCB: Lectura final, fisicamente al final del bucle
+ * 	Condicion de salida: respuesta == 'n'
+ * 	Condicion de entrada: respuesta != 'n'
  * 
  * PG Level 0
  * Inicio

@@ -12,22 +12,25 @@
  * 
  * Estudio del bucle
  * 	Nombre: BucleRespuestaSoN
- * 	VCB: Centinela
+ * 	VCB: Centinela (s o n)
  * 	Inicializacion VCB: Lectura anticipada
  * 	Actualizacion VCB: Lectura final
  * 	Condicion de salida: respuesta == 's' || respuesta == 'n'
+ * 	Condicion de entrada: respuesta != 's' || respuesta != 'n'
  * 
  *  Nombre: MientrasRespuestaSeaSi
- * 	VCB: Centinela
+ * 	VCB: Centinela (n)
  * 	Inicializacion VCB: Lectura anticipada
  * 	Actualizacion VCB: Lectura final
- * 	Condicion de salida: respuesta == 's'
+ * 	Condicion de salida: respuesta == 'n'
+ * 	Condicion de entrada: respuesta != 'n'
  * 
  *  Nombre: ParaLasNColumnas
  * 	VCB: Contador
  * 	Inicializacion VCB: Antes de la primera iteracion 0/1
  * 	Actualizacion VCB: Al final de cada iteracion
  * 	Condicion de salida: contador > columna
+ * 	Condicion de entrada: contador <= columna
  * 
  * PG Level 0
  * Inicio

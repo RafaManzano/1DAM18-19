@@ -12,25 +12,25 @@
  * 
  * Estudio de los bucles
  * 	Nombre: BucleRespuestaSoN
- * 	VCB: Centinela
- * 	Inicializacion VCB: Lectura anticipada
- * 	Actualizacion VCB: Lectura final
+ * 	VCB: Centinela (s o n)
+ * 	Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
+ * 	Actualizacion VCB: Lectura final, fisicamente al final de cada bucle
  * 	Condicion de salida: respuesta == 's' || respuesta == 'n'
  * 
  * 	Nombre: Mientras respuesta sea si
- * 	VCB: Centinela
- * 	Inicializacion VCB: Lectura anticipada
- * 	Actualizacion VCB: Lectura final
- * 	Condicion de salida: respuesta == 's'
+ * 	VCB: Centinela (n)
+ * 	Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
+ * 	Actualizacion VCB: Lectura final, fisicamente al final de cada bucle
+ * 	Condicion de salida: respuesta == 'n'
  * 
  * 	Nombre: NegativosNoValido
- * 	VCB: Centinela
- * 	Inicializacion VCB: Lectura anticipada
- * 	Actualizacion VCB: Lectura final
+ * 	VCB: Centinela (0)
+ * 	Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
+ * 	Actualizacion VCB: Lectura final, fisicamente al final de cada bucle
  * 	Condicion de salida: numero >= 0
  * 
  * 	Nombre: RealizarFactorial
- * 	VCB: Contador
+ * 	VCB: Contador () //Preguntar Asun
  * 	Inicializacion VCB: Antes de la primera iteracion 0/1
  * 	Actualizacion VCB: Al final de cada iteracion
  * 	Condicion de salida: contador >= numero (numero es el numero que el usuario ha deseado)

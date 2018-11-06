@@ -13,16 +13,25 @@
  * 
  * Estudio de los bucles
  * Nombre del bucle: BucleRespuestaSoN y ActualizacionRespuestaSoN
- * VCB: Centinela
+ * VCB: Centinela (s o n)
  * Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
  * Actualizacion VCB: Lectura final, al final del bucle
  * Condicion de salida: respuesta == 's' || respuesta == 'n' && respuesta == 'S' || respuesta == 'N'
+ * Condicion de entrada: respuesta != 's' || respuesta != 'n' && respuesta != 'S' || respuesta != 'N'
+ * 
+ * Nombre del bucle: MientrasRespuestaSeaSi
+ * VCB: Centinela (n)
+ * Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
+ * Actualizacion VCB: Lectura final, fisicamente al final de cada bucle
+ * Condicion de salida: respuesta == 'n'
+ * Condicion de entrada: respuesta != 'n'
  * 
  * Nombre del bucle: MientrasNoGaneAlguien
- * VCB: Centinela
+ * VCB: Centinela (3)
  * Inicializacion VCB: Lectura anticipada, antes de la primera iteracion
  * Actualizacion VCB: Lectura final, al final del bucle
  * Condicion de salida: puntuacion jugador == 3 || puntuacion rival == 3
+ * Condicion de entrada: puntuacion jugador != 3 || puntuacion rival != 3
  * 
  * 
  * PG level 0
