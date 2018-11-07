@@ -1,6 +1,6 @@
 /*
  * Nombre del programa: AreasyVolumenes
- * Breve comentario: DiseÃ±ar un programa que nos permita calcular areas y volumenes de distintas 
+ * Breve comentario: Diseñar un programa que nos permita calcular areas y volumenes de distintas 
  * 	figuras geometricas, como cono, piramides y cilindros, segun elija el usuario
  * 
  * 	Formula: - Cono: - Area: pi * radio * radio 
@@ -98,7 +98,7 @@ public class AreasyVolumenes {
 		int opcion;
         char respuesta;
   		double area;
-  		double radio;
+  		double radio = 0;
   		double hipotenusa;
   		double apotema;
   		double lado;
@@ -123,7 +123,44 @@ public class AreasyVolumenes {
   	
   	switch(opcion) { //Segun (opcion)
 		case 1: //Caso 1: 
-			System.out.println("Cono"); //Cono
+			//System.out.println("Cono"); //Cono
+			//LeeryValidarRespuesta
+			do {
+				System.out.println("Quieres ejecutar esta opcion");
+				respuesta = Character.toLowerCase(teclado.next().charAt(0));
+			}
+			while(respuesta != 's' && respuesta != 'n');
+			
+			//MientrasRespuestaSeaSi
+			while(respuesta == 's') {
+				//MostrarMenuCono
+				do {
+					System.out.println("1. Calcular area");
+					System.out.println("2. Calcular volumen");
+					//LeeryValidarOpcionSM
+					opcion = teclado.nextInt();
+				}
+				while(opcion < 1 && opcion > 3);
+				
+				switch(opcion) {
+				case 1:
+					System.out.println("Para ello necesitamo el radio");
+					radio = teclado.nextDouble();
+					area = Math.PI * Math.pow(radio,2);
+				break;
+				
+				case 2:
+					
+				break;
+				}
+				
+				//LeeryValidarRespuesta
+				do {
+					System.out.println("Quieres ejecutar esta opcion");
+					respuesta = Character.toLowerCase(teclado.next().charAt(0));
+				}
+				while(respuesta != 's' && respuesta != 'n');
+			}
 		break; //FinCaso1
 		
 		case 2: //Caso2:
