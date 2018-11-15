@@ -52,7 +52,10 @@ public class ahorcadoCumple {
 		char pista;
 		char letra;
 		boolean ganador = false;
-		int intento = 1;
+		int intento = 0;
+		int contador = -1;
+		boolean letraDescubierta = false;
+		String[] pista13 = {"La palabra es una palabra inglesa", "Es algo que te hace mucha falta para poder responder", "Es algo tecnologico"};
 		Scanner teclado = new Scanner (System.in);
   	//LeeryValidarRespuesta
   	do {
@@ -83,15 +86,21 @@ public class ahorcadoCumple {
 					primeroGuion[i] = '_';
 				}
 				
-				while(ganador == false) {
+				ganador = false;
+				intento = 0;
+				while(ganador == false && intento < 5) {
 				System.out.println("Adivina la palabra (tiene 10 letras)");
 				letra = teclado.next().charAt(0);
 				
 				for(int i = 0; i < primero.length; i++) {
 					if(primero[i]== letra) {
 						primeroGuion [i] = letra;
+						letraDescubierta = true;
 					}
-					
+				}
+				
+				if(letraDescubierta == false) {
+					intento++;
 				}
 				
 				if(Arrays.equals(primero, primeroGuion)) {
@@ -99,6 +108,17 @@ public class ahorcadoCumple {
 				}
 				
 				System.out.println(primeroGuion);
+				
+				do{
+					System.out.println("Quieres pista? (S/N) (Solo 3 pistas)");
+					respuesta = Character.toLowerCase(teclado.next().charAt(0));
+				}
+				while(respuesta != 's' && respuesta != 'n');
+				
+				if (respuesta == 's' && contador < 2) {
+					contador++;
+					System.out.println(pista13 [contador]);
+				}
 				
 				}
 				
