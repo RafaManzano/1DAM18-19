@@ -55,11 +55,13 @@ public class ahorcadoCumple {
 		int intento = 0;
 		int contador = -1;
 		boolean letraDescubierta = false;
-		String[] pista13 = {"La palabra es una palabra inglesa", "Es algo que te hace mucha falta para poder responder", "Es algo tecnologico"};
+		String[] pista1 = {"La palabra es una palabra inglesa", "Es algo que te hace mucha falta para poder responder", "Es algo tecnologico"};
+		String[] pista2 = {"Es algo usado comunmente", "Algun dia me invitas a uno", "Los presentadores de TV lo usan"};
+		String[] pista3 = {"Es de colorines", "Esta de moda", "Es blandito"};
 		Scanner teclado = new Scanner (System.in);
   	//LeeryValidarRespuesta
   	do {
-		System.out.println("Desea ejecutar?");
+		System.out.println("Desea ejecutar (S/N)?");
 		respuesta = Character.toLowerCase(teclado.next().charAt(0));
 	}
 	while(respuesta != 's' && respuesta != 'n');
@@ -117,16 +119,23 @@ public class ahorcadoCumple {
 				
 				if (respuesta == 's' && contador < 2) {
 					contador++;
-					System.out.println(pista13 [contador]);
+					System.out.println(pista1 [contador]);
 				}
 				
+				}
+				
+				if (ganador == true) {
+					System.out.println("Enhorabuena, coge tu regalo y disfruta");
+				}
+				else {
+					System.out.println("Lo siento, tendras que abrirlo y descubrir que es");
 				}
 				
 				
 			break;
 			
 			case 2:
-					
+				contador = -1;	
 				num1 = "taza"; 
 				primero = num1.toCharArray();
 				primeroGuion = new char[primero.length];
@@ -135,16 +144,23 @@ public class ahorcadoCumple {
 					primeroGuion[i] = '_';
 				}
 				
-				while(ganador == false) {
+				ganador = false;
+				intento = 0;
+				while(ganador == false && intento < 5) {
 				System.out.println("Adivina la palabra (tiene 4 letras)");
 				letra = teclado.next().charAt(0);
 				
 				for(int i = 0; i < primero.length; i++) {
 					if(primero[i]== letra) {
 						primeroGuion [i] = letra;
+						letraDescubierta = true;
 					}
-					
 				}
+				
+				if (letraDescubierta == false) {
+					intento++;
+				}	
+				
 				
 				if(Arrays.equals(primero, primeroGuion)) {
 					ganador = true;
@@ -152,12 +168,29 @@ public class ahorcadoCumple {
 				
 				System.out.println(primeroGuion);
 				
+				do{
+					System.out.println("Quieres pista? (S/N) (Solo 3 pistas)");
+					respuesta = Character.toLowerCase(teclado.next().charAt(0));
+				}
+				while(respuesta != 's' && respuesta != 'n');
+				
+				if (respuesta == 's' && contador < 2) {
+					contador++;
+					System.out.println(pista2 [contador]);
+				}
+				}
+				
+				if (ganador == true) {
+					System.out.println("Enhorabuena, coge tu regalo y disfruta");
+				}
+				else {
+					System.out.println("Lo siento, tendras que abrirlo y descubrir que es");
 				}
 			
 			break;
 			
 			case 3:
-			
+			contador = -1;	
 			num1 = "slime"; 
 				primero = num1.toCharArray();
 				primeroGuion = new char[primero.length];
@@ -166,15 +199,22 @@ public class ahorcadoCumple {
 					primeroGuion[i] = '_';
 				}
 				
-				while(ganador == false) {
+				ganador = false;
+				intento = 0;
+				while(ganador == false && intento < 5) {
 				System.out.println("Adivina la palabra (tiene 5 letras)");
 				letra = teclado.next().charAt(0);
 				
 				for(int i = 0; i < primero.length; i++) {
 					if(primero[i]== letra) {
 						primeroGuion [i] = letra;
+						letraDescubierta = true;
 					}
 					
+				}
+				
+				if (letraDescubierta == false) {
+					intento++;
 				}
 				
 				if(Arrays.equals(primero, primeroGuion)) {
@@ -182,14 +222,32 @@ public class ahorcadoCumple {
 				}
 				
 				System.out.println(primeroGuion);
-				
+				do{
+					System.out.println("Quieres pista? (S/N) (Solo 3 pistas)");
+					respuesta = Character.toLowerCase(teclado.next().charAt(0));
 				}
+				while(respuesta != 's' && respuesta != 'n');
+				
+				if (respuesta == 's' && contador < 2) {
+					contador++;
+					System.out.println(pista3 [contador]);
+				}
+				}
+				
+				if (ganador == true) {
+					System.out.println("Enhorabuena, coge tu regalo y disfruta");
+				}
+				else {
+					System.out.println("Lo siento, tendras que abrirlo y descubrir que es");
+				}
+				
+				
 			break;
 		}
 		
   	//LeeryValidarRespuesta
   	do {
-		System.out.println("Desea ejecutar?");
+		System.out.println("Desea ejecutar? (S/N)");
 		respuesta = Character.toLowerCase(teclado.next().charAt(0));
 	}
 	while(respuesta != 's' && respuesta != 'n');	
