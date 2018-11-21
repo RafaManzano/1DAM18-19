@@ -69,6 +69,8 @@ public class TartagliayCollatz {
 					
 					while(respuesta == 's') {
 						
+						
+						
 						do {
 						System.out.println("Quieres ejecutar? (S/N)");
 						respuesta = Character.toLowerCase(teclado.next().charAt(0));
