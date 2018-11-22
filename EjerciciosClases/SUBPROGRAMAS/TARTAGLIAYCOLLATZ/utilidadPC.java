@@ -74,6 +74,7 @@ public class utilidadPC {
 			
 			return factorial;
 		}
+		
 		/*
 		 * Nec: 2 numero
 		 * Dev: 1 numero
@@ -83,7 +84,7 @@ public class utilidadPC {
 		 * Interfaz
 		 * Nombre: binomioNewton
 		 * Comentario: Realizamos la formula para hacer el binomio de Newton
-		 * Cabecera: int binomioNewton (int numero)
+		 * Cabecera: int binomioNewton (int numFilas, int m)
 		 * Precondiciones: El numero debe ser superior a 0 (0 incluido)
 		 * Entrada: 2 int
 		 * Salida: 1 int 
@@ -99,8 +100,8 @@ public class utilidadPC {
 			return resultado;
 		 }
 		 
-		 /*
-		 * Nec: No hay
+		/*
+		 * Nec: 1 numero
 		 * Dev: No hay
 		 * Nec/Dev: No hay
 		 * Requisitos: No hay
@@ -109,8 +110,8 @@ public class utilidadPC {
 		 * Nombre: pintarPiramide
 		 * Comentario: Pintamos la piramide
 		 * Cabecera: void pintarPiramide();
-		 * Precondiciones: 
-		 * Entrada: No hay
+		 * Precondiciones: No hay
+		 * Entrada: 1 numero
 		 * Salida: No hay 
 		 * E/S: No hay
 		 * Postcondiciones: Solo pinta la piramide
@@ -120,16 +121,46 @@ public class utilidadPC {
 		public static void pintarPiramide(int numFilas) {
 			int m = 0;
 			int altura = numFilas;
-			for(int contador = 0; contador < numFilas; contador++, numFilas--, altura--) {
+			for(int contador = 0; contador <= numFilas; numFilas--, altura--) {
 				m = altura;
 				for (int cont = 0; cont <= altura; cont++) {
-				System.out.print(binomioNewton (numFilas, m));
+				System.out.print(binomioNewton (numFilas, m) + " ");
 				m--;
 				}
 			System.out.println();
 			
 		}
+	}
+				/*
+		 * Nec: 1 numero
+		 * Dev: 1 numero
+		 * Nec/Dev: No hay
+		 * 
+		 * Interfaz
+		 * Nombre: FormulaCollatz
+		 * Comentario: Este realiza la conjetura de collatz
+		 * Cabecera: int FormulaCollatz (int numero)
+		 * Precondiciones: No hay
+		 * Entrada: 1 numero (int)
+		 * Salida: 1 numero (int)
+		 * E/S: No hay
+		 * Postcondiciones: Asociado al nombre. El resultado de realizar la formula conjetura de collatz
+		*/
+		
+		public static int FormulaCollatz (int numero) {
+			int resultado;
+			
+			if(numero % 2 == 0) {
+				resultado = numero / 2;
+			}
+			
+			else {
+				resultado = (numero * 3) + 1;
+			}
+			
+			return resultado;
 		}
+		
 	}
 
 

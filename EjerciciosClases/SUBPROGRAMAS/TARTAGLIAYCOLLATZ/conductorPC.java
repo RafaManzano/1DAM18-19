@@ -9,7 +9,7 @@ public class conductorPC {
 		
 		//System.out.println(utilidadPC.calcularFactorial(5));
 		
-		utilidadPC.pintarPiramide(5);
+		utilidadPC.pintarPiramide(10);
 		
 		//System.out.println(utilidadPC.binomioNewton(5,1));
 	}

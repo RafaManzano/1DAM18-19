@@ -51,7 +51,7 @@ public class resguardoPC {
 	}
 	
 		/*
-		 * Nec: 1 numero
+		 * Nec: 2 numero
 		 * Dev: 1 numero
 		 * Nec/Dev: No hay
 		 * Requisitos: El numero debe ser 0 o mayor
@@ -59,9 +59,9 @@ public class resguardoPC {
 		 * Interfaz
 		 * Nombre: binomioNewton
 		 * Comentario: Realizamos la formula para hacer el binomio de Newton
-		 * Cabecera: int binomioNewton (int numero)
+		 * Cabecera: int binomioNewton (int numFilas, int m)
 		 * Precondiciones: El numero debe ser superior a 0 (0 incluido)
-		 * Entrada: 1 int
+		 * Entrada: 2 int
 		 * Salida: 1 int 
 		 * E/S: No hay
 		 * Postcondiciones: Asociado al nombre. El resultado del binomio
@@ -72,5 +72,53 @@ public class resguardoPC {
 		System.out.println("En resguardo");
 		return 1;
 	}
+	
+		/*
+		 * Nec: 1 numero
+		 * Dev: No hay
+		 * Nec/Dev: No hay
+		 * Requisitos: No hay
+		 * 
+		 * Interfaz
+		 * Nombre: pintarPiramide
+		 * Comentario: Pintamos la piramide
+		 * Cabecera: void pintarPiramide();
+		 * Precondiciones: No hay
+		 * Entrada: 1 numero
+		 * Salida: No hay 
+		 * E/S: No hay
+		 * Postcondiciones: Solo pinta la piramide
+		 * 
+		*/
+		
+		public static void pintarPiramide(int numFilas) {
+			
+			System.out.println("En resguardo");
+			
+		}
+		
+		
+		/*
+		 * Nec: 1 numero
+		 * Dev: 1 numero
+		 * Nec/Dev: No hay
+		 * 
+		 * Interfaz
+		 * Nombre: FormulaCollatz
+		 * Comentario: Este realiza la conjetura de collatz
+		 * Cabecera: int FormulaCollatz (int numero)
+		 * Precondiciones: No hay
+		 * Entrada: 1 numero (int)
+		 * Salida: 1 numero (int)
+		 * E/S: No hay
+		 * Postcondiciones: Asociado al nombre. El resultado de realizar la formula conjetura de collatz
+		*/
+		
+		public static int FormulaCollatz (int numero) {
+			System.out.println("En resguardo");
+			
+			return 1;
+		}
+		
 }
 

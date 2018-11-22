@@ -69,6 +69,15 @@ public class TartagliayCollatz {
 					
 					while(respuesta == 's') {
 						
+						do{
+							System.out.println("Cuantas filas quiere que sean?(Mayor o igual que 0)");
+							numFilas = teclado.nextInt();
+						}
+						while (numFilas < 0);
+						
+						//resguardoPC.pintarPiramide(numFilas);
+						utilidadPC.pintarPiramide(numFilas);
+						
 						
 						
 						do {
