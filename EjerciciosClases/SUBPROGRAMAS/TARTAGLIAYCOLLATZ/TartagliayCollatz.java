@@ -55,12 +55,13 @@ public class TartagliayCollatz {
 		}
 		while(opcion < 0 || opcion > 2);
 		
-		//MientrasOpcionNoSeaSalir
-		while(opcion != 0) {
+		
+		while(opcion != 0) { //MientrasOpcionNoSeaSalir
 			
 			switch(opcion) {
 				case 1:
 					//System.out.println("Piramide de Tartaglia");
+					//PiramideTartaglia
 					do {
 						System.out.println("Quieres ejecutar? (S/N)");
 						respuesta = Character.toLowerCase(teclado.next().charAt(0));
@@ -90,6 +91,7 @@ public class TartagliayCollatz {
 				
 				case 2:
 					//System.out.println("Conjetura de Collatz");
+					//ConjeturaCollatz
 					do {
 						System.out.println("Quieres ejecutar? (S/N)");
 						respuesta = Character.toLowerCase(teclado.next().charAt(0));
@@ -97,6 +99,15 @@ public class TartagliayCollatz {
 					while (respuesta != 's' && respuesta != 'n');
 					
 					while(respuesta == 's') {
+						
+						do {
+						System.out.println("Elija su numero para realizar la conjetura");
+						numero = teclado.nextInt();
+						}
+						while(numero <= 0);
+						
+						//resguardoPC.pintarConjetura(numero);
+						utilidadPC.pintarConjetura(numero);
 						
 						do {
 						System.out.println("Quieres ejecutar? (S/N)");

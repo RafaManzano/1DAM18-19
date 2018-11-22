@@ -65,7 +65,7 @@ public class DividiendoyMultiplicando {
 						System.out.println("Quieres ejecutar? (S/N)");
 						respuesta = Character.toLowerCase(teclado.next().charAt(0));
 					}
-					while(respuesta != 's' || respuesta != 'n');
+					while(respuesta != 's' && respuesta != 'n');
 					
 					//MientrasRespuestaSeaSi
 					while(respuesta == 's') {
@@ -84,7 +84,7 @@ public class DividiendoyMultiplicando {
 							System.out.println("Quieres ejecutar? (S/N)");
 							respuesta = Character.toLowerCase(teclado.next().charAt(0));
 						}
-						while(respuesta != 's' || respuesta != 'n');
+						while(respuesta != 's' && respuesta != 'n');
 					}
 				break;
 				
@@ -96,7 +96,7 @@ public class DividiendoyMultiplicando {
 						System.out.println("Quieres ejecutar? (S/N)");
 						respuesta = Character.toLowerCase(teclado.next().charAt(0));
 					}
-					while(respuesta != 's' || respuesta != 'n');
+					while(respuesta != 's' && respuesta != 'n');
 					
 					//MientrasRespuestaSeaSi
 					while(respuesta == 's') {
@@ -109,14 +109,14 @@ public class DividiendoyMultiplicando {
 						}
 						while (numero1 < 1 || numero2 < 1);
 						//resguardosDM.Multiplicacion(numero1, numero2);
-						FuncionalidadesDM.Multiplicacion(numero1, numero2);
+						System.out.println(FuncionalidadesDM.Multiplicacion(numero1, numero2));
 						
 						//LeeryValidarRespuesta
 						do {
 							System.out.println("Quieres ejecutar? (S/N)");
 							respuesta = Character.toLowerCase(teclado.next().charAt(0));
 						}
-						while(respuesta != 's' || respuesta != 'n');
+						while(respuesta != 's' && respuesta != 'n');
 						}
 				break;
 			}

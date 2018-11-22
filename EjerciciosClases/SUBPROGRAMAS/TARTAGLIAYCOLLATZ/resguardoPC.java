@@ -120,5 +120,27 @@ public class resguardoPC {
 			return 1;
 		}
 		
+				/*
+		 * Nec: 1 numero
+		 * Dev: No hay
+		 * Nec/Dev: No hay
+		 * Requisitos: numero mayor que 0
+		 * 
+		 * Interfaz
+		 * Nombre: pintarConjetura
+		 * Comentario: Pinta la conjetura hasta que el resultado sea 1
+		 * Cabecera: void pintarConjetura (int numero)
+		 * Precondiciones: numero mayor que 0
+		 * Entrada: 1 numero (int)
+		 * Salida: No hay
+		 * E/S: No hay
+		 * Postcondiciones: Por referencia. Hasta que solo llegue a 1
+		 * 
+		*/
+		 
+		public static void pintarConjetura(int numero) {
+			System.out.println("En resguardo");
+		}
+		
 }
 

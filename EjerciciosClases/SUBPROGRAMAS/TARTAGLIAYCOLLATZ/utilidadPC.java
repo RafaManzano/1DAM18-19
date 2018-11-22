@@ -161,6 +161,35 @@ public class utilidadPC {
 			return resultado;
 		}
 		
+		/*
+		 * Nec: 1 numero
+		 * Dev: No hay
+		 * Nec/Dev: No hay
+		 * Requisitos: numero mayor que 0
+		 * 
+		 * Interfaz
+		 * Nombre: pintarConjetura
+		 * Comentario: Pinta la conjetura hasta que el resultado sea 1
+		 * Cabecera: void pintarConjetura (int numero)
+		 * Precondiciones: numero mayor que 0
+		 * Entrada: 1 numero (int)
+		 * Salida: No hay
+		 * E/S: No hay
+		 * Postcondiciones: Por referencia. Hasta que solo llegue a 1
+		 * 
+		*/
+		
+		public static void pintarConjetura(int numero) {
+			int res = 0;
+			res = numero;
+			System.out.println(numero);
+			
+			//for (;res != 1;);
+			while(res != 1) {
+				res = FormulaCollatz(res);
+				System.out.println(res);
+			}
+		}
 	}
 
 
