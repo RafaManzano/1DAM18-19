@@ -37,10 +37,9 @@ public class sieteyMedia {
 			int opcion;
 			String nombreJ1;
 			String nombreJ2;
-			int carta;
-			int cartaJ1;
-			int cartaJ2;
-			float aux;
+			double carta;
+			double jugada = 0;
+			char plantarse;
 			Scanner teclado = new Scanner(System.in);
 			Random random = new Random();
 			
@@ -54,7 +53,19 @@ public class sieteyMedia {
 			while (opcion != 0) {
 				switch (opcion) {
 					case 1 :
-						System.out.println("1 Jugador");
+						//System.out.println("1 Jugador");
+						System.out.println("Elija su nombre jugador");
+						nombreJ1 = teclado.next();
+						
+						utilidadesSieteyMedia.realizarJugada();
+						
+						if(jugada > 7.5) {
+							System.out.println("Has perdido, " + nombreJ1);
+						}
+						else {
+							System.out.println("Has ganado, " + nombreJ1);
+						}
+						//ComprobarJugada
 					break;
 					
 					case 2 :
