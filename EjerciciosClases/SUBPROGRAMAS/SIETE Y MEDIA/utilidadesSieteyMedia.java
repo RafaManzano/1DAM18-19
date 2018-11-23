@@ -25,8 +25,12 @@ public class utilidadesSieteyMedia {
 	 * 
 	*/
 	
-	public void PresentarMenu() {
-		System.out.println("");
+	public static void PresentarMenu() {
+		System.out.println("Elija una opcion");
+		System.out.println("1. 1 Jugador");
+		System.out.println("2. 2 Jugadores");
+		System.out.println("3. Reglas");
+		System.out.println("0. Salir");
 	}
 }
 
