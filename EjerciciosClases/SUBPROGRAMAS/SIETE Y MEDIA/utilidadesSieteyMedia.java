@@ -49,7 +49,7 @@ public class utilidadesSieteyMedia {
 	 * E/S: No hay
 	 * Postcondiciones: 
 	 * 
-	*/
+	
 
 	public static void realizarJugada () {
 		Random random = new Random();
@@ -68,7 +68,25 @@ public class utilidadesSieteyMedia {
 		}
 		while (jugada > 7.5 || plantarse == 's');
 	}
-		
+	*/
+	
+	/*
+	 * Nec: 
+	 * Dev: 
+	 * Nec/Dev: 
+	 * Requisitos: 
+	 * 
+	 * Interfaz
+	 * Nombre: 
+	 * Comentario:
+	 * Cabecera:
+	 * Precondiciones:
+	 * Entrada:
+	 * Salida:
+	 * E/S:
+	 * Postcondiciones:
+	 * 
+	*/	
 	}
 
 
