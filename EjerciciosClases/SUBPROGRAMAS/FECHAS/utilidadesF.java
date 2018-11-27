@@ -86,7 +86,7 @@ public class utilidadesF {
 				  break;
 				  
 				  case 4: case 6: case 9: case 11:
-					if(dia >= 1 && dia <= 3) {
+					if(dia >= 1 && dia <= 30) {
 						valido = true;
 					}
 				  break;
@@ -109,24 +109,34 @@ public class utilidadesF {
 	  
 	  /*
 	   * Nec: 2 Fechas (anio/mes/dia)
-	   * Dev: 1 logico
+	   * Dev: 1 numero
 	   * Nec/Dev: No hay
 	   * Requisitos: No hay
 	   * 
 	   * Interfaz
 	   * Nombre: compararFechas
 	   * Comentario: Se comparan dos fechas y se dice cual es anterior y cual posterior
-	   * Cabecera: boolean sumarFechas (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
+	   * Cabecera: int sumarFechas (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
 	   * Precondiciones: No hay
 	   * Entradas: 6 int
-	   * Salidas: 1 boolean
+	   * Salidas: 1 int
 	   * E/S: No hay
-	   * Postcondiciones: Asociado al nombre, si es true la primera fecha es anterior y si es false es posterior
+	   * Postcondiciones: Asociado al nombre, 0 igualdad, 1 Posterior, 2 Anterior
 	   * 
 	  */
 	  
-	  public boolean compararFecha (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2) {
-		  
+	  public static int compararFecha (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2) {
+		  int res = 0;
+		  if (anio1 > anio2 || (anio1 == anio2 && mes1 > mes2) || (anio1 == anio2 && mes1 == mes2 && dia1 > dia2)) {
+			  res = 1;
+		  }
+		  else if (anio1 < anio2 || (anio1 == anio2 && mes1 < mes2) || (anio1 == anio2 && mes1 == mes2 && dia1 < dia2)) {
+			  res = 2;
+			   }
+			   else {
+				   
+			   }
+			return res;
 	  }
 
 }

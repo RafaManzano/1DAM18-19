@@ -70,14 +70,24 @@ public class Fechas {
 			switch (opcion) {
 				case 1:
 					//System.out.println("SumarFechas");
-					//LeeryValidarFecha1
+					System.out.println("En construccion");
+					
+				break;
+				
+				case 2:
+					System.out.println("RestarFechas");
+				break;
+				
+				case 3:
+					//System.out.println("CompararFechas");
+					
 					do {
 						System.out.println("Inserte la primera fecha: ");
 						System.out.print("Dia: ");
 						dia1 = teclado.nextInt();
 						System.out.print("Mes: ");
 						mes1 = teclado.nextInt();
-						System.out.print("Año: ");
+						System.out.print("Anio: ");
 						anio1 = teclado.nextInt();
 					}
 					while(utilidadesF.validarFecha(anio1,mes1,dia1) == false);
@@ -88,20 +98,24 @@ public class Fechas {
 						dia2 = teclado.nextInt();
 						System.out.print("Mes: ");
 						mes2 = teclado.nextInt();
-						System.out.print("Año: ");
+						System.out.print("Anio: ");
 						anio2 = teclado.nextInt();
 					}
 					while(utilidadesF.validarFecha(anio2,mes2,dia2) == false);
+					//resguardosF.compararFecha(anio1,mes1,dia1,anio2,mes2,dia2);
+					//int comparar = utilidadesF.compararFecha(anio1,mes1,dia1,anio2,mes2,dia2);
+					//System.out.println(comparar);
 					
+					if (utilidadesF.compararFecha(anio1,mes1,dia1,anio2,mes2,dia2) == 2) {
+						System.out.println("La fecha " + dia1 + "/" + mes1 + "/" + anio1 + " es anterior a la fecha " + dia2 + "/" + mes2 + "/" + anio2 );
+					}
+					else if (utilidadesF.compararFecha(anio1,mes1,dia1,anio2,mes2,dia2) == 1) {
+						System.out.println("La fecha " + dia1 + "/" + mes1 + "/" + anio1 + " es posterior a la fecha " + dia2 + "/" + mes2 + "/" + anio2 );
+					     }
+					     else {
+							 System.out.println("La fecha " + dia1 + "/" + mes1 + "/" + anio1 + " es igual a la fecha " + dia2 + "/" + mes2 + "/" + anio2 );
+						 }
 					
-				break;
-				
-				case 2:
-					System.out.println("RestarFechas");
-				break;
-				
-				case 3:
-					System.out.println("CompararFechas");
 				break;
 				
 				case 4:
