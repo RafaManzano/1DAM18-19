@@ -119,7 +119,20 @@ public class Fechas {
 				break;
 				
 				case 4:
-					System.out.println("DiaSemana");
+					//System.out.println("DiaSemana");
+					
+					do {
+						System.out.println("Inserte la fecha: ");
+						System.out.print("Dia: ");
+						dia1 = teclado.nextInt();
+						System.out.print("Mes: ");
+						mes1 = teclado.nextInt();
+						System.out.print("Anio: ");
+						anio1 = teclado.nextInt();
+					}
+					while(utilidadesF.validarFecha(anio1,mes1,dia1) == false);
+					
+					System.out.println("Es la semana " + diaSemana(dia, mes, anio));
 				break;
 			}
 			

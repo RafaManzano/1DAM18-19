@@ -133,12 +133,79 @@ public class utilidadesF {
 		  else if (anio1 < anio2 || (anio1 == anio2 && mes1 < mes2) || (anio1 == anio2 && mes1 == mes2 && dia1 < dia2)) {
 			  res = 2;
 			   }
-			   else {
-				   
-			   }
+			   
 			return res;
 	  }
+	  
+	  /*
+	   * Nec: 2 entero //Mes y anio
+	   * Dev: 1 entero //Maximo cada mes
+	   * Nec/Dev: No hay
+	   * Requisitos: El mes tiene que estar entre 1 y 12
+	   * 
+	   * Interfaz
+	   * Nombre: MaximoMes
+	   * Comentario: Asigna el maximo de cada mes 
+	   * Cabecera: int maximoMes (int mes) 
+	   * Precondiciones: EL mes tiene que estar comprendido entre 1 y 12
+	   * Entrada: 2 int //mes y anio
+	   * Salida: 1 int //Maximo de dias en el mes
+	   * E/S: No hay
+	   * Postcondiciones: Asociado al nombre. Devuelve el maximo de cada mes
+	   *  
+	   */
+	   
+	   public static int maximoMes (int mes, int anio) {
+		   int maximo = 0;
+		   
+		   switch (mes) {
+			   case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+					maximo = 31;
+			   break;
+			   
+			   case 4: case 6: case 9: case 11:
+					maximo = 30;
+			   break;
+			   
+			   case 2:
+				if(AnioBisiesto(anio) == true) {
+					maximo = 29;
+				}
+				else {
+					maximo = 28;
+				}
+		   }
+		   return maximo;
+	   }
+	   
+	   
+	  /*
+	   * Nec: 3 entero //dia, mes, anio //Por valor
+	   * Dev: 1 entero //numero de la semana en la que se encuentra //Asociado al nombre
+	   * Nec/Dev: No hay
+	   * Requisitos: El mes tiene que estar entre 1 y 12, dia entre 1 y 31 y anio mayor de 1582
+	   * 
+	   * Interfaz
+	   * Nombre: diaSemana
+	   * Comentario: Segun el dia y el mes te dice en que mes de la semana esta, el anio es por si es bisiesto o no 
+	   * Cabecera: int diaSemana (int dia, int mes, int anio) 
+	   * Precondiciones: EL mes tiene que estar comprendido entre 1 y 12, el dia entre 1 y 31 (dependiendo del mes) y anio mayor que 1582
+	   * Entrada: 3 int //dia, mes y anio
+	   * Salida: 1 int //Dia de la semana que es
+	   * E/S: No hay
+	   * Postcondiciones: Asociado al nombre. Devuelve el numero de la semana en la qwue te encuentras
+	   *  
+	   */
 
+		public static int diaSemana(int dia, int mes, int anio) {
+			int diaSemanal = 0;
+			
+			for (int contador = 1; contador < mes; contador++) {
+				diaSemanal = diaSemanal + maximoMes(contador, anio);
+			}
+			diaSemanal = (diaSemanal + dia) / 7;
+			return diaSemanal;
+		}
 }
 
 
