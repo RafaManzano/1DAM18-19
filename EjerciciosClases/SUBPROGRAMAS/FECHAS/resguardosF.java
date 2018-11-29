@@ -138,5 +138,49 @@ public class resguardosF {
 		   System.out.println("En resguardo");
 		   return 1;
 	   }
+	   
+	   /*
+		 * Nec: 2 Fechas //Por valor
+		 * Dev: 1 Numero //Dias que han pasado de una fecha a otra //Asociado al nombre
+		 * Nec/Dev:
+		 * Requisitos: El anio seria mayor que 1582, el mes entre 1 y 12 y el dia del 1 al 31 (depende de los meses)
+		 * 
+		 * Interfaz
+		 * Nombre: diasPasados
+		 * Comentario: Este subprograma se encarga de contar los dias pasados de una fecha a otra
+		 * Cabecera: int diaPasados (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
+		 * Precondiciones: El anio seria mayor que 1582, el mes entre 1 y 12 y el dia del 1 al 31 (depende de los meses)
+		 * Entrada: 6 int (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
+		 * Salida: 1 int (Numero de dias pasados de una fecha a otra)
+		 * E/S: No hay
+		 * Postcondiciones: Asociado al nombre. El resultado es el numero de dias que pasan de una fecha a otra
+		*/
+		
+		public static int diasPasados (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2) {
+			System.out.println("En resguardo");
+			return 1;
+		}
+		
+		/* Nec: 1 entero //Por valor Anio
+		  * Dev: 1 entero //Asociado al nombre //La suma de los años bisiestos
+		  * Nec/Dev: No hay
+		  * Requisitos: El año tiene que ser mayor que 1582
+		  * 
+		  * Interfaz
+		  * Nombre: sumarBisiestos
+		  * Comentario: Este subprograma suma todos los años bisiestos desde el calendario gregoriano (1582)
+		  * Cabecera: int sumarBisiestos(int anio)
+		  * Precondiciones: El anio tiene que ser mayor de 1582
+		  * Entradas: 1 int //anio
+		  * Salidas: 1 int // la suma de los anios bisiestos 
+		  * E/S: No hay
+		  * Precondiciones: Asociado al nombre. El resultado de la suma de todos los anios bisiestos desde 1582
+		  * 
+		 */
+		 
+		 public static int sumarBisiestos(int anio) {
+			 System.out.println("En resguardo");
+			 return 1;
+		 }
 } 
 

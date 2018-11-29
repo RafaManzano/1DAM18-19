@@ -3,7 +3,7 @@
  * 
  */
 
-
+import java.util.*;
 public class utilidadesF {
 	
 	/*
@@ -29,6 +29,7 @@ public class utilidadesF {
 		 System.out.println("2. Restar fechas");
 		 System.out.println("3. Comparar Fechas");
 		 System.out.println("4. Dia Semana");
+		 System.out.println("5. Dias Pasados");
 		 System.out.println("0. Salir");
 	 }
 	 
@@ -216,7 +217,7 @@ public class utilidadesF {
 		 * Interfaz
 		 * Nombre: diasPasados
 		 * Comentario: Este subprograma se encarga de contar los dias pasados de una fecha a otra
-		 * Cabecera: int diaPasados (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
+		 * Cabecera: int diaPasados 
 		 * Precondiciones: El anio seria mayor que 1582, el mes entre 1 y 12 y el dia del 1 al 31 (depende de los meses)
 		 * Entrada: 6 int (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
 		 * Salida: 1 int (Numero de dias pasados de una fecha a otra)
@@ -230,14 +231,34 @@ public class utilidadesF {
 			 int fecha2;
 			 int diasFecha1 = 0;
 			 int diasFecha2 = 0;
+			 int aux = 0;
 			 
+			 /*
+			 if (anio1 < anio2) {
+				 while (anio1  <= anio2) {
+					anio1++;
+					 if(AnioBisiesto(anio1) == true) {
+						 bisiesto++;
+					 }
+				 }
+			 }
+			 else {
+				  while (anio1  >= anio2) {
+					anio2++;
+					 if(AnioBisiesto(anio1) == true) {
+						 bisiesto++;
+					 }
+				 }
+			 }
+			 */
+			
 			 //Fecha1 en dias
 			 for (int contador = 1; contador < mes1; contador++) {
 				diasFecha1 = diasFecha1 + maximoMes(contador, anio1);
 			 }
 			 
 			
-			 fecha1 = ((anio1 - 1) * 365) + diasFecha1 + dia1;
+			 fecha1 = ((anio1 - 1) * 365) + diasFecha1 + dia1 + sumarBisiestos(anio1);
 			 
 			 for (int contador = 1; contador < mes2; contador++) {
 				diasFecha2 = diasFecha2 + maximoMes(contador, anio2);
@@ -245,20 +266,119 @@ public class utilidadesF {
 			 
 			  
 			 
-			 fecha2 = ((anio2 - 1) * 365) + diasFecha2 + dia2;
+			 fecha2 = ((anio2 - 1) * 365) + diasFecha2 + dia2 + sumarBisiestos(anio2);
 			 
-			 
-			 
-			 if (fecha1 < fecha2) {
-				 res = fecha2 - fecha1;
-			 }
-			 else {
-				 res = fecha1 - fecha2;
-			 }
+			 res = Math.abs(fecha1 - fecha2) ;
 			 
 			 return res;
 			 
 		 }
+		 
+		 /* Nec: 1 entero //Por valor Anio
+		  * Dev: 1 entero //Asociado al nombre //La suma de los años bisiestos
+		  * Nec/Dev: No hay
+		  * Requisitos: El año tiene que ser mayor que 1582
+		  * 
+		  * Interfaz
+		  * Nombre: sumarBisiestos
+		  * Comentario: Este subprograma suma todos los años bisiestos desde el calendario gregoriano (1582)
+		  * Cabecera: int sumarBisiestos(int anio)
+		  * Precondiciones: El anio tiene que ser mayor de 1582
+		  * Entradas: 1 int //anio
+		  * Salidas: 1 int // la suma de los anios bisiestos 
+		  * E/S: No hay
+		  * Precondiciones: Asociado al nombre. El resultado de la suma de todos los anios bisiestos desde 1582
+		  * 
+		 */
+		 
+		 public static int sumarBisiestos(int anio) {
+			 int res = 0;
+			 int aux = 1582;
+			 for (; aux <= anio; aux++) {
+				 if(AnioBisiesto(aux) == true) {
+					 res++;
+				 }
+			 }
+			 return res;
+		 }
+		 
+		 /*
+		  * Nec: 2 Fechas, 6 enteros
+		  * Dev: 1 fecha, 3 enteros
+		  * Nec/Dev: No hay
+		  * Requisitos: anio, mes, dia mayores que 0
+		  * 
+		  * Interfaz
+		  * Nombre: sumarAFecha
+		  * Comentario: Este subprograma suma a una fecha los dias, meses y anios 
+		  * Cabecera: public void sumarAFecha(int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
+		  * Precondiciones: anio, mes, dia mayores que 0
+		  * Entrada: 6 int
+		  * 		 - anio1
+		  * 		 - mes1
+		  * 		 - dia1
+		  * 		 - anio2
+		  * 		 - mes2
+		  * 		 - dia2
+		  * 
+		  * Salida: 3 int
+		  * 		- anio
+		  * 		- mes
+		  * 		- dia 
+		  * 
+		  * E/S: No hay
+		  * Postcondiciones: Por referencia, porque no puedo devolver los 3 asociados al nombre los devuelvo pintando, el resultado de sumar a la fecha 1 la fecha 2
+		 */
+		 
+		 public static void sumarAFecha(int anio1, int mes1, int dia1, int anio2, int mes2, int dia2) {
+			 int anio = anio1 + anio2;
+			 int mes = mes1 + mes2;
+			 int dia = dia1 + dia2;
+			 
+			 
+			 do {
+				 if(mes > 12) {
+					 mes = (mes1 + mes2) - 12;
+					 anio++;
+				 }
+				 
+			   switch (mes) {
+			   case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+					if(dia > 31) {
+						dia = (dia1 + dia2) - 31;
+						mes++;
+					}
+			   break;
+			   
+			   case 4: case 6: case 9: case 11:
+					if(dia > 30) {
+						dia = (dia1 + dia2) - 30;
+						mes++;
+					}
+			   break;
+			   
+			   case 2:
+				if(AnioBisiesto(anio) == true) {
+					if(dia > 29) {
+						dia = (dia1 + dia2) - 29;
+						mes++;
+					}
+				}
+				else {
+					if(dia > 28) {
+						dia = (dia1 + dia2) - 28;
+						mes++;
+					}
+				}
+			}
+			}
+			while(validarFecha(anio,mes,dia) == false);
+			
+			System.out.println("La nueva fecha seria " + dia + "/" + mes + "/" + anio);
+		 }
+		 
+		 
 }
+
 
 

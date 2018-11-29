@@ -13,7 +13,11 @@ public class conductorF {
 		//System.out.println(utilidadesF.validarFecha(1998,11,15));
 		
 		//System.out.println(utilidadesF.diaSemana(5,11,2018));
-		System.out.println(utilidadesF.diasPasados(1999,12,3,2018,11,29));
+		//System.out.println(utilidadesF.diasPasados(1998,11,15,2018,11,29));
+		//System.out.println(utilidadesF.diasPasados(1995,6,23,2018,11,29));
+		//System.out.println(utilidadesF.sumarBisiestos(2002));
+		utilidadesF.sumarAFecha(1999,12,29,0,2,0);
+		//utilidadesF.sumarAFecha(1998,12,30,0,1,0);
 	}
 }
 

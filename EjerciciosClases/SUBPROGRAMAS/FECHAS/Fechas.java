@@ -71,13 +71,36 @@ public class Fechas {
 		while(opcion != 0) {
 			switch (opcion) {
 				case 1:
-					//System.out.println("SumarFechas");
-					System.out.println("En construccion");
+					//System.out.println("SumarAFechas");
+					do {
+						System.out.println("Inserte la fecha: ");
+						System.out.print("Dia: ");
+						dia1 = teclado.nextInt();
+						System.out.print("Mes: ");
+						mes1 = teclado.nextInt();
+						System.out.print("Anio: ");
+						anio1 = teclado.nextInt();
+					}
+					while(utilidadesF.validarFecha(anio1,mes1,dia1) == false);
+					
+					do {
+						System.out.println("Inserte la fecha que quieres sumarle");
+						System.out.print("Dia: ");
+						dia2 = teclado.nextInt();
+						System.out.print("Mes: ");
+						mes2 = teclado.nextInt();
+						System.out.print("Anio: ");
+						anio2 = teclado.nextInt();
+					}
+					while(anio2 <= 0 && mes2 <= 0 && dia2 <= 0);
+					
+					utilidadesF.sumarAFecha(anio1, mes1, dia1, anio2, mes2, dia2);
 					
 				break;
 				
 				case 2:
-					//System.out.println("RestarFechas");
+					//System.out.println("RestarAFechas");
+					System.out.println("En construccion");
 				break;
 				
 				case 3:
@@ -173,7 +196,7 @@ public class Fechas {
 				utilidadesF.PresentarMenu();
 				opcion = teclado.nextInt();
 			}
-			while(opcion < 0 || opcion > 4);
+			while(opcion < 0 || opcion > 5);
 		}
 	}
 }
