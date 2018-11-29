@@ -15,7 +15,7 @@
  * Requisitos: - Anio tiene que ser superior de 1582
  * 			   - Mes tiene que ser del 1 al 12
  * 			   - Dia tiene que ser del 1 al 31
- * 			   - Opcion tiene que ser 0 al 4
+ * 			   - Opcion tiene que ser 0 al 5
  * 
  * PG Level 0
  * Inicio
@@ -30,6 +30,8 @@
  * 				CompararFechas
  * 			Para caso 4: 
  * 				DiaSemana
+ * 			Para caso 5:
+ * 				diasPasados
  * 		FinSegun
  * 	FinMientras
  * Fin
@@ -64,7 +66,7 @@ public class Fechas {
 			utilidadesF.PresentarMenu();
 			opcion = teclado.nextInt();
 		}
-		while(opcion < 0 || opcion > 4);
+		while(opcion < 0 || opcion > 5);
 		
 		while(opcion != 0) {
 			switch (opcion) {
@@ -75,7 +77,7 @@ public class Fechas {
 				break;
 				
 				case 2:
-					System.out.println("RestarFechas");
+					//System.out.println("RestarFechas");
 				break;
 				
 				case 3:
@@ -132,7 +134,36 @@ public class Fechas {
 					}
 					while(utilidadesF.validarFecha(anio1,mes1,dia1) == false);
 					
-					System.out.println("Es la semana " + diaSemana(dia, mes, anio));
+					System.out.println("Es la semana " + utilidadesF.diaSemana(dia1, mes1, anio1));
+				break;
+				
+				case 5:
+					//System.out.println("diasPasados")
+					
+					do {
+						System.out.println("Inserte la primera fecha: ");
+						System.out.print("Dia: ");
+						dia1 = teclado.nextInt();
+						System.out.print("Mes: ");
+						mes1 = teclado.nextInt();
+						System.out.print("Anio: ");
+						anio1 = teclado.nextInt();
+					}
+					while(utilidadesF.validarFecha(anio1,mes1,dia1) == false);
+					
+					do {
+						System.out.println("Inserte la segunda fecha: ");
+						System.out.print("Dia: ");
+						dia2 = teclado.nextInt();
+						System.out.print("Mes: ");
+						mes2 = teclado.nextInt();
+						System.out.print("Anio: ");
+						anio2 = teclado.nextInt();
+					}
+					while(utilidadesF.validarFecha(anio2,mes2,dia2) == false);
+					
+					
+					System.out.println(utilidadesF.diasPasados(anio1, mes1, dia1, anio2, mes2, dia2));
 				break;
 			}
 			
