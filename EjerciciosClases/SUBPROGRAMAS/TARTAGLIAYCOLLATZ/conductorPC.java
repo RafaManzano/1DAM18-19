@@ -13,7 +13,8 @@ public class conductorPC {
 		
 		//System.out.println(utilidadPC.binomioNewton(5,1));
 		
-		utilidadPC.pintarConjetura(1);
+		utilidadPC.pintarConjetura(5);
+		
 	}
 }
 

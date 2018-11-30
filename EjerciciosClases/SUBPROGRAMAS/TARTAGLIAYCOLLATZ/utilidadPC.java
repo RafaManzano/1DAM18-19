@@ -32,22 +32,22 @@ public class utilidadPC {
 	}
 	
 	/*
-	 * Nec: 1 numero
-	 * Dev: 1 numero
+	 * Nec: 1 numero //Por valor
+	 * Dev: 1 numero //Asociado al nombre
 	 * Nec/Dev: No hay
-	 * Requisitos: No hay
+	 * Requisitos: Numero mayor o igual que 0
 	 * 
 	 * Interfaz
 	 * Nombre: CalcularFactorial
-	 * Comentario: Calcular un numero factorial
+	 * Comentario: Calcular un numero factorial de forma recursiva 
 	 * Cabecera: int calcularFactorial (int numero)
-	 * Precondiciones: No hay
-	 * Entrada: 1 int 
-	 * Salida: 1 int 
+	 * Precondiciones: Numero mayor o igual que 0
+	 * Entrada: 1 int //Numero para hacer el factorial
+	 * Salida: 1 int //Resultado del factorial
 	 * E/S: No hay
 	 * Postcondiciones: Asociado al nombre el resultado del factorial
 	 *
-	
+	*/
 	
 	public static int calcularFactorial(int numero) {
 			int factorial = 1;
@@ -62,8 +62,8 @@ public class utilidadPC {
 			
 			return factorial;
 		}
-	*/	
 	
+	/*
 	public static int calcularFactorial(int numero) {
 			int factorial = 1;
 			
@@ -74,44 +74,49 @@ public class utilidadPC {
 			
 			return factorial;
 		}
+		*/
+		
 		
 		/*
-		 * Nec: 2 numero
-		 * Dev: 1 numero
+		 * Nec: 2 numero //Por valor
+		 * Dev: 1 numero //Asociado al nombre
 		 * Nec/Dev: No hay
 		 * Requisitos: El numero debe ser 0 o mayor
+		 * Formula: n! / m! * (n - m)!
 		 * 
 		 * Interfaz
 		 * Nombre: binomioNewton
 		 * Comentario: Realizamos la formula para hacer el binomio de Newton
-		 * Cabecera: int binomioNewton (int numFilas, int m)
+		 * Cabecera: int binomioNewton (int n, int m)
 		 * Precondiciones: El numero debe ser superior a 0 (0 incluido)
-		 * Entrada: 2 int
-		 * Salida: 1 int 
+		 * Entrada: - int n
+		 * 			- int m		 //La n y la m de la formula
+		 * 
+		 * Salida: - int resultado //El resultado del binomio
 		 * E/S: No hay
 		 * Postcondiciones: Asociado al nombre. El resultado del binomio
 		 * 
 		*/
 		
-		public static int binomioNewton (int numFilas, int m) {
+		public static int binomioNewton (int n, int m) {
 			int resultado;
 			
-			resultado = calcularFactorial(numFilas) / (calcularFactorial(m) * calcularFactorial(numFilas - m));
+			resultado = calcularFactorial(n) / (calcularFactorial(m) * calcularFactorial(n - m));
 			return resultado;
 		 }
 		 
 		/*
-		 * Nec: 1 numero
+		 * Nec: 1 numero //Por valor
 		 * Dev: No hay
 		 * Nec/Dev: No hay
-		 * Requisitos: No hay
+		 * Requisitos: numFilas tiene que ser 0 o mayor
 		 * 
 		 * Interfaz
 		 * Nombre: pintarPiramide
 		 * Comentario: Pintamos la piramide
 		 * Cabecera: void pintarPiramide();
-		 * Precondiciones: No hay
-		 * Entrada: 1 numero
+		 * Precondiciones: numFilas tiene que ser 0 o mayor
+		 * Entrada: - int numFilas //El numero de filas que queremos para pintar
 		 * Salida: No hay 
 		 * E/S: No hay
 		 * Postcondiciones: Solo pinta la piramide
@@ -131,18 +136,20 @@ public class utilidadPC {
 			
 		}
 	}
-				/*
-		 * Nec: 1 numero
-		 * Dev: 1 numero
+	
+		/*
+		 * Nec: 1 numero //Por valor
+		 * Dev: 1 numero //Asociado al nombre
 		 * Nec/Dev: No hay
+		 * Requisitos: Numero es mayor o igual que 0
 		 * 
 		 * Interfaz
 		 * Nombre: FormulaCollatz
 		 * Comentario: Este realiza la conjetura de collatz
 		 * Cabecera: int FormulaCollatz (int numero)
-		 * Precondiciones: No hay
-		 * Entrada: 1 numero (int)
-		 * Salida: 1 numero (int)
+		 * Precondiciones: Numero es mayor o igual que 0
+		 * Entrada: - int numero //Es el numero al que se le aplica la formula
+		 * Salida: - int resultado //El resultado que da despues de realizar la formula
 		 * E/S: No hay
 		 * Postcondiciones: Asociado al nombre. El resultado de realizar la formula conjetura de collatz
 		*/
@@ -162,7 +169,7 @@ public class utilidadPC {
 		}
 		
 		/*
-		 * Nec: 1 numero
+		 * Nec: 1 numero //Por valor
 		 * Dev: No hay
 		 * Nec/Dev: No hay
 		 * Requisitos: numero mayor que 0
@@ -172,18 +179,17 @@ public class utilidadPC {
 		 * Comentario: Pinta la conjetura hasta que el resultado sea 1
 		 * Cabecera: void pintarConjetura (int numero)
 		 * Precondiciones: numero mayor que 0
-		 * Entrada: 1 numero (int)
+		 * Entrada: - int numero
 		 * Salida: No hay
 		 * E/S: No hay
-		 * Postcondiciones: Por referencia. Hasta que solo llegue a 1
+		 * Postcondiciones: No hay solo pinta en pantalla 
 		 * 
 		*/
 		
 		public static void pintarConjetura(int numero) {
 			int res = 0;
 			res = numero;
-			System.out.println(numero);
-			
+			System.out.println("El numero elegido es: " + numero);			
 			//for (;res != 1;);
 			while(res != 1) {
 				res = FormulaCollatz(res);
