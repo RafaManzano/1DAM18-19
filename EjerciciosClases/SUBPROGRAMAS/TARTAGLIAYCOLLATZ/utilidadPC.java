@@ -42,8 +42,8 @@ public class utilidadPC {
 	 * Comentario: Calcular un numero factorial de forma recursiva 
 	 * Cabecera: int calcularFactorial (int numero)
 	 * Precondiciones: Numero mayor o igual que 0
-	 * Entrada: 1 int //Numero para hacer el factorial
-	 * Salida: 1 int //Resultado del factorial
+	 * Entrada: - int numero //Numero para hacer el factorial
+	 * Salida: - int factorial //Resultado del factorial
 	 * E/S: No hay
 	 * Postcondiciones: Asociado al nombre el resultado del factorial
 	 *
@@ -179,7 +179,7 @@ public class utilidadPC {
 		 * Comentario: Pinta la conjetura hasta que el resultado sea 1
 		 * Cabecera: void pintarConjetura (int numero)
 		 * Precondiciones: numero mayor que 0
-		 * Entrada: - int numero
+		 * Entrada: - int numero //Es el numero al que se le hace la conjetura
 		 * Salida: No hay
 		 * E/S: No hay
 		 * Postcondiciones: No hay solo pinta en pantalla 

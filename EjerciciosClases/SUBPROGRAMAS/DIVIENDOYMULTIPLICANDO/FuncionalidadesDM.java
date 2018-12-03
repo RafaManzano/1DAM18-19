@@ -54,18 +54,20 @@ public class FuncionalidadesDM {
 	}
 	
 	/*
-	 * Nec: Dos numeros
-	 * Dev: Un numero
+	 * Nec: Dos numeros //multiplicando y multiplicador, Por valor
+	 * Dev: Un numero //Resultado de la multiplicacion, Asociado al nombre
 	 * Nec/Dev: No hay
-	 * Requisitos: No hay
+	 * Requisitos: Ambos numeros deben ser mayores que 0
 	 * 
 	 * Interfaz
 	 * Nombre: Multiplicacion
 	 * Comentario: Multiplicacion por sumas sucesivas
-	 * Cabecera: void Multiplicacion (int numero1, int numero2)
+	 * Cabecera: int MultiplicacionRec (int numero1, int numero2)
 	 * Precondiciones: Ambos numeros deben ser mayores que 0
-	 * Entrada: Dos enteros
-	 * Salida: Un entero
+	 * Entrada: - int numero1 (multiplicando)
+	 * 			- int numero2 (multiplicador)
+	 * 
+	 * Salida: - int res (Resultado de la multiplicacion)
 	 * E/S: No hay
 	 * Postcondiciones: El resulado de la multiplicacion. Asociado al nombre
 	 * 

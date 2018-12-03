@@ -20,13 +20,34 @@
  * 	MientrasOpcionNoSeaSalir
  * 		Segun (opcion)
  * 			Para caso 1:
- * 				Division*
+ * 				Division
  * 			Para caso 2:
- * 				Multiplicacion*
+ * 				Multiplicacion
  * 		FinSegun
  * 	FinMientras
  * Fin
  * 
+ * Modulo Division
+ * Inicio 
+ * 	LeeryValidarRespuesta
+ * 	MientrasOpcionSeaSi
+ * 		LeeryValidarNumero1
+ * 		LeeryValidarNumero2
+ * 		Division*
+ * 		LeeryValidarRespuesta
+ * 	FinMientras
+ * Fin
+ * 
+ * Modulo Multiplicacion
+ * Inicio 
+ * 	LeeryValidarRespuesta
+ * 	MientrasOpcionSeaSi
+ * 		LeeryValidarNumero1
+ * 		LeeryValidarNumero2
+ * 		Multiplicacion*
+ * 		LeeryValidarRespuesta
+ * 	FinMientras
+ * Fin
  * 
  * 
  */
@@ -67,8 +88,8 @@ public class DividiendoyMultiplicando {
 					}
 					while(respuesta != 's' && respuesta != 'n');
 					
-					//MientrasRespuestaSeaSi
-					while(respuesta == 's') {
+					
+					while(respuesta == 's') { //MientrasRespuestaSeaSi
 						do {
 						System.out.println("Introduzca el primer numero");
 						numero1 = teclado.nextInt();
@@ -77,7 +98,8 @@ public class DividiendoyMultiplicando {
 						}
 						while (numero1 < 1 || numero2 < 1);
 						//resguardosDM.Division(numero1, numero2);
-						FuncionalidadesDM.Division(numero1, numero2);
+						//FuncionalidadesDM.Division(numero1, numero2);
+						System.out.println(FuncionalidadesRecDM.DivisionRec(numero1, numero2));
 						
 						//LeeryValidarRespuesta
 						do {
@@ -98,8 +120,8 @@ public class DividiendoyMultiplicando {
 					}
 					while(respuesta != 's' && respuesta != 'n');
 					
-					//MientrasRespuestaSeaSi
-					while(respuesta == 's') {
+					
+					while(respuesta == 's') { //MientrasRespuestaSeaSi
 					
 						do {
 						System.out.println("Introduzca el primer numero");
@@ -109,8 +131,8 @@ public class DividiendoyMultiplicando {
 						}
 						while (numero1 < 1 || numero2 < 1);
 						//resguardosDM.Multiplicacion(numero1, numero2);
-						System.out.println(FuncionalidadesDM.Multiplicacion(numero1, numero2));
-						
+						//System.out.println(FuncionalidadesDM.Multiplicacion(numero1, numero2));
+						System.out.println(FuncionalidadesRecDM.MultiplicacionRec(numero1, numero2));
 						//LeeryValidarRespuesta
 						do {
 							System.out.println("Quieres ejecutar? (S/N)");
