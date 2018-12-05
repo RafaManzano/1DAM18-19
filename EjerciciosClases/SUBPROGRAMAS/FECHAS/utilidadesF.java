@@ -338,21 +338,21 @@ public class utilidadesF {
 			 
 			 do {
 				 if(mes > 12) {
-					 mes = (mes1 + mes2) - 12;
+					 mes = mes - 12;
 					 anio++;
 				 }
 				 
 			   switch (mes) {
 			   case 1: case 3: case 5: case 7: case 8: case 10: case 12:
 					if(dia > 31) {
-						dia = (dia1 + dia2) - 31;
+						dia = dia - 31;
 						mes++;
 					}
 			   break;
 			   
 			   case 4: case 6: case 9: case 11:
 					if(dia > 30) {
-						dia = (dia1 + dia2) - 30;
+						dia = dia - 30;
 						mes++;
 					}
 			   break;
@@ -360,13 +360,13 @@ public class utilidadesF {
 			   case 2:
 				if(AnioBisiesto(anio) == true) {
 					if(dia > 29) {
-						dia = (dia1 + dia2) - 29;
+						dia = dia - 29;
 						mes++;
 					}
 				}
 				else {
 					if(dia > 28) {
-						dia = (dia1 + dia2) - 28;
+						dia = dia - 28;
 						mes++;
 					}
 				}
@@ -377,6 +377,81 @@ public class utilidadesF {
 			System.out.println("La nueva fecha seria " + dia + "/" + mes + "/" + anio);
 		 }
 		 
+		 
+		 /*
+		  * Nec: 2 Fechas, 6 enteros
+		  * Dev: 1 fecha, 3 enteros
+		  * Nec/Dev: No hay
+		  * Requisitos: anio, mes, dia mayores que 0
+		  * 
+		  * Interfaz
+		  * Nombre: restarAFecha
+		  * Comentario: Este subprograma resta a una fecha los dias, meses y anios 
+		  * Cabecera: public void restarAFecha(int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
+		  * Precondiciones: anio, mes, dia mayores que 0
+		  * Entrada: 6 int
+		  * 		 - anio1
+		  * 		 - mes1
+		  * 		 - dia1
+		  * 		 - anio2
+		  * 		 - mes2
+		  * 		 - dia2
+		  * 
+		  * Salida: 3 int
+		  * 		- anio
+		  * 		- mes
+		  * 		- dia 
+		  * 
+		  * E/S: No hay
+		  * Postcondiciones: Por referencia, porque no puedo devolver los 3 asociados al nombre los devuelvo pintando, el resultado de restar a la fecha 1 la fecha 2
+		 */
+		 
+		 public static void restarAFecha(int anio1, int mes1, int dia1, int anio2, int mes2, int dia2) {
+			 int anio = anio1 - anio2;
+			 int mes = mes1 - mes2;
+			 int dia = dia1 - dia2;
+			 
+			 
+			 do {
+				 if(mes <= 0) {
+					 mes = mes + 12;
+					 anio--;
+				 }
+				 
+			   switch (mes) {
+			   case 5: case 7:  case 10: case 12:
+					if(dia <= 0) {
+						dia = dia + 30;
+						mes--;
+					}
+			   break;
+			   
+			    case 1: case 2: case 4: case 6: case 8: case 9: case 11:
+					if(dia <= 0) {
+						dia = dia + 31;
+						mes--;
+					}
+			   break;
+			   
+			   case 3:
+				if(AnioBisiesto(anio) == true) {
+					if(dia <= 0) {
+						dia = dia + 29;
+						mes--;
+					}
+				}
+				else {
+					if(dia <= 0) {
+						dia = dia + 28;
+						mes--;
+					}
+				}
+			}
+			}
+			while(validarFecha(anio,mes,dia) == false);
+			
+			System.out.println("La nueva fecha seria " + dia + "/" + mes + "/" + anio);
+		 }
 		 
 }
 

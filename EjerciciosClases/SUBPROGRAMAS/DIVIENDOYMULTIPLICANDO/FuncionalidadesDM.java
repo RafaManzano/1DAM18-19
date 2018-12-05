@@ -50,6 +50,7 @@ public class FuncionalidadesDM {
 		for(int contador = 0; contador < numero2; contador++) {
 			resto = resto - resultado;
 		}
+		
 		System.out.println("El resto de la division es " + resto);
 	}
 	

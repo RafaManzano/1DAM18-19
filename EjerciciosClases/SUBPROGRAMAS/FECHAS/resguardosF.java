@@ -182,5 +182,38 @@ public class resguardosF {
 			 System.out.println("En resguardo");
 			 return 1;
 		 }
+		 
+		 /*
+		  * Nec: 2 Fechas, 6 enteros
+		  * Dev: 1 fecha, 3 enteros
+		  * Nec/Dev: No hay
+		  * Requisitos: anio, mes, dia mayores que 0
+		  * 
+		  * Interfaz
+		  * Nombre: sumarAFecha
+		  * Comentario: Este subprograma suma a una fecha los dias, meses y anios 
+		  * Cabecera: public void sumarAFecha(int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
+		  * Precondiciones: anio, mes, dia mayores que 0
+		  * Entrada: 6 int
+		  * 		 - anio1
+		  * 		 - mes1
+		  * 		 - dia1
+		  * 		 - anio2
+		  * 		 - mes2
+		  * 		 - dia2
+		  * 
+		  * Salida: 3 int
+		  * 		- anio
+		  * 		- mes
+		  * 		- dia 
+		  * 
+		  * E/S: No hay
+		  * Postcondiciones: Por referencia, porque no puedo devolver los 3 asociados al nombre los devuelvo pintando, el resultado de sumar a la fecha 1 la fecha 2
+		 */
+		 
+		 public void sumarAFecha(int anio1, int mes1, int dia1, int anio2, int mes2, int dia2) {
+			 System.out.println("En resguardo");
+		 }
+		 
 } 
 

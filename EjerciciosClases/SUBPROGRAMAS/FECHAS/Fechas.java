@@ -100,7 +100,30 @@ public class Fechas {
 				
 				case 2:
 					//System.out.println("RestarAFechas");
-					System.out.println("En construccion");
+					//System.out.println("En construccion");
+					do {
+						System.out.println("Inserte la fecha: ");
+						System.out.print("Dia: ");
+						dia1 = teclado.nextInt();
+						System.out.print("Mes: ");
+						mes1 = teclado.nextInt();
+						System.out.print("Anio: ");
+						anio1 = teclado.nextInt();
+					}
+					while(utilidadesF.validarFecha(anio1,mes1,dia1) == false);
+					
+					do {
+						System.out.println("Inserte la fecha que quieres restarle");
+						System.out.print("Dia: ");
+						dia2 = teclado.nextInt();
+						System.out.print("Mes: ");
+						mes2 = teclado.nextInt();
+						System.out.print("Anio: ");
+						anio2 = teclado.nextInt();
+					}
+					while(anio2 <= 0 && mes2 <= 0 && dia2 <= 0);
+					
+					utilidadesF.restarAFecha(anio1, mes1, dia1, anio2, mes2, dia2);
 				break;
 				
 				case 3:
