@@ -40,17 +40,20 @@ public class FuncionalidadesDM {
 	*/
 	
 	public static void Division (int numero1, int numero2) {
-		int resultado;
-		int resto = numero1;
+		int res = numero1;
+		int contador = 0;
 		
-		resultado = numero1 / numero2;
-		
-		System.out.println("El cociente de la division es " + resultado);
-		
-		for(int contador = 0; contador < numero2; contador++) {
-			resto = resto - resultado;
+		while (res >= numero2) {
+			contador++;
+			res = res - numero2;
 		}
-		System.out.println("El resto de la division es " + resto);
+		
+		System.out.println("El cociente seria " + contador);
+		System.out.println("El resto seria " + res);
+		
+		
+		
+		
 	}
 	
 	/*
@@ -62,7 +65,7 @@ public class FuncionalidadesDM {
 	 * Interfaz
 	 * Nombre: Multiplicacion
 	 * Comentario: Multiplicacion por sumas sucesivas
-	 * Cabecera: int MultiplicacionRec (int numero1, int numero2)
+	 * Cabecera: int Multiplicacion (int numero1, int numero2)
 	 * Precondiciones: Ambos numeros deben ser mayores que 0
 	 * Entrada: - int numero1 (multiplicando)
 	 * 			- int numero2 (multiplicador)

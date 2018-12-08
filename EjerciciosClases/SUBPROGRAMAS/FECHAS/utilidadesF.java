@@ -293,8 +293,8 @@ public class utilidadesF {
 		 
 		 public static int sumarBisiestos(int anio) {
 			 int res = 0;
-			 int aux = 1582;
-			 for (; aux <= anio; aux++) {
+			 
+			 for (int aux = 1582; aux <= anio; aux++) {
 				 if(AnioBisiesto(aux) == true) {
 					 res++;
 				 }

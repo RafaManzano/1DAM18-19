@@ -100,8 +100,8 @@ public class DividiendoyMultiplicando {
 						}
 						while (numero1 < 1 || numero2 < 1);
 						//resguardosDM.Division(numero1, numero2);
-						//FuncionalidadesDM.Division(numero1, numero2);
-						System.out.println(FuncionalidadesRecDM.DivisionRec(numero1, numero2));
+						FuncionalidadesDM.Division(numero1, numero2);
+						//System.out.println(FuncionalidadesRecDM.DivisionRec(numero1, numero2));
 						
 						//LeeryValidarRespuesta
 						do {
