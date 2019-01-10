@@ -44,8 +44,8 @@ public class utilidadesF {
 	 * Comentario: Comprueba si un anio es bisiesto o no
 	 * Cabecera: boolean AnioBisiesto(int anio)
 	 * Precondiciones: Anio >= 1582
-	 * Entrada: 1 int (es el anio)
-	 * Salida: 1 boolean //resultado
+	 * Entrada: - int anio
+	 * Salida: - boolean res
 	 * E/S: No hay
 	 * Postcondiciones: Asociado al nombre, si es true el anio es bisiesto y si es false no lo es
 	 */
@@ -60,7 +60,7 @@ public class utilidadesF {
 	}
 	
 	 /*
-	  * Nec: anio, mes, dia //Por valor
+	  * Nec: 1 Fecha (anio, mes, dia)//Por valor
 	  * Dev: 1 logico //Asociado al nombre
 	  * Nec/Dev: No hay
 	  * Requisitos: No hay
@@ -70,8 +70,11 @@ public class utilidadesF {
 	  * Comentario: Valida si una fecha es correcta 
 	  * Cabecera: boolean validarFecha(int anio, int mes, int dia)
 	  * Precondiciones: No hay
-	  * Entrada: 3 int (anio, mes, dia)
-	  * Salida: 1 boolean
+	  * Entrada: - int anio
+	  * 		 - int mes
+	  * 		 - int dia
+	  * 
+	  * Salida: - boolean valido
 	  * E/S: No hay
 	  * Postcondiciones: Asociado al nombre, si es true la fecha es correcta y si es false no lo es
 	  */
@@ -112,15 +115,21 @@ public class utilidadesF {
 	   * Nec: 2 Fechas (anio/mes/dia) //Por valor
 	   * Dev: 1 numero //Asociado al nombre 0 igualdad, 1 Posterior, 2 Anterior
 	   * Nec/Dev: No hay
-	   * Requisitos: El anio seria mayor que 1582, el mes entre 1 y 12 y el dia del 1 al 31 (depende de los meses)
+	   * Requisitos: Las fechas sean correctas
 	   * 
 	   * Interfaz
 	   * Nombre: compararFechas
 	   * Comentario: Se comparan dos fechas y se dice cual es anterior, cual posterior y cual iguales
-	   * Cabecera: int sumarFechas (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
-	   * Precondiciones: El anio seria mayor que 1582, el mes entre 1 y 12 y el dia del 1 al 31 (depende de los meses)
-	   * Entradas: 6 int (anio1/mes1/dia1) (anio2/mes2/dia2)
-	   * Salidas: 1 int //resultado
+	   * Cabecera: int compararFechas (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
+	   * Precondiciones: Las fechas sean correctas
+	   * Entradas: - int anio1
+	   * 		   - int mes1
+	   * 		   - int dia1
+	   * 		   - int anio2
+	   * 		   - int mes2
+	   * 		   - int dia2
+	   * 
+	   * Salidas: - int res
 	   * E/S: No hay
 	   * Postcondiciones: Asociado al nombre, Se devolvera un resultado que valdra 0 igualdad, 1 Posterior, 2 Anterior
 	   * 
@@ -139,18 +148,23 @@ public class utilidadesF {
 	  }
 	  
 	  /*
-	   * Nec: 2 entero //Mes y anio
-	   * Dev: 1 entero //Maximo cada mes
+	   * Nec: 2 entero //Mes y anio //Por valor
+	   * Dev: 1 entero //Maximo cada mes //Asociado al nombre
 	   * Nec/Dev: No hay
-	   * Requisitos: El mes tiene que estar entre 1 y 12
+	   * Requisitos: - mes tiene que estar entre 1 y 12
+	   * 			 - anio mayor que 1582
 	   * 
 	   * Interfaz
 	   * Nombre: MaximoMes
 	   * Comentario: Asigna el maximo de cada mes 
-	   * Cabecera: int maximoMes (int mes) 
-	   * Precondiciones: EL mes tiene que estar comprendido entre 1 y 12
-	   * Entrada: 2 int //mes y anio
-	   * Salida: 1 int //Maximo de dias en el mes
+	   * Cabecera: int maximoMes (int mes, int anio) 
+	   * Precondiciones: - mes tiene que estar entre 1 y 12
+	   * 			     - anio mayor que 1582
+	   * 
+	   * Entrada: - int mes
+	   * 		  - int anio
+	   * 
+	   * Salida: - int maximo //Maximo de dias en el mes
 	   * E/S: No hay
 	   * Postcondiciones: Asociado al nombre. Devuelve el maximo de cada mes
 	   *  
@@ -184,17 +198,20 @@ public class utilidadesF {
 	   * Nec: 3 entero //dia, mes, anio //Por valor
 	   * Dev: 1 entero //numero de la semana en la que se encuentra //Asociado al nombre
 	   * Nec/Dev: No hay
-	   * Requisitos: El mes tiene que estar entre 1 y 12, dia entre 1 y 31 y anio mayor de 1582
+	   * Requisitos: La fecha tiene que ser correcta
 	   * 
 	   * Interfaz
 	   * Nombre: diaSemana
 	   * Comentario: Segun el dia y el mes te dice en que mes de la semana esta, el anio es por si es bisiesto o no 
 	   * Cabecera: int diaSemana (int dia, int mes, int anio) 
-	   * Precondiciones: El mes tiene que estar comprendido entre 1 y 12, el dia entre 1 y 31 (dependiendo del mes) y anio mayor que 1582
-	   * Entrada: 3 int //dia, mes y anio
-	   * Salida: 1 int //Dia de la semana que es
+	   * Precondiciones: La fecha tiene que ser correcta
+	   * Entrada: - int dia
+	   * 		  - int mes
+	   * 		  - int anio
+	   * 
+	   * Salida: - int diaSemanal //Dia de la semana que es
 	   * E/S: No hay
-	   * Postcondiciones: Asociado al nombre. Devuelve el numero de la semana en la qwue te encuentras
+	   * Postcondiciones: Asociado al nombre. Devuelve el numero de la semana en la que te encuentras
 	   *  
 	   */
 
@@ -212,15 +229,20 @@ public class utilidadesF {
 		 * Nec: 2 Fechas //Por valor
 		 * Dev: 1 Numero //Dias que han pasado de una fecha a otra //Asociado al nombre
 		 * Nec/Dev:
-		 * Requisitos: El anio seria mayor que 1582, el mes entre 1 y 12 y el dia del 1 al 31 (depende de los meses)
+		 * Requisitos: La fecha tiene que ser correcta
 		 * 
 		 * Interfaz
 		 * Nombre: diasPasados
 		 * Comentario: Este subprograma se encarga de contar los dias pasados de una fecha a otra
-		 * Cabecera: int diaPasados 
-		 * Precondiciones: El anio seria mayor que 1582, el mes entre 1 y 12 y el dia del 1 al 31 (depende de los meses)
-		 * Entrada: 6 int (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
-		 * Salida: 1 int (Numero de dias pasados de una fecha a otra)
+		 * Cabecera: int diaPasados (int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
+		 * Precondiciones: La fecha tiene que ser correcta
+		 * Entrada: - int anio1 
+		 * 			- int mes1 
+		 * 			- int dia1 
+		 * 			- int anio2 
+		 * 			- int mes2  
+		 * 			- int dia2
+		 * Salida: - int res (Numero de dias pasados de una fecha a otra)
 		 * E/S: No hay
 		 * Postcondiciones: Asociado al nombre. El resultado es el numero de dias que pasan de una fecha a otra
 		*/
@@ -256,16 +278,14 @@ public class utilidadesF {
 			 for (int contador = 1; contador < mes1; contador++) {
 				diasFecha1 = diasFecha1 + maximoMes(contador, anio1);
 			 }
-			 
-			
+		
 			 fecha1 = ((anio1 - 1) * 365) + diasFecha1 + dia1 + sumarBisiestos(anio1);
 			 
+			 //Fecha2 en dias
 			 for (int contador = 1; contador < mes2; contador++) {
 				diasFecha2 = diasFecha2 + maximoMes(contador, anio2);
 			 }
-			 
-			  
-			 
+
 			 fecha2 = ((anio2 - 1) * 365) + diasFecha2 + dia2 + sumarBisiestos(anio2);
 			 
 			 res = Math.abs(fecha1 - fecha2) ;
@@ -284,8 +304,8 @@ public class utilidadesF {
 		  * Comentario: Este subprograma suma todos los años bisiestos desde el calendario gregoriano (1582)
 		  * Cabecera: int sumarBisiestos(int anio)
 		  * Precondiciones: El anio tiene que ser mayor de 1582
-		  * Entradas: 1 int //anio
-		  * Salidas: 1 int // la suma de los anios bisiestos 
+		  * Entradas: - int anio //anio
+		  * Salidas: - int res // la suma de los anios bisiestos 
 		  * E/S: No hay
 		  * Precondiciones: Asociado al nombre. El resultado de la suma de todos los anios bisiestos desde 1582
 		  * 
@@ -306,13 +326,17 @@ public class utilidadesF {
 		  * Nec: 2 Fechas, 6 enteros
 		  * Dev: 1 fecha, 3 enteros
 		  * Nec/Dev: No hay
-		  * Requisitos: anio, mes, dia mayores que 0
+		  * Requisitos: - anio mayor que 0
+		  * 			- mes mayor que 0
+		  * 			- dia mayor que 0
 		  * 
 		  * Interfaz
 		  * Nombre: sumarAFecha
-		  * Comentario: Este subprograma suma a una fecha los dias, meses y anios 
+		  * Comentario: Este subprograma suma a una fecha los dias, meses y anio 
 		  * Cabecera: public void sumarAFecha(int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
-		  * Precondiciones: anio, mes, dia mayores que 0
+		  * Precondiciones: - anio mayor que 0
+		  * 			    - mes mayor que 0
+		  * 			    - dia mayor que 0
 		  * Entrada: 6 int
 		  * 		 - anio1
 		  * 		 - mes1
@@ -382,13 +406,17 @@ public class utilidadesF {
 		  * Nec: 2 Fechas, 6 enteros
 		  * Dev: 1 fecha, 3 enteros
 		  * Nec/Dev: No hay
-		  * Requisitos: anio, mes, dia mayores que 0
+		  * Requisitos: - anio mayor que 0
+		  * 			- mes mayor que 0
+		  * 			- dia mayor que 0
 		  * 
 		  * Interfaz
 		  * Nombre: restarAFecha
 		  * Comentario: Este subprograma resta a una fecha los dias, meses y anios 
 		  * Cabecera: public void restarAFecha(int anio1, int mes1, int dia1, int anio2, int mes2, int dia2)
-		  * Precondiciones: anio, mes, dia mayores que 0
+		  * Precondiciones: - anio mayor que 0
+		  * 			    - mes mayor que 0
+		  * 			    - dia mayor que 0
 		  * Entrada: 6 int
 		  * 		 - anio1
 		  * 		 - mes1
