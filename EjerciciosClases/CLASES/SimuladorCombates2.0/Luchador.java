@@ -7,8 +7,8 @@
  * Cons: Si
  * Mod: Si
  * 
- * Ataques
- * Tipo: Ataques[]
+ * Movimiento
+ * Tipo: Ataque[]
  * Cons: Si
  * Mod: Si
  * 
@@ -43,9 +43,9 @@
  * 	public String getNombre()
  *  public void setNombre (String nombre)
  * 
- * Ataques
- * 	public []Ataques getAtaques()
- *  public void setAtaques ([]Ataques ataques)
+ * Movimiento
+ * 	public []Ataque getMovimiento()
+ *  public void setMovimiento([]Ataque movimiento)
  * 
  * Vida
  * 	public int getVida()
@@ -78,7 +78,7 @@ public class Luchador {
 	
 	//Atributos
 	private String nombre;
-	private Ataque[] array = new Ataque[3];
+	private Ataque[] movimiento;
 	private int vida;
 	private int ataque;
 	private int defensa;
@@ -87,22 +87,16 @@ public class Luchador {
 	//Constructor
 	public Luchador () { //Por defecto
 		nombre = "SinNombre";
-		array[0] = null;
-		array[1] = null;
-		array[2] = null;
-		array[3] = null;
+		movimiento = null;
 		vida = 0;
 		ataque = 0;
 		defensa = 0;
 		habilidad = "Ninguna";
 	}
 	
-	public Luchador (String nombre, Ataque[] array, int vida, int ataque, int defensa, String habilidad) { //Con parametros
+	public Luchador (String nombre, Ataque[] movimiento, int vida, int ataque, int defensa, String habilidad) { //Con parametros
 		this.nombre = nombre;
-		this.array[0] = array[0];
-		this.array[1] = array[1];
-		this.array[2] = array[2];
-		this.array[3] = array[3];
+		this.movimiento = movimiento;
 		this.vida = vida;
 		this.ataque = ataque;
 		this.defensa = defensa;
@@ -111,7 +105,7 @@ public class Luchador {
 	
 	public Luchador (Luchador copia) { //Con parametros
 		this.nombre = copia.getNombre();
-		this.array = copia.getAtaques();
+		this.movimiento = copia.getMovimiento();
 		this.vida = copia.getVida();
 		this.ataque = copia.getAtaque();
 		this.defensa = copia.getDefensa();
@@ -119,7 +113,170 @@ public class Luchador {
 	}
 	
 	//Get and Set
+	//Nombre
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre (String nombre) {
+		this.nombre = nombre;
+	}
+	
+	//Movimiento
+	public Ataque[] getMovimiento() {
+		return movimiento;
+	}
+	
+	public void setMovimiento(Ataque[] movimiento) {
+		this.movimiento = movimiento;
+	}
+	
+	//Vida
+	public int getVida() {
+		return vida;
+	}
+	
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
+	
+	//Ataque
+	public int getAtaque() {
+		return ataque;
+	}
+	
+	public void setAtaque(int ataque) throws ExcepcionLuchador {
+		if (ataque > 1 && ataque <= 20) {
+		this.ataque = ataque;
+		}
+		
+		else {
+			throw new ExcepcionLuchador("El ataque es de 1 a 20");
+		}
+	}
+	
+	//Defensa
+	public int getDefensa() {
+		return defensa;
+	}
+	
+	public void setDefensa(int defensa) throws ExcepcionLuchador{
+		if (defensa > 1 && defensa <= 20) {
+			this.defensa = defensa;
+		}
+		
+		else {
+			throw new ExcepcionLuchador("El defensa es de 1 a 20");
+		}
+	}
+	
+	//Habilidad
+	public String getHabilidad() {
+		return habilidad;
+	}
+	
+	public void setHabilidad(String habilidad) {
+		this.habilidad = habilidad;
+	}
 	
 	//Metodos
+	//Metodos de la clase object 
+	//toString
+	@Override
+	public String toString () {
+		return nombre + ", " + movimiento + ", " + vida + ", " + ataque +  ", " + defensa + " y " + habilidad;
+	}
+	
+	//hashCode
+	@Override
+	public int hashCode() {
+		return 910021 * vida - defensa + 109 * ataque - vida + 101;
+	}
+	
+	//Equals
+	@Override
+	public boolean equals (Object obj) {
+		boolean res = false;
+		
+		if (this == obj) {
+			res = true;
+		}
+		
+		else if (obj != null && obj instanceof Luchador) {
+			Luchador otro = (Luchador)obj;
+			
+			if (this.nombre == otro.getNombre() &&
+				this.movimiento == otro.getMovimiento() &&
+				this.vida == otro.getVida() &&
+				this.ataque == otro.getAtaque() &&
+				this.defensa == otro.getDefensa() &&
+				this.habilidad == otro.getHabilidad()) {
+					res = true;
+				}
+		}
+		return res;
+	}
+	
+	//Clone
+	@Override
+	public Luchador clone() {
+		Luchador copia = null;
+		
+		try {
+			copia = (Luchador)super.clone();
+		}
+		catch(CloneNotSupportedException error) {
+			System.out.println("Objeto no clonado");
+		}
+		return copia;
+	}
+	
+	//compareTo
+	//Comparamos por vida, ataque y defensa
+	// 0 igual vida, igual ataque, igual defensa
+	// 1 el primero es mayor en vida o ataque o defensa que el segundo
+	// -1 el primero es menor en vida o ataque o defensa que el segundo
+	// 2 los luchadores no son comparables puestos que sus estadisticas son muy diferentes
+
+	public int compareTo(Luchador otro) {
+		int res = 2;
+		
+		if(this.vida == otro.getVida() && this.ataque == otro.getAtaque() && this.defensa == otro.getDefensa()) {
+			res = 0;
+		}
+		else if (this.vida < otro.getVida() || (this.vida == otro.getVida() &&  this.ataque < otro.getAtaque()) || (this.vida == otro.getVida() && (this.ataque == otro.getAtaque()) && this.defensa < otro.getDefensa())) {
+			res = 1;
+		}
+			else if(this.vida > otro.getVida() || (this.vida == otro.getVida() &&  this.ataque > otro.getAtaque()) || (this.vida == otro.getVida() && (this.ataque == otro.getAtaque()) && this.defensa > otro.getDefensa())) {
+				res = -1;
+			}
+		
+		return res;
+	}
+	
+	//Patron delegacion
+	public String getNombreMov(int numero) {
+		return movimiento[numero].getNombre();
+	}
+	
+	public void setNombreMov(String nombre, int numero) {
+		movimiento[numero].setNombre(nombre);
+	}
+	
+	public int getDanioMov(int numero) {
+		return movimiento[numero].getDanio();
+	}
+	
+	public void setDanioMov(int danio, int numero) {
+		movimiento[numero].setDanio(danio);
+	}
+	
+	public boolean getEstadisticaMov(int numero) {
+		return movimiento[numero].getEstadistica();
+	}
+	
+	public void setNombreMov(boolean estadistica, int numero) {
+		movimiento[numero].setEstadistica(estadistica);
+	}
 }
 

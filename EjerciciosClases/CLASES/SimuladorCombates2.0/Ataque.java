@@ -12,8 +12,8 @@
  * 	- Cons: Si
  * 	- Mod: Si
  * 
- * 	Fallo:
- * 	- Tipo: int 
+ * 	Estadistica:
+ * 	- Tipo: boolean 
  * 	- Cons: Si
  * 	- Mod: Si
  * 
@@ -32,13 +32,12 @@
  * 	public int getDanio()
  *  public void setDanio (int danio)
  * 
- * Fallo
- * 	public int getFallo()
- *  public void setFallo (int fallo)
+ * Estadistica
+ * 	public boolean getEstadistica()
+ *  public void setEstadistica (boolean estadistica)
  * 
  * Restricciones
  *  - Danio tiene que ser entre 1 y 20
- * 	- Fallo entre 1 y 10
  * 
  * Metodos añadidos
  * 	No hay
@@ -51,25 +50,25 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 	//Atributos
 	private String nombre;
 	private int danio;
-	private int fallo;
+	private boolean estadistica;
 	
 	//Constructores
 	public Ataque () { //Por defecto
 		nombre = "SinNombre";
 		danio = 0;
-		danio = 0;
+		estadistica = false;
 	}
 	
-	public Ataque (String nombre, int danio, int fallo) { //Con parametros
+	public Ataque (String nombre, int danio, boolean estadistica) { //Con parametros
 		this.nombre = nombre;
 		this.danio = danio;
-		this.fallo = fallo;
+		this.estadistica = estadistica;
 	}
 	
 	public Ataque (Ataque c) { //De copia
 		this.nombre = c.getNombre();
 		this.danio = c.getDanio();
-		this.fallo = c.getFallo();
+		this.estadistica = c.getEstadistica();
 	}
 	
 	//Get and Set
@@ -87,27 +86,23 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 			return danio;
 		}
 		
-		public void setDanio (int danio) throws ExcepcionAtaque {
-			if (danio < 1 || danio > 20) {
-				throw new ExcepcionAtaque("El danio tiene que estar entre 1 y 20");
-			}
-			else {
+		public void setDanio (int danio)  {
+			//if (danio < 1 || danio > 20) { throws ExcepcionAtaque//Iria al lado de la cabecera
+				//throw new ExcepcionAtaque("El danio tiene que estar entre 1 y 20");
+			//}
+			//else {
 			this.danio = danio;
-			}
+			//}
 		}
   
    //Fallo
-		public int getFallo() {
-			return fallo;
+		public boolean getEstadistica() {
+			return estadistica;
 		}
 		
-		public void setFallo (int fallo) throws ExcepcionAtaque {
-			if (fallo < 1 || fallo > 10) {
-				throw new ExcepcionAtaque("El fallo tiene que estar entre 1 y 10");
-			}
-			else {
-			this.fallo = fallo;
-			}
+		public void setEstadistica (boolean estadistica) {
+			this.estadistica = estadistica;
+			
 		}
    
 	//Metodos
@@ -115,13 +110,13 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 	//toString
 	@Override
 	public String toString () {
-		return nombre + ", " + danio + " y " + fallo;
+		return nombre + ", " + danio + " y " + estadistica;
 	}
 	
 	//hashCode
 	@Override
 	public int hashCode() {
-		return 9103521 * danio - fallo + 1230 - danio * 10;
+		return 9103521 * danio + 1230 - danio * 10;
 	}
 	
 	//Equals
@@ -138,7 +133,7 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 			
 			if (this.nombre == otro.getNombre() &&
 				this.danio == otro.getDanio() &&
-				this.fallo == otro.getFallo()) {
+				this.estadistica == otro.getEstadistica()) {
 					res = true;
 				}
 		}
