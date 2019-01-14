@@ -278,7 +278,7 @@ public class Luchador {
 		return res;
 	}
 	
-	//Patron delegacion
+	//Metodos añadidos
 	public String getNombreMov(int numero) {
 		return movimiento[numero].getNombre();
 	}

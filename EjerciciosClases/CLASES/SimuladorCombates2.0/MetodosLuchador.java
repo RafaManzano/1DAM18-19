@@ -70,10 +70,10 @@ public class MetodosLuchador {
 
 	public static void menuMovimiento(Luchador personaje){
 		System.out.println("Elija una opcion");
-		System.out.println(personaje.getNombreMov(0));
-		System.out.println(personaje.getNombreMov(1));
-		System.out.println(personaje.getNombreMov(2));
-		System.out.println(personaje.getNombreMov(3));
+		System.out.println("1. " + personaje.getNombreMov(0));
+		System.out.println("2. " + personaje.getNombreMov(1));
+		System.out.println("3. " + personaje.getNombreMov(2));
+		System.out.println("4. " + personaje.getNombreMov(3));
 	}
 	
 	public static Luchador mejorarHabilidad (Luchador jug) {
