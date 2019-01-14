@@ -95,14 +95,13 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 			//}
 		}
   
-   //Fallo
+	//Estadistica
 		public boolean getEstadistica() {
 			return estadistica;
 		}
 		
 		public void setEstadistica (boolean estadistica) {
 			this.estadistica = estadistica;
-			
 		}
    
 	//Metodos

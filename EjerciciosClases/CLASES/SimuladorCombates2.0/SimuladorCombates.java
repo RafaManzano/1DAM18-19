@@ -4,7 +4,6 @@
  * Analisis:
  * 	Entrada: - opcion
  * 			 - respuesta
- * 			 - pocion
  * 
  * 	Salida: - Resultado de los combates
  * 			- Mensajes con el usuario
@@ -14,7 +13,7 @@
  * 
  * 	Requisitos: - Opcion 
  * 				- Respuesta tiene que ser s o n
- * 				- Pocion tiene que ser s o n
+ * 				
  * 
  * PG Level 0
  * Inicio
@@ -47,8 +46,12 @@ public class SimuladorCombates  {
 		int opcion;
 		int pganada = 0;
 		int pperdida = 0;
-		int pempate = 0;
+		int numeromovimiento;
 		char respuesta;
+		int danioRealizado = 0;
+		int danioRecibido = 0;
+		int rivFallo = 0;
+		int J1fallo = 0;
 		Luchador[] personajes = new Luchador[8];
 		Luchador J1 = null;
 		Luchador rival = null;
@@ -159,6 +162,9 @@ public class SimuladorCombates  {
 			
 			J1 = personajes[opcion];
 			
+			pperdida = 0;
+			pganada = 0;
+			personajes = MetodosLuchador.creandoPersonajes(kratos, ezio, aloy, geralt, dante, cj, sora, ellie);
 			
 			//Pelea
 			while (pperdida == 0) {
@@ -176,19 +182,181 @@ public class SimuladorCombates  {
 					
 					switch(opcion) {
 						case 1:
-							System.out.println(J1.getNombreMov(0));
+							//System.out.println(J1.getNombreMov(0));
+							numeromovimiento = random.nextInt(4);
+							System.out.println("El rival usa " + rival.getNombreMov(numeromovimiento));
+							J1fallo = random.nextInt(10)+1;
+							rivFallo = random.nextInt(10)+1;
+							//Ataque J1
+							if (J1fallo != 10) {
+								if (J1.getEstadisticaMov(0) == false) {
+								danioRealizado = (J1.getAtaque() + J1.getDanioMov(0)) - rival.getDefensa();
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(J1, 0);
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+							
+							//Ataque rival
+							if (rivFallo != 10) {
+								if (rival.getEstadisticaMov(numeromovimiento) == false) {
+									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+						
+							if(danioRealizado < 0) {
+								danioRealizado = 0;
+							}
+							
+							if (danioRecibido < 0) {
+								danioRecibido = 0;
+							}
+							
+							J1.setVida(J1.getVida() - danioRecibido);
+							rival.setVida(rival.getVida() - danioRealizado);
+							
+							
 						break;
 						
 						case 2:
-							System.out.println(J1.getNombreMov(1));
+							//System.out.println(J1.getNombreMov(1));
+							numeromovimiento = random.nextInt(4);
+							System.out.println("El rival usa " + rival.getNombreMov(numeromovimiento));
+							J1fallo = random.nextInt(10)+1;
+							rivFallo = random.nextInt(10)+1;
+							//Ataque J1
+							if (J1fallo != 10) {
+								if (J1.getEstadisticaMov(1) == false) {
+								danioRealizado = (J1.getAtaque() + J1.getDanioMov(1)) - rival.getDefensa();
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(J1, 1);
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+							
+							//Ataque rival
+							if (rivFallo != 10) {
+								if (rival.getEstadisticaMov(numeromovimiento) == false) {
+									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+						
+							if(danioRealizado < 0) {
+								danioRealizado = 0;
+							}
+							
+							if (danioRecibido < 0) {
+								danioRecibido = 0;
+							}
+							
+							J1.setVida(J1.getVida() - danioRecibido);
+							rival.setVida(rival.getVida() - danioRealizado);
 						break;
 						
 						case 3:
-							System.out.println(J1.getNombreMov(2));
+							//System.out.println(J1.getNombreMov(2));
+							numeromovimiento = random.nextInt(4);
+							System.out.println("El rival usa " + rival.getNombreMov(numeromovimiento));
+							J1fallo = random.nextInt(10)+1;
+							rivFallo = random.nextInt(10)+1;
+							//Ataque J1
+							if (J1fallo != 10) {
+								if (J1.getEstadisticaMov(2) == false) {
+								danioRealizado = (J1.getAtaque() + J1.getDanioMov(2)) - rival.getDefensa();
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(J1, 2);
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+							
+							//Ataque rival
+							if (rivFallo != 10) {
+								if (rival.getEstadisticaMov(numeromovimiento) == false) {
+									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+						
+							if(danioRealizado < 0) {
+								danioRealizado = 0;
+							}
+							
+							if (danioRecibido < 0) {
+								danioRecibido = 0;
+							}
+							
+							J1.setVida(J1.getVida() - danioRecibido);
+							rival.setVida(rival.getVida() - danioRealizado);
 						break;
 						
 						case 4:
-							System.out.println(J1.getNombreMov(3));
+							//System.out.println(J1.getNombreMov(3));
+							numeromovimiento = random.nextInt(4);
+							System.out.println("El rival usa " + rival.getNombreMov(numeromovimiento));
+							J1fallo = random.nextInt(10)+1;
+							rivFallo = random.nextInt(10)+1;
+							//Ataque J1
+							if (J1fallo != 10) {
+								if (J1.getEstadisticaMov(3) == false) {
+								danioRealizado = (J1.getAtaque() + J1.getDanioMov(3)) - rival.getDefensa();
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(J1, 3);
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+							
+							//Ataque rival
+							if (rivFallo != 10) {
+								if (rival.getEstadisticaMov(numeromovimiento) == false) {
+									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+						
+							if(danioRealizado < 0) {
+								danioRealizado = 0;
+							}
+							
+							if (danioRecibido < 0) {
+								danioRecibido = 0;
+							}
+							
+							J1.setVida(J1.getVida() - danioRecibido);
+							rival.setVida(rival.getVida() - danioRealizado);
 						break;
 					}
 					//MostrarDañoOcasionado
@@ -205,13 +373,18 @@ public class SimuladorCombates  {
 					pperdida++;
 				}
 				else {
-					System.out.println("Siguiente ronda, tu extra de vida");
+					System.out.println("Siguiente ronda, tu extra de vida (20 vida)");
 					J1.setVida(J1.getVida() + 20);
+					pganada++;
 				}
 			}
+		System.out.println("Has ganado " + pganada + " partidas");	
 			
-			
-			
+		do {
+			System.out.println("Desea ejecutar el juego (S/N)");
+			respuesta = Character.toLowerCase(teclado.next().charAt(0));
+		}
+		while (respuesta != 's' && respuesta != 'n');	
 		}
 	}
 }

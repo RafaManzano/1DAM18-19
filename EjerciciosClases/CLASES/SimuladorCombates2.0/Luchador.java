@@ -32,6 +32,11 @@
  * Cons: Si
  * Mod: Si
  * 
+ * Descripcion
+ * Tipo: String
+ * Cons: Si
+ * Mod: Si
+ * 
  * Propiedades Derivadas
  * No hay
 
@@ -63,6 +68,10 @@
  * 	public String getHabilidad()
  *  public void setHabilidad (String habilidad)
  * 
+ * Descripcion
+ * 	public String getDescripcion()
+ * 	public void setDescripcion (String descripcion)
+ * 
  * Restricciones
  *  - Vida tiene que estar entre 60 y 100
  * 	- Ataque entre 1 y 10
@@ -83,6 +92,7 @@ public class Luchador {
 	private int ataque;
 	private int defensa;
 	private String habilidad;
+	private String descripcion;
 
 	//Constructor
 	public Luchador () { //Por defecto
@@ -92,15 +102,17 @@ public class Luchador {
 		ataque = 0;
 		defensa = 0;
 		habilidad = "Ninguna";
+		descripcion = "Ninguna";
 	}
 	
-	public Luchador (String nombre, Ataque[] movimiento, int vida, int ataque, int defensa, String habilidad) { //Con parametros
+	public Luchador (String nombre, Ataque[] movimiento, int vida, int ataque, int defensa, String habilidad, String descripcion) { //Con parametros
 		this.nombre = nombre;
 		this.movimiento = movimiento;
 		this.vida = vida;
 		this.ataque = ataque;
 		this.defensa = defensa;
 		this.habilidad = habilidad;
+		this.descripcion = descripcion;
 	}
 	
 	public Luchador (Luchador copia) { //Con parametros
@@ -110,6 +122,7 @@ public class Luchador {
 		this.ataque = copia.getAtaque();
 		this.defensa = copia.getDefensa();
 		this.habilidad = copia.getHabilidad();
+		this.descripcion = copia.getDescripcion();
 	}
 	
 	//Get and Set
@@ -145,14 +158,15 @@ public class Luchador {
 		return ataque;
 	}
 	
-	public void setAtaque(int ataque) throws ExcepcionLuchador {
-		if (ataque > 1 && ataque <= 20) {
+	public void setAtaque(int ataque) {
+	//throws ExcepcionLuchador {
+		//if (ataque > 1 && ataque <= 20) {
 		this.ataque = ataque;
-		}
+		//}
 		
-		else {
-			throw new ExcepcionLuchador("El ataque es de 1 a 20");
-		}
+		//else {
+		//	throw new ExcepcionLuchador("El ataque es de 1 a 20");
+		//}
 	}
 	
 	//Defensa
@@ -160,14 +174,15 @@ public class Luchador {
 		return defensa;
 	}
 	
-	public void setDefensa(int defensa) throws ExcepcionLuchador{
-		if (defensa > 1 && defensa <= 20) {
+	public void setDefensa(int defensa) {
+	//throws ExcepcionLuchador{
+		//if (defensa > 1 && defensa <= 20) {
 			this.defensa = defensa;
-		}
+		//}
 		
-		else {
-			throw new ExcepcionLuchador("El defensa es de 1 a 20");
-		}
+		//else {
+			//throw new ExcepcionLuchador("El defensa es de 1 a 20");
+		//}
 	}
 	
 	//Habilidad
@@ -177,6 +192,15 @@ public class Luchador {
 	
 	public void setHabilidad(String habilidad) {
 		this.habilidad = habilidad;
+	}
+	
+	//Descripcion
+	public String getDescripcion() {
+		return descripcion;
+	}
+	
+	public void setDescripcion (String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 	//Metodos
