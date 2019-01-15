@@ -48,7 +48,7 @@
 
 import java.util.*;
 
-public class Circulo {
+public class Circulo implements Cloneable, Comparable<Circulo> {
 	//Atributos
 	private Punto centro;
 	private double radio;
@@ -95,8 +95,13 @@ public class Circulo {
 		return radio;
 	}
 	
-	public void setRadio(double radio) {
-		this.radio = radio;
+	public void setRadio(double radio) throws ExcepcionCirculo {
+		if (radio > 0) {
+			this.radio = radio;
+		}
+		else {
+			throw new ExcepcionCirculo("El radio no puede ser menor que 0");
+		}
 	}
 	
 	//Metodos derivados
@@ -108,5 +113,90 @@ public class Circulo {
 		return resultado;
 	}
 	
+	public double longitud (double radio) {
+		double resultado;
+		
+		resultado = 2 * PI * radio;
+		
+		return resultado;
+	}
+	
+	//Metodos de la clase object
+	//toString
+	@Override
+	public String toString() {
+		return getXCentro() + " , " + getYCentro() + " , " + radio;
+	}
+	
+	//hashCode
+	@Override
+	public int hashCode() {
+		return 179208 + (int)radio * (int)radio - 3 * 2013;
+	}
+	
+	//equals
+	@Override
+	public boolean equals (Object obj) {
+		boolean res = false;
+		
+		if (this == obj) {
+			res = true;
+		}
+		else if(obj != null && obj instanceof Circulo) {
+			Circulo otra = (Circulo) obj;
+			
+			if(this.getXCentro() == otra.getXCentro() &&
+			   this.getYCentro() == otra.getYCentro() &&
+			   this.getRadio() == otra.getRadio()) {
+				   res = true;
+			   }
+		}
+		return res;
+	}
+	
+	//clone
+	@Override
+	public Circulo clone() {
+		Circulo copia = null;
+		
+		try {
+			copia = (Circulo) super.clone();
+		}
+		catch(CloneNotSupportedException error) {
+			System.out.println("Error al clonar");
+		}
+		
+		return copia;
+	}
+	
+	//Clone en profundidad
+	public Circulo deepclone() {
+		Circulo copia = null;
+		try {
+			copia = (Circulo) super.clone();
+			copia.centro = new Punto(this.centro);
+		}
+		catch(CloneNotSupportedException error) {
+			System.out.println("Error al clonar");
+		}
+		return copia;
+	}
+	
+	//CompareTo
+	// 0 radio son iguales
+	// 1 el primer radio es mayor que el segundo
+	// -1 el primer radio es menor que el segundo
+	
+	public int compareTo(Circulo otro) {
+		int res = -1;
+		
+		if (this.getRadio() == otro.getRadio()) {
+			res = 0;
+		}
+		else if(this.getRadio() > otro.getRadio()) {
+			res = 1;
+		}
+		return res;
+	}
 }
 

@@ -173,6 +173,8 @@ public class SimuladorCombates  {
 				System.out.println("Tu rival es " + rival.getNombre());
 				
 				do {
+					danioRecibido = 0;
+					danioRealizado = 0;
 					//RealizarAtaques
 					do {
 						MetodosLuchador.menuMovimiento(J1);
@@ -191,22 +193,26 @@ public class SimuladorCombates  {
 							if (J1fallo != 10) {
 								if (J1.getEstadisticaMov(0) == false) {
 								danioRealizado = (J1.getAtaque() + J1.getDanioMov(0)) - rival.getDefensa();
+								System.out.println("El golpe realizado le ha golpeado un total de " + danioRealizado + " puntos de vida");
 								}
 								else {
 									MetodosLuchador.ataqueMejorado(J1, 0);
+									System.out.println("Tu ataque mejora un poco tus estadisticas");
 								}
 							}
 							else {
-								System.out.println("Ha fallado el movimiento");
+								System.out.println("Has fallado el movimiento");
 							}
 							
 							//Ataque rival
 							if (rivFallo != 10) {
 								if (rival.getEstadisticaMov(numeromovimiento) == false) {
 									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+									System.out.println("El golpe recibido te ha golpeado un total de " + danioRecibido + " puntos de vida");
 								}
 								else {
 									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+									System.out.println("Su ataque mejora un poco sus estadisticas");
 								}
 							}
 							else {
@@ -237,22 +243,26 @@ public class SimuladorCombates  {
 							if (J1fallo != 10) {
 								if (J1.getEstadisticaMov(1) == false) {
 								danioRealizado = (J1.getAtaque() + J1.getDanioMov(1)) - rival.getDefensa();
+								System.out.println("El golpe realizado le ha golpeado un total de " + danioRealizado + " puntos de vida");
 								}
 								else {
 									MetodosLuchador.ataqueMejorado(J1, 1);
+									System.out.println("Tu ataque mejora un poco tus estadisticas");
 								}
 							}
 							else {
-								System.out.println("Ha fallado el movimiento");
+								System.out.println("Has fallado el movimiento");
 							}
 							
 							//Ataque rival
 							if (rivFallo != 10) {
 								if (rival.getEstadisticaMov(numeromovimiento) == false) {
 									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+									System.out.println("El golpe recibido te ha golpeado un total de " + danioRecibido + " puntos de vida");
 								}
 								else {
 									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+									System.out.println("Su ataque mejora un poco sus estadisticas");
 								}
 							}
 							else {
@@ -281,22 +291,26 @@ public class SimuladorCombates  {
 							if (J1fallo != 10) {
 								if (J1.getEstadisticaMov(2) == false) {
 								danioRealizado = (J1.getAtaque() + J1.getDanioMov(2)) - rival.getDefensa();
+								System.out.println("El golpe realizado le ha golpeado un total de " + danioRealizado + " puntos de vida");
 								}
 								else {
 									MetodosLuchador.ataqueMejorado(J1, 2);
+									System.out.println("Tu ataque mejora un poco tus estadisticas");
 								}
 							}
 							else {
-								System.out.println("Ha fallado el movimiento");
+								System.out.println("Has fallado el movimiento");
 							}
 							
 							//Ataque rival
 							if (rivFallo != 10) {
 								if (rival.getEstadisticaMov(numeromovimiento) == false) {
 									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+									System.out.println("El golpe recibido te ha golpeado un total de " + danioRecibido + " puntos de vida");
 								}
 								else {
 									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+									System.out.println("Su ataque mejora un poco sus estadisticas");
 								}
 							}
 							else {
@@ -316,6 +330,7 @@ public class SimuladorCombates  {
 						break;
 						
 						case 4:
+						
 							//System.out.println(J1.getNombreMov(3));
 							numeromovimiento = random.nextInt(4);
 							System.out.println("El rival usa " + rival.getNombreMov(numeromovimiento));
@@ -325,22 +340,26 @@ public class SimuladorCombates  {
 							if (J1fallo != 10) {
 								if (J1.getEstadisticaMov(3) == false) {
 								danioRealizado = (J1.getAtaque() + J1.getDanioMov(3)) - rival.getDefensa();
+								System.out.println("El golpe realizado le ha golpeado un total de " + danioRealizado + " puntos de vida");
 								}
 								else {
 									MetodosLuchador.ataqueMejorado(J1, 3);
+									System.out.println("Tu ataque mejora un poco tus estadisticas");
 								}
 							}
 							else {
-								System.out.println("Ha fallado el movimiento");
+								System.out.println("Has fallado el movimiento");
 							}
 							
 							//Ataque rival
 							if (rivFallo != 10) {
 								if (rival.getEstadisticaMov(numeromovimiento) == false) {
 									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+									System.out.println("El golpe recibido te ha golpeado un total de " + danioRecibido + " puntos de vida");
 								}
 								else {
 									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+									System.out.println("Su ataque mejora un poco sus estadisticas");
 								}
 							}
 							else {

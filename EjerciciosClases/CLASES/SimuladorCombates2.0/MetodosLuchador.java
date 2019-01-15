@@ -22,49 +22,49 @@ public class MetodosLuchador {
 		
 		habilidades[0] = new Ataque("Leviatan", 12, false);
 		habilidades[1] = new Ataque("Ataque Devastador", 10, false);
-		habilidades[2] = new Ataque("Poder Griego", 3, true);
+		habilidades[2] = new Ataque("Poder Griego", 2, true);
 		habilidades[3] = new Ataque("Furia de Titanes", 20, false);
 		habilidades[4] = new Ataque("Hoja Oculta", 20, false);
-		habilidades[5] = new Ataque("Arco", 12, false);
-		habilidades[6] = new Ataque("Escondite", 3, true);
-		habilidades[7] = new Ataque("Silbido", 12, false);
+		habilidades[5] = new Ataque("Arco", 16, false);
+		habilidades[6] = new Ataque("Escondite", 2, true);
+		habilidades[7] = new Ataque("Silbido", 17, false);
 		habilidades[8] = new Ataque("Lanzallamas", 20, false);
-		habilidades[9] = new Ataque("Congelacion", 3, true);
+		habilidades[9] = new Ataque("Congelacion", 2, true);
 		habilidades[10] = new Ataque("Arco", 12, false);
 		habilidades[11] = new Ataque("Aguja", 11, false);
 		habilidades[12] = new Ataque("Mordisco", 20, false);
-		habilidades[13] = new Ataque("Resistencia", 3, true);
+		habilidades[13] = new Ataque("Resistencia", 2, true);
 		habilidades[14] = new Ataque("Espadazo", 15, false);
 		habilidades[15] = new Ataque("Fuego Fatuo", 14, false);
 		habilidades[16] = new Ataque("Ebano y Marfil", 12, false);
 		habilidades[17] = new Ataque("Poder Sparda", 20, false);
 		habilidades[18] = new Ataque("Yamato", 15, false);
-		habilidades[19] = new Ataque("Chuleria", 5, true);
+		habilidades[19] = new Ataque("Chuleria", 2, true);
 		habilidades[20] = new Ataque("Coche Bomba", 20, false);
-		habilidades[21] = new Ataque("Atraco", 11, false);
-		habilidades[22] = new Ataque("Chaleco", 3, true);
-		habilidades[23] = new Ataque("Rifle", 14, false);
+		habilidades[21] = new Ataque("Atraco", 16, false);
+		habilidades[22] = new Ataque("Chaleco", 2, true);
+		habilidades[23] = new Ataque("Rifle", 15, false);
 		habilidades[24] = new Ataque("Pato Donald", 14, false);
 		habilidades[25] = new Ataque("Mickey", 20, false);
-		habilidades[26] = new Ataque("Riku", 10, true);
+		habilidades[26] = new Ataque("Riku", 5, true);
 		habilidades[27] = new Ataque("Goofy", 13, false);
-		habilidades[28] = new Ataque("Bomba Humo", 3, true);
+		habilidades[28] = new Ataque("Bomba Humo", 2, true);
 		habilidades[29] = new Ataque("Pistola Ellie", 20, false);
 		habilidades[30] = new Ataque("Joel", 15, false);
-		habilidades[31] = new Ataque("Bomba Clavo", 11, false);
+		habilidades[31] = new Ataque("Bomba Clavo", 15, false);
 		return habilidades;
 	}
 	
 	public static Luchador[] creandoPersonajes (Ataque[] p1, Ataque[] p2, Ataque[] p3, Ataque[] p4, Ataque[] p5, Ataque[] p6, Ataque[] p7, Ataque[] p8) {
 		Luchador[] luchadores = new Luchador[8];
-		luchadores[0] = new Luchador("Kratos", p1, 83, 9, 7, "Destroza Dioses", "Mejora un poco el ataque");
-		luchadores[1] = new Luchador("Ezio", p2, 85, 7, 5, "Sigilo", "Mejora un poco la defensa");
-		luchadores[2] = new Luchador("Aloy", p3, 90, 5, 9, "Mujeres al poder", "Mejora todas sus estadisticas");
+		luchadores[0] = new Luchador("Kratos", p1, 83, 5, 7, "Destroza Dioses", "Mejora un poco el ataque");
+		luchadores[1] = new Luchador("Ezio", p2, 85, 9, 5, "Sigilo", "Mejora un poco la defensa");
+		luchadores[2] = new Luchador("Aloy", p3, 90, 5, 5, "Mujeres al poder", "Mejora todas sus estadisticas");
 		luchadores[3] = new Luchador("Geralt", p4, 69, 4, 8, "Alma de lobo", "Mejora un poco el ataque");
 		luchadores[4] = new Luchador("Dante", p5, 97, 10, 5, "Demonio", "Mejora un pooo su vida");
-		luchadores[5] = new Luchador("CJ", p6, 79, 10, 7, "Pandilla", "Mejora un poco todos su ataques");
-		luchadores[6] = new Luchador("Sora", p7, 84, 10, 7, "Espada Llave", "Mejora un poco el ataque");
-		luchadores[7] = new Luchador("Ellie", p8, 94, 4, 7, "Inmunidad", "Mejora un poco la defensa");
+		luchadores[5] = new Luchador("CJ", p6, 79, 10, 7, "Pandilla", "Mejora un poco todos sus ataques");
+		luchadores[6] = new Luchador("Sora", p7, 84, 5, 7, "Espada Llave", "Mejora un poco el ataque");
+		luchadores[7] = new Luchador("Ellie", p8, 94, 10, 3, "Inmunidad", "Mejora un poco la defensa");
 		return luchadores;
 	}
 
@@ -102,13 +102,15 @@ public class MetodosLuchador {
 	
 	public static Luchador ataqueMejorado(Luchador jug, int numataque) {
 		if (jug.getNombre() == "Kratos" || jug.getNombre() == "Ezio" || jug.getNombre() == "Aloy" || jug.getNombre() == "Geralt" || jug.getNombre() == "CJ" || jug.getNombre() == "Ellie"){
+			if (jug.getDefensa() < 25) { 
 			jug.setDefensa(jug.getDefensa() + jug.getDanioMov(numataque));			
+			}
 		}
 		else if (jug.getNombre() == "Sora") {
 			jug.setVida(jug.getVida() +  jug.getDanioMov(numataque));
 		     }
 		     else if (jug.getNombre() == "Dante") {
-				 if (jug.getAtaque() < 30) {
+				 if (jug.getAtaque() < 35) {
 				 jug.setAtaque(jug.getAtaque() + jug.getDanioMov(numataque));
 				 }
 			 }
