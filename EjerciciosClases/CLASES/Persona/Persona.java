@@ -45,26 +45,26 @@
  * Get and Set
  * Nombre
  * public String getNombre()
- * public void setNombre (String newNombre)
+ * public void setNombre (String nombre)
  * 
  * Edad
  * public int getEdad()
- * public void setEdad(int newEdad)
+ * public void setEdad(int edad)
  * 
  * DNI
  * public String getDNI()
  * 
  * Sexo
  * public TipoSexo getSexo()
- * public void setSexo (TipoSexo newSexo)
+ * public void setSexo (TipoSexo sexo)
  * 
  * Peso
  * public int getPeso()
- * public void setPeso(int newPeso)
+ * public void setPeso(int peso)
  * 
  * Altura
  * public int getAltura()
- * public void setAltura(int newAltura)
+ * public void setAltura(int altura)
  * 
  * ID 
  * public int getID()
@@ -79,7 +79,7 @@
  */
 
 
-public class Persona implements Cloneable {
+public class Persona implements Cloneable, Comparable <Persona> {
 	
 	//Atributos
 	private String nombre;
