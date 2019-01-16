@@ -1,0 +1,416 @@
+/*
+ * Nombre del programa: SimuladorCombates
+
+ * Comentario: Este programa realiza una serie de combates (de momento 8)
+ * Analisis:
+ * 	Entrada: - opcion
+ * 			 - respuesta
+ * 
+ * 	Salida: - Resultado de los combates
+ * 			- Mensajes con el usuario
+ * 			- Ganador de cada pelea
+ * 			- Ganador final	
+ * 			- Puntuacion final
+ * 
+ * 	Requisitos: - Opcion 
+ * 				- Respuesta tiene que ser s o n
+ * 				
+ * 
+ * PG Level 0
+ * Inicio
+ * LeeryValidarRespuesta
+ * Mientras respuesta sea si
+ * 	EleccionPersonaje
+ * 	Pelea
+ * 	ResultadoPelea
+ * 	ResultadoTotal
+ * 	LeeryValidarRespuesta
+ * FinMientras
+ * Fin
+ * 
+ * Modulo Pelea
+ * Inicio
+ * Mientras no pierda
+ * 	MostrarRival
+ * 	Repetir
+ * 		RealizarAtaques
+ * 		MostrarDañoOcasionado
+ * 	Mientras sigan con vida
+ * FinMientras
+ * Fin
+ */
+
+package Main;
+import Clases.*;
+import Metodos.*;
+
+
+import java.util.*;
+public class SimuladorCombates  {
+	
+	public static void main (String[] args) {
+		int opcion;
+		int pganada = 0;
+		int pperdida = 0;
+		int numeromovimiento;
+		char respuesta;
+		int danioRealizado = 0;
+		int danioRecibido = 0;
+		int rivFallo = 0;
+		int J1fallo = 0;
+		Luchador[] personajes = new Luchador[8];
+		Luchador J1 = null;
+		Luchador rival = null;
+		Ataque[] habilidades = new Ataque[32];
+		Ataque[] kratos = new Ataque[5];
+		Ataque[] ezio = new Ataque[5];
+		Ataque[] aloy = new Ataque[5];
+		Ataque[] geralt = new Ataque[5];
+		Ataque[] dante = new Ataque[5];
+		Ataque[] cj = new Ataque[5];
+		Ataque[] sora = new Ataque[5];
+		Ataque[] ellie = new Ataque[5];
+		Scanner teclado = new Scanner (System.in);
+		Random random = new Random ();
+		
+		//CrearPersonajesyHabilidades
+		/*
+		habilidades[0] = new Ataque("Leviatan", 12, false);
+		habilidades[1] = new Ataque("Ataque Devastador", 10, false);
+		habilidades[2] = new Ataque("Poder Griego", 3, true);
+		habilidades[3] = new Ataque("Furia de Titanes", 20, false);
+		habilidades[4] = new Ataque("Hoja Oculta", 20, false);
+		habilidades[5] = new Ataque("Arco", 12, false);
+		habilidades[6] = new Ataque("Escondite", 2, true);
+		habilidades[7] = new Ataque("Silbido", 5, true);
+		habilidades[8] = new Ataque("Lanzallamas", 20, false);
+		habilidades[9] = new Ataque("Congelacion", 3, true);
+		habilidades[10] = new Ataque("Arco", 12, false);
+		habilidades[11] = new Ataque("Aguja", 11, false);
+		habilidades[12] = new Ataque("Mordisco", 20, false);
+		habilidades[13] = new Ataque("Resistencia", 10, true);
+		habilidades[14] = new Ataque("Curacion", 10, true);
+		habilidades[15] = new Ataque("Fuego Fatuo", 14, false);
+		habilidades[16] = new Ataque("Ebano y Marfil", 12, false);
+		habilidades[17] = new Ataque("Poder Sparda", 20, false);
+		habilidades[18] = new Ataque("Yamato", 15, false);
+		habilidades[19] = new Ataque("Chuleria", 10, true);
+		habilidades[20] = new Ataque("Coche Bomba", 20, false);
+		habilidades[21] = new Ataque("Atraco", 11, false);
+		habilidades[22] = new Ataque("Chaleco", 10, true);
+		habilidades[23] = new Ataque("Rifle", 14, false);
+		habilidades[24] = new Ataque("Pato Donald", 14, false);
+		habilidades[25] = new Ataque("Mickey", 20, false);
+		habilidades[26] = new Ataque("Riku", 10, true);
+		habilidades[27] = new Ataque("Goofy", 13, false);
+		habilidades[28] = new Ataque("Bomba Humo", 10, true);
+		habilidades[29] = new Ataque("Pistola Ellie", 20, false);
+		habilidades[30] = new Ataque("Joel", 15, false);
+		habilidades[31] = new Ataque("Bomba Clavo", 11, false);
+		* */
+		habilidades = MetodosLuchador.creandoHabilidades(habilidades);
+		
+		for (int contador = 0; contador < habilidades.length; contador++) {
+			switch(contador) {
+				
+				case 0: case 1: case 2: case 3:
+					kratos [contador] = habilidades[contador];
+				break; 
+				case 4: ezio [0] = habilidades[contador]; break; 
+				case 5: ezio [1] = habilidades[contador]; break; 
+				case 6:	ezio [2] = habilidades[contador]; break;
+				case 7: ezio [3] = habilidades[contador]; break;
+				case 8:	aloy [0] = habilidades[contador]; break;
+				case 9: aloy [1] = habilidades[contador]; break;
+				case 10: aloy [2] = habilidades[contador]; break;
+				case 11: aloy [3] = habilidades[contador];	break;
+				case 12: geralt [0] = habilidades[contador]; break;
+				case 13: geralt [1] = habilidades[contador]; break;
+				case 14: geralt [2] = habilidades[contador]; break;
+				case 15: geralt [3] = habilidades[contador]; break;
+				case 16: dante [0] = habilidades[contador]; break;
+				case 17: dante [1] = habilidades[contador]; break;
+				case 18: dante [2] = habilidades[contador]; break;
+				case 19: dante [3] = habilidades[contador]; break;
+				case 20: cj [0] = habilidades[contador]; break;
+				case 21: cj [1] = habilidades[contador]; break;
+				case 22: cj [2] = habilidades[contador]; break;
+				case 23: cj [3] = habilidades[contador]; break;	
+				case 24: sora [0] = habilidades[contador]; break;
+				case 25: sora [1] = habilidades[contador]; break;
+				case 26: sora [2] = habilidades[contador]; break;
+				case 27: sora [3] = habilidades[contador]; break; 
+				case 28: ellie [0] = habilidades[contador]; break;
+				case 29: ellie [1] = habilidades[contador];	break;
+				case 30: ellie [2] = habilidades[contador]; break;	
+				case 31: ellie [3] = habilidades[contador]; break;
+			}
+		}
+		
+		personajes = MetodosLuchador.creandoPersonajes(kratos, ezio, aloy, geralt, dante, cj, sora, ellie);
+		
+		
+		
+		//LeeryValidarRespuesta
+		do {
+			System.out.println("Desea ejecutar el juego (S/N)");
+			respuesta = Character.toLowerCase(teclado.next().charAt(0));
+		}
+		while (respuesta != 's' && respuesta != 'n');
+		
+		while(respuesta == 's') {
+			//EleccionPersonaje
+			do {
+				MetodosLuchador.menuPersonaje();
+				opcion =  teclado.nextInt() - 1;
+			}
+			while(opcion < 0 || opcion > 7);
+			
+			J1 = personajes[opcion];
+			
+			pperdida = 0;
+			pganada = 0;
+			personajes = MetodosLuchador.creandoPersonajes(kratos, ezio, aloy, geralt, dante, cj, sora, ellie);
+			
+			//Pelea
+			while (pperdida == 0) {
+			//MostrarRival
+				rival = personajes[random.nextInt(8)];
+				System.out.println("Tu rival es " + rival.getNombre());
+				
+				do {
+					danioRecibido = 0;
+					danioRealizado = 0;
+					//RealizarAtaques
+					do {
+						MetodosLuchador.menuMovimiento(J1);
+						opcion = teclado.nextInt();
+					}
+					while (opcion < 1 || opcion > 4);
+					
+					switch(opcion) {
+						case 1:
+							//System.out.println(J1.getNombreMov(0));
+							numeromovimiento = random.nextInt(4);
+							System.out.println("El rival usa " + rival.getNombreMov(numeromovimiento));
+							J1fallo = random.nextInt(10)+1;
+							rivFallo = random.nextInt(10)+1;
+							//Ataque J1
+							if (J1fallo != 10) {
+								if (J1.getEstadisticaMov(0) == false) {
+								danioRealizado = (J1.getAtaque() + J1.getDanioMov(0)) - rival.getDefensa();
+								System.out.println("El golpe realizado le ha golpeado un total de " + danioRealizado + " puntos de vida");
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(J1, 0);
+									System.out.println("Tu ataque mejora un poco tus estadisticas");
+								}
+							}
+							else {
+								System.out.println("Has fallado el movimiento");
+							}
+							
+							//Ataque rival
+							if (rivFallo != 10) {
+								if (rival.getEstadisticaMov(numeromovimiento) == false) {
+									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+									System.out.println("El golpe recibido te ha golpeado un total de " + danioRecibido + " puntos de vida");
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+									System.out.println("Su ataque mejora un poco sus estadisticas");
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+						
+							if(danioRealizado < 0) {
+								danioRealizado = 0;
+							}
+							
+							if (danioRecibido < 0) {
+								danioRecibido = 0;
+							}
+							
+							J1.setVida(J1.getVida() - danioRecibido);
+							rival.setVida(rival.getVida() - danioRealizado);
+							
+							
+						break;
+						
+						case 2:
+							//System.out.println(J1.getNombreMov(1));
+							numeromovimiento = random.nextInt(4);
+							System.out.println("El rival usa " + rival.getNombreMov(numeromovimiento));
+							J1fallo = random.nextInt(10)+1;
+							rivFallo = random.nextInt(10)+1;
+							//Ataque J1
+							if (J1fallo != 10) {
+								if (J1.getEstadisticaMov(1) == false) {
+								danioRealizado = (J1.getAtaque() + J1.getDanioMov(1)) - rival.getDefensa();
+								System.out.println("El golpe realizado le ha golpeado un total de " + danioRealizado + " puntos de vida");
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(J1, 1);
+									System.out.println("Tu ataque mejora un poco tus estadisticas");
+								}
+							}
+							else {
+								System.out.println("Has fallado el movimiento");
+							}
+							
+							//Ataque rival
+							if (rivFallo != 10) {
+								if (rival.getEstadisticaMov(numeromovimiento) == false) {
+									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+									System.out.println("El golpe recibido te ha golpeado un total de " + danioRecibido + " puntos de vida");
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+									System.out.println("Su ataque mejora un poco sus estadisticas");
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+						
+							if(danioRealizado < 0) {
+								danioRealizado = 0;
+							}
+							
+							if (danioRecibido < 0) {
+								danioRecibido = 0;
+							}
+							
+							J1.setVida(J1.getVida() - danioRecibido);
+							rival.setVida(rival.getVida() - danioRealizado);
+						break;
+						
+						case 3:
+							//System.out.println(J1.getNombreMov(2));
+							numeromovimiento = random.nextInt(4);
+							System.out.println("El rival usa " + rival.getNombreMov(numeromovimiento));
+							J1fallo = random.nextInt(10)+1;
+							rivFallo = random.nextInt(10)+1;
+							//Ataque J1
+							if (J1fallo != 10) {
+								if (J1.getEstadisticaMov(2) == false) {
+								danioRealizado = (J1.getAtaque() + J1.getDanioMov(2)) - rival.getDefensa();
+								System.out.println("El golpe realizado le ha golpeado un total de " + danioRealizado + " puntos de vida");
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(J1, 2);
+									System.out.println("Tu ataque mejora un poco tus estadisticas");
+								}
+							}
+							else {
+								System.out.println("Has fallado el movimiento");
+							}
+							
+							//Ataque rival
+							if (rivFallo != 10) {
+								if (rival.getEstadisticaMov(numeromovimiento) == false) {
+									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+									System.out.println("El golpe recibido te ha golpeado un total de " + danioRecibido + " puntos de vida");
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+									System.out.println("Su ataque mejora un poco sus estadisticas");
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+						
+							if(danioRealizado < 0) {
+								danioRealizado = 0;
+							}
+							
+							if (danioRecibido < 0) {
+								danioRecibido = 0;
+							}
+							
+							J1.setVida(J1.getVida() - danioRecibido);
+							rival.setVida(rival.getVida() - danioRealizado);
+						break;
+						
+						case 4:
+						
+							//System.out.println(J1.getNombreMov(3));
+							numeromovimiento = random.nextInt(4);
+							System.out.println("El rival usa " + rival.getNombreMov(numeromovimiento));
+							J1fallo = random.nextInt(10)+1;
+							rivFallo = random.nextInt(10)+1;
+							//Ataque J1
+							if (J1fallo != 10) {
+								if (J1.getEstadisticaMov(3) == false) {
+								danioRealizado = (J1.getAtaque() + J1.getDanioMov(3)) - rival.getDefensa();
+								System.out.println("El golpe realizado le ha golpeado un total de " + danioRealizado + " puntos de vida");
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(J1, 3);
+									System.out.println("Tu ataque mejora un poco tus estadisticas");
+								}
+							}
+							else {
+								System.out.println("Has fallado el movimiento");
+							}
+							
+							//Ataque rival
+							if (rivFallo != 10) {
+								if (rival.getEstadisticaMov(numeromovimiento) == false) {
+									danioRecibido = (rival.getAtaque() + rival.getDanioMov(numeromovimiento)) - J1.getDefensa();
+									System.out.println("El golpe recibido te ha golpeado un total de " + danioRecibido + " puntos de vida");
+								}
+								else {
+									MetodosLuchador.ataqueMejorado(rival, numeromovimiento);
+									System.out.println("Su ataque mejora un poco sus estadisticas");
+								}
+							}
+							else {
+								System.out.println("Ha fallado el movimiento");
+							}
+						
+							if(danioRealizado < 0) {
+								danioRealizado = 0;
+							}
+							
+							if (danioRecibido < 0) {
+								danioRecibido = 0;
+							}
+							
+							J1.setVida(J1.getVida() - danioRecibido);
+							rival.setVida(rival.getVida() - danioRealizado);
+						break;
+					}
+					//MostrarDañoOcasionado
+					System.out.println("Despues de los golpes efectuados");
+					System.out.println(J1.getNombre() + " tiene " + J1.getVida() + " puntos de vida");
+					System.out.println(rival.getNombre() + " tiene " + rival.getVida() + " puntos de vida");
+					
+					
+				}
+				while (J1.getVida() > 0 && rival.getVida() > 0);
+			
+				if(J1.getVida() < 0) {
+					System.out.println("Fin de la partida");
+					pperdida++;
+				}
+				else {
+					System.out.println("Siguiente ronda, tu extra de vida (20 vida)");
+					J1.setVida(J1.getVida() + 20);
+					pganada++;
+				}
+			}
+		System.out.println("Has ganado " + pganada + " partidas");	
+			
+		do {
+			System.out.println("Desea ejecutar el juego (S/N)");
+			respuesta = Character.toLowerCase(teclado.next().charAt(0));
+		}
+		while (respuesta != 's' && respuesta != 'n');	
+		}
+	}
+}
+
