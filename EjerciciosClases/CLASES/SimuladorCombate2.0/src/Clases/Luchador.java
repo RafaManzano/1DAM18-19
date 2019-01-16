@@ -128,37 +128,69 @@ public class Luchador implements Cloneable, Comparable<Luchador> {
 	
 	//Get and Set
 	//Nombre
+	/**
+	 * get del atributo nombre
+	 * @return nombre del Luchador
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 	
+	/**
+	 * set del atributo nombre
+	 * @param nombre Nombre del Luchador
+	 */
 	public void setNombre (String nombre) {
 		this.nombre = nombre;
 	}
 	
 	//Movimiento
+	/**
+	 * get del atributo Movimiento
+	 * @return Los movimientos del Luchador
+	 */
 	public Ataque[] getMovimiento() {
 		return movimiento;
 	}
 	
+	/**
+	 * set del atributo movimiento
+	 * @param movimiento Los movimientos del Luchador
+	 */
 	public void setMovimiento(Ataque[] movimiento) {
 		this.movimiento = movimiento;
 	}
 	
 	//Vida
+	/**
+	 * get del atributo vida
+	 * @return Un entero que muestra la vida
+	 */
 	public int getVida() {
 		return vida;
 	}
 	
+	/**
+	 * set del atributo vida
+	 * @param vida Un entero que es la vida del Luchador
+	 */
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
 	
 	//Ataque
+	/**
+	 * get del atributo ataque
+	 * @return Un entero que es el ataque del Luchador
+	 */
 	public int getAtaque() {
 		return ataque;
 	}
 	
+	/**
+	 * set del atributo ataque 
+	 * @param ataque Un entero que es el ataque del Luchador
+	 */
 	public void setAtaque(int ataque) {
 	//throws ExcepcionLuchador {
 		//if (ataque > 1 && ataque <= 20) {
@@ -171,10 +203,18 @@ public class Luchador implements Cloneable, Comparable<Luchador> {
 	}
 	
 	//Defensa
+	/**
+	 * get del atributo defensa
+	 * @return Un entero que es el defensa del Luchador
+	 */
 	public int getDefensa() {
 		return defensa;
 	}
 	
+	/**
+	 * set del atributo defensa
+	 * @param defensa Un entero que es el defensa del Luchador
+	 */
 	public void setDefensa(int defensa) {
 	//throws ExcepcionLuchador{
 		//if (defensa > 1 && defensa <= 20) {
@@ -187,19 +227,36 @@ public class Luchador implements Cloneable, Comparable<Luchador> {
 	}
 	
 	//Habilidad
+	/**
+	 * get del atributo habilidad
+	 * @return Un String que es el nombre de la habilidad del Luchador
+	 */
 	public String getHabilidad() {
 		return habilidad;
 	}
 	
+	/**
+	 * set del atributo habilidad
+	 * @param habilidad Un String que es el nombre de la habilidad del Luchador
+	 */
 	public void setHabilidad(String habilidad) {
 		this.habilidad = habilidad;
 	}
 	
 	//Descripcion
+	/**
+	 * get del atributo descripcion
+	 * @return Un String que es la descripcion de la habilidad del Luchador
+	 */
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
 	
+	/**
+	 * set del atributo descripcion
+	 * @param descripcion Un String que es la descripcion de la habilidad del Luchador
+	 */
 	public void setDescripcion (String descripcion) {
 		this.descripcion = descripcion;
 	}

@@ -74,40 +74,7 @@ public class SimuladorCombates  {
 		Random random = new Random ();
 		
 		//CrearPersonajesyHabilidades
-		/*
-		habilidades[0] = new Ataque("Leviatan", 12, false);
-		habilidades[1] = new Ataque("Ataque Devastador", 10, false);
-		habilidades[2] = new Ataque("Poder Griego", 3, true);
-		habilidades[3] = new Ataque("Furia de Titanes", 20, false);
-		habilidades[4] = new Ataque("Hoja Oculta", 20, false);
-		habilidades[5] = new Ataque("Arco", 12, false);
-		habilidades[6] = new Ataque("Escondite", 2, true);
-		habilidades[7] = new Ataque("Silbido", 5, true);
-		habilidades[8] = new Ataque("Lanzallamas", 20, false);
-		habilidades[9] = new Ataque("Congelacion", 3, true);
-		habilidades[10] = new Ataque("Arco", 12, false);
-		habilidades[11] = new Ataque("Aguja", 11, false);
-		habilidades[12] = new Ataque("Mordisco", 20, false);
-		habilidades[13] = new Ataque("Resistencia", 10, true);
-		habilidades[14] = new Ataque("Curacion", 10, true);
-		habilidades[15] = new Ataque("Fuego Fatuo", 14, false);
-		habilidades[16] = new Ataque("Ebano y Marfil", 12, false);
-		habilidades[17] = new Ataque("Poder Sparda", 20, false);
-		habilidades[18] = new Ataque("Yamato", 15, false);
-		habilidades[19] = new Ataque("Chuleria", 10, true);
-		habilidades[20] = new Ataque("Coche Bomba", 20, false);
-		habilidades[21] = new Ataque("Atraco", 11, false);
-		habilidades[22] = new Ataque("Chaleco", 10, true);
-		habilidades[23] = new Ataque("Rifle", 14, false);
-		habilidades[24] = new Ataque("Pato Donald", 14, false);
-		habilidades[25] = new Ataque("Mickey", 20, false);
-		habilidades[26] = new Ataque("Riku", 10, true);
-		habilidades[27] = new Ataque("Goofy", 13, false);
-		habilidades[28] = new Ataque("Bomba Humo", 10, true);
-		habilidades[29] = new Ataque("Pistola Ellie", 20, false);
-		habilidades[30] = new Ataque("Joel", 15, false);
-		habilidades[31] = new Ataque("Bomba Clavo", 11, false);
-		* */
+		
 		habilidades = MetodosLuchador.creandoHabilidades(habilidades);
 		
 		for (int contador = 0; contador < habilidades.length; contador++) {

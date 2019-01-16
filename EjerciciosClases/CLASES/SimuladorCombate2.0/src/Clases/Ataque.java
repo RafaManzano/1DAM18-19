@@ -74,19 +74,35 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 	
 	//Get and Set
 	//Nombre
+	/**
+	 * get del atributo nombre
+	 * @return Nombre del Ataque
+	 */
 		public String getNombre() {
 			return nombre;
 		}
-		
+	
+	/**
+	 * set del atributo nombre
+	 * @param nombre Nombre del Ataque
+	 */
 		public void setNombre (String nombre) {
 			this.nombre = nombre;
 		}
   
    //Danio
+	/**
+	 * get del atributo danio
+	 * @return Un entero para el danio del ataque
+	 */
 		public int getDanio() {
 			return danio;
 		}
 		
+	/**
+	 * set del atributo danio
+	 * @param danio Un entero para el danio del ataque
+	 */
 		public void setDanio (int danio)  {
 			//if (danio < 1 || danio > 20) { throws ExcepcionAtaque//Iria al lado de la cabecera
 				//throw new ExcepcionAtaque("El danio tiene que estar entre 1 y 20");
@@ -97,10 +113,18 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 		}
   
 	//Estadistica
+	/**
+	 * get del atributo estadistica
+	 * @return Un boolean para decir si mejora las estadisticas o no
+	 */
 		public boolean getEstadistica() {
 			return estadistica;
 		}
 		
+	/**
+	 * set del atributo estadistica
+	 * @param estadistica Un boolean para decir si mejora las estadisticas o no
+	 */
 		public void setEstadistica (boolean estadistica) {
 			this.estadistica = estadistica;
 		}
@@ -108,6 +132,7 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 	//Metodos
 	//Metodos de la clase object 
 	//toString
+
 	@Override
 	public String toString () {
 		return nombre + ", " + danio + " y " + estadistica;

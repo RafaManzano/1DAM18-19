@@ -1,5 +1,7 @@
-/*
+/**
  * MetodosLuchador
+ * @author RafaelManzano
+ * @version 0.1
  */
 
 package Metodos;
@@ -7,6 +9,18 @@ import Clases.*;
 public class MetodosLuchador {
 
 	//MenuPersonaje
+	
+	/**
+	 * Interfaz
+	 * Nombre: menuPersonaje
+	 * Comentario: Es el menu para elegir personajes
+	 * Cabecera: public static void menuPersonaje()
+	 * Precondiciones: No hay
+	 * Entrada: No hay
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: No hay, solo pinta en pantalla
+	 */
 	public static void menuPersonaje() {
 		System.out.println("Elige un personaje");
 		System.out.println("1. Kratos");
@@ -18,6 +32,23 @@ public class MetodosLuchador {
 		System.out.println("7. Sora");
 		System.out.println("8. Ellie");
 	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: creandoHabilidades
+	 * Comentario: Este metodo se usa para crear habilidades
+	 * Cabecera: public static Ataque[] creandoHabilidades(Ataque [] habilidades)
+	 * Precondiciones: No hay
+	 * Entrada: No hay
+	 * Salida: No hay
+	 * E/S: habilidades Un array con todas las habilidades
+	 * Postcondiciones: Asociado al nombre, un array de objetos de la clase Ataque
+	*/
+	/**
+	 * Este metodo se usa para crear habilidades
+	 * @param habilidades Un array de objetos Ataque vacio
+	 * @return habilidades Un array de objetos Ataque lleno
+	 */
 	
 	public static Ataque[] creandoHabilidades(Ataque[] habilidades) {
 		
@@ -56,6 +87,30 @@ public class MetodosLuchador {
 		return habilidades;
 	}
 	
+	/*
+	 * Interfaz
+	 * Nombre: creandoPersonajes
+	 * Comentario: Este metodo se usa para crear los personajes
+	 * Cabecera: public static Luchador[] creandoPersonajes (Ataque[] p1, Ataque[] p2, Ataque[] p3, Ataque[] p4, Ataque[] p5, Ataque[] p6, Ataque[] p7, Ataque[] p8)
+	 * Precondiciones: No hay 
+	 * Entrada: 8 arrays de objetos Ataque
+	 * Salida: 1 array de objetos Luchador
+	 * E/S: Un array de la clase Luchador
+	 * Postcondiciones: Asociado al nombre, Un array de objeto luchador
+	*/
+	/**
+	 * Este metodo se usa para crear los personajes
+	 * @param p1 El array de objeto Ataque para el primer personaje
+	 * @param p2 El array de objeto Ataque para el segundo personaje
+	 * @param p3 El array de objeto Ataque para el tercer personaje
+	 * @param p4 El array de objeto Ataque para el cuarto personaje
+	 * @param p5 El array de objeto Ataque para el quinto personaje
+	 * @param p6 El array de objeto Ataque para el sexto personaje
+	 * @param p7 El array de objeto Ataque para el septimo personaje
+	 * @param p8 El array de objeto Ataque para el octavo personaje
+	 * @return Devuelve el array de objeto luchador
+	 */
+	
 	public static Luchador[] creandoPersonajes (Ataque[] p1, Ataque[] p2, Ataque[] p3, Ataque[] p4, Ataque[] p5, Ataque[] p6, Ataque[] p7, Ataque[] p8) {
 		Luchador[] luchadores = new Luchador[8];
 		luchadores[0] = new Luchador("Kratos", p1, 83, 5, 7, "Destroza Dioses", "Mejora un poco el ataque");
@@ -69,6 +124,21 @@ public class MetodosLuchador {
 		return luchadores;
 	}
 
+	/*
+	 * Interfaz
+	 * Nombre: menuMovimiento
+	 * Comentario: Este metodo se usa para mostrar los ataques de cada luchador
+	 * Cabecera: public static void menuMovimiento(Luchador personaje)
+	 * Precondiciones: No hay
+	 * Entrada: personaje Un objeto de la clase luchador
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: No hay, solo pinta en pantalla
+	 */
+	/**
+	 * Este metodo se usa para mostrar los ataques de cada luchador
+	 * @param personaje Un objeto de la clase luchador
+	 */
 	public static void menuMovimiento(Luchador personaje){
 		System.out.println("Elija una opcion");
 		System.out.println("1. " + personaje.getNombreMov(0));
@@ -76,6 +146,23 @@ public class MetodosLuchador {
 		System.out.println("3. " + personaje.getNombreMov(2));
 		System.out.println("4. " + personaje.getNombreMov(3));
 	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: mejoraHabilidad
+	 * Comentario: Este metodo se usa para mejorar sus estadisticas dependiendo de cada luchador
+	 * Cabecera: public static Luchador mejorarHabilidad (Luchador jug)
+	 * Precondiciones: No hay
+	 * Entrada: No hay
+	 * Salida: No hay
+	 * E/S: jug Un objeto de la clase Luchador
+	 * Postcondiciones: Asociado al nombre, un objeto de la clase Luchador
+	 */
+	/**
+	 * Este metodo se usa para mejorar sus estadisticas dependiendo de cada luchador
+	 * @param jug Un objeto de la clase Luchador
+	 * @return El mismo objeto de la clase Luchador
+	 */
 	
 	public static Luchador mejorarHabilidad (Luchador jug) {
 	if(jug.getNombre() == "Kratos" || jug.getNombre() == "Geralt" || jug.getNombre() == "Sora") {
@@ -100,6 +187,25 @@ public class MetodosLuchador {
 						
 		return jug;
 	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: ataqueMejorado
+	 * Comentario: Este metodo se usa para mejorar sus ataques dependiendo de cada luchador
+	 * Cabecera: public static Luchador ataqueMejorado (Luchador jug, int numataque)
+	 * Precondiciones: No hay
+	 * Entrada: jug Un objeto de Luchador
+	 * 			numataque Un int 
+	 * Salida: jug Un objeto de la clase Luchador
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, un objeto de la clase Luchador
+	 */
+	/**
+	 * Este metodo se usa para mejorar sus ataques dependiendo de cada luchador
+	 * @param jug Un objeto de la clase Luchador
+	 * @param numataque Un int para decir que ataque es
+	 * @return El mismo objeto de la clase Luchador
+	 */
 	
 	public static Luchador ataqueMejorado(Luchador jug, int numataque) {
 		if (jug.getNombre() == "Kratos" || jug.getNombre() == "Ezio" || jug.getNombre() == "Aloy" || jug.getNombre() == "Geralt" || jug.getNombre() == "CJ" || jug.getNombre() == "Ellie"){
