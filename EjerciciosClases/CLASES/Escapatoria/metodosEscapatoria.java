@@ -64,5 +64,82 @@ public class metodosEscapatoria {
 			break;
 		}
 	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: primeraPista
+	 * Comentario: Este metodo pinta la primera pista en la pantalla
+	 * Cabecera: public static void primeraPista(Cerrojo comb)
+	 * Precondiciones: No hay
+	 * Entrada: - Cerrojo comb //Es un objeto de cerrojo con la combinacion correcta para hacer la primera pista
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: No hay, solo pinta en pantalla
+	 * 
+	*/
+	
+	public static void primeraPista (Cerrojo comb) {
+		System.out.println("1. Pista: Numeros pares y numeros impares");
+		if(comb.getNumero1() % 2 == 0) {
+			System.out.println("El primer numero es par");
+		}
+		else {
+			System.out.println("El primer numero es impar");
+		}
+		
+		if(comb.getNumero2() % 2 == 0) {
+			System.out.println("El segundo numero es par");
+		}
+		else {
+			System.out.println("El segundo numero es impar");
+		}
+		
+		if(comb.getNumero3() % 2 == 0) {
+			System.out.println("El tercero numero es par");
+		}
+		else {
+			System.out.println("El tercero numero es impar");
+		}
+	}	
+	/*
+	 * Interfaz
+	 * Nombre: segundaPista
+	 * Comentario: Este metodo pinta la segunda pista en la pantalla
+	 * Cabecera: public static int segundaPista(Cerrojo comb)
+	 * Precondiciones: No hay
+	 * Entrada: - Cerrojo comb //Es un objeto de cerrojo con la combinacion correcta para hacer la segunda pista
+	 * Salida: - int suma //Es la suma de los tres digitos
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, es el resultado de la suma de los tres numeros de la combinacion
+	 * 
+	*/
+	
+	public static int segundaPista (Cerrojo comb) {
+		int res;
+		
+		res = comb.getNumero1() + comb.getNumero2() + comb.getNumero3();
+		
+		return res;
+	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: terceraPista
+	 * Comentario: Este metodo pinta la tercera pista en la pantalla
+	 * Cabecera: public static void terceraPista(Cerrojo comb)
+	 * Precondiciones: No hay
+	 * Entrada: - Cerrojo comb //Es un objeto de cerrojo con la combinacion correcta para hacer la segunda pista
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: No hay, solo pinta en pantalla
+	 * 
+	*/
+	
+	public static void terceraPista(Cerrojo comb) {
+		System.out.println("3. Pista: Estos son los numeros correctos pero estan desordenados ... o no. Quien sabe");
+		System.out.println(comb.getNumero3() + " " + comb.getNumero1() + "  " + comb.getNumero2());
+	}
+	
+
 }
 

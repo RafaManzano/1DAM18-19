@@ -92,7 +92,7 @@ public class Cerrojo implements Cloneable {
 	}
 	
 	public void setNumero1(int numero1) throws ExcepcionCerrojo{
-		if(numero1 > 0 && numero1 < 10) {
+		if(numero1 >= 0 && numero1 < 10) {
 			this.numero1 = numero1;
 		}
 		else {
@@ -106,7 +106,7 @@ public class Cerrojo implements Cloneable {
 	}
 	
 	public void setNumero2(int numero2) throws ExcepcionCerrojo{
-		if(numero2 > 0 && numero2 < 10) {
+		if(numero2 >= 0 && numero2 < 10) {
 			this.numero2 = numero2;
 		}
 		else {
@@ -120,7 +120,7 @@ public class Cerrojo implements Cloneable {
 	}
 	
 	public void setNumero3(int numero3) throws ExcepcionCerrojo {
-		if(numero3 > 0 && numero3 < 10) {
+		if(numero3 >= 0 && numero3 < 10) {
 			this.numero3 = numero3;
 		}
 		else {
