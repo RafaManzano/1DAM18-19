@@ -1,34 +1,30 @@
 /*
  * Nombre del programa: Escapatoria
- * Comentario: Este programa se realiza un juego para escapar abriendo el cerrojo en un maximo de 30 turnos con pistas
+ * Comentario: Este programa se realiza un juego para escapar abriendo el cerrojo en un maximo de 10 turnos con pistas
  * 
  * Analisis
- * Entrada: - Eleccion
- * 			- Respuesta
+ * Entrada:	- Respuesta
  * 
  * Salida: - Mensajes con el usuario
  * 		   - Resultado de la partida
  * 		   - Resultado final
  * 
- * Requisitos: - Eleccion sera mayor que 0
- * 			   - Respuesta tiene que ser s o n
+ * Requisitos: - Respuesta tiene que ser s o n
  * 
  * PG Level 0
  * Inicio
  * 	LeeryValidarRespuesta
  * 	Mientras respuesta sea si
- * 		LeeryValidarEleccion
- * 		Para contador sea menot que eleccion
- * 			RealizarJuego
- * 			MostrarResultadoPartida
- * 		FinPara
+ * 		RealizarJuego
+ * 		MostrarResultadoPartida
  * 		MostrarResultadoFinal
+ * 		LeeryValidarRespuesta
  * 	FinMientras
  * Fin
  * 
  * Modulo RealizarJuego
  * Inicio
- * 	Para cont sea menor que 10
+ * 	Para cont sea menor que 10 y combinacion este oculta
  * 		CrearCombinacion
  * 		LeeryValidarCombinacion
  * 		ComprobarCombinacion
@@ -38,7 +34,7 @@
  * 				primeraPista*
  * 			caso 6
  * 				segundaPista*
- * 			caso 8
+ * 			caso 9
  * 				terceraPista*
  * 			FinSegun
  * 		FinSi
@@ -52,7 +48,6 @@ public class Escapatoria {
 	
 	public static void main (String[] args) {
 		Cerrojo combinacion = new Cerrojo();
-		int eleccion;
 		char respuesta;
 		int pganada = 0;
 		int pperdida = 0;
@@ -62,32 +57,21 @@ public class Escapatoria {
 		Scanner teclado = new Scanner(System.in);
 		Random random = new Random();
 		
-
  	//LeeryValidarRespuesta
  	do {
-		System.out.println("Quieres ejecutar el juego");
+		System.out.println("Quieres ejecutar el juego?(S/N)");
 		respuesta = Character.toLowerCase(teclado.next().charAt(0));
 	}
 	while(respuesta != 's' && respuesta != 'n');
 	
 	while(respuesta == 's') {
-		//LeeryValidarEleccion
-		do {
-			System.out.println("Elija el numero de partidas que desea jugar");
-			eleccion = teclado.nextInt();
-		}
-		while(eleccion < 0 || eleccion > 9);
-		
-
-				
-		for(int contador = 0; contador < eleccion; contador++) {
-		
-			
+				//RealizarJuego
 				try {
 					//CrearCombinacion
 					combinacion.setNumero1(random.nextInt(9));
 					combinacion.setNumero2(random.nextInt(9));
 					combinacion.setNumero3(random.nextInt(9));
+					combinacion.setOculto(true);
 				}
 				catch(ExcepcionCerrojo err) {
 					System.out.println("ERROR! " + err);
@@ -97,8 +81,9 @@ public class Escapatoria {
 						
 						
 						//LeeryValidarCombinacion
+						System.out.println("Intento numero " + cont + " de 10" );
 						do {
-							System.out.println("Introduzca la combinacion");
+							System.out.println("Introduzca la combinacion de la cerradura (Los valores de la cerradura van de 0 a 9)");
 							System.out.print("Primer numero: ");
 							numero1 = teclado.nextInt();
 							System.out.println();
@@ -111,23 +96,27 @@ public class Escapatoria {
 						}
 						while(numero1 < 0 || numero1 > 9 || numero2 < 0 || numero2 > 9 || numero3 < 0 || numero3 > 9);
 						
-						//ComprobarCombinacion*
+						//ComprobarCombinacion
+						//resguardosEscapatoria.numerosAcertados(resguardosEscapatoria.comprobarCombinacion(numero1, numero2, numero3, combinacion));
 						metodosEscapatoria.numerosAcertados(metodosEscapatoria.comprobarCombinacion(numero1, numero2, numero3, combinacion));
 						
 						if(combinacion.getOculto() == true) {
 							switch(cont) {
 								case 3:
 									//primeraPista*
+									//resguardosEscapatoria.primeraPista(combinacion);
 									metodosEscapatoria.primeraPista(combinacion);
 								break;
 								
 								case 6:
 									//segundaPista*
-									System.out.println("3. Pista: La suma de todos sus digitos es " + metodosEscapatoria.segundaPista(combinacion));
+									//resguardosEscapatoria.segundaPista(combinacion);
+									System.out.println("2. Pista: La suma de todos sus digitos es " + metodosEscapatoria.segundaPista(combinacion));
 								break;
 								
 								case 9:
 									//terceraPista*
+									//resguardosEscapatoria.terceraPista(combinacion);
 									metodosEscapatoria.terceraPista(combinacion);
 								break;
 							}
@@ -137,14 +126,18 @@ public class Escapatoria {
 						
 			//MostrarResultadoPartida
 			if(combinacion.getOculto() == false) {
-				System.out.println("Enhorabuena, la has descubierto");
+				System.out.println("Enhorabuena, acertaste la combinacion");
 				pganada++;
+				System.out.println("Partidas Ganadas: " + pganada);
 			}
 			else {
-				System.out.println("Lo siento, no lo has descubierto");
+				System.out.println("Lo siento, la combinacion introducida no es correcta");
 				pperdida++;
+				System.out.println("Partidas Perdidas: " + pperdida);
 			}
-		}
+		
+		/*
+		//MostrarResultadoFinal
 		System.out.println("Valoracion final:");
 		System.out.println("Partidas Ganadas: " + pganada);
 		System.out.println("Partidas Perdidas: " + pperdida);
@@ -153,9 +146,28 @@ public class Escapatoria {
 			System.out.println("Eres un perfecto escapista, Titan");
 		}
 		else {
-			System.out.println("Te tocara seguir aqui haciendome compañia");
+			System.out.println("Has perdido, te doy la bienvenida al sotano");
 		}
-	}			
+		*/
+		
+		//LeeryValidarRespuesta
+		do {
+		System.out.println("Quieres ejecutar el juego(S/N)");
+		respuesta = Character.toLowerCase(teclado.next().charAt(0));
+		}
+		while(respuesta != 's' && respuesta != 'n');
+	}
+		//MostrarResultadoFinal
+		System.out.println("Valoracion final:");
+		System.out.println("Partidas Ganadas: " + pganada);
+		System.out.println("Partidas Perdidas: " + pperdida);
+		
+		if(pganada > pperdida) {
+			System.out.println("Eres un perfecto escapista, Titan");
+		}
+		else {
+			System.out.println("Has perdido, te doy la bienvenida al sotano");
+		}			
 	}
 }
 

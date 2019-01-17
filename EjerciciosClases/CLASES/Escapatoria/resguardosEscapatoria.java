@@ -1,4 +1,4 @@
-public class metodosEscapatoria {
+public class resguardosEscapatoria {
 	
 	/*
 	 * Interfaz
@@ -21,19 +21,8 @@ public class metodosEscapatoria {
 	*/
 	
 	public static int comprobarCombinacion(int numero1, int numero2, int numero3, Cerrojo combinacion) {
-		int resultado = 0;
-		
-		if(numero1 == combinacion.getNumero1() && numero2 == combinacion.getNumero2() && numero3 == combinacion.getNumero3()) {
-			resultado = 3;
-			combinacion.setOculto(false);
-		}
-		else if((numero1 == combinacion.getNumero1() && numero2 == combinacion.getNumero2()) || (numero2 == combinacion.getNumero2() && numero3 == combinacion.getNumero3()) || (numero1 == combinacion.getNumero1() && numero3 == combinacion.getNumero3())) {
-			resultado = 2;
-			}
-			else if(numero1 == combinacion.getNumero1() || numero2 == combinacion.getNumero2() || numero3 == combinacion.getNumero3()) {
-				resultado = 1;
-			}
-			return resultado;
+		System.out.println("En resguardo");
+		return 1;
 	}
 	
 	/*
@@ -49,20 +38,7 @@ public class metodosEscapatoria {
 	 * 
 	*/
 	public static void numerosAcertados(int numero) {
-		switch(numero) {
-			case 0:
-				System.out.println("No has acertado ningun numero");
-			break;
-			case 1:
-				System.out.println("Has acertado un numero");
-			break;
-			case 2:
-				System.out.println("Has acertado dos numeros");
-			break;
-			case 3:
-				System.out.println("Has acertado tres numeros");
-			break;
-		}
+		System.out.println("En resguardo");
 	}
 	
 	/*
@@ -79,28 +55,9 @@ public class metodosEscapatoria {
 	*/
 	
 	public static void primeraPista (Cerrojo comb) {
-		System.out.println("1. Pista: Numeros pares y numeros impares");
-		if(comb.getNumero1() % 2 == 0) {
-			System.out.println("El primer numero es par");
-		}
-		else {
-			System.out.println("El primer numero es impar");
-		}
-		
-		if(comb.getNumero2() % 2 == 0) {
-			System.out.println("El segundo numero es par");
-		}
-		else {
-			System.out.println("El segundo numero es impar");
-		}
-		
-		if(comb.getNumero3() % 2 == 0) {
-			System.out.println("El tercero numero es par");
-		}
-		else {
-			System.out.println("El tercero numero es impar");
-		}
+		System.out.println("En resguardo");
 	}	
+	
 	/*
 	 * Interfaz
 	 * Nombre: segundaPista
@@ -115,11 +72,8 @@ public class metodosEscapatoria {
 	*/
 	
 	public static int segundaPista (Cerrojo comb) {
-		int res;
-		
-		res = comb.getNumero1() + comb.getNumero2() + comb.getNumero3();
-		
-		return res;
+		System.out.println("En resguardo");
+		return 1;
 	}
 	
 	/*
@@ -136,8 +90,7 @@ public class metodosEscapatoria {
 	*/
 	
 	public static void terceraPista(Cerrojo comb) {
-		System.out.println("3. Pista: Estos son los numeros correctos pero estan desordenados ... o no. Quien sabe");
-		System.out.println(comb.getNumero3() + " " + comb.getNumero1() + "  " + comb.getNumero2());
+		System.out.println("En resguardo");
 	}
 	
 
