@@ -2,8 +2,8 @@ public class testCerrojo {
 	
 	public static void main (String[] args) {
 		Cerrojo c1 = new Cerrojo();
-		Cerrojo c2 = new Cerrojo(1,2,3,true);
-		Cerrojo c3 = new Cerrojo(1,2,3,true);
+		Cerrojo c2 = new Cerrojo(1,2,3,4,5,true);
+		Cerrojo c3 = new Cerrojo(1,2,3,4,4,true);
 		Cerrojo c4 = new Cerrojo(c3);
 		Cerrojo c5 = null;
 		

@@ -4,12 +4,23 @@
  * 
  * Analisis
  * Entrada:	- Respuesta
+ * 			- numero1
+ * 			- numero2
+ * 			- numero3
+ * 			- numero4
+ * 			- numero5
  * 
  * Salida: - Mensajes con el usuario
  * 		   - Resultado de la partida
  * 		   - Resultado final
  * 
  * Requisitos: - Respuesta tiene que ser s o n
+ * 			   - numero1 tiene que ser de 0 a 9
+ * 			   - numero2 tiene que ser de 0 a 9
+ * 			   - numero3 tiene que ser de 0 a 9
+ * 			   - numero4 tiene que ser de 0 a 9
+ * 			   - numero5 tiene que ser de 0 a 9
+ * 			   
  * 
  * PG Level 0
  * Inicio
@@ -36,6 +47,8 @@
  * 				segundaPista*
  * 			caso 9
  * 				terceraPista*
+ * 			caso 14
+ * 				cuartaPista*
  * 			FinSegun
  * 		FinSi
  * 	FinPara
@@ -54,9 +67,12 @@ public class Escapatoria {
 		int numero1;
 		int numero2;
 		int numero3;
+		int numero4;
+		int numero5;
+		int numeroOculto;
 		Scanner teclado = new Scanner(System.in);
 		Random random = new Random();
-		
+			
  	//LeeryValidarRespuesta
  	do {
 		System.out.println("Quieres ejecutar el juego?(S/N)");
@@ -71,17 +87,19 @@ public class Escapatoria {
 					combinacion.setNumero1(random.nextInt(9));
 					combinacion.setNumero2(random.nextInt(9));
 					combinacion.setNumero3(random.nextInt(9));
+					combinacion.setNumero4(random.nextInt(9));
+					combinacion.setNumero5(random.nextInt(9));
 					combinacion.setOculto(true);
 				}
 				catch(ExcepcionCerrojo err) {
 					System.out.println("ERROR! " + err);
 				}
 					//RealizarJuego
-					for (int cont = 1; cont <= 10 && combinacion.getOculto() == true; cont++) {
+					for (int cont = 1; cont <= 15 && combinacion.getOculto() == true; cont++) {
 						
 						
 						//LeeryValidarCombinacion
-						System.out.println("Intento numero " + cont + " de 10" );
+						System.out.println("Intento numero " + cont + " de 15" );
 						do {
 							System.out.println("Introduzca la combinacion de la cerradura (Los valores de la cerradura van de 0 a 9)");
 							System.out.print("Primer numero: ");
@@ -93,31 +111,51 @@ public class Escapatoria {
 							System.out.print("Tercero numero: ");
 							numero3 = teclado.nextInt();
 							System.out.println();
+							System.out.print("Cuarto numero: ");
+							numero4 = teclado.nextInt();
+							System.out.println();
+							System.out.print("Quinto numero: ");
+							numero5 = teclado.nextInt();
+							System.out.println();
 						}
-						while(numero1 < 0 || numero1 > 9 || numero2 < 0 || numero2 > 9 || numero3 < 0 || numero3 > 9);
+						while(numero1 < 0 || numero1 > 9 || numero2 < 0 || numero2 > 9 || numero3 < 0 || numero3 > 9 || numero4 < 0 || numero4 > 9 || numero5 < 0 || numero5 > 9);
 						
 						//ComprobarCombinacion
 						//resguardosEscapatoria.numerosAcertados(resguardosEscapatoria.comprobarCombinacion(numero1, numero2, numero3, combinacion));
-						metodosEscapatoria.numerosAcertados(metodosEscapatoria.comprobarCombinacion(numero1, numero2, numero3, combinacion));
+						//metodosEscapatoria.numerosAcertados(metodosEscapatoria.comprobarCombinacion(numero1, numero2, numero3, combinacion));
+						utilidadesEscapatoria.numerosAcertados(utilidadesEscapatoria.comprobarCombinacion(numero1, numero2, numero3, numero4, numero5, combinacion));
 						
 						if(combinacion.getOculto() == true) {
 							switch(cont) {
 								case 3:
 									//primeraPista*
 									//resguardosEscapatoria.primeraPista(combinacion);
-									metodosEscapatoria.primeraPista(combinacion);
+									//metodosEscapatoria.primeraPista(combinacion);
+									utilidadesEscapatoria.primeraPista(combinacion);
 								break;
 								
 								case 6:
 									//segundaPista*
 									//resguardosEscapatoria.segundaPista(combinacion);
-									System.out.println("2. Pista: La suma de todos sus digitos es " + metodosEscapatoria.segundaPista(combinacion));
+									//System.out.println("2. Pista: La suma de todos sus digitos es " + metodosEscapatoria.segundaPista(combinacion));
+									System.out.println("2. Pista: La suma de todos sus digitos es " + utilidadesEscapatoria.segundaPista(combinacion));
 								break;
 								
 								case 9:
 									//terceraPista*
-									//resguardosEscapatoria.terceraPista(combinacion);
-									metodosEscapatoria.terceraPista(combinacion);
+									do {
+										System.out.println("Elija el numero que desees que te muestre (Solo uno)");
+										numeroOculto = teclado.nextInt();
+									}
+									while(numeroOculto < 1 || numeroOculto > 6 );
+									System.out.println(utilidadesEscapatoria.terceraPista(numeroOculto, combinacion));
+								break;
+								
+								case 14:
+									//cuartaPista*
+									//resguardosEscapatoria.cuartaPista(combinacion);
+									//metodosEscapatoria.cuartaPista(combinacion);
+									utilidadesEscapatoria.cuartaPista(combinacion);
 								break;
 							}
 						}
@@ -132,6 +170,7 @@ public class Escapatoria {
 			}
 			else {
 				System.out.println("Lo siento, la combinacion introducida no es correcta");
+				System.out.println("La combinacion era " + combinacion.mostrarNumeros());
 				pperdida++;
 				System.out.println("Partidas Perdidas: " + pperdida);
 			}
