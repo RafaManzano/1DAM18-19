@@ -46,7 +46,7 @@
 
 package Clases;
 
-public class Ataque implements Cloneable, Comparable<Ataque> {
+public class Ataque implements Cloneable {
 	
 	//Atributos
 	private String nombre;
@@ -184,7 +184,7 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 	// 0 Mismo danio
 	// 1 el primero es mayor en danio que el segundo
 	// -1 el primero es menor en danio que el segundo
-
+/*
 	public int compareTo(Ataque otro) {
 		int res = - 1;
 		
@@ -197,5 +197,7 @@ public class Ataque implements Cloneable, Comparable<Ataque> {
 		
 		return res;
 	}
+*/
+	
 }
 

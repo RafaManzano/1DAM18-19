@@ -76,44 +76,7 @@ public class SimuladorCombates  {
 		//CrearPersonajesyHabilidades
 		
 		habilidades = MetodosLuchador.creandoHabilidades(habilidades);
-		
-		for (int contador = 0; contador < habilidades.length; contador++) {
-			switch(contador) {
-				
-				case 0: case 1: case 2: case 3:
-					kratos [contador] = habilidades[contador];
-				break; 
-				case 4: ezio [0] = habilidades[contador]; break; 
-				case 5: ezio [1] = habilidades[contador]; break; 
-				case 6:	ezio [2] = habilidades[contador]; break;
-				case 7: ezio [3] = habilidades[contador]; break;
-				case 8:	aloy [0] = habilidades[contador]; break;
-				case 9: aloy [1] = habilidades[contador]; break;
-				case 10: aloy [2] = habilidades[contador]; break;
-				case 11: aloy [3] = habilidades[contador];	break;
-				case 12: geralt [0] = habilidades[contador]; break;
-				case 13: geralt [1] = habilidades[contador]; break;
-				case 14: geralt [2] = habilidades[contador]; break;
-				case 15: geralt [3] = habilidades[contador]; break;
-				case 16: dante [0] = habilidades[contador]; break;
-				case 17: dante [1] = habilidades[contador]; break;
-				case 18: dante [2] = habilidades[contador]; break;
-				case 19: dante [3] = habilidades[contador]; break;
-				case 20: cj [0] = habilidades[contador]; break;
-				case 21: cj [1] = habilidades[contador]; break;
-				case 22: cj [2] = habilidades[contador]; break;
-				case 23: cj [3] = habilidades[contador]; break;	
-				case 24: sora [0] = habilidades[contador]; break;
-				case 25: sora [1] = habilidades[contador]; break;
-				case 26: sora [2] = habilidades[contador]; break;
-				case 27: sora [3] = habilidades[contador]; break; 
-				case 28: ellie [0] = habilidades[contador]; break;
-				case 29: ellie [1] = habilidades[contador];	break;
-				case 30: ellie [2] = habilidades[contador]; break;	
-				case 31: ellie [3] = habilidades[contador]; break;
-			}
-		}
-		
+		MetodosLuchador.introduciendoHabilidades(kratos, ezio, aloy, geralt, dante, cj, sora, ellie, habilidades);
 		personajes = MetodosLuchador.creandoPersonajes(kratos, ezio, aloy, geralt, dante, cj, sora, ellie);
 		
 		

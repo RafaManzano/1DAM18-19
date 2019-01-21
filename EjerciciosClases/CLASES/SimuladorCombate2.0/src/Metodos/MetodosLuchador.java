@@ -117,11 +117,75 @@ public class MetodosLuchador {
 		luchadores[1] = new Luchador("Ezio", p2, 85, 9, 5, "Sigilo", "Mejora un poco la defensa");
 		luchadores[2] = new Luchador("Aloy", p3, 90, 5, 5, "Mujeres al poder", "Mejora todas sus estadisticas");
 		luchadores[3] = new Luchador("Geralt", p4, 69, 4, 8, "Alma de lobo", "Mejora un poco el ataque");
-		luchadores[4] = new Luchador("Dante", p5, 97, 10, 5, "Demonio", "Mejora un pooo su vida");
+		luchadores[4] = new Luchador("Dante", p5, 97, 10, 5, "Demonio", "Mejora un poco su vida");
 		luchadores[5] = new Luchador("CJ", p6, 79, 10, 7, "Pandilla", "Mejora un poco todos sus ataques");
 		luchadores[6] = new Luchador("Sora", p7, 84, 5, 7, "Espada Llave", "Mejora un poco el ataque");
 		luchadores[7] = new Luchador("Ellie", p8, 94, 10, 3, "Inmunidad", "Mejora un poco la defensa");
 		return luchadores;
+	}
+
+/*
+ * Interfaz
+ * Nombre: introduciendoHabilidades
+ * Comentario: Este metodo se usa para introducir las habilidades en cada objeto de personaje
+ * Cabecera: public static void creandoPersonajes (Ataque[] kratos, Ataque[] ezio, Ataque[] aloy, Ataque[] geralt, Ataque[] dante, Ataque[] cj, Ataque[] sora, Ataque[] ellie, Ataque[] habilidades)
+ * Precondiciones: No hay 
+ * Entrada: 9 arrays de objetos Ataque
+ * Salida: No hay
+ * E/S: No hay
+ * Postcondiciones: No hay, solo introduce en cada personaje su bateria de ataques
+ */
+		
+/**
+ * 
+ * @param kratos Son los ataques del primer personaje
+ * @param ezio Son los ataques del segundo personaje
+ * @param aloy Son los ataques del tercer personaje
+ * @param geralt Son los ataques del cuarto personaje
+ * @param dante Son los ataques del quinto personaje
+ * @param cj Son los ataques del sexto personaje
+ * @param sora Son los ataques del septimo personaje
+ * @param ellie Son los ataques del ocho personaje
+ * @param habilidades Son todos los ataques 
+ */
+	
+	public static void introduciendoHabilidades (Ataque[] kratos, Ataque[] ezio, Ataque[] aloy, Ataque[] geralt, Ataque[] dante, Ataque[] cj, Ataque[] sora, Ataque[] ellie, Ataque[] habilidades) {
+		for (int contador = 0; contador < habilidades.length; contador++) {
+			switch(contador) {
+				
+				case 0: case 1: case 2: case 3:
+					kratos [contador] = habilidades[contador];
+				break; 
+				case 4: ezio [0] = habilidades[contador]; break; 
+				case 5: ezio [1] = habilidades[contador]; break; 
+				case 6:	ezio [2] = habilidades[contador]; break;
+				case 7: ezio [3] = habilidades[contador]; break;
+				case 8:	aloy [0] = habilidades[contador]; break;
+				case 9: aloy [1] = habilidades[contador]; break;
+				case 10: aloy [2] = habilidades[contador]; break;
+				case 11: aloy [3] = habilidades[contador];	break;
+				case 12: geralt [0] = habilidades[contador]; break;
+				case 13: geralt [1] = habilidades[contador]; break;
+				case 14: geralt [2] = habilidades[contador]; break;
+				case 15: geralt [3] = habilidades[contador]; break;
+				case 16: dante [0] = habilidades[contador]; break;
+				case 17: dante [1] = habilidades[contador]; break;
+				case 18: dante [2] = habilidades[contador]; break;
+				case 19: dante [3] = habilidades[contador]; break;
+				case 20: cj [0] = habilidades[contador]; break;
+				case 21: cj [1] = habilidades[contador]; break;
+				case 22: cj [2] = habilidades[contador]; break;
+				case 23: cj [3] = habilidades[contador]; break;	
+				case 24: sora [0] = habilidades[contador]; break;
+				case 25: sora [1] = habilidades[contador]; break;
+				case 26: sora [2] = habilidades[contador]; break;
+				case 27: sora [3] = habilidades[contador]; break; 
+				case 28: ellie [0] = habilidades[contador]; break;
+				case 29: ellie [1] = habilidades[contador];	break;
+				case 30: ellie [2] = habilidades[contador]; break;	
+				case 31: ellie [3] = habilidades[contador]; break;
+			}
+		}
 	}
 
 	/*

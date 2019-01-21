@@ -287,12 +287,9 @@ public class Luchador implements Cloneable, Comparable<Luchador> {
 		else if (obj != null && obj instanceof Luchador) {
 			Luchador otro = (Luchador)obj;
 			
-			if (this.nombre == otro.getNombre() &&
-				this.movimiento == otro.getMovimiento() &&
-				this.vida == otro.getVida() &&
+			if (this.vida == otro.getVida() &&
 				this.ataque == otro.getAtaque() &&
-				this.defensa == otro.getDefensa() &&
-				this.habilidad == otro.getHabilidad()) {
+				this.defensa == otro.getDefensa()) {
 					res = true;
 				}
 		}
