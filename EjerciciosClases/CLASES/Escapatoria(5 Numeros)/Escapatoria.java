@@ -35,7 +35,7 @@
  * 
  * Modulo RealizarJuego
  * Inicio
- * 	Para cont sea menor que 10 y combinacion este oculta
+ * 	Para cont sea menor que 15 y combinacion este oculta
  * 		CrearCombinacion
  * 		LeeryValidarCombinacion
  * 		ComprobarCombinacion
@@ -108,7 +108,7 @@ public class Escapatoria {
 							System.out.print("Segundo numero: ");
 							numero2 = teclado.nextInt();
 							System.out.println();
-							System.out.print("Tercero numero: ");
+							System.out.print("Tercer numero: ");
 							numero3 = teclado.nextInt();
 							System.out.println();
 							System.out.print("Cuarto numero: ");
