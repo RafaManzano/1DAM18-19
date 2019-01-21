@@ -28,9 +28,9 @@
  * 	Mientras respuesta sea si
  * 		RealizarJuego
  * 		MostrarResultadoPartida
- * 		MostrarResultadoFinal
  * 		LeeryValidarRespuesta
  * 	FinMientras
+ * MostrarResultadoFinal
  * Fin
  * 
  * Modulo RealizarJuego
@@ -84,11 +84,11 @@ public class Escapatoria {
 				//RealizarJuego
 				try {
 					//CrearCombinacion
-					combinacion.setNumero1(random.nextInt(9));
-					combinacion.setNumero2(random.nextInt(9));
-					combinacion.setNumero3(random.nextInt(9));
-					combinacion.setNumero4(random.nextInt(9));
-					combinacion.setNumero5(random.nextInt(9));
+					combinacion.setNumero1(random.nextInt(10));
+					combinacion.setNumero2(random.nextInt(10));
+					combinacion.setNumero3(random.nextInt(10));
+					combinacion.setNumero4(random.nextInt(10));
+					combinacion.setNumero5(random.nextInt(10));
 					combinacion.setOculto(true);
 				}
 				catch(ExcepcionCerrojo err) {
