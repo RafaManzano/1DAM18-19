@@ -1,0 +1,2 @@
+¿Se puede hacer un array de interfaces y dentro del array añadir objetos de las dos clases que lo implementen?
+¿Se pueden hacer metodos de la clase object en una interface?
