@@ -1,6 +1,6 @@
 package clases;
 
-import interfaces.Carta;
+import enumerados.TipoNombreFicha;
 import interfaces.Jugador;
 
 /*
@@ -12,54 +12,58 @@ import interfaces.Jugador;
  * Mod: Si
  * 
  * NombreFicha
- * Tipo: String
+ * Tipo: TipoNombreFicha
  * Cons: Si
  * Mod: Si
  * 
  * Dinero
- * Tipo:
- * Cons:
- * Mod:
+ * Tipo: int 
+ * Cons: Si
+ * Mod: Si
  * 
  * Calles
- * Tipo:
- * Cons:
- * Mod:
+ * Tipo: Calle[]
+ * Cons: Si 
+ * Mod: Si
  * 
  * Ayudas
- * Tipo:
- * Cons:
- * Mod:
+ * Tipo: Ayuda[]
+ * Cons: Si
+ * Mod: Si
  */
 
 public class JugadorImp implements Jugador {
 
 	//Atributos
 	private String nombre;
-	private String nombreFicha;
+	private TipoNombreFicha nombreFicha;
 	private int dinero;
-	private Carta[] cartas;
+	private Calle[] calles;
+	private Ayuda[] ayudas;
 	
 	//Constructor
 	public JugadorImp () { //Por defecto
 		nombre = " ";
-		nombreFicha = " ";
+		nombreFicha = nombreFicha.NODEFINIDO;
 		dinero = 0;
-		cartas = null;
+		calles = null;
+		ayudas = null;
 	}
 	
-	public JugadorImp (String nombre, String nombreFicha, int precio, Carta[] calles) { //Con parametros
+	public JugadorImp (String nombre, TipoNombreFicha nombreFicha, int precio, Calle[] calles, Ayuda[] ayudas) { //Con parametros
 		this.nombre = nombre;
 		this.nombreFicha = nombreFicha;
 		this.dinero = precio;
-		this.cartas = calles;
+		this.calles = calles;
+		this.ayudas = ayudas;
 	}
 	
 	public JugadorImp (JugadorImp cop) { //De copia
 		this.nombre = cop.getNombre();
 		this.nombreFicha = cop.getNombreFicha();
 		this.dinero = cop.getDinero();
-		this.cartas = cop.getCartas();
+		this.calles = cop.getCalles();
+		this.ayudas = cop.getAyudas();
 	}
 	
 	//Get and Set
@@ -76,12 +80,12 @@ public class JugadorImp implements Jugador {
 
 	//NombreFicha
 	@Override
-	public String getNombreFicha() {
+	public TipoNombreFicha getNombreFicha() {
 		return nombreFicha;
 	}
 
 	@Override
-	public void setNombreFicha(String nombreFicha) {
+	public void setNombreFicha(TipoNombreFicha nombreFicha) {
 		this.nombreFicha = nombreFicha;
 	}
 
@@ -96,23 +100,84 @@ public class JugadorImp implements Jugador {
 		this.dinero = dinero;
 	}
 
-	//Cartas
+	//Calles
 	@Override
-	public Carta[] getCartas() {
-		return cartas;
+	public Calle[] getCalles() {
+		return calles;
 	}
 
 	@Override
-	public void setCartas(Carta[] cartas) {
-		this.cartas = cartas;
+	public void setCalles(Calle[] calles) {
+		this.calles = calles;
 	}
+	
+	//Ayudas
+	@Override
+	public Ayuda[] getAyudas() {
+		return ayudas;
+	}
+
+	@Override
+	public void setAyuda(Ayuda[] ayudas) {
+		this.ayudas = ayudas;
+	}
+	
 	
 	//Metodos de la clase object
 	//toString
 	@Override
 	public String toString() {
-		return nombre + " , " + nombreFicha + " , " + dinero + " , " + cartas.toString();
+		return nombre + " , " + nombreFicha + " , " + dinero + " , " + calles.toString() + " , " + ayudas.toString();
 	}
+	
+	//hashCode
+	@Override
+	public int hashCode() {
+		return dinero + nombre.hashCode() * calles.hashCode() * nombreFicha.hashCode() * 7;
+	}
+	
+	//equals
+	@Override
+	public boolean equals (Object obj) {
+		boolean res = false;
+		
+		if(this == obj) {
+			res = true;
+		}
+		
+		else if(obj != null && obj instanceof JugadorImp) {
+			JugadorImp otro = (JugadorImp) obj;
+			
+			if(this.nombre == otro.getNombre()) {
+				res = true;
+			}
+		}
+		return res;
+	}
+	
+	//Clone Superficial
+	@Override
+	public JugadorImp clone() {
+		JugadorImp copia = null;
+		
+		try {
+			copia = (JugadorImp) super.clone();
+		}
+		catch(CloneNotSupportedException err) {
+			System.out.println("Objeto no clonado");
+		}
+		return copia;
+	}
+	
+	//No necesito clone en profundidad
+	
+	//No necesito compareTo
+	
+	
+
+
+
+
 	
 
 }

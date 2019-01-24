@@ -1,16 +1,20 @@
 package interfaces;
 
+import clases.Ayuda;
 import clases.Calle;
+import enumerados.TipoNombreFicha;
 
 public interface Jugador {
 
 	public String getNombre();
 	public void setNombre(String nombre);
-	public String getNombreFicha();
-	public void setNombreFicha(String nombreFicha);
+	public TipoNombreFicha getNombreFicha();
+	public void setNombreFicha(TipoNombreFicha nombreFicha);
 	public int getDinero();
 	public void setDinero(int dinero);
-	public Carta[] getCartas();
-	public void setCartas(Carta[] cartas);
+	public Calle[] getCalles();
+	public void setCalles(Calle[] calles);
+	public Ayuda[] getAyudas();
+	public void setAyuda(Ayuda[] ayudas);
 	
 }
