@@ -29,9 +29,6 @@
  * Metodos añadidos:
  * No hay
  * 
- * Requisitos:
- * X mayor que 0
- * Y mayor que 0
  * 
  */
 
