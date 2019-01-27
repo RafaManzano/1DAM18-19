@@ -1,5 +1,6 @@
 package clases;
 
+import enumerados.TipoColor;
 import interfaces.Casilla;
 
 /*
@@ -26,7 +27,8 @@ import interfaces.Casilla;
  * Cons: Si
  * Mod: Si
  */
-public class CasillaImp implements Casilla {
+
+public class CasillaImp implements Casilla, Cloneable {
 	//Atributos
 	private String nombre;
 	private Calle calle;
@@ -129,4 +131,90 @@ public class CasillaImp implements Casilla {
 		}
 	}
 	*/
+	
+	//Clone en Superficie
+	public CasillaImp clone( ) {
+		CasillaImp copia = null;
+		
+		try {
+			copia = (CasillaImp) super.clone();
+		}
+		catch(CloneNotSupportedException err) {
+			System.out.println("Objeto no clonado");
+		}
+		return copia;
+	}
+	
+	//No hace falta compareTo
+	
+	//Patron delegacion
+	//Ayuda
+	//Nombre
+	public String getNombreAyuda() {
+		return ayuda.getNombre();
+	}
+
+	
+	public void setNombreAyuda(String nombre) {
+		ayuda.setNombre(nombre);
+	}
+	
+	//Descripcion
+	public String getDescripcionAyuda() {
+		return ayuda.getDescripcion();
+	}
+
+	
+	public void setDescripcionAyuda(String descripcion) {
+		ayuda.setDescripcion(descripcion);
+	}
+	
+	//Precio
+	public int getPrecioAyuda() {
+		return ayuda.getPrecio();
+	}
+
+	public void setPrecioAyuda(int precio) {
+		ayuda.setPrecio(precio);
+	}
+	
+	//Calle
+	//Nombre
+		public String getNombreCalle() {
+			return calle.getNombre();
+		}
+
+		
+		public void setNombreCalle(String nombre) {
+			calle.setNombre(nombre);
+		}
+
+		//Precio
+		public int getPrecioCalle() {
+			return calle.getPrecio();
+		}
+
+		
+		public void setPrecioCalle(int precio) {
+			calle.setPrecio(precio);
+		}
+		
+		//Color
+		public TipoColor getColor() {
+			return calle.getColor();
+		}
+
+		public void setColor(TipoColor color) {
+			calle.setColor(color);
+		}
+
+		//Vendida
+		public boolean getVendida() {
+			return calle.getVendida();
+		}
+
+		public void setVendida(boolean vendida) {
+			calle.setVendida(vendida);
+		}
+		
 }
