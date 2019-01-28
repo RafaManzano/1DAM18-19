@@ -30,6 +30,11 @@ import interfaces.Jugador;
  * Tipo: Ayuda[]
  * Cons: Si
  * Mod: Si
+ * 
+ * Turno
+ * Tipo: int
+ * Cons: Si
+ * Mod: Si
  */
 
 public class JugadorImp implements Jugador {
@@ -40,22 +45,25 @@ public class JugadorImp implements Jugador {
 	private int dinero;
 	private Calle[] calles;
 	private Ayuda[] ayudas;
+	private int turno;
 	
 	//Constructor
 	public JugadorImp () { //Por defecto
 		nombre = " ";
-		nombreFicha = nombreFicha.NODEFINIDO;
+		nombreFicha = null;
 		dinero = 0;
 		calles = null;
 		ayudas = null;
+		turno = 0;
 	}
 	
-	public JugadorImp (String nombre, TipoNombreFicha nombreFicha, int precio, Calle[] calles, Ayuda[] ayudas) { //Con parametros
+	public JugadorImp (String nombre, TipoNombreFicha nombreFicha, int precio, Calle[] calles, Ayuda[] ayudas, int turno) { //Con parametros
 		this.nombre = nombre;
 		this.nombreFicha = nombreFicha;
 		this.dinero = precio;
 		this.calles = calles;
 		this.ayudas = ayudas;
+		this.turno = turno;
 	}
 	
 	public JugadorImp (JugadorImp cop) { //De copia
@@ -64,6 +72,7 @@ public class JugadorImp implements Jugador {
 		this.dinero = cop.getDinero();
 		this.calles = cop.getCalles();
 		this.ayudas = cop.getAyudas();
+		this.turno = cop.getTurno();
 	}
 	
 	//Get and Set
@@ -122,18 +131,27 @@ public class JugadorImp implements Jugador {
 		this.ayudas = ayudas;
 	}
 	
+	//Turno
+	@Override
+	public int getTurno() {
+		return turno;
+	}
+	
+	public void setTurno(int turno) {
+		this.turno = turno;
+	}
 	
 	//Metodos de la clase object
 	//toString
 	@Override
 	public String toString() {
-		return nombre + " , " + nombreFicha + " , " + dinero + " , " + calles.toString() + " , " + ayudas.toString();
+		return nombre + " , " + nombreFicha + " , " + dinero + " , " + calles.toString() + " , " + ayudas.toString() + " , " + turno;
 	}
 	
 	//hashCode
 	@Override
 	public int hashCode() {
-		return dinero + nombre.hashCode() * calles.hashCode() * nombreFicha.hashCode() * 7;
+		return dinero + nombre.hashCode() * calles.hashCode() * nombreFicha.hashCode() * 7 * turno;
 	}
 	
 	//equals

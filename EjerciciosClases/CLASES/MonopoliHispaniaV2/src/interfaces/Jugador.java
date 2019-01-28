@@ -16,5 +16,6 @@ public interface Jugador {
 	public void setCalles(Calle[] calles);
 	public Ayuda[] getAyudas();
 	public void setAyuda(Ayuda[] ayudas);
-	
+	public int getTurno();
+	public void setTurno(int turno);
 }
