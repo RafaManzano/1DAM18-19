@@ -103,4 +103,16 @@ public class TableroImp implements Tablero {
 	
 	//No necesitamos deepClone ni compareTo
 	
+	//Metodos anhadidos
+	/*
+	 * Interfaz
+	 * Nombre: cargarTablero
+	 * Comentario: Este subprograma crea el tablero y lo carga
+	 * Cabecera: public static TableroImp cargarTablero () 
+	 * Precondiciones: No hay
+	 * Entrada: No hay
+	 * Salida: TableroImp tablero //Devuelve el tablero cargado
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, devuelve el tablero con todas las casillas
+	 */
 }

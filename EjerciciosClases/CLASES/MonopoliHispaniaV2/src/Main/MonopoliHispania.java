@@ -4,10 +4,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 import clases.JugadorImp;
-<<<<<<< HEAD
+import clases.TableroImp;
 import enumerados.TipoNombreFicha;
-=======
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
+
+
 import metodos.utilidadesMonopoli;
 
 /*
@@ -26,17 +26,12 @@ import metodos.utilidadesMonopoli;
  * 
  * PG level 0
  * Inicio
-<<<<<<< HEAD
  * 	ElegirJugadores //Siempre seran 4
-=======
- * 	CrearyElegirJugadores //Siempre seran 4
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
  * 	ElegirTirador
  * 	EmpezarJuego
  * 	ResultadoFinal
  * Fin
  * 
-<<<<<<< HEAD
  * Modulo ElegirJugadores
  * Inicio
  * 	Para los cuatros jugadores
@@ -51,19 +46,10 @@ import metodos.utilidadesMonopoli;
  * 	FinPara
  * Fin
  * 
- * Modulo ElegirTirador
- * Inicio
- * 	TiradaInicioJ1
- * 	TiradaInicioJ2
- * 	TiradaInicioJ3
- * 	TiradaInicioJ4
- * 	OrdenTiradaInicial*
- * Fin
  * 
-=======
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
- * Modulo EmpezarJuego
+ * Modulo Juego
  * Inicio
+ * decidirTurno* --Aqui se comprueba el orden de los jugadores
  * 	Repetir
  * 		TirarDados
  * 		Si has caido en calle
@@ -89,8 +75,9 @@ public class MonopoliHispania {
 		JugadorImp J3 = new JugadorImp();
 		JugadorImp J4 = new JugadorImp();
 		String nombre;
-<<<<<<< HEAD
-		TipoNombreFicha[] ficha;
+		TableroImp tablero = null;
+
+		TipoNombreFicha[] ficha = utilidadesMonopoli.elegirNombreFicha();
 		int opcion = 0;
 		int dado1 = 0;
 		int dado2 = 0;
@@ -99,23 +86,15 @@ public class MonopoliHispania {
 		int empezarJ3;
 		int empezarJ4;
 		char vacio;
-		ficha = utilidadesMonopoli.elegirNombreFicha();
-=======
-		int opcion = 0;
-		int dado1 = 0;
-		int dado2 = 0;
-		
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
-		//ElegirJugadores //Siempre seran 4
-		//J1
-		
+
 		for(int contador = 0; contador < 4; contador++) {
-<<<<<<< HEAD
+
 			System.out.println("Elija el nombre del jugador " + (contador + 1));
 			/*for(int i = 0; i < ficha.length; i++) {
 				System.out.println(ficha[i]);
 			}
 			*/
+			//ElegirJugadores
 			switch(contador) {
 			case 0:
 				//Elige el nombre del J1
@@ -134,7 +113,7 @@ public class MonopoliHispania {
 				}
 				while(J1.getNombreFicha() == null);
 				utilidadesMonopoli.ponerNull(opcion, ficha);
-=======
+
 			System.out.println("Elija el nombre del jugador "+(1 + contador));
 			switch(contador) {
 			case 0:
@@ -147,12 +126,11 @@ public class MonopoliHispania {
 					opcion = teclado.nextInt() - 1;
 				}
 				while(opcion < -1 || opcion > 7);
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
+
 			break;
 			
 			case 1:
 				//Elige el nombre del J2
-<<<<<<< HEAD
 				//System.out.println("2");
 				nombre = teclado.next();
 				J2.setNombre(nombre);
@@ -169,7 +147,7 @@ public class MonopoliHispania {
 				while(J2.getNombreFicha() == null);
 				utilidadesMonopoli.ponerNull(opcion, ficha);
 
-=======
+
 				J2.setNombre(teclado.nextLine());
 				
 				//EligeFicha
@@ -179,12 +157,11 @@ public class MonopoliHispania {
 				}
 				while(opcion < -1 || opcion > 7);
 				
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
+
 			break;
 			
 			case 2:
 				//Elige el nombre del J3
-<<<<<<< HEAD
 				//System.out.println("3");
 				nombre = teclado.next();
 				J3.setNombre(nombre);
@@ -200,7 +177,7 @@ public class MonopoliHispania {
 				}
 				while(J3.getNombreFicha() == null);
 				utilidadesMonopoli.ponerNull(opcion, ficha);
-=======
+
 				J3.setNombre(teclado.nextLine());
 				
 				//EligeFicha
@@ -209,12 +186,11 @@ public class MonopoliHispania {
 					opcion = teclado.nextInt();
 				}
 				while(opcion < -1 || opcion > 7);
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
+
 			break;
 			
 			case 3:
 				//Elige el nombre del J4
-<<<<<<< HEAD
 				//System.out.println("4");
 				nombre = teclado.next();
 				J4.setNombre(nombre);
@@ -233,28 +209,15 @@ public class MonopoliHispania {
 			break;
 			}
 		}
-		
+	}
 		//OrdenTiradaInicial*
 		utilidadesMonopoli.ordenTiradaInicial(J1,J2,J3,J4);
 		
-		//EmpezarJuego
-		utilidadesMonopoli.decidirEmpezar(J1, J2, J3, J4);
-=======
-				J4.setNombre(teclado.nextLine());
-				
-				//EligeFicha
-				do {
-					utilidadesMonopoli.menuFicha();
-					opcion = teclado.nextInt();
-				}
-				while(opcion < -1 || opcion > 7);
-			break;
-			}
-		}
-		//ElegirTirador
-		//EmpezarJuego
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
-		//ResultadoFinal
+		//Juego
+		//decidirTurno
+		utilidadesMonopoli.decidirTurno(0, J1, J2, J3, J4);
+		
 	}
-
 }
+
+
