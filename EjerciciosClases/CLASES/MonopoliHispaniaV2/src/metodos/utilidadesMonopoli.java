@@ -1,15 +1,15 @@
 package metodos;
 
-<<<<<<< HEAD
+
 import java.util.Random;
 
-=======
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
+import clases.Calle;
 import clases.JugadorImp;
+import enumerados.TipoColor;
 import enumerados.TipoNombreFicha;
 
 public class utilidadesMonopoli {
-
+	
 	/*
 	 * Interfaz
 	 * Nombre: menuFicha
@@ -103,7 +103,7 @@ public class utilidadesMonopoli {
 		TipoNombreFicha[] nombres = {f.BARCO, f.SOMBRERO, f.ZAPATO, f.PERRO, f.PLANCHA, f.COCHE, f.CARRO,f.DEDAL};
 		return nombres;
 	}
-<<<<<<< HEAD
+
 	
 	/*
 	 * Interfaz
@@ -212,9 +212,54 @@ public class utilidadesMonopoli {
 	 * Postcondiciones: Asociado al nombre, es el jugador que tira en ese turno
 	 */
 	public static JugadorImp decidirTurno(int turno, JugadorImp j1, JugadorImp j2, JugadorImp j3, JugadorImp j4) {
+		//Falta hacerlo
 		return j1;
 	}
 	
-=======
->>>>>>> 70c3045a8e9e2b4f91b70845abc662832c447af5
+	/*
+	 * Interfaz
+	 * Nombre: crearMazoCalles
+	 * Comentario: Este subprograma crea el mazo de calles para poder usarlo
+	 * Cabecera: public static Calle[] crearMazoCalles ()
+	 * Precondiciones: No hay
+	 * Entrada: No hay
+	 * Salida: Calle[] mazo //Es el mazo de calles
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, es el mazo de cartas 
+	 */
+	public static Calle[] crearMazoCalles () {
+		TipoColor c = null;
+		Calle[] mazo = null;
+		mazo[0] = new Calle("San Nicolas del Puerto", 60, c.MARRON, false);
+		mazo[1] = new Calle("Castilleja del Campo", 60, c.MARRON, false);
+		mazo[2] = new Calle("Aguadulce", 100, c.AZUL, false);
+		mazo[3] = new Calle("Marinaleda", 100, c.AZUL, false);
+		mazo[4] = new Calle("Badolatosa", 120, c.AZUL, false);
+		mazo[5] = new Calle("Los Molares", 140, c.ROSA, false);
+		mazo[6] = new Calle("Burguillos", 140, c.ROSA, false);
+		mazo[7] = new Calle("Olivares", 160, c.ROSA, false);
+		mazo[8] = new Calle("Bollullos de la Mitacion", 180, c.NARANJA, false);
+		mazo[9] = new Calle("Estepa", 180, c.NARANJA, false);
+		mazo[10] = new Calle("La Algaba", 200, c.NARANJA, false);
+		mazo[11] = new Calle("Osuna", 220, c.ROJO, false);
+		mazo[12] = new Calle("Marchena", 220, c.ROJO, false);
+		mazo[13] = new Calle("Camas", 240, c.ROJO, false);
+		mazo[14] = new Calle("El Viso del Alcor", 260, c.AMARILLO, false);
+		mazo[15] = new Calle("Lebrija", 260, c.AMARILLO, false);
+		mazo[16] = new Calle("Coria del Rio", 280, c.AMARILLO, false);
+		mazo[17] = new Calle("Alcala de Guadaira", 300, c.VERDE, false);
+		mazo[18] = new Calle("La Rinconada", 300, c.VERDE, false);
+		mazo[19] = new Calle("Pilas", 320, c.VERDE, false);
+		mazo[20] = new Calle("Utrera", 350, c.NEGRO, false);
+		mazo[21] = new Calle("Carmona", 400, c.NEGRO, false);
+		mazo[22] = new Calle("Metro", 200, c.VACIO, false);
+		mazo[23] = new Calle("Endesa", 150, c.VACIO, false);
+		mazo[24] = new Calle("Huesna", 150, c.VACIO, false);
+		mazo[25] = new Calle("Casal", 200, c.VACIO, false);
+		mazo[26] = new Calle("Damas", 200, c.VACIO, false);
+		mazo[27] = new Calle("Socibus", 200, c.VACIO, false);
+		return mazo;
+	}
+
+
 }
