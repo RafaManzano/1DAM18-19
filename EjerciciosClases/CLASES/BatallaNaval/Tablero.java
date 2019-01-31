@@ -1,5 +1,5 @@
 public interface Tablero {
-	public Barco[][] getTablero();
-	public void setTablero(Barco[][] tablero);
+	public CasillaImp[][] getTablero();
+	public void setTablero(CasillaImp[][] tablero);
 }
 

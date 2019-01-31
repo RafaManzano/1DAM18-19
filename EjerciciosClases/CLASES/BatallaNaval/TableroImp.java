@@ -1,36 +1,42 @@
 /*
  * Tipo TableroImp
- * Propiedades basicas
- * Tablero
- * Tipo:[][]Barco
- * Cons: Si
- * Mod: No
  * 
- * Propiedades Derivadas
+ * Propiedades Basicas
+ * 
+ * Tablero
+ * Tipo: CasillaImp[][]
+ * Cons: Si 
+ * Mod: Si
+ * 
+ * Propiedades derivadas
  * No hay
  * 
  * Propiedades compartidas
  * No hay
  * 
- * Get and set
- * public Barco[][]	getTablero()
- * public void setTablero (Barco[][] tablero)
+ * Get and Set
+ * public CasillaImp[][] getTablero()
+ * public void setTabler(CasillaImp[][] tablero)
+ * 
+ * Requisitos
+ * No hay
  * 
  * Metodos anhadidos
- * public Barco[][] cargarArray()
- */
+ * Por el momento, no hay
+ * 
+*/
 
 
-public class TableroImp implements Cloneable {
+public class TableroImp implements Cloneable, Tablero {
 	//Atributos
-	private Barco[][] tablero;
+	private CasillaImp[][] tablero;
 	
 	//Constructor
 	public TableroImp () { //Por defecto
 		tablero = null;
 	}
 	
-	public TableroImp (Barco[][] tablero) { //Con parametros
+	public TableroImp (CasillaImp[][] casilla) { //Con parametros
 		this.tablero = tablero;
 	}
 	
@@ -39,11 +45,11 @@ public class TableroImp implements Cloneable {
 	}
 	
 	//Get and Set
-	public Barco[][] getTablero() {
+	public CasillaImp[][] getTablero() {
 		return tablero;
 	}
 	
-	public void setTablero(Barco[][] tablero) {
+	public void setTablero(CasillaImp[][] casilla) {
 		this.tablero = tablero;
 	}
 	
@@ -106,12 +112,12 @@ public class TableroImp implements Cloneable {
 	 * E/S: No hay
 	 * Postcondiciones: Asociado al nombre, el tablero es cargado con todos
 	*/
-	public Barco[][] cargarTablero() {
-		Barco[][] tablero = new Barco[10][10];
+	public String cargarTablero() {
+		String tablero = new Barco[10][10];
 		
 		for(int i = 0; i < tablero.length; i++) {
 			for(int j = 0; j < tablero[0].length; j++){
-				tablero[i][j] = null;
+				tablero[i][j] = "[]";
 			}
 		}
 		return tablero;

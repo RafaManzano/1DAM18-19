@@ -44,12 +44,12 @@ public class CasillaImp {
 	//Constructor
 	public CasillaImp () { //Por defecto
 		dibujo = "[]";
-		barco = new Barco();
+		barco = new BarcoImp();
 	}
 	
 	public CasillaImp (String dibujo, int id, int tamanho) { //Con parametros de barco
 		this.dibujo = dibujo;
-		this.barco = new Barco(id, tamanho); 
+		this.barco = new BarcoImp(id, tamanho); 
 	}
 	
 	public CasillaImp (String dibujo) { //Con parametros para dibujo
@@ -58,7 +58,7 @@ public class CasillaImp {
 	
 	public CasillaImp (CasillaImp cop) {
 		this.dibujo = cop.getDibujo();
-		this.barco = new Barco(barco); //Preguntar y cambiar circulo
+		this.barco = new BarcoImp(barco); //Preguntar y cambiar circulo
 	}
 	
 	//Get and Set
@@ -72,10 +72,82 @@ public class CasillaImp {
 	}
 	
 	//Patron delegacion
+	//ID
+	
 	public int getIDBarco() {
 		return barco.getID();
 	}
 	
-	public void setIDBarco() {
+	//Tamanho
+	
+	public int getTamanho() {
+		return barco.getTamanho();
+	}
+	
+	
+	public void setTamanho(int tamanho) {
+		barco.setTamanho(tamanho);
+	}
+	
+	//Metodos de la clase Object
+	//toString
+	@Override
+	public String toString() {
+		return dibujo + barco.toString();
+	}
+	
+	//hashCode
+	@Override
+	public int hashCode() {
+		return 17 * barco.getTamanho() + 3 * 101;
+	}
+	
+	//equals
+	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+		
+		if(this == obj) {
+			res = true;
+		}
+		
+		else if(obj != null && obj instanceof CasillaImp) {
+			CasillaImp otro = (CasillaImp) obj;
+			
+			if(this.dibujo == otro.getDibujo()) {
+				res = true;
+			}
+		}
+		return res;
+	}
+	
+	//clone
+	@Override
+	public CasillaImp clone() {
+		CasillaImp copia = null;
+		
+		try {
+			copia = (CasillaImp)super.clone();
+		}
+		catch(CloneNotSupportedException err) {
+			System.out.println("Objeto no clonado");
+		}
+		return copia;
+	}
+	
+	//deepClone
+	public CasillaImp deepClone() {
+		CasillaImp copia = null;
+		try {
+			copia = (CasillaImp) super.clone();
+			copia.barco = new BarcoImp(this.barco);
+		}
+		catch(CloneNotSupportedException error) {
+			System.out.println("Objeto no clonado");
+		}
+		return copia;
+	}
+	
+	//No necesito compareTo
 }
 
