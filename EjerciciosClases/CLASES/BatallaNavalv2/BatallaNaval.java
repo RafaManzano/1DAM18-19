@@ -26,10 +26,12 @@
  * 
  * Modulo Juego
  * Inicio
+ * 	LeeryValidarNumero*
  * 	AsignaTableroJugadorRival*
- * 	RellenarTablerosBarcos*
+ * 	RellenarTableroBarcoJ1*
+ * 	RellenarTableroBarcoRival*
  * 	Repetir
- * 		LeeryValidarFilaColumna
+ * 		LeeryValidarNumero*
  * 		EfectuarDisparo*
  * 		MostrarDisparo*
  * 	Mientras haya barcos vivos
@@ -60,6 +62,9 @@ public class BatallaNaval {
 			//AsignaTableroJugadorRival*
 			utilidadesNaval.AsignaTableroJugadorRival(tabJ1, tabRival);
 			
+			//LeeryValidarNumero
+			fila = utilidadesNaval.leeryValidarNumero();
+			columna = utilidadesNaval.leeryValidarNumero();
 			//RellenarTableroBarcoJ1*
 			
 			//RellenarTableroBarcoRival*

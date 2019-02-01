@@ -1,3 +1,4 @@
+import java.util.*;
 public class utilidadesNaval {
 	/*
 	 * Interfaz
@@ -16,18 +17,26 @@ public class utilidadesNaval {
 		rival.cargarTablero();
 	}
 	
-	/*
+	/* 
 	 * Interfaz
-	 * Nombre: RellenarTableroBarcoJ1
-	 * Comentario: Este subprograma rellena con barcos en la posicion deseada por el usuario
-	 * Cabecera: public static void RellenarTableroBarcoJ1(TableroImp j1, int fila, int columna)
+	 * Nombre: LeeryValidarNumero
+	 * Comentario: Este subprograma validara el numero para la fila y la columna
+	 * Cabecera: public static int LeeryValidarNumero ()
 	 * Precondiciones: No hay
-	 * Entrada: - TableroImp j1  
-	 * 			- int fila
-	 * 			- int columna
-	 * Salida: No hay
+	 * Entrada: No hay
+	 * Salida: - int numero //El numero ya correcto
 	 * E/S: No hay
-	 * Postcondiciones: Por referencia, solo se asigna al tablero la posicion de los barcos
+	 * Postcondiciones: Asociado al nombre, el numero despues de realizar la comprobacion
 	*/
+	public static int leeryValidarNumero (){
+		Scanner teclado = new Scanner(System.in);
+		int numero = 0;
+		do {
+			System.out.println("Que posicion quieres introducir?");
+			numero = teclado.nextInt();
+		}
+		while(numero < 0 || numero > 10);
+		return numero;
+	}
 }
 

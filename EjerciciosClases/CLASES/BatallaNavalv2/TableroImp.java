@@ -26,7 +26,7 @@
  * 
 */
 
-
+import java.util.*;
 public class TableroImp implements Cloneable, Tablero {
 	//Atributos
 	private boolean[][] tablero;
@@ -124,7 +124,7 @@ public class TableroImp implements Cloneable, Tablero {
 	
 	/*
 	 * Interfaz
-	 * Nombre: pintarTablero
+	 * Nombre: pintarTableroVacio
 	 * Comentario: Este subprograma pinta el tablero vacio
 	 * Cabecera: public void pintarTablero()
 	 * Precondiciones: No hay
@@ -133,7 +133,7 @@ public class TableroImp implements Cloneable, Tablero {
 	 * E/S: No hay
 	 * Postcondiciones: No hay
 	*/
-	public void pintarTablero() {
+	public void pintarTableroVacio() {
 		for(int i = 0; i < tablero.length; i++) {
 			for(int j = 0; j < tablero[0].length; j++){
 				 System.out.print("[ ]");
@@ -144,22 +144,78 @@ public class TableroImp implements Cloneable, Tablero {
 	
 	/*
 	 * Interfaz
-	 * Nombre: pintarTableroAgua
+	 * Nombre: pintarTableroLleno
 	 * Comentario: Este subprograma pinta el tablero con agua
-	 * Cabecera: public void pintarTableroAgua()
+	 * Cabecera: public void pintarTableroLleno()
 	 * Precondiciones: No hay
 	 * Entrada: No hay
 	 * Salida: No hay
 	 * E/S: No hay
 	 * Postcondiciones: No hay
 	*/
-	public void pintarTableroAgua() {
+	public void pintarTableroLleno() {
 		for(int i = 0; i < tablero.length; i++) {
 			for(int j = 0; j < tablero[0].length; j++){
-				 System.out.print("[A]");
+				if(tablero[i][j] == false) {
+					System.out.print("[A]");
+				}
+				else {
+					System.out.print("[B]");
+				}
 			}
 			System.out.println();
 		}
+	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: IntroducirBarco
+	 * Comentario: Este subprograma introduce el tamanho del barco deseado
+	 * Cabecera: public void introducirBarco (int tamanho)
+	 * Precondiciones: tamanho tiene que estar entre 1 y 6
+	 * Entrada: - int tamanho //Es el tamanho del barco
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: No hay, solo asigna a la posicion true para indicar que hay barco
+	*/
+	
+	public void introducirBarco(int tamanho) {
+		Random random = new Random();
+		int fila;
+		int columna;
+		int decision;
+		boolean fin;
+		
+		do {
+			fila = random.nextInt(10);
+			columna = random.nextInt(10);
+			decision = random.nextInt(2);
+			fin = false;
+			
+			if(decision == 0) {
+				for(int i = 0; i < tamanho && fin == false; i++) {
+					if(fila + i > 9) {
+						fin = true;
+						cargarTablero();
+					}
+					else {
+						tablero[fila + i][columna] = true;
+					}					
+				}
+			}
+			else {
+				for(int i = 0; i < tamanho && fin == false; i++) {
+					if(columna + i > 9) {
+						fin = true;
+						cargarTablero();
+					}
+					else {
+						tablero[fila][columna + i] = true;
+					}
+				}
+			}
+		}
+		while(fin == true);
 	}
 }
 
