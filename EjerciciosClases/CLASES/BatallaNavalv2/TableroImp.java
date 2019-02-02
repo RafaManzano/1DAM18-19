@@ -157,10 +157,10 @@ public class TableroImp implements Cloneable, Tablero {
 		for(int i = 0; i < tablero.length; i++) {
 			for(int j = 0; j < tablero[0].length; j++){
 				if(tablero[i][j] == false) {
-					System.out.print("[A]");
+					System.out.print("[0]");
 				}
 				else {
-					System.out.print("[B]");
+					System.out.print("[1]");
 				}
 			}
 			System.out.println();
@@ -179,43 +179,98 @@ public class TableroImp implements Cloneable, Tablero {
 	 * Postcondiciones: No hay, solo asigna a la posicion true para indicar que hay barco
 	*/
 	
+	//Hay que modelar mas cosas pero la idea es mejorar este codigo
+	//Hay que añadir para que el tablero original no tenga barco (true,true)
+	
 	public void introducirBarco(int tamanho) {
 		Random random = new Random();
 		int fila;
 		int columna;
 		int decision;
 		boolean fin;
+		boolean[][] aux = new boolean[10][10];
 		
 		do {
 			fila = random.nextInt(10);
 			columna = random.nextInt(10);
 			decision = random.nextInt(2);
 			fin = false;
-			
+				
 			if(decision == 0) {
 				for(int i = 0; i < tamanho && fin == false; i++) {
-					if(fila + i > 9) {
+					if(fila + i > 9 || tablero[fila + i][columna] == true) {
 						fin = true;
-						cargarTablero();
+						aux = cargarTablero();
 					}
 					else {
-						tablero[fila + i][columna] = true;
+						aux[fila + i][columna] = true;
 					}					
 				}
 			}
 			else {
 				for(int i = 0; i < tamanho && fin == false; i++) {
-					if(columna + i > 9) {
+					if(columna + i > 9 || tablero[fila][columna + i] == true) {
 						fin = true;
-						cargarTablero();
+						aux = cargarTablero();
 					}
 					else {
-						tablero[fila][columna + i] = true;
+						 aux[fila][columna + i] = true;
 					}
 				}
 			}
 		}
 		while(fin == true);
+		
+		combinarTablero(aux);
+		
 	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: ComprobarCasilla
+	 * Comentario: Este subprograma comprueba si una casilla esta descubierta o no
+	 * Cabecera: public boolean ComprobarCasilla (int fila, int columna)
+	 * Precondiciones: - Fila tiene que ser de 1 a 10
+	 * 				   - Columna tiene que ser de 1 a 10
+	 * Entrada: int fila
+	 * 		    int columna
+	 * Salida: - boolean salida //Es true si esta descubierta y false si no lo esta
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, si esta descubierta es true y si esta descubierta es false
+	*/
+	
+	public boolean comprobarCasilla(int fila, int columna) {
+		boolean salida = false;
+		
+		if(tablero[fila][columna] == true) {
+			salida = true;
+		}
+		
+		return salida;
+	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: combinarTablero
+	 * Comentario: Este subprograma combina un tablero auxiliar con el tablero del juego
+	 * Cabecera: public void combinarTablero(boolean[][] aux)
+	 * Precondiciones: No hay
+	 * Entrada: boolean[][] aux //Tablero auxiliar
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: no hay, solo combina las posiciones del tablero auxiliar con el del juego
+	 * 
+	*/
+	//Modificar esta copiado de otro lado
+	public void combinarTablero(boolean[][] aux) {
+		for(int i = 0; i < aux.length; i++) {
+			for(int j = 0; j < aux[0].length; j++){
+				if(tablero[i][j] == false && aux[i][j] == true) {
+					tablero[i][j] = aux[i][j];
+				}
+			}
+		}
+	}
+	
 }
 
