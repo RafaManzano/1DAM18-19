@@ -182,6 +182,7 @@ public class TableroImp implements Cloneable, Tablero {
 	//Hay que modelar mas cosas pero la idea es mejorar este codigo
 	//Hay que añadir para que el tablero original no tenga barco (true,true)
 	
+	/*
 	public void introducirBarco(int tamanho) {
 		Random random = new Random();
 		int fila;
@@ -224,7 +225,47 @@ public class TableroImp implements Cloneable, Tablero {
 		combinarTablero(aux);
 		
 	}
+	*/
 	
+	public void introducirBarco(int tamanho) {
+		//Mirar el mapa e introducir el barco
+		//No se puede ni fuera del mapa ni encima de otro barco
+		int fila;
+		int columna;
+		int decision;
+		boolean repetir;
+		boolean[][] aux = new boolean[10][10];
+		Random random = new Random();
+		
+		do {
+			fila = random.nextInt(10);
+			columna = random.nextInt(10);
+			decision = random.nextInt(2);
+			repetir = false;
+			
+			for(int i = 0; i < tamanho; i++) {
+				if(decision == 0) {
+					if((fila > 9 || columna > 9) || tablero[fila + i][columna] == true) {
+						repetir = true;
+					}
+					else {
+						aux[fila + i][columna] = true;
+					}
+				}
+				else {
+					if((fila > 9 || columna > 9) || tablero[fila + i][columna] == true) {
+						repetir = true;
+					}
+					else {
+						aux[fila][columna + i] = true;
+					}
+				}
+			}
+		}
+		while(repetir == true);
+	
+		
+}
 	/*
 	 * Interfaz
 	 * Nombre: ComprobarCasilla
@@ -263,14 +304,21 @@ public class TableroImp implements Cloneable, Tablero {
 	*/
 	//Modificar esta copiado de otro lado
 	public void combinarTablero(boolean[][] aux) {
-		for(int i = 0; i < aux.length; i++) {
-			for(int j = 0; j < aux[0].length; j++){
-				if(tablero[i][j] == false && aux[i][j] == true) {
-					tablero[i][j] = aux[i][j];
+		boolean repetir;
+		do {
+			repetir = false;
+			for(int i = 0; i < aux.length; i++) {
+				for(int j = 0; j < aux[0].length; j++){
+					if(tablero[i][j] == false && aux[i][j] == true) {
+						tablero[i][j] = aux[i][j];
+					}
+					else {
+						repetir = true;
+					}
 				}
 			}
 		}
+		while (repetir == true);
 	}
-	
 }
 
