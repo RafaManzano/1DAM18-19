@@ -92,25 +92,27 @@ public class utilidadesNaval {
 	
 	/*
 	 * Interfaz
-	 * Nombre: pintarDisparoTablero
-	 * Comentario: Este subprograma pinta el mapa del rival con los disparos que ha impactado en barco
-	 * Cabecera: public void pintarDisparoTablero (int fila, int columna, boolean[][] tablero)
+	 * Nombre: tableroDisparo
+	 * Comentario: Este subprograma registra los impactos en barco del rival
+	 * Cabecera: public boolean[][] tableroDisparo (int fila, int columna, TableroImp rival)
 	 * Precondiciones: - fila tiene que ser entre 0 y 9
 	 * 				   - columna tiene que ser entre 0 y 9
 	 * Entrada: - int fila
 	 * 			- int columna
-	 * 			- boolean[][] tablero //Es el tablero del rival
-	 * Salida: Nada
+	 * 			- TableroImp rival //Es el tablero del rival
+	 * Salida: boolean[][]
 	 * E/S: Nada
-	 * Postcondiciones: Pinta en pantalla el tablero con los disparos
+	 * Postcondiciones: Asociado al nombre, un array bidimensional para el tablero
 	 */
-	public static void pintarDisparoTablero(int fila, int columna, boolean[][] tablero) {
-		TableroImp tableroNovo = new TableroImp();
-		boolean[][] nuevoTablero = new boolean[10][10];
+	public static boolean[][] tableroDisparo(int fila, int columna, TableroImp tablero, boolean[][] aRellenar) {
+		boolean[][]tableroElegido = tablero.getTablero();
 		
-		if(tablero[fila][columna] = true) {
-			
+		if(tableroElegido[fila][columna] == true) {
+			aRellenar[fila][columna] = true;
 		}
+		
+		return aRellenar;
 	}
+	
 }
 

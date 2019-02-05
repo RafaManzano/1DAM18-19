@@ -52,6 +52,7 @@ public class BatallaNaval {
 		TableroImp tabJ1 = new TableroImp();
 		TableroImp tabRival = new TableroImp();
 		TableroImp copiaRival = new TableroImp();
+		boolean[][] aRellenar = new boolean[10][10];
 		char respuesta;
 		Scanner teclado = new Scanner(System.in);
 		Random random = new Random();
@@ -78,8 +79,8 @@ public class BatallaNaval {
 				tabRival.introducirBarco(i);
 			}
 			
-			copiaRival = tabRival.clone(); //Este clone seria para ver los aciertos que realiza el jugador de modo grafico
-			copiaRival.pintarTableroLleno();
+			//copiaRival = tabRival.clone(); //Este clone seria para ver los aciertos que realiza el jugador de modo grafico
+			//copiaRival.pintarTableroLleno();
 			
 			System.out.println("Espere, por favor");
 			System.out.println("Estamos generando el tablero aleatoriamente");
@@ -96,7 +97,7 @@ public class BatallaNaval {
 				//LeeryValidarFilaColumna
 				fila = utilidadesNaval.leeryValidarNumero();
 				columna = utilidadesNaval.leeryValidarNumero();
-				
+				copiaRival.setTablero(utilidadesNaval.tableroDisparo(fila, columna, tabRival, aRellenar));
 				//FilaColumnaRival
 				filaR = random.nextInt(10);
 				columnaR = random.nextInt(10);
@@ -110,7 +111,8 @@ public class BatallaNaval {
 				utilidadesNaval.efectuarDisparo(filaR, columnaR, tabJ1);
 				
 				System.out.println("Asi queda el tablero del rival");
-				utilidadesNaval.pintarDisparoTablero(fila, columna, copiaRival.getTablero());
+				copiaRival.pintarTableroLleno();
+				//utilidadesNaval.pintarDisparoTablero(fila, columna, copiaRival, aRellenar));
 				
 			} //Mientras alguno de los tableros no se hayan descubierto completo
 			while(utilidadesNaval.ComprobarFinalPartida(tabJ1) == false && utilidadesNaval.ComprobarFinalPartida(tabRival) == false);
