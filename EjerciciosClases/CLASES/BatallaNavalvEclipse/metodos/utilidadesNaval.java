@@ -13,7 +13,7 @@ public class utilidadesNaval {
 	 * 			- TableroImp rival
 	 * Salida: No hay
 	 * E/S: No hay
-	 * Postcondiciones: Por referencia, solo se asigna a los tableros para que sus casillas esten a false
+	 * Postcondiciones: Por referencia, se cargan los dos tableros a la vez
 	*/
 	public static void AsignaTableroJugadorRival(TableroImp j1, TableroImp rival) {
 		j1.cargarTablero();
@@ -35,7 +35,7 @@ public class utilidadesNaval {
 		Scanner teclado = new Scanner(System.in);
 		int numero = 0;
 		do {
-			System.out.println("Que posicion quieres introducir?");
+			System.out.print("Que posicion quieres introducir? (Primero digame la fila y despues la columna) ");
 			numero = teclado.nextInt();
 		}
 		while(numero < 0 || numero > 10);
@@ -73,19 +73,44 @@ public class utilidadesNaval {
 	 * Nombre: ComprobarFinalPartida
 	 * Comentario: Este subprograma comprueba si se han hundido todos los barco
 	 * Cabecera: public boolean ComprobarFinalPartida (TableroImp tablero)
-	 * Precondiciones: 
-	 * Entrada: 
-	 * Salida:
+	 * Precondiciones: No hay
+	 * Entrada: TableroImp tablero //Un Objeto de la clase tablero
+	 * Salida: boolean descubierto //Si esta descubierto es que todas sus casillas estan a false y si no es que todavia no se han descubierto
 	 * E/S: No hay
 	 * Postcondiciones: Asociado al nombre, Es true si todas las casillas son false y false si no lo son
 	*/
 	
 	public static boolean ComprobarFinalPartida(TableroImp tablero) {
-		TableroImp riv = new TableroImp();
+		boolean descubierto;
+		TableroImp tablerovacio = new TableroImp();
 		
-		riv.cargarTablero();
+		tablerovacio.cargarTablero();
 		
-		return riv.equals(tablero);
+		descubierto = tablerovacio.equals(tablero);
+		return descubierto;
+	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: pintarDisparoTablero
+	 * Comentario: Este subprograma pinta el mapa del rival con los disparos que ha impactado en barco
+	 * Cabecera: public void pintarDisparoTablero (int fila, int columna, boolean[][] tablero)
+	 * Precondiciones: - fila tiene que ser entre 0 y 9
+	 * 				   - columna tiene que ser entre 0 y 9
+	 * Entrada: - int fila
+	 * 			- int columna
+	 * 			- boolean[][] tablero //Es el tablero del rival
+	 * Salida: Nada
+	 * E/S: Nada
+	 * Postcondiciones: Pinta en pantalla el tablero con los disparos
+	 */
+	public static void pintarDisparoTablero(int fila, int columna, boolean[][] tablero) {
+		TableroImp tableroNovo = new TableroImp();
+		boolean[][] nuevoTablero = new boolean[10][10];
+		
+		if(tablero[fila][columna] = true) {
+			
+		}
 	}
 }
 

@@ -23,7 +23,11 @@ package clases;
  * No hay
  * 
  * Metodos anhadidos
- * Por el momento, no hay
+ * public TableroImp cargarTablero()
+ * public void pintarTablero()
+ * public void pintarTableroLleno()
+ * public void introducirBarco (int tamanho)
+ * public void borrarEstela(int fila, int columna, int decision)
  * 
 */
 
@@ -111,9 +115,9 @@ public class TableroImp implements Cloneable, Tablero {
 	 * Cabecera: public TableroImp cargarTablero() 
 	 * Precondiciones: No hay
 	 * Entrada; No hay
-	 * Salida: TableroImp tablero //El tablero ya cargado con null
+	 * Salida: boolean[][] //El tablero cargado con sus posiciones a false
 	 * E/S: No hay
-	 * Postcondiciones: Asociado al nombre, el tablero es cargado con todos
+	 * Postcondiciones: Asociado al nombre, el tablero es cargado con todas sus posiciones a false
 	*/
 	public boolean[][] cargarTablero() {
 		
@@ -148,7 +152,7 @@ public class TableroImp implements Cloneable, Tablero {
 	/*
 	 * Interfaz
 	 * Nombre: pintarTableroLleno
-	 * Comentario: Este subprograma pinta el tablero con agua
+	 * Comentario: Este subprograma pinta el tablero 
 	 * Cabecera: public void pintarTableroLleno()
 	 * Precondiciones: No hay
 	 * Entrada: No hay
@@ -163,7 +167,7 @@ public class TableroImp implements Cloneable, Tablero {
 					System.out.print("[0]");
 				}
 				else {
-					System.out.print("[1]");
+					System.out.print("[X]");
 				}
 			}
 			System.out.println();
@@ -179,7 +183,7 @@ public class TableroImp implements Cloneable, Tablero {
 	 * Entrada: - int tamanho //Es el tamanho del barco
 	 * Salida: No hay
 	 * E/S: No hay
-	 * Postcondiciones: No hay, solo asigna a la posicion true para indicar que hay barco
+	 * Postcondiciones: Asigna a la posicion true para indicar que hay barco
 	*/
 	
 	//Hay que modelar mas cosas pero la idea es mejorar este codigo
@@ -325,7 +329,9 @@ public class TableroImp implements Cloneable, Tablero {
 	 * 			- int decision
 	 * Salida: No hay
 	 * E/S: No hay
-	 * Postcondiciones: No hay, solo asigna en la posicion indicada false, para decir que el barco ha sido eliminado, en caso de error
+	 * Postcondiciones: Asigna la posicion dependiendo:
+	 * 					- Si estaba a false significa que habia un barco anteriormente entonces esa posicion hay que ponerla a true
+	 * 					- Si esta true significa que hay que ponerlo a false porque nos hemos pasado pot lo que debemos eliminar la estela del barco que ha causado el error (todas sus posiciones a false)
 	 * 
 	*/
 	public void borrarEstela(int fila, int columna, int decision, int tamanho) {

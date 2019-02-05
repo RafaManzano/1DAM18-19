@@ -7,6 +7,7 @@ public class testTablero {
 		TableroImp t1 = new TableroImp(); 
 		for (int i = 1; i <= 6; i++) {
 			t1.introducirBarco(i);
+			
 		}
 			t1.pintarTableroLleno();
 	}
