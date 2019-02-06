@@ -1,3 +1,4 @@
+package main;
 /*
  * Nombre del programa: BatallaNaval
  * Comentario: El juego es imitando al juego de mesa hundir la flota
@@ -39,11 +40,16 @@
  */
 
 import java.util.*;
+
+import clases.TableroImp;
+import metodos.utilidadesNaval;
 public class BatallaNaval {
 	
 	public static void main (String[] args) {
 		int fila;
 		int columna;
+		int filaR;
+		int columnaR;
 		TableroImp tabJ1 = new TableroImp();
 		TableroImp tabRival = new TableroImp();
 		char respuesta;
@@ -62,13 +68,37 @@ public class BatallaNaval {
 			//AsignaTableroJugadorRival*
 			utilidadesNaval.AsignaTableroJugadorRival(tabJ1, tabRival);
 			
-			//LeeryValidarNumero
-			fila = utilidadesNaval.leeryValidarNumero();
-			columna = utilidadesNaval.leeryValidarNumero();
 			//RellenarTableroBarcoJ1*
+			for(int i = 0; i <= 6; i++) {
+				tabJ1.introducirBarco(i);
+			}
 			
-			//RellenarTableroBarcoRival*
+			for(int i = 0; i <= 6; i++) {
+				tabRival.introducirBarco(i);
+			}
 			
+			
+			do {
+				//LeeryValidarNumero
+				fila = utilidadesNaval.leeryValidarNumero();
+				columna = utilidadesNaval.leeryValidarNumero();
+				filaR = random.nextInt(10);
+				columnaR = random.nextInt(10);
+				
+				
+				//EfectuarDisparo
+				utilidadesNaval.efectuarDisparo(fila, columna, tabRival);
+				utilidadesNaval.efectuarDisparo(filaR, columnaR, tabJ1);
+				
+			}
+			while(utilidadesNaval.ComprobarFinalPartida(tabJ1) == false && utilidadesNaval.ComprobarFinalPartida(tabRival) == false);
+			
+			if(utilidadesNaval.ComprobarFinalPartida(tabJ1) == true) {
+				System.out.println("Has ganado");
+			}
+			else {
+				System.out.println("Has perdido");
+			}
 			
 			//LeeryValidarRespuesta
 			do {

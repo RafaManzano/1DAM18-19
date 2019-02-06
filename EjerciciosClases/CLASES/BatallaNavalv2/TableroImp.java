@@ -1,3 +1,4 @@
+package clases;
 /*
  * Tipo TableroImp
  * 
@@ -27,6 +28,8 @@
 */
 
 import java.util.*;
+
+import interfaces.Tablero;
 public class TableroImp implements Cloneable, Tablero {
 	//Atributos
 	private boolean[][] tablero;
@@ -234,7 +237,6 @@ public class TableroImp implements Cloneable, Tablero {
 		int columna;
 		int decision;
 		boolean repetir;
-		boolean[][] aux = new boolean[10][10];
 		Random random = new Random();
 		
 		do {
@@ -245,53 +247,37 @@ public class TableroImp implements Cloneable, Tablero {
 			
 			for(int i = 0; i < tamanho; i++) {
 				if(decision == 0) {
-					if(tablero[fila + i][columna] == true || fila + i > 9) {
+					if(fila + i > 9) {
 						repetir = true;
 					}
-					else {
-						tablero[fila + i][columna] = true;
-					}
+					else if(tablero[fila + i][columna] == true) {
+						repetir = true;
+						tablero[fila + i][columna] = false;
+						 }
+						 else {
+							 tablero[fila + i][columna] = true;
+						 }
 				}
 				else {
-					if(tablero[fila][columna + i] == true || columna + i > 9) {
+					if(columna + i > 9) {
 						repetir = true;
 					}
-					else {
+					else if(tablero[fila][columna + i] == true) {
+							repetir = true;
+							tablero[fila][columna + i] = false;
+						 }
+						 else {
 						tablero[fila][columna + i] = true;
+						 }
 					}
-				}
-				if(repetir == true) {
+				
+			}
+			if(repetir == true) {
 					borrarEstela(fila, columna, decision, tamanho);
-				}
 			}
 		}
 		while(repetir == true);
-	
-		
 }
-	/*
-	 * Interfaz
-	 * Nombre: ComprobarCasilla
-	 * Comentario: Este subprograma comprueba si una casilla esta descubierta o no
-	 * Cabecera: public boolean ComprobarCasilla (int fila, int columna)
-	 * Precondiciones: - Fila tiene que ser de 1 a 10
-	 * 				   - Columna tiene que ser de 1 a 10
-	 * Entrada: int fila
-	 * 		    int columna
-	 * Salida: - boolean salida //Es true si esta descubierta y false si no lo esta
-	 * E/S: No hay
-	 * Postcondiciones: Asociado al nombre, si esta descubierta es true y si esta descubierta es false
-	*/
-	
-	public boolean comprobarCasilla(int fila, int columna) {
-		boolean salida = false;
-		
-		if(tablero[fila][columna] == true) {
-			salida = true;
-		}
-		
-		return salida;
-	}
 	
 	/*
 	 * Interfaz
@@ -346,12 +332,23 @@ public class TableroImp implements Cloneable, Tablero {
 		for(int i = 0; i < tamanho; i++) {
 				if(decision == 0) {
 					if(fila + i < 10) {
-						tablero[fila + i][columna] = true;
+						if(tablero[fila + i][columna] == false) {
+							tablero[fila + i][columna] = true;
+						}
+						else {
+							tablero[fila + i][columna] = false;
+						}
+						
 					}
 				}
 				else {
-					if(columna + i < 0) {
-						tablero[fila][columna + i] = false;
+					if(columna + i < 10) {
+						if(tablero[fila][columna + i] == false) {
+							tablero[fila][columna + i] = true;
+						}
+						else {
+							tablero[fila][columna + i] = false;
+						}
 					}
 				}
 			}

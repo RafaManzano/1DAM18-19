@@ -88,8 +88,9 @@ public class Persona implements Cloneable, Comparable <Persona> {
 	private TipoSexo sexo;
 	private int peso;
 	private int altura;
-	private static int sumaid = 1;
-	private int id;
+	private int idPersona;
+	private static int id = 1;
+	
 	
 	//Constructores
 	public Persona() { //Por defecto
@@ -99,7 +100,7 @@ public class Persona implements Cloneable, Comparable <Persona> {
 		sexo = sexo.NODEFINIDO;
 		peso = 0;
 		altura = 0;
-		id = sumaid++;
+		idPersona = id++;
 	}
 	
 	public Persona(String nombre, int edad, String DNI, TipoSexo sexo, int peso, int altura) { //Con parametros
@@ -109,7 +110,7 @@ public class Persona implements Cloneable, Comparable <Persona> {
 		this.sexo = sexo;
 		this.peso = peso;
 		this.altura = altura;
-		id = sumaid++;
+		idPersona = id++;
 	}
 	
 	public Persona (Persona copia) { //De copia
@@ -119,7 +120,7 @@ public class Persona implements Cloneable, Comparable <Persona> {
 		this.sexo = copia.getSexo();
 		this.peso = copia.getPeso();
 		this.altura = copia.getAltura();
-		this.id = sumaid++;
+		this.idPersona = id++;
 	}
 	
 	//Get and Set
@@ -188,8 +189,8 @@ public class Persona implements Cloneable, Comparable <Persona> {
 	}
 	
 	//ID
-	public int getID() {
-		return id;
+	public int getIDPersona() {
+		return idPersona;
 	}
 	
 	//Metodos de la clase object
@@ -223,7 +224,7 @@ public class Persona implements Cloneable, Comparable <Persona> {
 			
 			//4. Comparamos los atributos uno a uno y si todos coinciden, devolveremos true
 			if (this.nombre == otro.getNombre() &&
-				this.id == otro.getID() &&
+				this.id == otro.getIDPersona() &&
 				this.edad == otro.getEdad() &&
 				this.DNI == otro.getDNI() &&
 				this.sexo == otro.getSexo() &&

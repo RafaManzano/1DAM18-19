@@ -1,3 +1,7 @@
+package clases;
+import excepciones.ExcepcionBarco;
+import interfaces.Barco;
+
 /*
  * Tipo Barco
  * 
@@ -42,7 +46,7 @@ public class BarcoImp implements Barco {
 		this.tamanho = tamanho;
 	}
 	
-	public BarcoImp (Barco cop) {
+	public BarcoImp (Barco cop) { //De copia
 		this.tamanho = cop.getTamanho();
 	}
 	

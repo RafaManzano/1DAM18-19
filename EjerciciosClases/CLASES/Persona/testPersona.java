@@ -7,11 +7,11 @@ public class testPersona {
 	Persona p4 = new Persona(p2);
 	Persona p5 = new Persona(p2);
 	
-	System.out.println(p3.getID());
-	System.out.println(p1.getID());
-	System.out.println(p2.getID());
-	System.out.println(p4.getID());
-	System.out.println(p5.getID());
+	System.out.println(p3.getIDPersona());
+	System.out.println(p1.getIDPersona());
+	System.out.println(p2.getIDPersona());
+	System.out.println(p4.getIDPersona());
+	System.out.println(p5.getIDPersona());
 		
 		try {
 			p1.setAltura(-1);
