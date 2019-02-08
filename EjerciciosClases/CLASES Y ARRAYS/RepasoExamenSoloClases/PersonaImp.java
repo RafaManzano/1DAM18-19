@@ -135,15 +135,87 @@ public class PersonaImp {
 		return numeroPie;
 	}
 	
-	public void setNumeroPie(int numeroPie) {
-		this.numeroPie = numeroPie;
+	public void setNumeroPie(int numeroPie) throws ExcepcionPersona{
+		if (numeroPie > 15 && numeroPie <= 58) {
+			this.numeroPie = numeroPie;
+		}
+		else {
+			throw new ExcepcionPersona("NumeroPie tiene que ser mayor que 15 y menor que 58");
+		}
 	}
   
 	//Edad
 	public int getEdad() {
 		int edad = 0;
 		
+		edad = 2019 - fechaNacimiento.getAnio();
+		
 		return edad;
 	}
+	
+	//Metodos de la clase Object
+	//toString
+	@Override
+	public String toString() {
+		return nombre + " , " + apellidos + " , " + fechaNacimiento.toString() + " , " + sexo + " , " + numeroPie;
+	}
+	
+	//hashCode
+	@Override
+	public int hashCode() {
+		return 7 * numeroPie * fechaNacimiento.hashCode() + 21; 
+	}
+	
+	//equals
+	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+		
+		if(this == obj) {
+			res = true;
+		}
+		
+		else if(obj != null && obj instanceof PersonaImp) {
+				PersonaImp otro = (PersonaImp) obj;
+				
+				if(this.nombre == otro.getNombre() &&
+				   this.apellidos == otro.getApellidos()) {
+					   res = true;
+				}
+			 }
+		return res;
+	}
+	
+	//Clone
+	@Override
+	public PersonaImp clone() {
+		PersonaImp copia = null;
+		
+		try {
+			copia = (PersonaImp) super.clone();
+		}
+		catch(CloneNotSupportedException err) {
+			System.out.println("Objeto no clonado");
+		}
+		
+		return copia;
+	}
+	
+	//CloneEnProfundidad
+	public PersonaImp deepClone() {
+		PersonaImp copia = null;
+		
+		try {
+			copia = (PersonaImp) super.clone();
+			copia.fechaNacimiento = new FechaImp(this.fechaNacimiento);
+		}
+		catch(CloneNotSupportedException err) {
+			System.out.println("Objeto no clonado");
+		}
+		
+		return copia;
+	}
+	
+	//No necesitamos compareTo
 }
 
