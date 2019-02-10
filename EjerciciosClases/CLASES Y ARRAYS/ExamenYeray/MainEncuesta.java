@@ -16,7 +16,7 @@
  * 			LeerPersona
  * 			LeerDistrito
  * 		FinPara
- * 		MostrarPorcentajeDistrito*
+ * 		MostrarPorcentajeDistrito
  * 		LeeryValidarRespuesta
  * 	FinMientras
  * Fin
@@ -28,10 +28,11 @@ public class MainEncuesta {
 	public static void main (String[] args) {
 		int encuestas;
 		char respuesta;
-		int norte;
-		int sur;
-		int oeste;
-		int este;
+		int norte = 0;
+		int sur = 0;
+		int oeste = 0;
+		int este = 0;
+		int opcion;
 		EncuestaImp encuesta = new EncuestaImp();
 		PersonaImp persona = new PersonaImp();
 		Scanner teclado = new Scanner(System.in);
@@ -57,7 +58,31 @@ public class MainEncuesta {
 			for(int contador = 0; contador < encuestas; contador++) {
 				//LeerPersona
 				persona = utilEncuestas.leerPersona();
-				//LeerEncuesta
+				
+				do {
+					utilEncuestas.menuDistrito();
+					opcion = teclado.nextInt();
+				}
+				while(opcion < 1 || opcion > 5);
+				
+				switch(opcion) {
+					case 1:
+						norte++;
+					break;
+					
+					case 2:
+						sur++;
+					break;
+					
+					case 3:
+						oeste++;
+					break;
+					
+					case 4:
+						este++;
+					break;
+				}
+				
 			}
 			
 			do {

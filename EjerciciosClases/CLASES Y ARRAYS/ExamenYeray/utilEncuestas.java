@@ -28,12 +28,12 @@ public class utilEncuestas {
 	 System.out.print("Introduzca los apellidos: ");
 	 apellidos = teclado.next();
 	 do {
-	 System.out.print("Introduzca el dia");
-	 dia = teclado.nextInt();
-	 System.out.print(" mes: ");
-	 mes = teclado.nextInt();
-	 System.out.print(" anio: ");
-	 anio = teclado.nextInt();
+		 System.out.print("Introduzca el dia");
+		 dia = teclado.nextInt();
+		 System.out.print(" mes: ");
+		 mes = teclado.nextInt();
+		 System.out.print(" anio: ");
+		 anio = teclado.nextInt();
 	 }
 	 while(validarFecha(dia,mes,anio) == false);
 	 do {
@@ -120,14 +120,55 @@ public class utilEncuestas {
 	
 	/*
 	 * Interfaz
-	 * Nombre: LeerEncuesta
-	 * Comentario: Este subprograma crea e inicializa la encuesta
-	 * Cabecera: public EncuestaImp leerEncuesta(PersonaImp persona)
+	 * Nombre: elegirDistrito
+	 * Comentario: Este subprograma elige el distrito
+	 * Cabecera: public void elegirDistrito(int opcion, EncuestaImp persona)
 	 * Precondiciones: No hay
-	 * Entrada: - PersonaImp persona
-	 * Salida: - EncuestaImp encuesta
-	 * E/S:
-	 * Postcondiciones:
+	 * Entrada: - EncuestaImp encuesta
+	 * Salida: 
+	 * E/S: No hay
+	 * Postcondiciones: Solo cambia el estado del objeto EncuestaImp
 	*/
+	public static EncuestaImp elegirDistrito(int opcion, EncuestaImp encuesta) {
+		TipoDistrito distrito = null;
+		switch(opcion) {
+			case 1:
+				encuesta.setDistrito(distrito.NORTE);
+			break;
+			
+			case 2:
+				encuesta.setDistrito(distrito.SUR);
+			break;
+			
+			case 3:
+				encuesta.setDistrito(distrito.OESTE);
+			break;
+			
+			case 4:
+				encuesta.setDistrito(distrito.ESTE);
+			break;
+		}
+		return encuesta;
+	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: menuDistrito
+	 * Comentario: Este subprograma pinta el menu de los distritos disponibles
+	 * Cabecera: public void menuDistrito()
+	 * Precondiciones: No hay
+	 * Entrada: No hay
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: No hay, solo pinta en pantalla el menu
+	*/
+	
+	public static void menuDistrito() {
+		System.out.println("Elige una opcion disponible");
+		System.out.println("1. Norte");
+		System.out.println("2. Sur");
+		System.out.println("3. Oeste");
+		System.out.println("4. Este");
+	}
 }
 
