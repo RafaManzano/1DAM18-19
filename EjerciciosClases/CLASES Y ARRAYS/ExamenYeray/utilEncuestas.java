@@ -28,11 +28,11 @@ public class utilEncuestas {
 	 System.out.print("Introduzca los apellidos: ");
 	 apellidos = teclado.next();
 	 do {
-		 System.out.print("Introduzca el dia");
+		 System.out.print("Introduzca el dia: ");
 		 dia = teclado.nextInt();
-		 System.out.print(" mes: ");
+		 System.out.print("Introduzca el mes: ");
 		 mes = teclado.nextInt();
-		 System.out.print(" anio: ");
+		 System.out.print("Introduzca el anio: ");
 		 anio = teclado.nextInt();
 	 }
 	 while(validarFecha(dia,mes,anio) == false);
@@ -46,7 +46,7 @@ public class utilEncuestas {
 		 System.out.print("Introduzca su salario: ");
 		 salario = teclado.nextInt();
 	 }
-	 while(salario < 1000 || salario > 2001);
+	 while(salario < 1000 || salario > 2000);
 	 return p1 = new PersonaImp(nombre, apellidos, dia, mes, anio, genero, salario);
  }
  
@@ -169,6 +169,30 @@ public class utilEncuestas {
 		System.out.println("2. Sur");
 		System.out.println("3. Oeste");
 		System.out.println("4. Este");
+	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: porcentajeDistrito
+	 * Comentario: Este subprograma muestra los porcentajes de los distritos
+	 * Cabecera: public void porcentajeDistrito(int norte, int sur, int este, int oeste)
+	 * Precondiciones: No hay
+	 * Entrada: - int norte
+	 * 			- int sur
+	 * 			- int este
+	 * 			- int oeste
+	 * Salida: no hay
+	 * E/S: No hay
+	 * Postcondiciones: No hay, solo pinta en pantalla los porcentajes
+	 * 
+	*/
+	
+	public static void porcentajeDistrito(int norte, int sur, int este, int oeste, int encuestas) {
+		System.out.println("Numero de encuestas totales " + encuestas);
+		System.out.println("Norte: " + (norte * 100) / encuestas);
+		System.out.println("Sur: " + (sur * 100) / encuestas);
+		System.out.println("Este: " + (este * 100) / encuestas);
+		System.out.println("Oeste: " + (oeste * 100) / encuestas);
 	}
 }
 

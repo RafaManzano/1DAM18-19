@@ -14,9 +14,19 @@
  * 		LeeryValidarEncuesta
  * 		Para todas las encuestas
  * 			LeerPersona
- * 			LeerDistrito
+ * 			LeeryValidarDistrito
+ * 			Segun(distrito) 
+ * 				para norte
+ * 					sumamos 1 al norte
+ * 				para sur
+ * 					sumamos 1 al sur
+ * 				para este
+ * 					sumamos 1 al este
+ * 				para oeste
+ * 					sumamos 1 al oeste
+ * 			FinSegun
  * 		FinPara
- * 		MostrarPorcentajeDistrito
+ * 		porcentajeDistrito*
  * 		LeeryValidarRespuesta
  * 	FinMientras
  * Fin
@@ -39,17 +49,21 @@ public class MainEncuesta {
 		
 		//LeeryValidarRespuesta
 		do {
-			System.out.println("Quieres ejecutar el programa");
+			System.out.println("Quieres ejecutar el programa? (S/N)");
 			respuesta = Character.toLowerCase(teclado.next().charAt(0));
 		}
 		while(respuesta != 's' && respuesta != 'n');
 		
 		while(respuesta == 's') {
+			norte = 0;
+			sur = 0;
+			este = 0;
+			oeste = 0;
 			//System.out.println("Entrado");
 			
 			//LeeryValidarEncuesta
 			do {
-				System.out.println("Cuantas encuestas quieres");
+				System.out.println("Cuantas encuestas quieres? (Mayor que 0)");
 				encuestas = teclado.nextInt();
 			}
 			while(encuestas < 1);
@@ -59,11 +73,12 @@ public class MainEncuesta {
 				//LeerPersona
 				persona = utilEncuestas.leerPersona();
 				
+				//LeeryValidarDistrito
 				do {
 					utilEncuestas.menuDistrito();
 					opcion = teclado.nextInt();
 				}
-				while(opcion < 1 || opcion > 5);
+				while(opcion < 1 || opcion > 4);
 				
 				switch(opcion) {
 					case 1:
@@ -85,6 +100,11 @@ public class MainEncuesta {
 				
 			}
 			
+			System.out.println("Una vez acabado todo, procedemos a ver un porcentaje de los distritos donde de se han realizado las pruebas");
+			//porcentajeDistrito*
+			utilEncuestas.porcentajeDistrito(norte, sur, este, oeste, encuestas);
+			
+			//LeeryValidarRespuesta
 			do {
 			System.out.println("Quieres ejecutar el programa");
 			respuesta = Character.toLowerCase(teclado.next().charAt(0));
