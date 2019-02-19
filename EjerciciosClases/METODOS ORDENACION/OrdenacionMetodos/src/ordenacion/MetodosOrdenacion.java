@@ -20,7 +20,7 @@ public class MetodosOrdenacion {
 	 * Inicio
 	 * 	para(i=0 , mientras i < tamanhoArray, incremento 1)
 	 *   	//hace burbujear al menor
-	 *  	para (j = tamanhoArray-1, mientras j > i,decremento 1)
+	 *  	para (j = tamanhoArray - 1, mientras j > i,decremento 1)
 	 *		 	si (array[j] < array[j-1])
 	 *		 		//intercambio de elementos
 	 *		 		aux = array[j];
@@ -47,7 +47,38 @@ public class MetodosOrdenacion {
 	}
 	
 	/*
-	 * 
+	 * Interfaz
+	 * Nombre: Plomada
+	 * Comentario: Este subprograma ordena un array de enteros por el metodo de la plomada
+	 * Cabecera: public void plomada (int[] array)
+	 * Precondiciones: El array no puede estar vacio y no puede estar ordenado
+	 * Entrada: Un array de enteros
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: Cambia el estado del array 
+	 */
+	
+	/*
+	 * PG Plomada
+	 * Inicio
+	 * 	para(i=0 , mientras i < tamanhoArray, i++)
+	 *   	//hace caer al mayor
+	 *   	para(j = tamanhoArray - 1; mientras j < i; j--) 
+	 *   		
+	 *   	FinPara
+	 *  FinPara
+	 */
+	
+	/*
+	 * Interfaz
+	 * Nombre: pintarArray
+	 * Comentario: Este subprograma pinta el array en la pantalla
+	 * Cabecera: public void pintarArray (int[] array)
+	 * Precondiciones: El array no puede estar vacio y no puede estar ordenado
+	 * Entrada: Un array de enteros
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: Solo pinta en pantalla el array
 	 */
 	
 	public static void pintarArray(int[] array) {
