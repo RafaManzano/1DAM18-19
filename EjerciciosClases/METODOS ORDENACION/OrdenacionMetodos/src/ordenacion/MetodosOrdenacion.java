@@ -9,10 +9,10 @@ public class MetodosOrdenacion {
 	 * Comentario: Este subprograma ordena un array de enteros por el metodo de la burbuja
 	 * Cabecera: public void bubbles (int[] array)
 	 * Precondiciones: El array no puede estar vacio
-	 * Entrada: Un array de enteros
+	 * Entrada: No hay
 	 * Salida: No hay
-	 * E/S: No hay
-	 * Postcondiciones: Cambia el estado del array 
+	 * E/S: Un array de entero
+	 * Postcondiciones: El array ordenado
 	 */
 	
 	/*
@@ -52,10 +52,10 @@ public class MetodosOrdenacion {
 	 * Comentario: Este subprograma ordena un array de enteros por el metodo de la plomada
 	 * Cabecera: public void plomada (int[] array)
 	 * Precondiciones: El array no puede estar vacio y no puede estar ordenado
-	 * Entrada: Un array de enteros
+	 * Entrada: No hay
 	 * Salida: No hay
-	 * E/S: No hay
-	 * Postcondiciones: Cambia el estado del array 
+	 * E/S: Un array de entero
+	 * Postcondiciones: El array ordenado
 	 */
 	
 	/*
@@ -94,10 +94,10 @@ public class MetodosOrdenacion {
 	 * Comentario: Este subprograma ordena un array de enteros por el metodo de seleccion directa
 	 * Cabecera: public void seleccionDirecta (int[] array)
 	 * Precondiciones: El array no puede estar vacio y no puede estar ordenado
-	 * Entrada: Un array de enteros
+	 * Entrada: No hay
 	 * Salida: No hay
-	 * E/S: No hay
-	 * Postcondiciones: Cambia el estado del array 
+	 * E/S: Un array de entero
+	 * Postcondiciones: El array ordenado
 	 */
 	
 	/*
@@ -142,10 +142,10 @@ public class MetodosOrdenacion {
 	 * Comentario: Este subprograma ordena un array de enteros por el metodo de insercion directa
 	 * Cabecera: public void insercionDirecta (int[] array)
 	 * Precondiciones: El array no puede estar vacio y no puede estar ordenado
-	 * Entrada: Un array de enteros
+	 * Entrada: No hay
 	 * Salida: No hay
-	 * E/S: No hay
-	 * Postcondiciones: Cambia el estado del array
+	 * E/S: Un array de entero
+	 * Postcondiciones: El array ordenado
 	 * NOTA: Con este metodo evalua las expresiones con cortocircuito por tanto si la primera es falsa no evaluara la segunda
 	 */
 	
