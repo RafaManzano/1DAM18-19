@@ -42,7 +42,7 @@ import interfaces.Socio;
  * AcumSocio
  * Tipo: int
  * Cons: Si
- * Mod: Si
+ * Mod: No
  * 
  * Get and Set
  * NumSocio
@@ -69,7 +69,7 @@ import interfaces.Socio;
  * 
  */
 
-public class SocioImp implements Socio {
+public class SocioImp implements Socio, Cloneable, Comparable<SocioImp> {
 
 	//Atributos
 	private int numSocio;
@@ -174,8 +174,50 @@ public class SocioImp implements Socio {
 	@Override
 	public boolean equals(Object obj) {
 		boolean res = false;
+		
+		if(this == obj) {
+			res = true;
+		}
+		else if(obj != null && obj instanceof SocioImp) {
+			SocioImp otro = (SocioImp)obj;
+			
+			if(this.numSocio == otro.getNumSocio()) {
+				res = true;
+			}
+		}
+		
 		return res;
 		
+	}
+	
+	//clone
+	@Override
+	public SocioImp clone() {
+		SocioImp copia = null;
+		
+		try {
+			copia = (SocioImp)super.clone();
+		}
+		catch(CloneNotSupportedException err) {
+			System.out.println("Objeto no clonado");
+		}
+		return copia;
+	}
+	
+	//No necesita clone en profundidad
+	
+	//compareTo
+	public int compareTo(SocioImp otro) {
+		int resultado = -1;
+		
+		if(this.numSocio == otro.getNumSocio()) {
+			resultado = 0;
+		}
+		else if(this.numSocio > otro.getNumSocio()) {
+			resultado = 1;
+		}
+		
+		return resultado;
 	}
 
 }
