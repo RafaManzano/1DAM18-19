@@ -165,6 +165,8 @@ public class PistaImp implements Pista, Cloneable {
     }
 
 
+    //No necesitamos clone en profundidad
+    //No necesitamos compareTo
 
 
 }
