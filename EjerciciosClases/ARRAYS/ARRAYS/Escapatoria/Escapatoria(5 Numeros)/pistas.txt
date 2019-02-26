@@ -1,4 +1,0 @@
-Las pistas serian:
-1. Decir si los numeros son pares o impares (3)
-2. Decir si son divisibles entre 2 (6) 
-3. Decir la suma entre sus cifras (8)
