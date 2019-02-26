@@ -66,7 +66,12 @@ import interfaces.Socio;
  * 
  * Genero
  * public char getGenero();
- * 
+ *
+ * Restricciones
+ * Hacer
+ *
+ * Metodos anhadidos
+ * No hay
  */
 
 public class SocioImp implements Socio, Cloneable, Comparable<SocioImp> {
@@ -111,44 +116,53 @@ public class SocioImp implements Socio, Cloneable, Comparable<SocioImp> {
 	//Get and Set
 	//NumSocio
 	public int getNumSocio() {
+
 		return numSocio;
 	}
 
 	//Apellidos
 	public String getApellidos() {
+
 		return apellidos;
 	}
 
 	public void setApellidos(String apellidos) {
+
 		this.apellidos = apellidos;
 	}
 
 	//Nombre
 	public String getNombre() {
+
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
+
 		this.nombre = nombre;
 	}
 
 	//Cuota
 	public double getCuota() {
+
 		return cuota;
 	}
 
 	
 	public void setCuota(double cuota) {
+
 		this.cuota = cuota;
 	}
 
 	//Edad
 	public int getEdad() {
+
 		return edad;
 	}
 
 	
 	public void setEdad(int edad) {
+
 		this.edad = edad;
 	}
 

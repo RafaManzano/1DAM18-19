@@ -126,7 +126,7 @@ public class MainPadel {
 
                 case 3:
                     //MostrarReservas
-                    menus.menuMostrarReservas();
+                    menus.menuReservas();
                     opcion = validaciones.validarOpcionMenuReservas();
                 break;
             }
