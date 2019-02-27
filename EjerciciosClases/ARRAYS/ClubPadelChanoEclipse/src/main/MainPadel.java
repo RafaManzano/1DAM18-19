@@ -1,4 +1,4 @@
-package Main;
+package main;
 /*
  Nombre del programa: MainPadel
  Breve Comentario: Este subprograma gestiona las reservas de unas pistas de padel y la introduccion de socios
