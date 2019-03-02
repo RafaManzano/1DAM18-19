@@ -37,7 +37,7 @@ public class gestoraPadelSocio {
 
     public void pintarArraySocios(SocioImp[] array) {
         for(int i = 0; i < array.length; i++) {
-            if(array[i].getNombre() == "NoDefinido") {
+            if(array[i]  == null) {
                 System.out.println(i + ". VACIO");
             }
             else{
@@ -82,7 +82,7 @@ public class gestoraPadelSocio {
     public void introducirSocio(SocioImp[] array, SocioImp socio) {
         boolean encontrado = false;
         for(int i = 0; i < array.length && encontrado == false; i++) {
-            if(array[i].getNombre() == "NoDefinido") {
+            if(array[i] == null) {
                 array[i] = socio;
                 encontrado = true;
             }
@@ -93,16 +93,18 @@ public class gestoraPadelSocio {
     Interfaz
     Nombre: borrarSocio
     Comentario: Este subprograma introduce un socio en el array
-    Cabecera: public void borrarSocio (SocioImp[] array, int posicion)
+    Cabecera: public int borrarSocio (SocioImp[] array, int posicion)
     Precondiciones: - El array de socio no tiene que estar lleno //Modificar para poner los errores
     Entrada: - La posicion donde se encuentra el socio que se quiere eliminar
-    Salida: No hay
+    Salida: No hay //Todavia No: int error
     E/S: - SocioImp[] array //Es el array con los socios del club
-    Postcondiciones: El array de socios queda modificado borrando el socio
+    Postcondiciones: El array de socios queda modificado borrando el socio, //Todavia no: se devuleve un numero que controla el error
     */
 
     public void borrarSocio(SocioImp[] array, int posicion) {
+        //int error = 1;
         array[posicion - 1] = new SocioImp();
+       //return error;
     }
 
 }

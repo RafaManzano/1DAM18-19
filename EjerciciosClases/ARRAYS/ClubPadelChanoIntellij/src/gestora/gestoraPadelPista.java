@@ -44,7 +44,7 @@ public class gestoraPadelPista {
     Interfaz
     Nombre: arrayConPistas
     Comentario: Este subprograma introduce datos en el array de pistas. Los datos son cargados por el sistema
-    Cabecera: public PistaImp[] arrayConSocios(PistaImp[] array)
+    Cabecera: public PistaImp[] arrayConPistas(PistaImp[] array)
     Precondiciones: No hay
     Entrada: No hay
     Salida: No hay
@@ -52,7 +52,7 @@ public class gestoraPadelPista {
     Postcondiciones: El array queda con pistas introducidos por defecto
     */
 
-    public PistaImp[] arrayConSocios (PistaImp[] array) {
+    public PistaImp[] arrayConPistas (PistaImp[] array) {
         SocioImp p1 = new SocioImp("Gutierrrez Alvarez", "Ricarda", 15, 60, 'F');
         SocioImp p2 = new SocioImp("Lozano Cantizano", "Jose Ricardo", 70, 27, 'M');
         SocioImp p3 = new SocioImp("Detarno Echeverria", "Javier", 30, 30, 'M');
@@ -62,5 +62,46 @@ public class gestoraPadelPista {
         array[0] = new PistaImp(3, p3, 20, false);
         array[0] = new PistaImp(4, p4, 21, false);
         return array;
+    }
+
+     /*
+    Interfaz
+    Nombre: introducirPista
+    Comentario: Este subprograma introduce una pista en el array
+    Cabecera: public void introducirPista (PistaImp[] array, PistaImp pista)
+    Precondiciones: - La pista tiene que estar correcta
+                    - El array de pistas no tiene que estar lleno //Modificar para poner los errores
+    Entrada: - La pista ha introducir en el array
+    Salida: No hay
+    E/S: - PistaImp[] array //Es el array con las pistas del club
+    Postcondiciones: El array de pistas queda modificado con la nueva pista
+    */
+
+    public void introducirPista(PistaImp[] array, PistaImp pista) {
+        boolean encontrado = false;
+        for(int i = 0; i < array.length && encontrado == false; i++) {
+            if(array[i] == null) {
+                array[i] = pista;
+                encontrado = true;
+            }
+        }
+    }
+
+    /*
+    Interfaz
+    Nombre: borrarPista
+    Comentario: Este subprograma introduce un socio en el array
+    Cabecera: public int borrarPista(SocioImp[] array, int posicion)
+    Precondiciones: - El array de pistas no tiene que estar lleno //Modificar para poner los errores
+    Entrada: - La posicion donde se encuentra la pista que se quiere eliminar
+    Salida: No hay //Todavia No: int error
+    E/S: - PistaImp[] array //Es el array con las pistas del club
+    Postcondiciones: El array de socios queda modificado borrando la pista, //Todavia no: se devuleve un numero que controla el error
+    */
+
+    public void borrarPista (PistaImp[] array, int posicion) {
+        //int error = 1;
+        array[posicion - 1] = new PistaImp();
+        //return error;
     }
 }

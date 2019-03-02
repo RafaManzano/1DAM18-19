@@ -1,6 +1,10 @@
 package validaciones;
 
+import clases.PistaImp;
 import clases.SocioImp;
+import excepciones.ExcepcionPista;
+import excepciones.ExcepcionSocio;
+import interfaces.Pista;
 
 import java.util.Scanner;
 
@@ -70,13 +74,21 @@ public class validacionesPadel {
 	public SocioImp validarSocio() {
 		SocioImp socio = new SocioImp();
 		Scanner teclado = new Scanner(System.in);
+		System.out.print("Nombre: ");
 		String nombre = teclado.next();
+		System.out.print("Apellidos: ");
 		String apellidos = teclado.next();
 		socio.setNombre(nombre);
 		socio.setApellidos(apellidos);
-		socio.setEdad(validarEdad());
-		socio.setCuota(validarCuota());
-		socio.setGenero(validarGenero());
+		try {
+			socio.setEdad(validarEdad());
+			socio.setCuota(validarCuota());
+			socio.setGenero(validarGenero());
+		}
+		catch(ExcepcionSocio err) {
+			System.out.println("ERROR: " + err);
+		}
+
 		return socio;
 	}
 
@@ -151,4 +163,99 @@ public class validacionesPadel {
 
 		return genero;
 	}
+
+	/*
+	Interfaz
+	Nombre: validarPista
+	Comentario: Este subprograma valida una pista para introducirla en el sistema
+	Cabecera: public PistaImp validarPista()
+	Precondiciones: No hay
+	Entrada: No hay
+	Salida: PistaImp pista //La pista correcta
+	E/S: No hay
+	Postcondiciones: Asociado al nombre. La pista quedaria totalmente correcta
+	*/
+
+	public PistaImp validarPista() {
+		PistaImp pista = new PistaImp();
+		char respuesta;
+		Scanner teclado = new Scanner(System.in);
+
+		try {
+			pista.setNumeroPista(validarNumeroPista());
+		}
+		catch(ExcepcionPista err) {
+			System.out.println("ERROR: " + err);
+		}
+
+		//Aqui estaria el socio
+		try {
+			pista.setNumeroPista(validarHora());
+		}
+		catch(ExcepcionPista err) {
+			System.out.println("ERROR: " + err);
+		}
+
+		System.out.println("Es una reserva rechazada? (S/N)");
+		respuesta = Character.toLowerCase(teclado.next().charAt(0));
+		if(respuesta == 's') {
+			pista.setRechazada(true);
+		}
+		else {
+			pista.setRechazada(false);
+		}
+
+		return pista;
+	}
+
+	/*
+	Interfaz
+	Nombre: validarNumeroPista
+	Comentario: Este subprograma valida una numero de pista
+	Cabecera: public int validarNumeroPista()
+	Precondiciones No hay
+	Entrada: No hay
+	Salida: int validado //El numero de pista quedaria validado
+	E/S: No hay
+	Postcondiciones: Asociado al nombre. El numero de pista quedaria validado
+	*/
+
+	public int validarNumeroPista() {
+		int validado;
+		Scanner teclado = new Scanner(System.in);
+
+		do {
+			System.out.println("El numero de pista es de 1 a 10 (1-10)");
+			validado = teclado.nextInt();
+		}
+		while(validado <= 0 || validado >= 11);
+
+		return validado;
+	}
+
+	/*
+	Interfaz
+	Nombre: validarHora
+	Comentario: Este subprograma valida una hora para la pista
+	Cabecera: public int validarHora()
+	Precondiciones No hay
+	Entrada: No hay
+	Salida: int validado //La hora quedaria validado
+	E/S: No hay
+	Postcondiciones: Asociado al nombre.La hora quedaria validado
+	*/
+
+	public int validarHora() {
+		int validado;
+		Scanner teclado = new Scanner(System.in);
+
+		do {
+			System.out.println("Las horas validan serian de 0 a 23 (0-23)");
+			validado = teclado.nextInt();
+		}
+		while(validado <= -1 || validado >= 24);
+
+		return validado;
+	}
+
 }

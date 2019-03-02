@@ -136,6 +136,7 @@ public class PistaImp implements Pista, Cloneable {
 	}
 
 	public void setRechazada(boolean rechazada) {
+
 		this.rechazada = rechazada;
 	}
 	

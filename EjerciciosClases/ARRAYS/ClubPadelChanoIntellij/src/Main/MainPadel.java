@@ -22,6 +22,8 @@ package Main;
                 Pistas
             Para caso3
                 MostrarReservas
+            Para caso 0
+                Salir
         FinSegun
         LeeryValidarRespuesta
     FinMientras
@@ -37,6 +39,8 @@ package Main;
             introducirSocio
         Para caso3
             borrarSocio
+        Para caso 0
+            Salir
     FinSegun
  Fin
 
@@ -49,6 +53,8 @@ package Main;
             introducirPistas
         Para caso3
             borrarPistas
+        Para caso 0
+            Salir
     FinSegun
  Fin
 
@@ -59,6 +65,8 @@ package Main;
             MostrarSocios
         Para caso2
             MostrarPistas
+        Para caso 0
+            Salir
     FinSegun
  Fin
  */
@@ -113,37 +121,67 @@ public class MainPadel {
                     do {
                         switch (opcion) {
                             case 1:
-                                resguardosS.arrayConSocios(socios);
-                                //gestoraS.arrayConSocios(socios);
+                                //resguardosS.arrayConSocios(socios);
+                                gestoraS.arrayConSocios(socios);
                                 break;
 
                             case 2:
+                                socio = validaciones.validarSocio();
                                 resguardosS.introducirSocio(socios, socio);
-                                gestoraS.introducirSocio(socios, socio);
+                                //gestoraS.introducirSocio(socios, socio);
                                 break;
 
                             case 3:
-                                //resguardos.borrarSocios(socios, posicion);
-                                gestoraS.borrarSocio(socios, posicion);
+                                gestoraS.pintarArraySocios(socios);
+                                System.out.println("Introduzca la posicion que desea eliminar");
+                                posicion = teclado.nextInt();
+                                resguardosS.borrarSocio(socios, posicion);
+                                //gestoraS.borrarSocio(socios, posicion);
                                 break;
                         }
                         menus.menuSocios();
                         opcion = validaciones.validarOpcionMenu();
                     }
                     while (opcion != 0);
-                    break;
+                break;
 
                 case 2:
                     //Pistas
                     menus.menuPistas();
                     opcion = validaciones.validarOpcionMenu();
-                    break;
+
+                    do {
+                        switch (opcion) {
+                            case 1:
+                                //resguardosP.arrayConPistas(pistas);
+                                gestoraP.arrayConPistas(pistas);
+                            break;
+
+                            case 2:
+                                resguardosP.introducirPista(pistas, pista);
+                                gestoraP.introducirPista(pistas, pista);
+                            break;
+
+                            case 3:
+                                //resguardosP.pintarArrayPista(pistas);
+                                gestoraP.pintarArrayPista(pistas);
+                                System.out.println("Introduzca la posicion que desea eliminar");
+                                posicion = teclado.nextInt();
+                                resguardosP.borrarPista(pistas, posicion);
+                                gestoraP.borrarPista(pistas, posicion);
+                            break;
+                        }
+                        menus.menuSocios();
+                        opcion = validaciones.validarOpcionMenu();
+                    }
+                    while (opcion != 0);
+                break;
 
                 case 3:
                     //MostrarReservas
                     menus.menuReservas();
                     opcion = validaciones.validarOpcionMenuReservas();
-                    break;
+                break;
             }
             menus.menuPrincipal();
             opcion = validaciones.validarOpcionMenu();
