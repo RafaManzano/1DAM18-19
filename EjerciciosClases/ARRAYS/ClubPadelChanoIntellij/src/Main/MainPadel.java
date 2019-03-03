@@ -12,21 +12,17 @@ package Main;
 
  PG Level 0
  Inicio
-    LeeryValidarRespuesta
-    Mientras respuesta sea si
-        LeeryValidarOpcionMenu
-        Segun(opcion)
-            Para caso1
-                Socios
-            Para caso2
-                Pistas
-            Para caso3
-                MostrarReservas
-            Para caso 0
-                Salir
-        FinSegun
-        LeeryValidarRespuesta
-    FinMientras
+    LeeryValidarOpcionMenu
+    Segun(opcion)
+        Para caso1
+            Socios
+        Para caso2
+            Pistas
+        Para caso3
+            MostrarReservas
+        Para caso 0
+            Salir
+    FinSegun
  Fin
 
  Modulo Socios
@@ -82,7 +78,6 @@ public class MainPadel {
     public static void main(String[] args) {
         int opcion;
         int posicion = 0;
-        char respuesta;
         Scanner teclado = new Scanner(System.in);
         validacionesPadel validaciones = new validacionesPadel();
         menuPadel menus = new menuPadel();
@@ -96,16 +91,6 @@ public class MainPadel {
         PistaImp[] pistas = new PistaImp[10];
 
 
-
-        //LeeryvalidarRespuesta
-        //Eliminar para la proxima, tambien eliminar de PG
-        do {
-            System.out.println("Desea ejecutar el programa");
-            respuesta = Character.toLowerCase(teclado.next().charAt(0));
-        }
-        while(respuesta != 's' && respuesta != 'n');
-
-        while(respuesta == 's') { //Mientras respuesta sea si
         do {
             menus.menuPrincipal();
             opcion = validaciones.validarOpcionMenu();
@@ -181,18 +166,56 @@ public class MainPadel {
                     //MostrarReservas
                     menus.menuReservas();
                     opcion = validaciones.validarOpcionMenuReservas();
+                    //Si no tienes los arrays cargados estaria bien cargarlos automaticamente
+
+                    do {
+                        switch (opcion) {
+                            case 1:
+                                menus.menuSociosyPistas();
+                                opcion = teclado.nextInt();
+                                do {
+                                    switch(opcion) {
+                                        case 1:
+                                            System.out.println("En construccion");
+                                            //MetodosOrdenacionAscendente
+                                        break;
+
+                                        case 2:
+                                            System.out.println("En construccion");
+                                            //MetodosOrdenacionDescendente
+                                        break;
+                                    }
+                                }
+                                while(opcion != 0);
+                                break;
+
+                            case 2:
+                                menus.menuSociosyPistas();
+                                opcion = teclado.nextInt();
+                                do {
+                                    switch(opcion) {
+                                        case 1:
+                                            System.out.println("En construccion");
+                                            //MetodosOrdenacionAscendente
+                                            break;
+
+                                        case 2:
+                                            System.out.println("En construccion");
+                                            //MetodosOrdenacionDescendente
+                                            break;
+                                    }
+                                }
+                                while(opcion != 0);
+                            break;
+                        }
+                    }
+                    while(opcion != 0);
                 break;
             }
             menus.menuPrincipal();
             opcion = validaciones.validarOpcionMenu();
         }
         while(opcion != 0);
-            //LeeryvalidarRespuesta
-            do {
-                System.out.println("Desea ejecutar el programa");
-                respuesta = Character.toLowerCase(teclado.next().charAt(0));
-            }
-            while(respuesta != 's' && respuesta != 'n');
-        }
     }
 }
+

@@ -38,10 +38,10 @@ public class gestoraPadelSocio {
     public void pintarArraySocios(SocioImp[] array) {
         for(int i = 0; i < array.length; i++) {
             if(array[i]  == null) {
-                System.out.println(i + ". VACIO");
+                System.out.println(i + 1 +  ". VACIO");
             }
             else{
-                System.out.println(i + ". " + array[i].toString());
+                System.out.println(i + 1 +". " + array[i].toString());
             }
         }
     }

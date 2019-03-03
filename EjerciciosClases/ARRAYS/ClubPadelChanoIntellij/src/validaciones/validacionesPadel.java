@@ -4,6 +4,7 @@ import clases.PistaImp;
 import clases.SocioImp;
 import excepciones.ExcepcionPista;
 import excepciones.ExcepcionSocio;
+import gestora.gestoraPadelSocio;
 import interfaces.Pista;
 
 import java.util.Scanner;
@@ -169,17 +170,21 @@ public class validacionesPadel {
 	Nombre: validarPista
 	Comentario: Este subprograma valida una pista para introducirla en el sistema
 	Cabecera: public PistaImp validarPista()
-	Precondiciones: No hay
-	Entrada: No hay
+	Precondiciones: El array de socios tiene que tener al menos un socio
+	Entrada: SocioImp array //El array de socios para elegir uno
 	Salida: PistaImp pista //La pista correcta
 	E/S: No hay
 	Postcondiciones: Asociado al nombre. La pista quedaria totalmente correcta
 	*/
 
-	public PistaImp validarPista() {
+	public PistaImp validarPista(SocioImp[] array) {
 		PistaImp pista = new PistaImp();
 		char respuesta;
 		Scanner teclado = new Scanner(System.in);
+		SocioImp socio = new SocioImp();
+		gestoraPadelSocio gestoraS = new gestoraPadelSocio();
+		int posicion;
+
 
 		try {
 			pista.setNumeroPista(validarNumeroPista());
@@ -189,6 +194,12 @@ public class validacionesPadel {
 		}
 
 		//Aqui estaria el socio
+		gestoraS.pintarArraySocios(array);
+		System.out.println("Elija uno");
+		posicion = teclado.nextInt();
+		socio = array[posicion];
+
+		pista.setSocio(socio);
 		try {
 			pista.setNumeroPista(validarHora());
 		}

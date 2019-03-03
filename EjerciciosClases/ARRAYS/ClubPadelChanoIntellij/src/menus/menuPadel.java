@@ -80,4 +80,25 @@ public class menuPadel {
 		System.out.println("2. Mostras Pistas");
 		System.out.println("0. Salir");
 	}
+
+	/*
+	Interfaz
+	Nombre: menuSociosyPistas
+	Comentario: Este subprograma pinta las opciones de menu de socios y pistas
+	Cabecera: public void menuSociosyPistas
+	Precondiciones: No hay
+	Entrada: No hay
+	Salida: No hay
+	E/S: No hay
+	Postcondiciones: Solo pinta en pantalla el menu de mostrar socios y pistas
+	*/
+
+	public void menuSociosyPistas() {
+		System.out.println("MENUS");
+		System.out.println("1. Ascendente");
+		System.out.println("2. Descendente");
+		System.out.println("0. Salir");
+	}
+
+
 }
