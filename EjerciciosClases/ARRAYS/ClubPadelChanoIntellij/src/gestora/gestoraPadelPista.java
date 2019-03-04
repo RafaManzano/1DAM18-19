@@ -36,7 +36,12 @@ public class gestoraPadelPista {
 
     public void pintarArrayPista(PistaImp[] array) {
         for(int i = 0; i < array.length; i++) {
-            System.out.println(array[i].toString());
+            if(array[i]  == null) {
+                System.out.println(i + 1 +  ". VACIO");
+            }
+            else{
+                System.out.println(i + 1 +". " + array[i].toString());
+            }
         }
     }
 
@@ -58,9 +63,9 @@ public class gestoraPadelPista {
         SocioImp p3 = new SocioImp("Detarno Echeverria", "Javier", 30, 30, 'M');
         SocioImp p4 = new SocioImp("Rodriguez Sola", "Maria", 50, 74, 'F');
         array[0] = new PistaImp(1, p1, 13, false);
-        array[0] = new PistaImp(2, p2, 15, false);
-        array[0] = new PistaImp(3, p3, 20, false);
-        array[0] = new PistaImp(4, p4, 21, false);
+        array[1] = new PistaImp(2, p2, 15, false);
+        array[2] = new PistaImp(3, p3, 20, false);
+        array[3] = new PistaImp(4, p4, 21, false);
         return array;
     }
 
@@ -103,5 +108,27 @@ public class gestoraPadelPista {
         //int error = 1;
         array[posicion - 1] = new PistaImp();
         //return error;
+    }
+
+    /*
+    Interfaz
+    Nombre: estaVacio
+    Comentario: Este subprograma comprueba si el array esta vacio completamente
+    Cabecera: public boolean estaVacio(PistaImp[] array)
+    Precondiciones: No hay
+    Entrada: PistaImp[] array
+    Salida: boolean vacio
+    E/S: No hay
+    Postcondiciones: Asociado al nombre. True si el array esta completamente vacio y false si no lo esta
+    */
+
+    public boolean estaVacio(PistaImp[] array) {
+        boolean vacio = false;
+        for(int i = 0; i < array.length; i++) {
+            if(array[i] != null) {
+                vacio = true;
+            }
+        }
+        return vacio;
     }
 }

@@ -18,7 +18,6 @@ public class menuPadel {
 		System.out.println("MENU PRINCIPAL");
 		System.out.println("1. Socios");
 		System.out.println("2. Pistas");
-		System.out.println("3. MostrarReservas");
 		System.out.println("0. Salir");
 	}
 	

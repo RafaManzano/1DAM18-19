@@ -18,11 +18,10 @@ package Main;
             Socios
         Para caso2
             Pistas
-        Para caso3
-            MostrarReservas
         Para caso 0
             Salir
     FinSegun
+    MostrarReservas
  Fin
 
  Modulo Socios
@@ -77,6 +76,7 @@ import resguardos.*;
 public class MainPadel {
     public static void main(String[] args) {
         int opcion;
+        int opcionMenuPrincipal;
         int posicion = 0;
         Scanner teclado = new Scanner(System.in);
         validacionesPadel validaciones = new validacionesPadel();
@@ -87,27 +87,26 @@ public class MainPadel {
         gestoraPadelSocio gestoraS = new gestoraPadelSocio();
         SocioImp socio = new SocioImp();
         PistaImp pista = new PistaImp();
-        SocioImp[] socios = new SocioImp[10];
-        PistaImp[] pistas = new PistaImp[10];
+        SocioImp[] socios = gestoraS.generarArraySocios();
+        PistaImp[] pistas = gestoraP.generarArrayPistas();
 
 
         do {
             menus.menuPrincipal();
-            opcion = validaciones.validarOpcionMenu();
+            opcionMenuPrincipal = validaciones.validarOpciones2();
 
-            switch (opcion) {
+            switch (opcionMenuPrincipal) {
                 case 1:
-                    //Socios
-                    menus.menuSocios();
-                    opcion = validaciones.validarOpcionMenu();
-                    //socios = resguardosS.generarArraySocios();
-                    socios = gestoraS.generarArraySocios();
-
                     do {
+                        //Socios
+                        menus.menuSocios();
+                        opcion = validaciones.validarOpciones3();
+                        //socios = resguardosS.generarArraySocios();
                         switch (opcion) {
                             case 1:
                                 //resguardosS.arrayConSocios(socios);
                                 gestoraS.arrayConSocios(socios);
+                                gestoraS.pintarArraySocios(socios);
                                 break;
 
                             case 2:
@@ -125,17 +124,16 @@ public class MainPadel {
                                 break;
                         }
                         menus.menuSocios();
-                        opcion = validaciones.validarOpcionMenu();
+                        opcion = validaciones.validarOpciones3();
                     }
                     while (opcion != 0);
                 break;
 
                 case 2:
                     //Pistas
-                    menus.menuPistas();
-                    opcion = validaciones.validarOpcionMenu();
-
                     do {
+                        menus.menuPistas();
+                        opcion = validaciones.validarOpciones3();
                         switch (opcion) {
                             case 1:
                                 //resguardosP.arrayConPistas(pistas);
@@ -156,66 +154,67 @@ public class MainPadel {
                                 gestoraP.borrarPista(pistas, posicion);
                             break;
                         }
-                        menus.menuSocios();
-                        opcion = validaciones.validarOpcionMenu();
                     }
                     while (opcion != 0);
                 break;
+            }
+        }
+        while(opcionMenuPrincipal != 0);
+        //gestoraP.pintarArrayPista(pistas);
+        //gestoraS.pintarArraySocios(socios);
+        if(gestoraP.estaVacio(pistas) == true && gestoraS.estaVacio(socios) == true) {
+        do {
+            //MostrarReservas
+            menus.menuReservas();
+            opcion = validaciones.validarOpciones2();
+            //Si no tienes los arrays cargados estaria bien cargarlos automaticamente //Asun no aprueba esto
+            //Patada a la metodologia
 
-                case 3:
-                    //MostrarReservas
-                    menus.menuReservas();
-                    opcion = validaciones.validarOpcionMenuReservas();
-                    //Si no tienes los arrays cargados estaria bien cargarlos automaticamente
-
+            switch (opcion) {
+                case 1:
+                    menus.menuSociosyPistas();
+                    opcion = teclado.nextInt();
                     do {
-                        switch (opcion) {
+                        switch(opcion) {
                             case 1:
-                                menus.menuSociosyPistas();
-                                opcion = teclado.nextInt();
-                                do {
-                                    switch(opcion) {
-                                        case 1:
-                                            System.out.println("En construccion");
-                                            //MetodosOrdenacionAscendente
-                                        break;
-
-                                        case 2:
-                                            System.out.println("En construccion");
-                                            //MetodosOrdenacionDescendente
-                                        break;
-                                    }
-                                }
-                                while(opcion != 0);
+                                System.out.println("En construccion");
+                                //MetodosOrdenacionAscendente
                                 break;
 
                             case 2:
-                                menus.menuSociosyPistas();
-                                opcion = teclado.nextInt();
-                                do {
-                                    switch(opcion) {
-                                        case 1:
-                                            System.out.println("En construccion");
-                                            //MetodosOrdenacionAscendente
-                                            break;
-
-                                        case 2:
-                                            System.out.println("En construccion");
-                                            //MetodosOrdenacionDescendente
-                                            break;
-                                    }
-                                }
-                                while(opcion != 0);
-                            break;
+                                System.out.println("En construccion");
+                                //MetodosOrdenacionDescendente
+                                break;
                         }
                     }
                     while(opcion != 0);
-                break;
+                    break;
+
+                case 2:
+                    menus.menuSociosyPistas();
+                    opcion = teclado.nextInt();
+                    do {
+                        switch(opcion) {
+                            case 1:
+                                System.out.println("En construccion");
+                                //MetodosOrdenacionAscendente
+                                break;
+
+                            case 2:
+                                System.out.println("En construccion");
+                                //MetodosOrdenacionDescendente
+                                break;
+                        }
+                        menus.menuSociosyPistas();
+                        opcion = teclado.nextInt();
+                    }
+                    while(opcion != 0);
+                    break;
             }
-            menus.menuPrincipal();
-            opcion = validaciones.validarOpcionMenu();
         }
         while(opcion != 0);
+        }
+
     }
 }
 

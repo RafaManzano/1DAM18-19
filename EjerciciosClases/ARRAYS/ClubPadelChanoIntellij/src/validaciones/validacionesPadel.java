@@ -13,16 +13,16 @@ public class validacionesPadel {
 
 	/*
 	 * Interfaz 
-	 * Nombre: validarOpcionMenu
+	 * Nombre: validarOpciones3
 	 * Comentario: Este subprograma valida la opcion de los menus (menuPrincipal, menuSocio, menuPista)
-	 * Cabecera: public int validarOpcionMenu()
+	 * Cabecera: public int validarOpciones3()
 	 * Precondiciones: No hay
 	 * Entrada: No hay
 	 * Salida: int validado //Es el numero que hay que validar
 	 * E/S: No hay
 	 * Postcondiciones: El numero quedaria validado
 	 */
-	public int validarOpcionMenu() {
+	public int validarOpciones3() {
 		Scanner teclado = new Scanner(System.in);
 		int validado;
 		
@@ -37,7 +37,7 @@ public class validacionesPadel {
 
 	/*
 	 * Interfaz 
-	 * Nombre: validarOpcionMenuReservas
+	 * Nombre: validarOpciones2
 	 * Comentario: Este subprograma valida la opcion de los menus (menuReservas)
 	 * Cabecera: public int validarOpcionMenuReservas()
 	 * Precondiciones: No hay
@@ -46,7 +46,7 @@ public class validacionesPadel {
 	 * E/S: No hay
 	 * Postcondiciones: El numero quedaria validado
 	 */
-	public int validarOpcionMenuReservas() {
+	public int validarOpciones2() {
 		Scanner teclado = new Scanner(System.in);
 		int validado;
 		

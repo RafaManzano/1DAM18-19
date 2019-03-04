@@ -107,4 +107,26 @@ public class gestoraPadelSocio {
        //return error;
     }
 
+    /*
+    Interfaz
+    Nombre: estaVacio
+    Comentario: Este subprograma comprueba si el array esta vacio completamente
+    Cabecera: public boolean estaVacio(SocioImp[] array)
+    Precondiciones: No hay
+    Entrada: SocioImp[] array
+    Salida: boolean vacio
+    E/S: No hay
+    Postcondiciones: Asociado al nombre. True si el array esta completamente vacio y false si no lo esta
+    */
+
+    public boolean estaVacio(SocioImp[] array) {
+        boolean vacio = false;
+        for(int i = 0; i < array.length; i++) {
+            if(array[i] != null) {
+                vacio = true;
+            }
+        }
+        return vacio;
+    }
+
 }
