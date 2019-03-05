@@ -4,10 +4,12 @@ package Main;
  Breve Comentario: Este subprograma gestiona las reservas de unas pistas de padel y la introduccion de socios
  Analisis
  Entrada: - opcion
+          - opcionMenuPrincipal
           - respuesta
  Salida: - Mensajes con el usuario
          - Resultado de las operaciones
- Requisitos: - Opcion es la opcion de menu
+ Requisitos: - Opcion es la opcion de los menus interiores
+             - opcionMenuPrincipal es la opcion de los menus principales(MenuPrincipal y MenuReserva)
              - respuesta tiene que ser s o n
 
  PG Level 0
@@ -101,6 +103,7 @@ import java.util.*;
 
 import clases.*;
 import ordenacion.metodosOrdenacion;
+import util.utilidadesPadel;
 import validaciones.validacionesPadel;
 import menus.menuPadel;
 import gestora.*;
@@ -124,6 +127,7 @@ public class MainPadel {
         PistaImp[] pistas = gestoraP.generarArrayPistas();
         metodosOrdenacion ordenar = new metodosOrdenacion();
         resguardosOrdenacion resguardosO = new resguardosOrdenacion();
+        utilidadesPadel util = new utilidadesPadel();
 
         do {
             menus.menuPrincipal();
@@ -139,14 +143,20 @@ public class MainPadel {
                         switch (opcion) {
                             case 1:
                                 //resguardosS.arrayConSocios(socios);
-                                gestoraS.arrayConSocios(socios);
+                                util.casoError(gestoraS.arrayConSocios(socios));
                                 // gestoraS.pintarArraySocios(socios);
                                 break;
 
                             case 2:
-                                socio = validaciones.validarSocio();
-                                //resguardosS.introducirSocio(socios, socio);
-                                gestoraS.introducirSocio(socios, socio);
+                                if(gestoraS.estaCompleto(socios) == false) {
+                                    socio = validaciones.validarSocio();
+                                    //resguardosS.introducirSocio(socios, socio);
+                                    util.casoError(gestoraS.introducirSocio(socios, socio));
+                                }
+                                else {
+                                    System.out.println("La lista esta completa");
+                                }
+
                                 break;
 
                             case 3:
@@ -154,7 +164,7 @@ public class MainPadel {
                                 System.out.println("Introduzca la posicion que desea eliminar");
                                 posicion = teclado.nextInt();
                                 //resguardosS.borrarSocio(socios, posicion);
-                                gestoraS.borrarSocio(socios, posicion);
+                                util.casoError(gestoraS.borrarSocio(socios, posicion));
                                 break;
                         }
                         //menus.menuSocios();

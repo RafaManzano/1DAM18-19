@@ -88,4 +88,21 @@ public class resguardosPadelPistas {
     public void borrarPista (PistaImp[] array, int posicion) {
         System.out.println("En resguardo");
     }
+
+     /*
+    Interfaz
+    Nombre: estaCompleto
+    Comentario: Este subprograma comprueba si el array esta completo
+    Cabecera: public boolean estaCompleto(PistaImp[] array)
+    Precondiciones: No hay
+    Entrada: PistaImp[] array
+    Salida: boolean vacio
+    E/S: No hay
+    Postcondiciones: Asociado al nombre. True si el array esta completo y false si no lo esta
+    */
+
+    public boolean estaCompleto(PistaImp[] array) {
+        System.out.println("En resguardo");
+        return false;
+    }
 }

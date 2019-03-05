@@ -89,4 +89,21 @@ public class resguardosPadelSocio {
     public void borrarSocio(SocioImp[] array, int posicion) {
         System.out.println("En resguardo");
     }
+
+    /*
+    Interfaz
+    Nombre: estaCompleto
+    Comentario: Este subprograma comprueba si el array esta completo
+    Cabecera: public boolean estaCompleto(SocioImp[] array)
+    Precondiciones: No hay
+    Entrada: SocioImp[] array
+    Salida: boolean vacio
+    E/S: No hay
+    Postcondiciones: Asociado al nombre. True si el array esta completo y false si no lo esta
+    */
+
+    public boolean estaCompleto(SocioImp[] array) {
+        System.out.println("En resguardo");
+        return false;
+    }
 }

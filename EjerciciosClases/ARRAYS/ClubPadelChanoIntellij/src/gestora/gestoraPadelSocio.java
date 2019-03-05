@@ -51,43 +51,54 @@ public class gestoraPadelSocio {
     Interfaz
     Nombre: arrayConSocios
     Comentario: Este subprograma introduce datos en el array de socios. Los datos son cargados por el sistema
-    Cabecera: public void arrayConSocios(SocioImp[] array)
+    Cabecera: public int arrayConSocios(SocioImp[] array)
     Precondiciones: No hay
     Entrada: No hay
-    Salida: No hay
+    Salida: int error
     E/S: SocioImp[] array
-    Postcondiciones: El array queda con socios introducidos por defecto
+    Postcondiciones: Asociado al nombre. El codigo de error es 0 si es correcto y El array queda con socios introducidos por defecto
     */
 
-    public void arrayConSocios (SocioImp[] array) {
+    public int arrayConSocios (SocioImp[] array) {
+        int error = 0;
         array[0] = new SocioImp("Gutierrrez Alvarez", "Ricarda", 15, 60, 'F');
         array[1] = new SocioImp("Lozano Cantizano", "Jose Ricardo", 70, 27, 'M');
         array[2] = new SocioImp("Detarno Echeverria", "Javier", 30, 30, 'M');
-        array[3] = new SocioImp("Rodriguez Sola", "Maria", 50, 74, 'F');
+        array[3] = new SocioImp("Rodriguez Sola", "Maria", 50, 74, 'F');array[0] = new SocioImp("Gutierrrez Alvarez", "Ricarda", 15, 60, 'F');
         //apellidos, nombre, cuota, edad, genero
+        return error;
     }
 
     /*
     Interfaz
     Nombre: introducirSocio
     Comentario: Este subprograma introduce un socio en el array
-    Cabecera: public void introducirSocio (SocioImp[] array, SocioImp socio)
-    Precondiciones: - El socio tiene que estar correcto
-                    - El array de socio no tiene que estar lleno //Modificar para poner los errores
+    Cabecera: public int introducirSocio (SocioImp[] array, SocioImp socio)
+    Precondiciones: No hay
     Entrada: - El socio ha introducir en el array
-    Salida: No hay
+    Salida: int error
     E/S: - SocioImp[] array //Es el array con los socios del club
-    Postcondiciones: El array de socios queda modificado con el nuevo socio
+    Postcondiciones: Asociado al nombre. El array de socios queda modificado con el nuevo socio y El codigo de error:
+                                         - 0 Correcto
+                                         - 1 Array lleno
+
     */
 
-    public void introducirSocio(SocioImp[] array, SocioImp socio) {
+    public int introducirSocio(SocioImp[] array, SocioImp socio) {
         boolean encontrado = false;
+        int error = 0;
         for(int i = 0; i < array.length && encontrado == false; i++) {
             if(array[i] == null) {
                 array[i] = socio;
                 encontrado = true;
             }
         }
+
+        if(encontrado == false) {
+            error = 1;
+        }
+
+        return error;
     }
 
     /*
@@ -95,17 +106,23 @@ public class gestoraPadelSocio {
     Nombre: borrarSocio
     Comentario: Este subprograma introduce un socio en el array
     Cabecera: public int borrarSocio (SocioImp[] array, int posicion)
-    Precondiciones: - El array de socio no tiene que estar lleno //Modificar para poner los errores
+    Precondiciones: No hay
     Entrada: - La posicion donde se encuentra el socio que se quiere eliminar
-    Salida: No hay //Todavia No: int error
+    Salida: int error
     E/S: - SocioImp[] array //Es el array con los socios del club
-    Postcondiciones: El array de socios queda modificado borrando el socio, //Todavia no: se devuleve un numero que controla el error
+    Postcondiciones: El array de socios queda modificado borrando el socio y se devuleve un numero que controla el error:
+                        - 0 Correcto
+                        - 2 Socio no borrado porque no habia ningun socio
     */
 
-    public void borrarSocio(SocioImp[] array, int posicion) {
-        //int error = 1;
-        array[posicion - 1] = null;
-       //return error;
+    public int borrarSocio(SocioImp[] array, int posicion) {
+        int error = 2;
+        if(array[posicion - 1] != null) {
+            array[posicion - 1] = null;
+            error = 0;
+        }
+
+       return error;
     }
 
     /*
@@ -128,6 +145,28 @@ public class gestoraPadelSocio {
             }
         }
         return vacio;
+    }
+
+    /*
+    Interfaz
+    Nombre: estaCompleto
+    Comentario: Este subprograma comprueba si el array esta completo
+    Cabecera: public boolean estaCompleto(SocioImp[] array)
+    Precondiciones: No hay
+    Entrada: SocioImp[] array
+    Salida: boolean vacio
+    E/S: No hay
+    Postcondiciones: Asociado al nombre. True si el array esta completo y false si no lo esta
+    */
+
+    public boolean estaCompleto(SocioImp[] array) {
+        boolean completo = true;
+        for(int i = 0; i < array.length && completo == true; i++) {
+            if(array[i] == null) {
+                completo = false;
+            }
+        }
+        return completo;
     }
 
 }

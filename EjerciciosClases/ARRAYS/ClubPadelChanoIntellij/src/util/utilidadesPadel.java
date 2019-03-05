@@ -19,8 +19,12 @@ public class utilidadesPadel {
         if(error == 0)  {
             System.out.println("Se ha realizado correctamente");
         }
-        else {
-            System.out.println("Ha ocurrido algun fallo, no se realiza nada");
+        else if(error == 1) {
+            System.out.println("Lista completa");
+            }
+            else {
+                System.out.println("No se puede eliminar, porque no existe");
+            }
         }
-    }
 }
+
