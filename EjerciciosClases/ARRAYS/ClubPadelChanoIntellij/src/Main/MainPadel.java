@@ -123,7 +123,7 @@ public class MainPadel {
         SocioImp[] socios = gestoraS.generarArraySocios();
         PistaImp[] pistas = gestoraP.generarArrayPistas();
         metodosOrdenacion ordenar = new metodosOrdenacion();
-
+        resguardosOrdenacion resguardosO = new resguardosOrdenacion();
 
         do {
             menus.menuPrincipal();
@@ -216,6 +216,7 @@ public class MainPadel {
                                 //System.out.println("En construccion");
                                 System.out.println("Array sin ordenar");
                                 gestoraS.pintarArraySocios(socios);
+                                //resguardosO.burbuja(socios);
                                 ordenar.burbuja(socios);
                                 System.out.println("Array ordenado");
                                 gestoraS.pintarArraySocios(socios);
@@ -226,6 +227,7 @@ public class MainPadel {
                                 //System.out.println("En construccion");
                                 System.out.println("Array sin ordenar");
                                 gestoraS.pintarArraySocios(socios);
+                                //resguardosO.seleccionDirecta(socios);
                                 ordenar.seleccionDirecta(socios);
                                 System.out.println("Array ordenado");
                                 gestoraS.pintarArraySocios(socios);
@@ -233,24 +235,25 @@ public class MainPadel {
                             break;
 
                             case 3:
-                                System.out.println("En construccion");
-                                /*System.out.println("Array sin ordenar");
+                                //System.out.println("En construccion");
+                                System.out.println("Array sin ordenar");
                                 gestoraS.pintarArraySocios(socios);
-                                ordenar.insercionDirecta(socios);
-                                System.out.println("Array ordenado");
-                                gestoraS.pintarArraySocios(socios);
-                                */
+                                resguardosO.insercionDirecta(socios);
+                                //ordenar.insercionDirecta(socios);
+                                //System.out.println("Array ordenado");
+                                //gestoraS.pintarArraySocios(socios);
                                 //Insercion Directa
                             break;
 
                             case 4:
                                 System.out.println("En construccion");
-                                /*System.out.println("Array sin ordenar");
+                                System.out.println("Array sin ordenar");
                                 gestoraS.pintarArraySocios(socios);
-                                ordenar.quickSort(socios, 1,9);
-                                System.out.println("Array ordenado");
-                                gestoraS.pintarArraySocios(socios);
-                                */
+                                resguardosO.quickSort(socios, 0,5);
+                                //ordenar.quickSort(socios, 1,9);
+                                //System.out.println("Array ordenado");
+                                //gestoraS.pintarArraySocios(socios);
+
                                 //QuickSort
                             break;
 
@@ -272,6 +275,7 @@ public class MainPadel {
                                 //System.out.println("En construccion");
                                 System.out.println("Array sin ordenar");
                                 gestoraP.pintarArrayPista(pistas);
+                                //resguardosO.burbuja(pistas);
                                 ordenar.burbuja(pistas);
                                 System.out.println("Array ordenado");
                                 gestoraP.pintarArrayPista(pistas);
@@ -282,6 +286,7 @@ public class MainPadel {
                                 //System.out.println("En construccion");
                                 System.out.println("Array sin ordenar");
                                 gestoraP.pintarArrayPista(pistas);
+                                //resguardosO.seleccionDirecta(pistas);
                                 ordenar.seleccionDirecta(pistas);
                                 System.out.println("Array ordenado");
                                 gestoraP.pintarArrayPista(pistas);
@@ -289,12 +294,18 @@ public class MainPadel {
                                 break;
 
                             case 3:
-                                System.out.println("En construccion");
+                                //System.out.println("En construccion");
+                                System.out.println("Array sin ordenar");
+                                gestoraP.pintarArrayPista(pistas);
+                                resguardosO.insercionDirecta(pistas);
                                 //Insercion Directa
                                 break;
 
                             case 4:
-                                System.out.println("En construccion");
+                                //System.out.println("En construccion");
+                                System.out.println("Array sin ordenar");
+                                gestoraP.pintarArrayPista(pistas);
+                                resguardosO.quickSort(pistas, 1, 5);
                                 //QuickSort
                                 break;
 

@@ -18,11 +18,6 @@ public class gestoraPadelPista {
 
     public PistaImp[] generarArrayPistas() {
         PistaImp[] array = new PistaImp[10];
-
-        for(int i = 0; i < array.length; i++) {
-            array[i] = new PistaImp();
-        }
-
         return array;
     }
 
@@ -40,7 +35,7 @@ public class gestoraPadelPista {
 
     public void pintarArrayPista(PistaImp[] array) {
         for(int i = 0; i < array.length; i++) {
-            if(array[i].getNumeroPista()  == 0) {
+            if(array[i] == null) {
                 System.out.println(i + 1 +  ". VACIO");
             }
             else{
@@ -89,7 +84,7 @@ public class gestoraPadelPista {
     public void introducirPista(PistaImp[] array, PistaImp pista) {
         boolean encontrado = false;
         for(int i = 0; i < array.length && encontrado == false; i++) {
-            if(array[i].getNumeroPista() == 0) {
+            if(array[i] == null) {
                 array[i] = pista;
                 encontrado = true;
             }
@@ -110,7 +105,7 @@ public class gestoraPadelPista {
 
     public void borrarPista (PistaImp[] array, int posicion) {
         //int error = 1;
-        array[posicion - 1] = new PistaImp();
+        array[posicion - 1] = null;
         //return error;
     }
 
@@ -128,8 +123,8 @@ public class gestoraPadelPista {
 
     public boolean estaVacio(PistaImp[] array) {
         boolean vacio = false;
-        for(int i = 0; i < array.length; i++) {
-            if(array[i].getNumeroPista() != 0) {
+        for(int i = 0; i < array.length && vacio == false; i++) {
+            if(array[i] != null) {
                 vacio = true;
             }
         }

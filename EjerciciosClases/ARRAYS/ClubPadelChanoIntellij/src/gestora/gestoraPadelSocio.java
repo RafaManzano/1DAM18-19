@@ -19,13 +19,9 @@ public class gestoraPadelSocio {
 
     public SocioImp[] generarArraySocios() {
         SocioImp[] array = new SocioImp[10];
-
-        for(int i = 0; i < array.length; i++) {
-            array[i] = new SocioImp();
-        }
-
         return array;
     }
+
 
     /*
     Interfaz
@@ -42,7 +38,7 @@ public class gestoraPadelSocio {
     public void pintarArraySocios(SocioImp[] array) {
 
         for(int i = 0; i < array.length; i++) {
-            if(array[i].getNombre() == "NoDefinido") {
+            if(array[i] == null) {
                 System.out.println(i + 1 +  ". VACIO");
             }
             else{
@@ -87,7 +83,7 @@ public class gestoraPadelSocio {
     public void introducirSocio(SocioImp[] array, SocioImp socio) {
         boolean encontrado = false;
         for(int i = 0; i < array.length && encontrado == false; i++) {
-            if(array[i].getNombre() == "NoDefinido") {
+            if(array[i] == null) {
                 array[i] = socio;
                 encontrado = true;
             }
@@ -108,7 +104,7 @@ public class gestoraPadelSocio {
 
     public void borrarSocio(SocioImp[] array, int posicion) {
         //int error = 1;
-        array[posicion - 1] = new SocioImp();
+        array[posicion - 1] = null;
        //return error;
     }
 
@@ -126,8 +122,8 @@ public class gestoraPadelSocio {
 
     public boolean estaVacio(SocioImp[] array) {
         boolean vacio = false;
-        for(int i = 0; i < array.length; i++) {
-            if(array[i].getNombre() != "NoDefinido") {
+        for(int i = 0; i < array.length && vacio == false; i++) {
+            if(array[i] != null) {
                 vacio = true;
             }
         }
