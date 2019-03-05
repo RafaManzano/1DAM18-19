@@ -20,6 +20,10 @@ public class gestoraPadelSocio {
     public SocioImp[] generarArraySocios() {
         SocioImp[] array = new SocioImp[10];
 
+        for(int i = 0; i < array.length; i++) {
+            array[i] = new SocioImp();
+        }
+
         return array;
     }
 
@@ -36,8 +40,9 @@ public class gestoraPadelSocio {
     */
 
     public void pintarArraySocios(SocioImp[] array) {
+
         for(int i = 0; i < array.length; i++) {
-            if(array[i]  == null) {
+            if(array[i].getNombre() == "NoDefinido") {
                 System.out.println(i + 1 +  ". VACIO");
             }
             else{
@@ -82,7 +87,7 @@ public class gestoraPadelSocio {
     public void introducirSocio(SocioImp[] array, SocioImp socio) {
         boolean encontrado = false;
         for(int i = 0; i < array.length && encontrado == false; i++) {
-            if(array[i] == null) {
+            if(array[i].getNombre() == "NoDefinido") {
                 array[i] = socio;
                 encontrado = true;
             }
@@ -116,13 +121,13 @@ public class gestoraPadelSocio {
     Entrada: SocioImp[] array
     Salida: boolean vacio
     E/S: No hay
-    Postcondiciones: Asociado al nombre. True si el array esta completamente vacio y false si no lo esta
+    Postcondiciones: Asociado al nombre. False si el array esta completamente vacio y true si no lo esta
     */
 
     public boolean estaVacio(SocioImp[] array) {
         boolean vacio = false;
         for(int i = 0; i < array.length; i++) {
-            if(array[i] != null) {
+            if(array[i].getNombre() != "NoDefinido") {
                 vacio = true;
             }
         }

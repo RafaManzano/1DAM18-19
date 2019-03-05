@@ -82,20 +82,23 @@ public class menuPadel {
 
 	/*
 	Interfaz
-	Nombre: menuSociosyPistas
-	Comentario: Este subprograma pinta las opciones de menu de socios y pistas
-	Cabecera: public void menuSociosyPistas
+	Nombre: menuOrdenacion
+	Comentario: Este subprograma pinta las opciones de menu de ordenacion
+	Cabecera: public void menuOrdenacion()
 	Precondiciones: No hay
 	Entrada: No hay
 	Salida: No hay
 	E/S: No hay
-	Postcondiciones: Solo pinta en pantalla el menu de mostrar socios y pistas
+	Postcondiciones: Solo pinta en pantalla el menu de ordenacion
 	*/
 
-	public void menuSociosyPistas() {
-		System.out.println("MENUS");
-		System.out.println("1. Ascendente");
-		System.out.println("2. Descendente");
+	public void menuOrdenacion() {
+		System.out.println("MENUS ORDENACION");
+		System.out.println("1. Burbuja");
+		System.out.println("2. Seleccion Directa");
+		System.out.println("3. Insercion Directa");
+		System.out.println("4. QuickSort");
+		System.out.println("5. MergeSort");
 		System.out.println("0. Salir");
 	}
 

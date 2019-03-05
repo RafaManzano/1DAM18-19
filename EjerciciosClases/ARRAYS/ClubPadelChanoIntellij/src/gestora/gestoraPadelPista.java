@@ -19,6 +19,10 @@ public class gestoraPadelPista {
     public PistaImp[] generarArrayPistas() {
         PistaImp[] array = new PistaImp[10];
 
+        for(int i = 0; i < array.length; i++) {
+            array[i] = new PistaImp();
+        }
+
         return array;
     }
 
@@ -36,7 +40,7 @@ public class gestoraPadelPista {
 
     public void pintarArrayPista(PistaImp[] array) {
         for(int i = 0; i < array.length; i++) {
-            if(array[i]  == null) {
+            if(array[i].getNumeroPista()  == 0) {
                 System.out.println(i + 1 +  ". VACIO");
             }
             else{
@@ -85,7 +89,7 @@ public class gestoraPadelPista {
     public void introducirPista(PistaImp[] array, PistaImp pista) {
         boolean encontrado = false;
         for(int i = 0; i < array.length && encontrado == false; i++) {
-            if(array[i] == null) {
+            if(array[i].getNumeroPista() == 0) {
                 array[i] = pista;
                 encontrado = true;
             }
@@ -125,7 +129,7 @@ public class gestoraPadelPista {
     public boolean estaVacio(PistaImp[] array) {
         boolean vacio = false;
         for(int i = 0; i < array.length; i++) {
-            if(array[i] != null) {
+            if(array[i].getNumeroPista() != 0) {
                 vacio = true;
             }
         }

@@ -64,10 +64,43 @@ package Main;
             Salir
     FinSegun
  Fin
+
+ Modulo MostrarSocios
+ Inicio
+    Segun(opcion)
+        para caso 1
+            Burbuja
+        para caso 2
+            SeleccionDirecta
+        para caso 3
+            InsercionDirecta
+        para caso 4
+            QuickSort
+        para caso 5
+            MergeSort
+    FinSegun
+ Fin
+
+ Modulo MostrarPistas
+ Inicio
+    Segun(opcion)
+        para caso 1
+            Burbuja
+        para caso 2
+            SeleccionDirecta
+        para caso 3
+            InsercionDirecta
+        para caso 4
+            QuickSort
+        para caso 5
+            MergeSort
+    FinSegun
+ Fin
  */
 import java.util.*;
 
 import clases.*;
+import ordenacion.metodosOrdenacion;
 import validaciones.validacionesPadel;
 import menus.menuPadel;
 import gestora.*;
@@ -89,6 +122,7 @@ public class MainPadel {
         PistaImp pista = new PistaImp();
         SocioImp[] socios = gestoraS.generarArraySocios();
         PistaImp[] pistas = gestoraP.generarArrayPistas();
+        metodosOrdenacion ordenar = new metodosOrdenacion();
 
 
         do {
@@ -106,25 +140,25 @@ public class MainPadel {
                             case 1:
                                 //resguardosS.arrayConSocios(socios);
                                 gestoraS.arrayConSocios(socios);
-                                gestoraS.pintarArraySocios(socios);
+                                // gestoraS.pintarArraySocios(socios);
                                 break;
 
                             case 2:
                                 socio = validaciones.validarSocio();
-                                resguardosS.introducirSocio(socios, socio);
-                                //gestoraS.introducirSocio(socios, socio);
+                                //resguardosS.introducirSocio(socios, socio);
+                                gestoraS.introducirSocio(socios, socio);
                                 break;
 
                             case 3:
                                 gestoraS.pintarArraySocios(socios);
                                 System.out.println("Introduzca la posicion que desea eliminar");
                                 posicion = teclado.nextInt();
-                                resguardosS.borrarSocio(socios, posicion);
-                                //gestoraS.borrarSocio(socios, posicion);
+                                //resguardosS.borrarSocio(socios, posicion);
+                                gestoraS.borrarSocio(socios, posicion);
                                 break;
                         }
-                        menus.menuSocios();
-                        opcion = validaciones.validarOpciones3();
+                        //menus.menuSocios();
+                        //opcion = validaciones.validarOpciones3();
                     }
                     while (opcion != 0);
                 break;
@@ -141,7 +175,8 @@ public class MainPadel {
                             break;
 
                             case 2:
-                                resguardosP.introducirPista(pistas, pista);
+                                //resguardosP.introducirPista(pistas, pista);
+                                pista = validaciones.validarPista(socios);
                                 gestoraP.introducirPista(pistas, pista);
                             break;
 
@@ -150,7 +185,7 @@ public class MainPadel {
                                 gestoraP.pintarArrayPista(pistas);
                                 System.out.println("Introduzca la posicion que desea eliminar");
                                 posicion = teclado.nextInt();
-                                resguardosP.borrarPista(pistas, posicion);
+                                //resguardosP.borrarPista(pistas, posicion);
                                 gestoraP.borrarPista(pistas, posicion);
                             break;
                         }
@@ -166,53 +201,114 @@ public class MainPadel {
         do {
             //MostrarReservas
             menus.menuReservas();
-            opcion = validaciones.validarOpciones2();
+            opcionMenuPrincipal = validaciones.validarOpciones2();
+            //Cargar arrays por defecto
             //Si no tienes los arrays cargados estaria bien cargarlos automaticamente //Asun no aprueba esto
             //Patada a la metodologia
 
-            switch (opcion) {
+            switch (opcionMenuPrincipal) {
                 case 1:
-                    menus.menuSociosyPistas();
-                    opcion = teclado.nextInt();
                     do {
+                        menus.menuOrdenacion();
+                        opcion = validaciones.validarOpciones5();
                         switch(opcion) {
                             case 1:
-                                System.out.println("En construccion");
-                                //MetodosOrdenacionAscendente
-                                break;
+                                //System.out.println("En construccion");
+                                System.out.println("Array sin ordenar");
+                                gestoraS.pintarArraySocios(socios);
+                                ordenar.burbuja(socios);
+                                System.out.println("Array ordenado");
+                                gestoraS.pintarArraySocios(socios);
+                                //Burbuja
+                            break;
 
                             case 2:
+                                //System.out.println("En construccion");
+                                System.out.println("Array sin ordenar");
+                                gestoraS.pintarArraySocios(socios);
+                                ordenar.seleccionDirecta(socios);
+                                System.out.println("Array ordenado");
+                                gestoraS.pintarArraySocios(socios);
+                                //Seleccion Directa
+                            break;
+
+                            case 3:
                                 System.out.println("En construccion");
-                                //MetodosOrdenacionDescendente
-                                break;
+                                /*System.out.println("Array sin ordenar");
+                                gestoraS.pintarArraySocios(socios);
+                                ordenar.insercionDirecta(socios);
+                                System.out.println("Array ordenado");
+                                gestoraS.pintarArraySocios(socios);
+                                */
+                                //Insercion Directa
+                            break;
+
+                            case 4:
+                                System.out.println("En construccion");
+                                /*System.out.println("Array sin ordenar");
+                                gestoraS.pintarArraySocios(socios);
+                                ordenar.quickSort(socios, 1,9);
+                                System.out.println("Array ordenado");
+                                gestoraS.pintarArraySocios(socios);
+                                */
+                                //QuickSort
+                            break;
+
+                            case 5:
+                                System.out.println("En construccion");
+                                //MergeSort
+                            break;
                         }
                     }
                     while(opcion != 0);
                     break;
 
                 case 2:
-                    menus.menuSociosyPistas();
-                    opcion = teclado.nextInt();
                     do {
+                        menus.menuOrdenacion();
+                        opcion = validaciones.validarOpciones5();
                         switch(opcion) {
                             case 1:
-                                System.out.println("En construccion");
-                                //MetodosOrdenacionAscendente
+                                //System.out.println("En construccion");
+                                System.out.println("Array sin ordenar");
+                                gestoraP.pintarArrayPista(pistas);
+                                ordenar.burbuja(pistas);
+                                System.out.println("Array ordenado");
+                                gestoraP.pintarArrayPista(pistas);
+                                //Burbuja
                                 break;
 
                             case 2:
+                                //System.out.println("En construccion");
+                                System.out.println("Array sin ordenar");
+                                gestoraP.pintarArrayPista(pistas);
+                                ordenar.seleccionDirecta(pistas);
+                                System.out.println("Array ordenado");
+                                gestoraP.pintarArrayPista(pistas);
+                                //Seleccion Directa
+                                break;
+
+                            case 3:
                                 System.out.println("En construccion");
-                                //MetodosOrdenacionDescendente
+                                //Insercion Directa
+                                break;
+
+                            case 4:
+                                System.out.println("En construccion");
+                                //QuickSort
+                                break;
+
+                            case 5:
+                                System.out.println("En construccion");
+                                //MergeSort
                                 break;
                         }
-                        menus.menuSociosyPistas();
-                        opcion = teclado.nextInt();
                     }
                     while(opcion != 0);
                     break;
             }
         }
-        while(opcion != 0);
+        while(opcionMenuPrincipal != 0);
         }
 
     }

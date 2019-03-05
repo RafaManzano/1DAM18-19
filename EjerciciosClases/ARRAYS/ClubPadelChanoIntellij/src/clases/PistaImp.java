@@ -145,7 +145,7 @@ public class PistaImp implements Pista, Cloneable {
 	@Override
 	public String toString() {
 
-		return numeroPista + ", " + socio + ", " + hora + ", " + rechazada;
+		return numeroPista + ", " + socio.getApellidos() + ", " + socio.getNombre() + ", " + hora + ", " + rechazada;
 	}
 
 	//hashCode

@@ -5,8 +5,6 @@ import clases.SocioImp;
 import excepciones.ExcepcionPista;
 import excepciones.ExcepcionSocio;
 import gestora.gestoraPadelSocio;
-import interfaces.Pista;
-
 import java.util.Scanner;
 
 public class validacionesPadel {
@@ -39,7 +37,7 @@ public class validacionesPadel {
 	 * Interfaz 
 	 * Nombre: validarOpciones2
 	 * Comentario: Este subprograma valida la opcion de los menus (menuReservas)
-	 * Cabecera: public int validarOpcionMenuReservas()
+	 * Cabecera: public int validarOpciones2()
 	 * Precondiciones: No hay
 	 * Entrada: No hay
 	 * Salida: int validado //Es el numero que hay que validar
@@ -49,13 +47,37 @@ public class validacionesPadel {
 	public int validarOpciones2() {
 		Scanner teclado = new Scanner(System.in);
 		int validado;
-		
+
 		do {
 			System.out.println("Numeros del 1 al 2 y el 0 para salir");
 			validado = teclado.nextInt();
 		}
 		while(validado < 0 || validado > 2);
-		
+
+		return validado;
+	}
+
+	/*
+	 * Interfaz
+	 * Nombre: validarOpciones5
+	 * Comentario: Este subprograma valida la opcion de los menus (menuReservas)
+	 * Cabecera: public int validarOpciones5()
+	 * Precondiciones: No hay
+	 * Entrada: No hay
+	 * Salida: int validado //Es el numero que hay que validar
+	 * E/S: No hay
+	 * Postcondiciones: El numero quedaria validado
+	 */
+	public int validarOpciones5() {
+		Scanner teclado = new Scanner(System.in);
+		int validado;
+
+		do {
+			System.out.println("Numeros del 1 al 5 y el 0 para salir");
+			validado = teclado.nextInt();
+		}
+		while(validado < 0 || validado > 5);
+
 		return validado;
 	}
 
@@ -196,12 +218,12 @@ public class validacionesPadel {
 		//Aqui estaria el socio
 		gestoraS.pintarArraySocios(array);
 		System.out.println("Elija uno");
-		posicion = teclado.nextInt();
+		posicion = teclado.nextInt() - 1;
 		socio = array[posicion];
 
 		pista.setSocio(socio);
 		try {
-			pista.setNumeroPista(validarHora());
+			pista.setHora(validarHora());
 		}
 		catch(ExcepcionPista err) {
 			System.out.println("ERROR: " + err);
