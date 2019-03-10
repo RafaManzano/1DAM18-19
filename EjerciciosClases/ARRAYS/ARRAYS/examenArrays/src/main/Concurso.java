@@ -3,10 +3,13 @@ package main;
 import clases.FichaImp;
 import gestoras.gestoraFicha;
 import menus.menusConcurso;
+import ordenacion.metodosOrdenacion;
 import resguardos.resguardoGestora;
 import validaciones.validacionesConcurso;
 
 import java.util.*;
+
+import Defecto.porDefecto;
 
 /*
  * Nombre del programa: Concurso
@@ -48,6 +51,9 @@ public class Concurso {
 		int opcion;
 		String nombre;
 		int contadorFichasValidas = 0;
+		FichaImp maximo;
+		FichaImp minimo;
+		double media;
 		int[] calificaciones = new int[10];
 		FichaImp[] fichas = new FichaImp[50];
 		gestoraFicha gestora = new gestoraFicha();
@@ -55,6 +61,8 @@ public class Concurso {
 		Scanner teclado = new Scanner(System.in);
 		validacionesConcurso validaciones = new validacionesConcurso();
 		menusConcurso menus = new menusConcurso();
+		metodosOrdenacion ordenar = new metodosOrdenacion();
+		porDefecto defecto = new porDefecto();
 		
 		do {
 			//generarNombre
@@ -69,6 +77,9 @@ public class Concurso {
 				fichas[contadorFichasValidas] = new FichaImp(nombre, calificaciones);
 			    contadorFichasValidas++;
 			}
+			else {
+				System.out.println("No valido");
+			}
 			
 			
 			System.out.println("Quieres seguir introduciendo fichas (N para salir)");
@@ -77,20 +88,32 @@ public class Concurso {
 		while(respuesta != 'n');
 		
 		do {
+			System.out.println("Voy a usar por defecto");
+			fichas = defecto.generarFichas();
+			//gestora.pintarArray(fichas);
 			menus.mostrarMenu();
 			opcion = validaciones.leeryValidarOpcionMenu(); 
 			
 			switch(opcion) {
 			case 1:
 				//ListaPuntuacion
+				ordenar.ordenarListaPuntuacion(fichas);
+				gestora.pintarArray(fichas);
 			break;
 			
 			case 2:
 				//ListaNumeroAspirante
+				ordenar.ordenarListaNumeroAspirante(fichas);
+				gestora.pintarArray(fichas);
 			break;
 			
 			case 3:
 				//ListaMedia
+				maximo = gestora.maximoPuntuacion(fichas);
+				minimo = gestora.minimoPuntuacion(fichas);
+				media = gestora.mediaTotal(fichas);
+				contadorFichasValidas = 4;
+				gestora.pintarTercero(contadorFichasValidas, maximo, minimo, media);
 			break;
 			}
 		}
