@@ -20,6 +20,6 @@ public class conductorValidaciones {
         validaciones.validarNumeroPista();
         validaciones.validarSocio();
         validaciones.validarPista(socios);
-        //validaciones.validarPista(socios);
+        
     }
 }
