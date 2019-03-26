@@ -20,7 +20,7 @@ public class gestoraFicha {
 	public void pintarArray(FichaImp[] fichas) {
 		int contObjetos = 0;
         for(int i = 0; i < fichas.length && fichas[i] != null; i++){
-            contObjetos = i;
+            contObjetos++;
         }
         
 		for(int i = 0; i < contObjetos;i++) {
@@ -49,6 +49,16 @@ public class gestoraFicha {
 					validado = true;
 				}
 			}
+		}
+		
+		return validado;
+	}
+	
+	public boolean fichaValidaBonita(int[] cal) {
+		boolean validado = false;
+		
+		if((cal[0] + cal[1] + cal[2] == 3) && (cal[3] + cal[4] + cal[5] + cal[6] >= 2) && (cal[7] + cal[8] + cal[9] >= 1)) {
+			validado = true;
 		}
 		
 		return validado;
@@ -134,23 +144,14 @@ public class gestoraFicha {
 	 */
 	
 	public FichaImp maximoPuntuacion(FichaImp[] fichas) {
-		FichaImp maximo = null;
-		int contObjetos = 0;
-        for(int i = 0; i < fichas.length && fichas[i] != null; i++){
-            contObjetos = i;
-        }
+		FichaImp maximo = fichas[0];
 		
-		for(int i = contObjetos - 1; i > 0; i--) {
-			if(fichas[i].nota() > fichas[i + 1].nota()) {
-				if(maximo.nota() < fichas[i].nota()) {
+		for(int i = 1; i < fichas.length && fichas[i] != null; i++) {
+			if(fichas[i].nota() > maximo.nota()) {
 					maximo = fichas[i];
-				}
-				
 			}
 		}
-		
 		return maximo;
-		
 	}
 	
 	/*
@@ -166,21 +167,14 @@ public class gestoraFicha {
 	 */
 	
 	public FichaImp minimoPuntuacion(FichaImp[] fichas) {
-		FichaImp minimo = null;
-		int contObjetos = 0;
-        for(int i = 0; i < fichas.length && fichas[i] != null; i++){
-            contObjetos = i;
-        }
+		FichaImp minimo = fichas[0];
 		
-		for(int i = 0; i < contObjetos; i++) {
-			if(fichas[i].nota() < fichas[i + 1].nota()) {
-				if(minimo.nota() > fichas[i].nota()) {
+		
+		for(int i = 1; i < fichas.length && fichas[i] != null; i++) {
+			if(fichas[i].nota() < minimo.nota()) {
 					minimo = fichas[i];
-				}
-				
 			}
 		}
-		
 		return minimo;
 	}
 	
@@ -202,7 +196,7 @@ public class gestoraFicha {
 		int suma = 0;
 		
         for(int i = 0; i < fichas.length && fichas[i] != null; i++){
-            contObjetos = i;
+            contObjetos++;
         }
         
         for(int i = 0; i < contObjetos; i++) {

@@ -28,8 +28,8 @@ import Defecto.porDefecto;
  * 	Repetir
  * 		generarNombre
  * 		generarCalificaciones
- * 		Si(calificaciones son validas)
- * 			ConstruirFicha
+ * 		Si(fichaAdmitida es aceptada)
+ * 			FichaAceptada
  * 	Mientras no quiera seguir introduciendo fichas
  * 	MostrarMenu
 	 * Segun(opcionMenu)
