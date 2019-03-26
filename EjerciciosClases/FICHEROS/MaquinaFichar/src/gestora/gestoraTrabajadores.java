@@ -20,16 +20,16 @@ public class gestoraTrabajadores {
     public void trabajadoresPorDefecto(String ruta) {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, true));
-            bw.newLine();
             bw.write("99, MariCarmen, Osuna, 20, F");
             bw.newLine();
             bw.write("98, Joss, Osuna, 18, M");
             bw.newLine();
             bw.write("97, Luisa, Gavira, 50, F");
             bw.newLine();
-            bw.write("97, Mari, Rodriguez, 40, F");
+            bw.write("96, Mari, Rodriguez, 40, F");
+            bw.newLine();
 
-            //Guardamos los cambios del fichero
+            //Guardamos y limpiamos el buffer
             bw.flush();
             //Se cierra el fichero
             bw.close();
@@ -88,7 +88,7 @@ public class gestoraTrabajadores {
             bw.write(trabajador.toString());
             bw.newLine();
 
-            //Guardamos los cambios del fichero
+            //Guardamos y limpiamos el buffer
             bw.flush();
             //Se cierra el fichero
             bw.close();
@@ -112,15 +112,16 @@ public class gestoraTrabajadores {
     */
 
     //Este metodo no esta correcto solo veria la primera linea asi que habria que saber como recorrer
-    public void borrarTrabajador(String ruta, TrabajadorImp trabajador) {
+    public void borrarTrabajador(String ruta) {
+        /*
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, true));
             BufferedReader br = new BufferedReader(new FileReader(ruta));
-            if(trabajador.toString() == br.readLine()) {
+            while(trabajador.toString() == br.readLine()) {
                 bw.write("0");
                 bw.newLine();
             }
-            //Guardamos los cambios del fichero
+            //Guardamos y limpiamos el buffer
             bw.flush();
 
             //Se cierra el fichero
@@ -129,28 +130,43 @@ public class gestoraTrabajadores {
         catch(IOException err) {
             err.printStackTrace();
         }
+        */
     }
 
     /*
     Interfaz
     Nombre: borrarFichero
     Comentario: Este subprograma borra el fichero completo
-    Cabecera: public void borrarFichero (File fichero) {
+    Cabecera: public void borrarFichero (String ruta) {
     Precondiciones: No hay
-    Entrada: File fichero // El fichero que se desea borrar
+    Entrada: String ruta //La ruta donde esta el fichero cual se desea borrar
     Salida: No hay
     E/S: No hay
     Postcondiciones: Muestra un mensaje controlado el error
     */
 
-    public void eliminarFichero(File fichero) {
+    public void borrarFichero(String ruta) {
+        File fichero = new File(ruta);
 
         if (fichero.exists() == false) {
             System.out.println("El fichero no existe");
-        } else {
-            fichero.delete();
-            System.out.println("El fichero fue eliminado.");
         }
-
+        else {
+            fichero.delete();
+            System.out.println("El fichero fue eliminado");
+        }
     }
+
+    /*
+    Interfaz
+    Nombre: buscarTrabajador
+    Comentario: Este subprograma busca un trabajador en el fichero para eliminarlo
+    Cabecera: public String buscarTrabajador(String ruta, TrabajadorImp trabajador)
+    Precondiciones: El fichero debe estar creado
+    Entrada: - String ruta //Es la ruta donde se encuentra el fichero
+             - TrabajadorImp trabajador //Es el trabajador a buscar
+    Salida: No hay
+    E/S: No hay
+    Postcondiciones:
+     */
 }

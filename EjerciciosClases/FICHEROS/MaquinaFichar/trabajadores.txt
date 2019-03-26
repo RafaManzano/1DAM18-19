@@ -1,12 +1,5 @@
-0, Josefa, Medina, 16, F
+
 99, MariCarmen, Osuna, 20, F
 98, Joss, Osuna, 18, M
 97, Luisa, Gavira, 50, F
-97, Mari, Rodriguez, 40, F99, MariCarmen, Osuna, 20, F
-98, Joss, Osuna, 18, M
-97, Luisa, Gavira, 50, F
-97, Mari, Rodriguez, 40, F
-99, MariCarmen, Osuna, 20, F
-98, Joss, Osuna, 18, M
-97, Luisa, Gavira, 50, F
-97, Mari, Rodriguez, 40, F
+96, Mari, Rodriguez, 40, F

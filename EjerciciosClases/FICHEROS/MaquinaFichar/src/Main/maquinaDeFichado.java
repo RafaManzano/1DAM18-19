@@ -45,11 +45,13 @@ public class maquinaDeFichado {
         char respuesta;
         TrabajadorImp trabajador;
         gestoraTrabajadores gestora = new gestoraTrabajadores();
-        File archivo = new File("trabajadores.txt");
-        String ruta = archivo.toString();
+        //File archivo = new File("trabajadores.txt");
+        String ruta = "trabajadores.txt";
         Scanner teclado = new Scanner(System.in);
         menusFichado menus = new menusFichado();
         validacionesFichado validar = new validacionesFichado();
+
+        //gestora.borrarFichero(archivo);
 
         do {
             menus.mostrarMenuOpcion();

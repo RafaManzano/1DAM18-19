@@ -67,7 +67,7 @@ public class TrabajadorImp implements Trabajador, Cloneable, Comparable<Trabajad
     private String apellidos;
     private int edad;
     private char sexo;
-    private static int acumTrabajador = 0;
+    private static int acumTrabajador = 1;
 
     //Constructor
     public TrabajadorImp() {
