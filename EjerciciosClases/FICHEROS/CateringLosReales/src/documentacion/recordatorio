@@ -1,0 +1,5 @@
+- Complementar los codigos de error en los subprogramas de gestion
+- Realizar los resguardos de las gestoras
+- Comprobar si usar las clases genericas  (<>)
+- El metodo de eliminarCamarero y eliminarMesa no son correctos
+- Tipo File me puede ayudar para la creacion de camareros por defecto
