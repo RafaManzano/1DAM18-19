@@ -19,6 +19,16 @@ Tipo: String
 Cons: Si
 Mod: Si
 
+Turno
+Tipo: EnumTurno
+Cons: Si
+Mod: Si
+
+Mesas
+Tipo: MesaImp[]
+Cons: Si
+Mod: Si
+
 Propiedades derivadas
 No hay
 
@@ -39,8 +49,20 @@ public void setNombre(String nombre)
 Apellidos
 public String getApellidos()
 public void setApellidos(String apellidos)
+
+Turno
+public EnumTurno getTurno ()
+public void setTurno(EnumTurno turno)
+
+Mesas
+public MesaImp[] getMesas()
+public void setMesas(MesaImp[] mesas)
+
+Metodos anhadidos
+public String mostrarIDMesas()
 */
 
+import enumeraciones.EnumTurno;
 import interfaces.Camarero;
 
 public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp> {
@@ -48,6 +70,8 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
     private int id;
     private String nombre;
     private String apellidos;
+    private EnumTurno turno;
+    private MesaImp[] mesas;
     private static int acumCamareros = 1;
 
     //Constructor
@@ -55,18 +79,24 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
         id = acumCamareros++;
         nombre = "NoDefinido";
         apellidos = "NoDefinido";
+        turno = turno.NODEFINIDO;
+        mesas = new MesaImp[4];
     }
 
-    public CamareroImp(String nombre, String apellidos) { //Con parametros
+    public CamareroImp(String nombre, String apellidos, EnumTurno turno, MesaImp[] mesas) { //Con parametros
         id = acumCamareros++;
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.turno = turno;
+        this.mesas = mesas;
     }
 
     public CamareroImp(CamareroImp cop) { //De copia
         id = acumCamareros++;
         this.nombre = cop.getNombre();
         this.apellidos = cop.getApellidos();
+        this.turno = cop.getTurno();
+        this.mesas = cop.getMesas();
     }
 
     //Get and Set
@@ -79,7 +109,6 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -88,16 +117,33 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
     public String getApellidos() {
         return apellidos;
     }
-
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+
+    //Turno
+    public EnumTurno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(EnumTurno turno) {
+        this.turno = turno;
+    }
+
+    //Mesas
+    public MesaImp[] getMesas() {
+        return mesas;
+    }
+
+    public void setMesas(MesaImp[] mesas) {
+        this.mesas = mesas;
     }
 
     //Metodos de la clase object
     //toString
     @Override
     public String toString() {
-        return id + ", " + nombre + ", " + apellidos;
+        return id + "," + nombre + "," + apellidos + "," + turno.toString() + "," + mostrarIDMesas();
     }
 
     //hashCode
@@ -151,5 +197,25 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
         }
 
         return comparar;
+    }
+
+    /*
+    Interfaz
+    Nombre: mostrarIDMesas
+    Comentario: Este subprograma muestra los ID de las mesas
+    Cabecera: public String mostrarIDMesas
+    Precondiciones: No hay
+    Entrada: No hay
+    Salida: String mesitas //El ID de las mesas que tiene asociadas cada camarero
+    E/S: No hay
+    Postcondiciones: Asociado al nombre, devuelve el id de las mesas asociados al camarero
+     */
+
+    public String mostrarIDMesas() {
+        String mesitas = "";
+        for (int i = 0; i < mesas.length; i++) {
+            mesitas += mesas[i].getID() + ",";
+        }
+        return mesitas;
     }
 }

@@ -15,10 +15,6 @@ public class testMesa {
         System.out.println(c3.getID());
         System.out.println(c4.getID());
 
-        //numComensales
-        System.out.println(c2.getNumComensales());
-        c2.setNumComensales(20);
-        System.out.println(c2.getNumComensales());
 
         //toString
         System.out.println(c2.toString());

@@ -8,6 +8,7 @@ import gestora.*;
 
 public class conductorCatering {
     public static void main (String[] args) {
+        /*
         gestionGenerica gestion = new gestionGenerica();
         MesaImp mesa = new MesaImp(8);
         CamareroImp c1 = new CamareroImp("Rafalito", "Manueh");
@@ -21,7 +22,7 @@ public class conductorCatering {
         //gestion.introducir("prueba2.txt", c2);
         //gestion.introducir("prueba2.txt", c3);
         g.buscarCamarero("prueba2.txt", c2);
-
+        */
     }
 
 }

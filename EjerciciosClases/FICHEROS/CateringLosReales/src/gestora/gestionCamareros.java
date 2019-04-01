@@ -50,11 +50,12 @@ public class gestionCamareros {
             br.reset();
             String linea;
 
-            while((linea = br.readLine()) != null) {
+            //while((linea = br.readLine()) != null) {
+            for(int contador = 0; (linea = br.readLine()) != null; contador++) {
                 if(linea.equals(camarero.toString())) {
                     //Coger la marca
                     //System.out.println("Esta eliminado Hulio");
-                    //eliminarCamarero(ruta);
+                    //eliminarCamarero(ruta, posicion);
                 }
             }
             br.close();
@@ -66,26 +67,115 @@ public class gestionCamareros {
 
     /*
     Interfaz
-    Nombre: eliminarCamarero
+    Nombre: EliminarRegistro
     Comentario: Elimina el camarero pasado por parametro
-    Cabecera: public void eliminarCamarero(String ruta, String camarero)
-    Precondiciones: El fichero debe estar creado
-    Entrada: - String ruta //Es la ruta donde esta el fichero
-             - String camarero //Es el trabajador ha buscar en el fichero //Es un String porque se ha buscado con anterioridad
+    Cabecera:  public void EliminarRegistro(String ficheroAntiguo,String antiguaLinea)
+    Precondiciones: No hay
+    Entrada: - String ficheroAntiguo //Es la ruta donde esta el fichero
+             - String antiguaLinea //Es la linea que se desea eliminar
     Salida: No hay
     E/S: No hay
     Postcondiciones: Mensaje de confirmacion
     */
 
-    //Este metodo esta erroneo
-    public void eliminarCamarero(String ruta) {
+    public void EliminarRegistro(String ficheroAntiguo,String antiguaLinea){
+       File FAntiguo = new File(ficheroAntiguo);
+       String ficheroNuevo = "camarerosN.txt";
+       /*Crea un objeto File para el fichero nuevo*/
+       File FficheroNuevo=new File(ficheroNuevo);
+
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
-            bw.write("0");
-            bw.flush();
-            bw.close();
+            /*Si existe el fichero inical*/
+            if(FAntiguo.exists()){
+                /*Abro un flujo de lectura*/
+                BufferedReader Flee= new BufferedReader(new FileReader(FAntiguo));
+                String Slinea;
+                /*Recorro el fichero de texto linea a linea*/
+                while((Slinea=Flee.readLine())!=null) {
+                    /*Si la linea obtenida es distinta al la bucada
+                     *para eliminarr*/
+                    if (!Slinea.toUpperCase().trim().equals(antiguaLinea.toUpperCase().trim())) {
+                        /*la escribo en el fichero nuevo*/
+                        EscribirFichero(ficheroNuevo,Slinea);
+                    }
+                }
+                /*Obtengo el nombre del fichero inicial*/
+                String SnomAntiguo=FAntiguo.getName();
+                /*Borro el fichero inicial*/
+                BorrarFichero(ficheroAntiguo);
+                /*renombro el nuevo fichero con el nombre del fichero inicial*/
+                FficheroNuevo.renameTo(FAntiguo);
+                /*Cierro el flujo de lectura*/
+                Flee.close();
+            }
+            else{
+                System.out.println("Fichero No Existe");
+            }
         }
-        catch(IOException err) {
+        catch (Exception err) {
+            //Captura un posible error y le imprime en pantalla
+            err.printStackTrace();
+        }
+    }
+
+    /*
+    Interfaz
+    Nombre: BorrarFichero
+    Comentario: Este subprograma borra completamente el fichero
+    Cabecera: public void BorrarFichero(String fichero)
+    Precondiciones: No hay
+    Entrada: String fichero //Es el fichero que se desea eliminar
+    Salida: No hay
+    E/S: No hay
+    Postcondiciones: Muestra un mensaje con el resultado de la operacion
+    */
+
+    public void BorrarFichero(String fichero){
+        File Ffichero = new File(fichero);
+        try {
+            /*Si existe el fichero*/
+            if(Ffichero.exists()){
+                /*Borra el fichero*/
+                Ffichero.delete();
+                System.out.println("Fichero Borrado con Exito");
+            }
+        }
+        catch (Exception err) {
+            //Captura un posible error y le imprime en pantalla
+            err.printStackTrace();
+        }
+    }
+
+    /*
+    Interfaz
+    Nombre: EscribirFichero
+    Comentario: Este subprograma escribe en el fichero. Lo uso para el fichero auxiliar
+    Cabecera: public void EscribirFichero(String fichero, String SCadena)
+    Precondiciones: No hay
+    Entrada: - String fichero //Es el fichero a escribir
+             - String SCadena //Es la cadena que hay que escribir en el fichero
+    Salida: No hay
+    E/S: No hay
+    Postcondiciones: Un mensaje con el resultado de la operacion
+    */
+    public void EscribirFichero(String fichero,String SCadena){
+        File Ffichero = new File(fichero);
+        try {
+            //Si no Existe el fichero lo crea
+            if(!Ffichero.exists()){
+                Ffichero.createNewFile();
+            }
+            //Abre un Flujo de escritura,sobre el fichero con codificacion utf-8. Ademas   en
+            //el pedazo de sentencia "FileOutputStream(Ffichero,true)", true es por si existe el fichero
+            //segir añadiendo texto y no borrar lo que tenia
+            BufferedWriter Fescribe=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(Ffichero,true), "utf-8"));
+            //Escribe en el fichero la cardena que recibe la funcion. la cadena "\r\n" significa salto de linea
+            Fescribe.write(SCadena + "\r\n");
+            //Cierra el flujo de escritura
+            Fescribe.close();
+        }
+        catch (Exception err) {
+            //Captura un posible error y le imprime en pantalla
             err.printStackTrace();
         }
     }

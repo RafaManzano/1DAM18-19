@@ -5,32 +5,24 @@ Propiedaes basicas
 ID
 Tipo: int
 Cons: Si
-Mod: No
-
-numComensales
-Tipo: int
-Cons: Si
 Mod: Si
 
 Propiedades derivadas
 No hay
 
 Propiedades compartidas
-acumMesas
-Tipo: int
-Cons: Si
-Mod: No
+No hay
 
 Get and Set
 ID
 public int getID()
-
-numComensales
-public int getNumComensales()
-public void setNumComensales(int numComensales)
+public void setID(int id)
 
 Requisitos
-numComensales es mayor que 1
+No hay
+
+Metodos anhadidos
+No hay, de momento
 */
 
 import interfaces.Mesa;
@@ -38,23 +30,18 @@ import interfaces.Mesa;
 public class MesaImp implements Mesa, Cloneable, Comparable<MesaImp> {
     //Atributos
     private int id;
-    private int numComensales;
-    private static int acumMesas = 1;
 
     //Constructor
     public MesaImp() { //Por defecto
-        id = acumMesas++;
-        numComensales = 0;
+        id = 0;
     }
 
-    public MesaImp(int numComensales) { //Con parametros
-        id = acumMesas++;
-        this.numComensales = numComensales;
+    public MesaImp(int id) { //Con parametros
+        this.id = id;
     }
 
     public MesaImp(MesaImp cop) { //De copia
-        id = acumMesas++;
-        this.numComensales = cop.getNumComensales();
+        this.id = cop.getID();
     }
 
     //Get and Set
@@ -62,27 +49,22 @@ public class MesaImp implements Mesa, Cloneable, Comparable<MesaImp> {
     public int getID() {
         return id;
     }
-
-    //NumComensales
-    public int getNumComensales() {
-        return numComensales;
+    public void setID(int id) {
+        this.id = id;
     }
 
-    public void setNumComensales(int numComensales) {
-        this.numComensales = numComensales;
-    }
 
     //Metodos de la clase object
     //toString
     @Override
     public String toString() {
-        return id + ", " + numComensales;
+        return "" + id;
     }
 
     //hashCode
     @Override
     public int hashCode() {
-        return id * numComensales * 7 * 21;
+        return id  * 7 * 21;
     }
 
     //equals

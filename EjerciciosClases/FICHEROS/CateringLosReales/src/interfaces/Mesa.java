@@ -5,39 +5,28 @@ Propiedaes basicas
 ID
 Tipo: int
 Cons: Si
-Mod: No
-
-numComensales
-Tipo: int
-Cons: Si
 Mod: Si
 
 Propiedades derivadas
 No hay
 
 Propiedades compartidas
-acumMesas
-Tipo: int
-Cons: Si
-Mod: No
+No hay
 
 Get and Set
 ID
 public int getID()
-
-numComensales
-public int getNumComensales()
-public void setNumComensales(int numComensales)
+public void setID(int id)
 
 Requisitos
-numComensales es mayor que 1
+No hay
+
+Metodos anhadidos
+No hay, de momento
 */
 
 public interface Mesa {
     //ID
     public int getID();
-
-    //numComensales
-    public int getNumComensales();
-    public void setNumComensales(int numComensales);
+    public void setID(int id);
 }
