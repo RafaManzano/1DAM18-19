@@ -1,4 +1,5 @@
 package gestora;
+//NO NECESARIA
 
 import clases.MesaImp;
 

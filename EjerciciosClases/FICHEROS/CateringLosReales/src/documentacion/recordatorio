@@ -4,4 +4,7 @@
 - Diagrama de clases
 - Javadoc
 - La idea de las clases se basa en dos clases(Mesa y Camarero). El camarero aparte de lo habitual, turno y array de mesas V
-- Las mesas por su parte tendra numero. Debera ser extensible para cualquier otra mesa y en un futuro tener el soporte para pedidos
+- Las mesas por su parte tendra numero. Debera ser extensible para cualquier otra mesa y en un futuro tener el soporte para pedidos V
+- Poner los ficheros de entrada salida
+- Revisar Main y crear los metodos
+

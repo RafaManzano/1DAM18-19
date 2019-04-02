@@ -11,10 +11,8 @@ public class testMesa {
 
         //ID
         System.out.println(c1.getID());
-        System.out.println(c2.getID());
-        System.out.println(c3.getID());
-        System.out.println(c4.getID());
-
+        c1.setID(5);
+        System.out.println(c1.getID());
 
         //toString
         System.out.println(c2.toString());
