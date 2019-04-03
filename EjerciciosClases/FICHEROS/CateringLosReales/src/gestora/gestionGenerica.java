@@ -22,8 +22,7 @@ public class gestionGenerica {
             bw.newLine();
             bw.flush();
             bw.close();
-        }
-        catch(IOException err) {
+        } catch (IOException err) {
             err.printStackTrace();
         }
     }
@@ -49,17 +48,16 @@ public class gestionGenerica {
             br.reset();
             String linea;
 
-            while((linea = br.readLine()) != null) {
+            while ((linea = br.readLine()) != null) {
                 //for(int contador = 0; (linea = br.readLine()) != null; contador++) {
-                if(linea.equals(objeto.toString())) {
+                if (linea.equals(objeto.toString())) {
                     //Coger la marca
                     //System.out.println("Esta eliminado Hulio");
                     eliminarRegistro(ruta);
                 }
             }
             br.close();
-        }
-        catch (IOException err) {
+        } catch (IOException err) {
             err.printStackTrace();
         }
     }
@@ -83,11 +81,35 @@ public class gestionGenerica {
 
             rrw.writeUTF("ELIMINADO");
             rrw.close();
-        }
-        catch(FileNotFoundException err) {
+        } catch (FileNotFoundException err) {
+            err.printStackTrace();
+        } catch (IOException err) {
             err.printStackTrace();
         }
-        catch(IOException err) {
+    }
+
+    /*
+    Interfaz
+    Nombre: mostrarFichero
+    Comentario: Este subprorgama muestra el fichero completo
+    Cabecera: public void mostrarFichero(String ruta)
+    Precondiciones: El fichero debe estar creado
+    Entrada: - String ruta //La ruta donde se encuentra el fichero
+    Salida: No hay
+    E/S: No hay
+    Postcondiciones: Solo muestra el fichero completo
+    */
+
+    public void mostrarFichero(String ruta) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(ruta));
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+            br.close();
+        } catch (IOException err) {
             err.printStackTrace();
         }
     }

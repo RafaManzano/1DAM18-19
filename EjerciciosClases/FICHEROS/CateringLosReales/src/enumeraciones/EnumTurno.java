@@ -1,5 +1,5 @@
 package enumeraciones;
 
 public enum EnumTurno {
-    MANHANA, TARDE, NOCHE, NODEFINIDO
+    MANHANA, TARDE, NOCHE, NODEFINIDO;
 }

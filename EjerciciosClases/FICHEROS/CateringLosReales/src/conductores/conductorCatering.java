@@ -27,7 +27,8 @@ public class conductorCatering {
         gestion.introducir("prueba2.txt", c1);
         gestion.introducir("prueba2.txt", c2);
         gestion.introducir("prueba2.txt", c3);
-        g.buscaryEliminarCamarero("prueba2.txt", c2);
+        //g.buscaryEliminarCamarero("prueba2.txt", c2);
+        //g.mostrarCamarerosTurno("prueba2.txt", turno.MANHANA);
 
     }
 

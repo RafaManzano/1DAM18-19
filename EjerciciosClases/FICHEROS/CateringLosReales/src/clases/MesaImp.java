@@ -25,7 +25,7 @@ Metodos anhadidos
 No hay, de momento
 */
 
-import interfaces.Mesa;
+import interfaces.*;
 
 public class MesaImp implements Mesa, Cloneable, Comparable<MesaImp> {
     //Atributos

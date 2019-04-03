@@ -1,6 +1,7 @@
 package gestora;
 
 import clases.CamareroImp;
+import enumeraciones.EnumTurno;
 
 import java.io.*;
 
@@ -85,6 +86,39 @@ public class gestionCamareros {
 
             rrw.writeUTF("ELIMINADO");
             rrw.close();
+        }
+        catch(FileNotFoundException err) {
+            err.printStackTrace();
+        }
+        catch(IOException err) {
+            err.printStackTrace();
+        }
+    }
+
+    /*
+    Interfaz
+    Nombre: mostrarCamarerosTurno
+    Comentario: Este subprograma muestra una lista con los camareros que trabajan en ese turno
+    Cabecera: public void mostrarCamarerosTurno(String ruta, EnumTurno turno)
+    Precondiciones: El fichero (ruta) debe existir
+    Entrada: - String ruta //Es la ruta donde se encuentra el fichero
+             - EnumTurno turno //Es el turno que se debe mostrar
+    Salida: No hay
+    E/S: No hay
+    Postcondiciones: Solo muestra en pantalla los camareros que trabajan en ese turno
+    */
+
+    public void mostrarCamarerosTurno(String ruta, EnumTurno turno) {
+        String turnoString = ".*" + turno.toString() + ".*";
+        String linea;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(ruta));
+
+            while((linea = br.readLine()) != null) {
+                if(linea.matches(turnoString) == true) {
+                    System.out.println(linea);
+                }
+            }
         }
         catch(FileNotFoundException err) {
             err.printStackTrace();
