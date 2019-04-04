@@ -47,13 +47,17 @@ public class gestionGenerica {
             br.mark(0);
             br.reset();
             String linea;
+            int posicion = 0;
+
 
             while ((linea = br.readLine()) != null) {
+                posicion += stringEnBytes(linea);
                 //for(int contador = 0; (linea = br.readLine()) != null; contador++) {
                 if (linea.equals(objeto.toString())) {
                     //Coger la marca
                     //System.out.println("Esta eliminado Hulio");
-                    eliminarRegistro(ruta);
+                    eliminarRegistro(ruta, posicion);
+
                 }
             }
             br.close();
@@ -74,12 +78,14 @@ public class gestionGenerica {
     Postcondiciones: Marca en el fichero con "ELIMINADO" el registro ha eliminar
     */
 
-    public void eliminarRegistro(String ruta) {
+    public void eliminarRegistro(String ruta, int posicion) {
         try {
             RandomAccessFile rrw = new RandomAccessFile(ruta, "rw");
             //System.out.println(linea);
 
-            rrw.writeUTF("ELIMINADO");
+            //System.out.println(rrw.getFilePointer());
+            rrw.skipBytes(posicion - 6);
+            rrw.writeUTF("DEL");
             rrw.close();
         } catch (FileNotFoundException err) {
             err.printStackTrace();
@@ -112,5 +118,27 @@ public class gestionGenerica {
         } catch (IOException err) {
             err.printStackTrace();
         }
+    }
+
+    /*
+    Interfaz
+    Nombre: stringEnBytes
+    Comentario: Este subprograma convierte una cadena en bytes
+    Cabecera: public int stringEnBytes(String cadena)
+    Precondiciones: No hay
+    Entrada: - Srting cadena //Es la cadena de la que se desea saber los bytes
+    Salida: - int bytes //La cantidad de byes que tiene la cadena
+    E/S: No hay
+    Postcondiciones: Asociado al nombre, la cantidad de bytes que ocupa la cadena
+    */
+
+    public int stringEnBytes(String cadena) {
+        byte[] bytes;
+        int tamanho;
+
+        bytes = cadena.getBytes();
+        tamanho = bytes.length;
+
+        return tamanho;
     }
 }
