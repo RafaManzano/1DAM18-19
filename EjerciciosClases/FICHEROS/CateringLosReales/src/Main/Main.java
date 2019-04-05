@@ -111,6 +111,10 @@ public class Main {
                             geGe.mostrarFichero(camareros);
                             System.out.println("2.");
                         break;
+
+                        case 3:
+                            System.out.println("3.");
+                        break;
                     }
                 }
                 while(opcion != 0);
@@ -135,6 +139,10 @@ public class Main {
                             //borrarMesa
                             //System.out.println("2.");
                             reGe.buscaryEliminarCamarero(mesas, mesa);
+                        break;
+
+                        case 3:
+                            System.out.println("3.");
                         break;
                     }
                 }

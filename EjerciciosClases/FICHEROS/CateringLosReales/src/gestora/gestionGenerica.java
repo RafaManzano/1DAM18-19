@@ -29,9 +29,9 @@ public class gestionGenerica {
 
      /*
     Interfaz
-    Nombre: buscaryEliminar
+    Nombre: eliminar
     Comentario: Busca en el fichero el objeto pasado por parametro y lo elimina (por marca)
-    Cabecera: public <T> void buscaryEliminarCamarero(String ruta, T objeto)
+    Cabecera: public <T> void eliminar(String ruta, T objeto)
     Precondiciones: El fichero debe estar creado
     Entrada: - String ruta //Es la ruta donde esta el fichero
              - T objeto //Es el objeto que buscamos para eliminar por marca
@@ -40,7 +40,7 @@ public class gestionGenerica {
     Postcondiciones: Mensaje de confirmacion
     */
 
-    public <T> void buscaryEliminarCamarero(String ruta, T objeto) {
+    public <T> void eliminar(String ruta, T objeto) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(ruta));
             //RandomAccessFile rrw = new RandomAccessFile(ruta, "rw")
@@ -49,19 +49,18 @@ public class gestionGenerica {
             String linea;
             int posicion = 0;
 
-
             while ((linea = br.readLine()) != null) {
-                posicion += stringEnBytes(linea);
                 //for(int contador = 0; (linea = br.readLine()) != null; contador++) {
                 if (linea.equals(objeto.toString())) {
                     //Coger la marca
                     //System.out.println("Esta eliminado Hulio");
                     eliminarRegistro(ruta, posicion);
-
                 }
+                posicion += linea.length() + 2;
             }
             br.close();
-        } catch (IOException err) {
+        }
+        catch (IOException err) {
             err.printStackTrace();
         }
     }
@@ -70,12 +69,13 @@ public class gestionGenerica {
     Interfaz
     Nombre: eliminarRegistro
     Comentario: Este subprograma marca el registro para su posterior eliminacion
-    Cabecera: public void eliminarRegistro(String ruta)
+    Cabecera: public void eliminarRegistro(String ruta, int posicion)
     Precondiciones: El fichero debe estar creado
     Entrada: - String ruta //La ruta del fichero debe ser correcta
+             - int posicion //La posicion donde se encuentra el registro a eliminar
     Salida: No hay
     E/S: No hay
-    Postcondiciones: Marca en el fichero con "ELIMINADO" el registro ha eliminar
+    Postcondiciones: Marca en el fichero con "*" el registro ha eliminar
     */
 
     public void eliminarRegistro(String ruta, int posicion) {
@@ -84,12 +84,14 @@ public class gestionGenerica {
             //System.out.println(linea);
 
             //System.out.println(rrw.getFilePointer());
-            rrw.skipBytes(posicion - 6);
-            rrw.writeUTF("DEL");
+            rrw.skipBytes(posicion);
+            rrw.writeChar('*');
             rrw.close();
-        } catch (FileNotFoundException err) {
+        }
+        catch (FileNotFoundException err) {
             err.printStackTrace();
-        } catch (IOException err) {
+        }
+        catch (IOException err) {
             err.printStackTrace();
         }
     }
@@ -130,15 +132,14 @@ public class gestionGenerica {
     Salida: - int bytes //La cantidad de byes que tiene la cadena
     E/S: No hay
     Postcondiciones: Asociado al nombre, la cantidad de bytes que ocupa la cadena
-    */
+
 
     public int stringEnBytes(String cadena) {
-        byte[] bytes;
         int tamanho;
 
-        bytes = cadena.getBytes();
-        tamanho = bytes.length;
+        tamanho = cadena.length();
 
         return tamanho;
     }
+    */
 }

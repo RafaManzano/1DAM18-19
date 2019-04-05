@@ -21,6 +21,7 @@ public class conductorCatering {
         CamareroImp c2 = new CamareroImp("Rafa", "Manh", turno.NOCHE, mesas);
         CamareroImp c3 = new CamareroImp("Nzhdeh","Manueh", turno.NOCHE, mesas);
         CamareroImp c4 = new CamareroImp("asdhkgfasjgfjksgakf","Manueh", turno.NOCHE, mesas);
+        CamareroImp c5 = new CamareroImp("Pablito","Manueh", turno.NOCHE, mesas);
         gestionCamareros g = new gestionCamareros();
 
 
@@ -29,7 +30,8 @@ public class conductorCatering {
         gestion.introducir("prueba2.txt", c2);
         gestion.introducir("prueba2.txt", c3);
         gestion.introducir("prueba2.txt", c4);
-        gestion.buscaryEliminarCamarero("prueba2.txt", c4);
+        gestion.introducir("prueba2.txt", c5);
+        gestion.eliminar("prueba2.txt", c5);
         //g.mostrarCamarerosTurno("prueba2.txt", turno.MANHANA);
 
         //System.out.println(gestion.stringEnBytes(c2.toString()));

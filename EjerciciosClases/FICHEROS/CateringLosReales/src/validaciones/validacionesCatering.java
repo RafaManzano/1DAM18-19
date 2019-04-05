@@ -23,10 +23,10 @@ public class validacionesCatering {
         Scanner teclado = new Scanner(System.in);
         int opcion = 0;
         do{
-            System.out.println("La opcion tiene que ser de 0 a 2");
+            System.out.println("La opcion tiene que ser de 0 a 3");
             opcion = teclado.nextInt();
         }
-        while(opcion < 0 || opcion > 2);
+        while(opcion < 0 || opcion > 3);
 
         return opcion;
     }
