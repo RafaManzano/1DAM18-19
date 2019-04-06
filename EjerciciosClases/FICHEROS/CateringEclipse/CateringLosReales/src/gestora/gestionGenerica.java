@@ -2,6 +2,8 @@ package gestora;
 
 import java.io.*;
 
+import enumeraciones.EnumTurno;
+
 public class gestionGenerica {
     /*
     Interfaz
@@ -27,19 +29,19 @@ public class gestionGenerica {
         }
     }
 
-     /*
+    /*
     Interfaz
     Nombre: eliminar
-    Comentario: Busca en el fichero el objeto pasado por parametro y lo elimina (por marca)
-    Cabecera: public <T> void eliminar(String ruta, T objeto)
+    Comentario: Busca en el fichero la id del objeto pasado por parametro y lo elimina (por marca)
+    Cabecera: publicvoid eliminar(String ruta, int id)
     Precondiciones: El fichero debe estar creado
-    Entrada: - T objeto //Es el objeto que buscamos para eliminar por marca
+    Entrada: - int id //Es la id del objeto para su posterior eliminacion
     Salida: No hay
     E/S: - String ruta //Es la ruta donde esta el fichero
     Postcondiciones: Mensaje de confirmacion
     */
 
-    public <T> void eliminar(String ruta, T objeto) {
+    public void eliminar(String ruta, int id) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(ruta));
             //RandomAccessFile rrw = new RandomAccessFile(ruta, "rw")
@@ -47,10 +49,11 @@ public class gestionGenerica {
             br.reset();
             String linea;
             int posicion = 0;
+            String ids = id + ".*";
 
             while ((linea = br.readLine()) != null) {
                 //for(int contador = 0; (linea = br.readLine()) != null; contador++) {
-                if (linea.equals(objeto.toString())) {
+                if (linea.matches(ids)) {
                     //Coger la marca
                     //System.out.println("Esta eliminado Hulio");
                     eliminarRegistro(ruta, posicion);
@@ -116,6 +119,39 @@ public class gestionGenerica {
             br.close();
         } 
         catch (IOException err) {
+            err.printStackTrace();
+        }
+    }
+    
+    /*
+    Interfaz
+    Nombre: mostrarTurno
+    Comentario: Este subprograma muestra una lista con los camareros que trabajan en ese turno
+    Cabecera: public void mostrarTurno(String ruta, EnumTurno turno)
+    Precondiciones: El fichero (ruta) debe existir
+    Entrada: - String ruta //Es la ruta donde se encuentra el fichero
+             - EnumTurno turno //Es el turno que se debe mostrar
+    Salida: No hay
+    E/S: No hay
+    Postcondiciones: Solo muestra en pantalla los camareros que trabajan en ese turno
+    */
+
+    public void mostrarTurno(String ruta, EnumTurno turno) {
+        String turnoString = ".*" + turno.toString() + ".*";
+        String linea;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(ruta));
+
+            while((linea = br.readLine()) != null) {
+                if(linea.matches(turnoString) == true) {
+                    System.out.println(linea);
+                }
+            }
+        }
+        catch(FileNotFoundException err) {
+            err.printStackTrace();
+        }
+        catch(IOException err) {
             err.printStackTrace();
         }
     }

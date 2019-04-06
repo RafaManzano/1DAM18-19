@@ -7,7 +7,7 @@
 - Las mesas por su parte tendra numero. Debera ser extensible para cualquier otra mesa y en un futuro tener el soporte para pedidos V
 - Poner los ficheros de entrada salida
 - Revisar Main y crear los metodos
-- %turno% (Esto es sql) se ha usado matches de string ./nombre./ V
+- %turno% (Esto es sql) se ha usado matches de string .*nombre.* V
 - Poner el atributo boolean asignado y pensar como cambiar los datos
 - En el metodo de validarMesas pensar en los repetidos
 - Probar todas las funcionalidades

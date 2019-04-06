@@ -110,7 +110,6 @@ public class validacionesCatering {
         EnumTurno turno = EnumTurno.NODEFINIDO;
         Scanner teclado = new Scanner(System.in);
         CamareroImp camarero;
-
         System.out.println("Escriba su nombre");
         nombre = teclado.next();
         System.out.println("Escriba su apellido");
@@ -139,28 +138,16 @@ public class validacionesCatering {
         int mesaBuscada = 0;
         gestionGenerica g = new gestionGenerica();
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("mesas.txt"));
-            g.mostrarFichero("mesas.txt");
-            System.out.println("Elija uno");
-            mesaBuscada = teclado.nextInt();
-            for (int i = 0; i < mesas.length; i++) {
-                while((linea = br.readLine()) != null) {
-                    if(linea.equals((Integer)mesaBuscada)) {
-                        mesas[i] = new MesaImp(mesaBuscada);
-                        //Pensar que hacer con los repetidos
-                        //if(mesas[0] == true)
-                        //if(mesas[i - 1].toString().equals(mesaBuscada));
-                        }
-                    }
-                }
-            }
-        catch(FileNotFoundException err) {
-            err.printStackTrace();
+        for (int i = 0; i < mesas.length; i++) {
+        g.mostrarFichero("mesas.txt");
+        System.out.println("Elija uno");
+        mesaBuscada = teclado.nextInt();
+        mesas[i] = new MesaImp(mesaBuscada);
         }
-        catch(IOException err) {
-            err.printStackTrace();
-        }
+        //Pensar que hacer con los repetidos
+        //if(mesas[0] == true)
+        //if(mesas[i - 1].toString().equals(mesaBuscada));
+        
         return mesas;
     }
 
