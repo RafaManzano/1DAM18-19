@@ -95,7 +95,6 @@ public class Main {
                 //Camarero
                 //System.out.println("1.");
                 do {
-
                     opcion = validar.leeryValidarOpcion();
                     switch(opcion) {
 
@@ -113,6 +112,7 @@ public class Main {
                         break;
 
                         case 3:
+                            //Eliminar e introducir
                             System.out.println("3.");
                         break;
                     }
@@ -138,11 +138,13 @@ public class Main {
                         case 2:
                             //borrarMesa
                             //System.out.println("2.");
+                            //En resguardo
                             reGe.buscaryEliminarCamarero(mesas, mesa);
                         break;
 
                         case 3:
                             System.out.println("3.");
+                            //En resguardo
                         break;
                     }
                 }
