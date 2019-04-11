@@ -21,7 +21,6 @@ public class gestionGenerica {
 	 * @param ruta La ruta donde se va a anhadir el nuevo objeto
 	 * @param objeto El objeto que se anhade al fichero, el objeto es un generico, osea, puedes introducir cualquier objeto de una clase
 	 * @return error Es el codigo de error 
-	 * 
 	 */
     public <T> int introducir(String ruta, T objeto) {
     	int error = 0;
@@ -50,6 +49,13 @@ public class gestionGenerica {
     E/S: - String ruta //Es la ruta donde esta el fichero
     Postcondiciones: Asociado al nombre. El codigo de error necesario para mostrar un mensaje (0 correcto y 1 no encontrado)
     */
+    
+    /**
+     * Busca en el fichero la id del objeto pasado por parametro y lo elimina (por marca)
+     * @param ruta Es la ruta donde esta el fichero
+     * @param id Es la id del objeto para su posterior eliminacion
+     * @return error El codigo de error para mostrar un mensaje
+     */
 
     public int eliminar(String ruta, int id) {
     	int error = 1;
@@ -91,6 +97,12 @@ public class gestionGenerica {
     E/S: - String ruta //La ruta del fichero debe ser correcta
     Postcondiciones: Marca en el fichero con "*" el registro ha eliminar
     */
+    
+    /**
+     * Este subprograma marca el registro para su posterior eliminacion
+     * @param ruta La ruta del fichero debe ser correcta
+     * @param posicion La posicion donde se encuentra el registro a eliminar
+     */
 
     public void eliminarRegistro(String ruta, int posicion) {
         try {
@@ -121,6 +133,11 @@ public class gestionGenerica {
     Postcondiciones: Solo muestra el fichero completo
     */
 
+    /**
+     * Este subprorgama muestra el fichero completo
+     * @param ruta La ruta donde se encuentra el fichero
+     */
+    
     public void mostrarFichero(String ruta) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(ruta));
@@ -148,6 +165,13 @@ public class gestionGenerica {
     E/S: No hay
     Postcondiciones: Si es 0 muestra en pantalla los camareros que trabajan en ese turno y lanza el codigo de error, si es 2 lanza el codigo de error   
     */
+    
+    /**
+     * Este subprograma muestra una lista con los camareros que trabajan en ese turno
+     * @param ruta Es la ruta donde se encuentra el fichero
+     * @param turno Es el turno que se debe mostrar
+     * @return int error El codigo de error para mostrar un mensaje
+     */
 
     public int mostrarTurno(String ruta, EnumTurno turno) {
     	int error = 2;
@@ -182,6 +206,12 @@ public class gestionGenerica {
      * Salida: int error //El codigo de error para mostrar un mensaje
      * E/S: No hay
      * Postcondiciones: Asociado al nombre. El codigo de error necesario para mostrar un mensaje (0 correcto y 3 camareros eliminados)
+     */
+    
+    /**
+     * Este subprograma guarda los cambios en el fichero maestro
+     * @param ruta Es la ruta donde se encuentra el fichero antiguo
+     * @return error El codigo de error para mostrar un mensaje
      */
     
     public int guardarCambios(String ruta) {

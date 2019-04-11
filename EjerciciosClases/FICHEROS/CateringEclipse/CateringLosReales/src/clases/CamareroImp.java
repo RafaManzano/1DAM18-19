@@ -72,6 +72,9 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
     private MesaImp[] mesas;
 
     //Constructor
+    /**
+     * Constructor por defecto
+     */
     public CamareroImp() { //Por defecto
         id = 0;
         nombre = "NoDefinido";
@@ -80,6 +83,14 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
         mesas = new MesaImp[4];
     }
 
+    /**
+     * Constructor con parametros
+     * @param id
+     * @param nombre
+     * @param apellidos
+     * @param turno
+     * @param mesas
+     */
     public CamareroImp(int id, String nombre, String apellidos, EnumTurno turno, MesaImp[] mesas) { //Con parametros
         this.id = id;
         this.nombre = nombre;
@@ -88,6 +99,10 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
         this.mesas = mesas;
     }
 
+    /**
+     * Constructor de copia
+     * @param cop
+     */
     public CamareroImp(CamareroImp cop) { //De copia
         this.id = cop.getID();
         this.nombre = cop.getNombre();
@@ -98,44 +113,86 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
 
     //Get and Set
     //ID
+    /**
+     * Get del atributo id
+     * @return id 
+     */
     public int getID() {
         return id;
     }
     
+    /**
+     * Set del atributo id
+     * @param id
+     */
     public void setID(int id) {
     	this.id = id;
     }
 
     //Nombre
+    /**
+     * Get del atributo nombre
+     * @return nombre 
+     */
     public String getNombre() {
         return nombre;
     }
+    
+    /**
+     * Set del atributo nombre
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     //Apellidos
+    /**
+     * Get del atributo apellidos
+     * @return apellidos 
+     */
     public String getApellidos() {
         return apellidos;
     }
+    
+    /**
+     * Set del atributo apellidos
+     * @param apellidos
+     */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
     //Turno
+    /**
+     * Get del atributo turno
+     * @return turno 
+     */
     public EnumTurno getTurno() {
         return turno;
     }
 
+    /**
+     * Set del atributo turno
+     * @param turno
+     */
     public void setTurno(EnumTurno turno) {
         this.turno = turno;
     }
 
     //Mesas
+    /**
+     * Get del atributo mesas
+     * @return mesas
+     */
     public MesaImp[] getMesas() {
         return mesas;
     }
 
+    /**
+     * Set del atributo mesas
+     * @param mesas
+     */
     public void setMesas(MesaImp[] mesas) {
         this.mesas = mesas;
     }
@@ -210,8 +267,12 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
     Salida: String mesitas //El ID de las mesas que tiene asociadas cada camarero
     E/S: No hay
     Postcondiciones: Asociado al nombre, devuelve el id de las mesas asociados al camarero
-     */
+    */
 
+    /**
+     * Este subprograma muestra los ID de las mesas
+     * @return mesitas El ID de las mesas que tiene asociadas cada camarero
+     */
     public String mostrarIDMesas() {
         String mesitas = "";
         for (int i = 0; i < mesas.length; i++) {

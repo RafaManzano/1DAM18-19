@@ -34,23 +34,43 @@ public class MesaImp implements Mesa, Cloneable, Comparable<MesaImp> {
     private int id;
 
     //Constructor
+    /**
+     * Constructor por defecto
+     */
     public MesaImp() { //Por defecto
         id = 0;
     }
 
+    /**
+     * Constructor con parametros
+     * @param id
+     */
     public MesaImp(int id) { //Con parametros
         this.id = id;
     }
 
+    /**
+     * Constructor de copia
+     * @param cop
+     */
     public MesaImp(MesaImp cop) { //De copia
         this.id = cop.getID();
     }
 
     //Get and Set
     //ID
+    /**
+     * Get del atributo id
+     * @return id 
+     */
     public int getID() {
         return id;
     }
+    
+    /**
+     * Set del atributo id
+     * @param id
+     */
     public void setID(int id) {
         this.id = id;
     }

@@ -2,7 +2,7 @@
 - Realizar los resguardos de las gestoras V
 - Comprobar si usar las clases genericas  (<>) V
 - Diagrama de clases
-- Javadoc
+- Javadoc V
 - La idea de las clases se basa en dos clases(Mesa y Camarero). El camarero aparte de lo habitual, turno y array de mesas V
 - Las mesas por su parte tendra numero. Debera ser extensible para cualquier otra mesa y en un futuro tener el soporte para pedidos V
 - En MesaImp hay que poner un boolean de asignada en el salon (Es bastante complejo, asi que de momento nada) V
@@ -12,5 +12,6 @@
 - ValidarMesas y validarMesa hay que revisar V
 - Probar todas las funcionalidades V
 - Revisar metodos e interfaces completas, probablemente crear otro proyecto nuevo y pasar la informacion relevante V
-- Terminar todo y pasar a algun compañero para que lo pruebe
+- Terminar todo V
+- Pasar para que algun compañero me lo compruebe
 - Poner el id que se pueda introducir desde teclado V
