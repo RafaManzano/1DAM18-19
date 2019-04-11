@@ -8,15 +8,23 @@ public class gestionGenerica {
     /*
     Interfaz
     Nombre: introducir
-    Comentario: Este subprograma añade un nuevo objeto
+    Comentario: Este subprograma anhade un nuevo objeto
     Cabecera: public void introducir(String ruta, <T> objeto)
     Precondiciones: No hay
     Entrada: - <T> objeto //Es el objeto por anhadir
-    Salida: No hay
+    Salida: int error //El codigo de error para mostrar un mensaje
     E/S: - String ruta //Es la ruta donde esta el fichero
-    Postcondiciones: Asociado al nombre. El objeto quedaria introducido en el fichero
+    Postcondiciones: Asociado al nombre. El codigo de error necesario para mostrar un mensaje
     */
-    public <T> void introducir(String ruta, T objeto) {
+	
+	/**Este subprograma anhade un nuevo objeto en la ruta del fichero especificada por parametro
+	 * @param ruta La ruta donde se va a anhadir el nuevo objeto
+	 * @param objeto El objeto que se anhade al fichero, el objeto es un generico, osea, puedes introducir cualquier objeto de una clase
+	 * @return error Es el codigo de error 
+	 * 
+	 */
+    public <T> int introducir(String ruta, T objeto) {
+    	int error = 0;
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(ruta, true));
             bw.write(objeto.toString());
@@ -27,6 +35,8 @@ public class gestionGenerica {
         catch (IOException err) {
             err.printStackTrace();
         }
+        
+        return error;
     }
 
     /*
@@ -36,17 +46,18 @@ public class gestionGenerica {
     Cabecera: publicvoid eliminar(String ruta, int id)
     Precondiciones: El fichero debe estar creado
     Entrada: - int id //Es la id del objeto para su posterior eliminacion
-    Salida: No hay
+    Salida: - int error //El codigo de error para mostrar un mensaje
     E/S: - String ruta //Es la ruta donde esta el fichero
-    Postcondiciones: Mensaje de confirmacion
+    Postcondiciones: Asociado al nombre. El codigo de error necesario para mostrar un mensaje (0 correcto y 1 no encontrado)
     */
 
-    public void eliminar(String ruta, int id) {
+    public int eliminar(String ruta, int id) {
+    	int error = 1;
         try {
             BufferedReader br = new BufferedReader(new FileReader(ruta));
             //RandomAccessFile rrw = new RandomAccessFile(ruta, "rw")
-            br.mark(0);
-            br.reset();
+            //br.mark(0);
+            //br.reset();
             String linea;
             int posicion = 0;
             String ids = id + ".*";
@@ -57,6 +68,7 @@ public class gestionGenerica {
                     //Coger la marca
                     //System.out.println("Esta eliminado Hulio");
                     eliminarRegistro(ruta, posicion);
+                    error = 0;
                 }
                 posicion += linea.length() + 2;
             }
@@ -65,6 +77,7 @@ public class gestionGenerica {
         catch (IOException err) {
             err.printStackTrace();
         }
+        return error;
     }
 
     /*
@@ -131,12 +144,13 @@ public class gestionGenerica {
     Precondiciones: El fichero (ruta) debe existir
     Entrada: - String ruta //Es la ruta donde se encuentra el fichero
              - EnumTurno turno //Es el turno que se debe mostrar
-    Salida: No hay
+    Salida: - int error //El codigo de error para mostrar un mensaje
     E/S: No hay
-    Postcondiciones: Solo muestra en pantalla los camareros que trabajan en ese turno
+    Postcondiciones: Si es 0 muestra en pantalla los camareros que trabajan en ese turno y lanza el codigo de error, si es 2 lanza el codigo de error   
     */
 
-    public void mostrarTurno(String ruta, EnumTurno turno) {
+    public int mostrarTurno(String ruta, EnumTurno turno) {
+    	int error = 2;
         String turnoString = ".*" + turno.toString() + ".*";
         String linea;
         try {
@@ -145,6 +159,7 @@ public class gestionGenerica {
             while((linea = br.readLine()) != null) {
                 if(linea.matches(turnoString) == true) {
                     System.out.println(linea);
+                    error = 0;
                 }
             }
         }
@@ -154,5 +169,47 @@ public class gestionGenerica {
         catch(IOException err) {
             err.printStackTrace();
         }
+        return error;
+    }
+    
+    /*
+     * Interfaz
+     * Nombre: guardarCambios
+     * Comentario: Este subprograma guarda los cambios en el fichero maestro
+     * Cabecera: public void guardarCambios(String ruta)
+     * Precondiciones: El fichero (ruta) debe existir
+     * Entrada: - String ruta //Es la ruta donde se encuentra el fichero antiguo
+     * Salida: int error //El codigo de error para mostrar un mensaje
+     * E/S: No hay
+     * Postcondiciones: Asociado al nombre. El codigo de error necesario para mostrar un mensaje (0 correcto y 3 camareros eliminados)
+     */
+    
+    public int guardarCambios(String ruta) {
+    	int error = 3;
+    	try {
+			BufferedReader antiguo = new BufferedReader(new FileReader(ruta));
+			BufferedWriter nuevo = new BufferedWriter(new FileWriter("maestro.txt", true));
+			String linea;
+			
+			while ((linea = antiguo.readLine()) != null) {
+                if (linea.matches("[0-9]" + ".*")) {
+                    nuevo.write(linea);
+                    error = 0;
+                    nuevo.flush();
+                }
+			}
+			antiguo.close();
+			nuevo.close();
+			
+		} 
+    	catch (FileNotFoundException err) {
+			
+			err.printStackTrace();
+		}
+		catch (IOException err) {
+			
+			err.printStackTrace();
+		}
+    	return error;
     }
 }

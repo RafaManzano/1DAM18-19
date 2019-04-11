@@ -17,11 +17,11 @@ public class conductorCatering {
         MesaImp m4 = new MesaImp(5);
         MesaImp[] mesas = {m1, m2, m3, m4};
         EnumTurno turno = EnumTurno.NODEFINIDO;
-        CamareroImp c1 = new CamareroImp("Rafalito", "Manueh", turno.MANHANA, mesas);
-        CamareroImp c2 = new CamareroImp("Rafa", "Manh", turno.NOCHE, mesas);
-        CamareroImp c3 = new CamareroImp("Nzhdeh","Manueh", turno.NOCHE, mesas);
-        CamareroImp c4 = new CamareroImp("asdhkgfasjgfjksgakf","Manueh", turno.NOCHE, mesas);
-        CamareroImp c5 = new CamareroImp("Pablito","Manueh", turno.NOCHE, mesas);
+        CamareroImp c1 = new CamareroImp(1,"Rafalito", "Manueh", turno.MANHANA, mesas);
+        CamareroImp c2 = new CamareroImp(2,"Rafa", "Manh", turno.NOCHE, mesas);
+        CamareroImp c3 = new CamareroImp(3,"Nzhdeh","Manueh", turno.NOCHE, mesas);
+        CamareroImp c4 = new CamareroImp(4,"asdhkgfasjgfjksgakf","Manueh", turno.NOCHE, mesas);
+        CamareroImp c5 = new CamareroImp(5,"Pablito","Manueh", turno.NOCHE, mesas);
         
 
 

@@ -7,7 +7,6 @@ import menus.menuCatering;
 import resguardo.resguardosGenericos;
 import validaciones.validacionesCatering;
 
-import java.io.File;
 import java.util.Scanner;
 import enumeraciones.EnumTurno;
 
@@ -19,10 +18,10 @@ Analisis
              - turno
 
     Salida: - Mensajes con el usuario
-            - Diferentes listados con el fichero
+            - Listado con los turnos indicados
             - Mensajes de confirmacion
 
-    Requsitos: - opcion tiene que ser ? a ?
+    Requsitos: - opcion tiene que ser 0 a 3
                - Respuesta tiene que ser S o N
                - turno tiene que ser MANHANA, TARDE o NOCHE
 
@@ -37,7 +36,7 @@ Analisis
                 Turnos
         FinSegun
         Si respuesta es si
-            GuardarCambiosFicheroMaestro
+            guardarCambios*
         Sino
             Se quedan los cambios en el fichero de movimiento
         FinSi
@@ -50,6 +49,8 @@ Analisis
                 crearCamarero
             Case 2
                 BorrarCamarero
+            Case 3
+            	ModificarCamarero
         FinSegun
      Fin
 
@@ -60,16 +61,15 @@ Analisis
             crearMesa
          Case 2
             BorrarMesa
+         Case 3
+            ModificarMesa
        FinSegun
      Fin
 
      Modulo Turno
      Inicio
-        mostrarTurnoCamareros
+        mostrarTurnoCamareros*
      Fin
-
-
-
  */
 public class Main {
 
@@ -104,7 +104,8 @@ public class Main {
                         case 1:
                             //crearCamarero
                             camarero = validar.leeryValidarCamarero();
-                            geGe.introducir(camareros, camarero);
+                            //reGe.introducir(camareros, camarero);
+                            validar.errores(geGe.introducir(camareros, camarero));
                             //System.out.println("1.");
                         break;
 
@@ -113,7 +114,8 @@ public class Main {
                             geGe.mostrarFichero(camareros);
                             System.out.println("Escoja el numero del camarero que desee");
                             id = teclado.nextInt();
-                            geGe.eliminar(camareros, id);
+                            //reGe.eliminar(camareros, id);
+                            validar.errores(geGe.eliminar(camareros, id));
                             //System.out.println("2.");
                         break;
 
@@ -122,9 +124,9 @@ public class Main {
                         	 geGe.mostrarFichero(camareros);
                              System.out.println("Escoja el numero del camarero que desee");
                              id = teclado.nextInt();
-                             geGe.eliminar(camareros, id);
+                             validar.errores(geGe.eliminar(camareros, id));
                              camarero = validar.leeryValidarCamarero();
-                             geGe.introducir(camareros, camarero);
+                             validar.errores(geGe.introducir(camareros, camarero));
                             System.out.println("3.");
                         break;
                     }
@@ -138,7 +140,7 @@ public class Main {
                 //System.out.println("2.");
                 do {
                 	menus.menuMesas();
-                    opcion = validar.leeryValidarOpcion();
+                    opcionSM = validar.leeryValidarOpcion();
                     switch(opcionSM) {
 
                         case 1:
@@ -152,12 +154,14 @@ public class Main {
                             //borrarMesa
                             //System.out.println("2.");
                             //En resguardo
-                            reGe.eliminar(mesas, mesa);
+                        	reGe.mostrarFichero(mesas);
+                            reGe.eliminar(mesas, 1);
                         break;
 
                         case 3:
+                        	//modificarMesa
                             System.out.println("En construccion");
-                            //En resguardo
+                            //En construccion
                         break;
                     }
                 }
@@ -168,7 +172,8 @@ public class Main {
                 //System.out.println("3.");
                 System.out.println("Escriba el turno que desea revisar");
                 turno = validar.leeryValidarTurno();
-                geGe.mostrarTurno(camareros, turno);
+                //reGe.mostrarTurno(camareros, turno);
+                validar.errores(geGe.mostrarTurno(camareros, turno));
             break;
         }
         
@@ -179,11 +184,13 @@ public class Main {
 	respuesta = validar.leeryValidarRespuesta();
 	if(respuesta == 'S') {
 	    //Guardar en ficheros maestros
-        System.out.println("Pensar");
+        //System.out.println("Pensar");
+		//reGe.guardarCambios(camareros);
+		validar.errores(geGe.guardarCambios(camareros));
+        
 	}
 	else {
 	    System.out.println("Se quedan guardados en los ficheros de movimiento");
-	    File mov = new File("camareros.txt");
     }
 
     }

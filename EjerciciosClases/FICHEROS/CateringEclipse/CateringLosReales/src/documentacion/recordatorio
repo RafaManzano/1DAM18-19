@@ -1,15 +1,16 @@
-- Complementar los codigos de error en los subprogramas de gestion
+- Complementar los codigos de error en los subprogramas de gestion V
 - Realizar los resguardos de las gestoras V
 - Comprobar si usar las clases genericas  (<>) V
 - Diagrama de clases
 - Javadoc
 - La idea de las clases se basa en dos clases(Mesa y Camarero). El camarero aparte de lo habitual, turno y array de mesas V
 - Las mesas por su parte tendra numero. Debera ser extensible para cualquier otra mesa y en un futuro tener el soporte para pedidos V
-- Poner los ficheros de entrada salida
-- Revisar Main y crear los metodos
+- En MesaImp hay que poner un boolean de asignada en el salon (Es bastante complejo, asi que de momento nada) V
+- Poner los ficheros de entrada salida V
+- Revisar Main y crear los metodos V
 - %turno% (Esto es sql) se ha usado matches de string .*nombre.* V
-- Poner el atributo boolean asignado y pensar como cambiar los datos
-- En el metodo de validarMesas pensar en los repetidos
-- Probar todas las funcionalidades
-- Revisar metodos e interfaces completas, probablemente crear otro proyecto nuevo y pasar la informacion relevante
-
+- ValidarMesas y validarMesa hay que revisar V
+- Probar todas las funcionalidades V
+- Revisar metodos e interfaces completas, probablemente crear otro proyecto nuevo y pasar la informacion relevante V
+- Terminar todo y pasar a algun compañero para que lo pruebe
+- Poner el id que se pueda introducir desde teclado V

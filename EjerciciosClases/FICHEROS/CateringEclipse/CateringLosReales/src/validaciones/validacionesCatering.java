@@ -104,12 +104,14 @@ public class validacionesCatering {
     */
 
     public CamareroImp leeryValidarCamarero() {
+    	int id;
         String nombre;
         String apellidos;
         MesaImp[] mesas;
         EnumTurno turno = EnumTurno.NODEFINIDO;
         Scanner teclado = new Scanner(System.in);
         CamareroImp camarero;
+        id = leeryValidarID();
         System.out.println("Escriba su nombre");
         nombre = teclado.next();
         System.out.println("Escriba su apellido");
@@ -117,10 +119,12 @@ public class validacionesCatering {
         turno = leeryValidarTurno();
         mesas = leeryValidarMesas();
 
-        return camarero = new CamareroImp(nombre, apellidos, turno, mesas);
+        return camarero = new CamareroImp(id, nombre, apellidos, turno, mesas);
     }
 
-    /*
+    
+
+	/*
     Interfaz
     Nombre: leeryValidarMesas
     Comentario: Este subprograma lee y valida las mesas que servira el camarero
@@ -133,7 +137,6 @@ public class validacionesCatering {
     */
     public MesaImp[] leeryValidarMesas() {
         MesaImp[] mesas = new MesaImp[4];
-        String linea;
         Scanner teclado = new Scanner(System.in);
         int mesaBuscada = 0;
         gestionGenerica g = new gestionGenerica();
@@ -141,13 +144,21 @@ public class validacionesCatering {
         for (int i = 0; i < mesas.length; i++) {
         g.mostrarFichero("mesas.txt");
         System.out.println("Elija uno");
-        mesaBuscada = teclado.nextInt();
-        mesas[i] = new MesaImp(mesaBuscada);
-        }
-        //Pensar que hacer con los repetidos
-        //if(mesas[0] == true)
-        //if(mesas[i - 1].toString().equals(mesaBuscada));
         
+        if(i == 0) {
+        	mesaBuscada = teclado.nextInt();
+        	mesas[i] = new MesaImp(mesaBuscada);
+        }
+        else {
+        	do {
+        		mesaBuscada = teclado.nextInt();
+        		mesas[i] = new MesaImp(mesaBuscada);
+        	}
+        	while(mesas[i-1].getID() == mesaBuscada);
+        }
+        
+        }
+       
         return mesas;
     }
 
@@ -191,4 +202,51 @@ public class validacionesCatering {
         }
         return mesa;
     }
+    
+    /*
+     * Interfaz
+     * Nombre: errores
+     * Comentario: Este subprograma devuelve el comentario para el codigo de error
+     * Cabecera: public void errores (int err)
+     * Precondiciones: No hay
+     * Entrada: - int err //El codigo de error necesario para mostrar
+     * Salida: No hay
+     * E/S: No hay
+     * Postcondiciones: Solo muestra en pantalla el comentario necesario para el error especificado
+     */
+    public void errores (int err) {
+    	switch(err) {
+    	case 0:
+    		System.out.println("Completado con exito");  
+    	break;
+    	
+    	case 1:
+    		System.out.println("Camarero no encontrado, no se elimina");  
+    	break;
+    	
+    	case 2:
+    		System.out.println("En el turno especificado no trabaja ningun camarero");  
+    	break;
+    	
+    	case 3:
+    		System.out.println("Todos los camareros estan eliminados, no se introduce en el fichero maestro");  
+		break;
+		
+		default:
+			System.out.println("Error no especificado");  
+		break;
+    	}
+    }
+    
+    private int leeryValidarID() {
+    	int id;
+    	Scanner teclado = new Scanner(System.in);
+    	 do {
+             System.out.println("Escriba el id del camarero");
+             id = teclado.nextInt();
+         }
+         while(id < 0);
+    	 
+		 return id;
+	}
 }

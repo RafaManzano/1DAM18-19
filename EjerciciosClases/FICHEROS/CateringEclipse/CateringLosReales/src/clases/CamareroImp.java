@@ -7,7 +7,7 @@ Propiedades basicas
 ID
 Tipo: int
 Cons: Si
-Mod: No
+Mod: Si
 
 Nombre
 Tipo: String
@@ -33,14 +33,12 @@ Propiedades derivadas
 No hay
 
 Propiedades compartidas
-acumCamareros
-Tipo: int
-Cons: Si
-Mod: No
+No hay
 
 Get and Set
 ID
 public int getID()
+public void setID(int id)
 
 Nombre
 public String getNombre()
@@ -72,19 +70,18 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
     private String apellidos;
     private EnumTurno turno;
     private MesaImp[] mesas;
-    private static int acumCamareros = 1;
 
     //Constructor
     public CamareroImp() { //Por defecto
-        id = acumCamareros++;
+        id = 0;
         nombre = "NoDefinido";
         apellidos = "NoDefinido";
         turno = turno.NODEFINIDO;
         mesas = new MesaImp[4];
     }
 
-    public CamareroImp(String nombre, String apellidos, EnumTurno turno, MesaImp[] mesas) { //Con parametros
-        id = acumCamareros++;
+    public CamareroImp(int id, String nombre, String apellidos, EnumTurno turno, MesaImp[] mesas) { //Con parametros
+        this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.turno = turno;
@@ -92,7 +89,7 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
     }
 
     public CamareroImp(CamareroImp cop) { //De copia
-        id = acumCamareros++;
+        this.id = cop.getID();
         this.nombre = cop.getNombre();
         this.apellidos = cop.getApellidos();
         this.turno = cop.getTurno();
@@ -103,6 +100,10 @@ public class CamareroImp implements Camarero, Cloneable, Comparable<CamareroImp>
     //ID
     public int getID() {
         return id;
+    }
+    
+    public void setID(int id) {
+    	this.id = id;
     }
 
     //Nombre

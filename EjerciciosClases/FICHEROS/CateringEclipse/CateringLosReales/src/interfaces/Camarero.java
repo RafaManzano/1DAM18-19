@@ -7,7 +7,7 @@ Propiedades basicas
 ID
 Tipo: int
 Cons: Si
-Mod: No
+Mod: Si
 
 Nombre
 Tipo: String
@@ -33,14 +33,11 @@ Propiedades derivadas
 No hay
 
 Propiedades compartidas
-acumCamareros
-Tipo: int
-Cons: Si
-Mod: No
-
+No hay
 Get and Set
 ID
 public int getID()
+public void setID(int id)
 
 Nombre
 public String getNombre()
@@ -69,6 +66,7 @@ public interface Camarero {
 
     //ID
     public int getID();
+    public void setID(int id);
 
     //Nombre
     public String getNombre();

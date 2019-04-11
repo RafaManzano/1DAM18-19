@@ -10,15 +10,14 @@ public class testCamarero {
         MesaImp[] mesas2 = new MesaImp[8];
         EnumTurno turno = EnumTurno.NODEFINIDO;
         CamareroImp c1 = new CamareroImp();
-        CamareroImp c2 = new CamareroImp("Rafael", "Manzano", turno.MANHANA, mesas);
-        CamareroImp c3 = new CamareroImp("MariCarmen", "Osuna", turno.NOCHE, mesas);
+        CamareroImp c2 = new CamareroImp(2,"Rafael", "Manzano", turno.MANHANA, mesas);
+        CamareroImp c3 = new CamareroImp(3,"MariCarmen", "Osuna", turno.NOCHE, mesas);
         CamareroImp c4 = new CamareroImp(c2);
 
         //ID
         System.out.println(c1.getID());
-        System.out.println(c2.getID());
-        System.out.println(c3.getID());
-        System.out.println(c4.getID());
+        c1.setID(1);
+        System.out.print(c1.getID());
 
         //Nombre
         System.out.println(c2.getNombre());
