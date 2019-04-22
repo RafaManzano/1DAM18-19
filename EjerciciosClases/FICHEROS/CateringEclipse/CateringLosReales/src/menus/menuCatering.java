@@ -2,7 +2,7 @@ package menus;
 
 public class menuCatering {
 
-     /*
+    /*
     Interfaz
     Nombre: menuPrincipal
     Comentario: Este subprograma muestra el menu de opciones

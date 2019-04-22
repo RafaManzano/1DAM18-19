@@ -42,7 +42,7 @@ public class gestionGenerica {
     Interfaz
     Nombre: eliminar
     Comentario: Busca en el fichero la id del objeto pasado por parametro y lo elimina (por marca)
-    Cabecera: publicvoid eliminar(String ruta, int id)
+    Cabecera: public int eliminar(String ruta, int id)
     Precondiciones: El fichero debe estar creado
     Entrada: - int id //Es la id del objeto para su posterior eliminacion
     Salida: - int error //El codigo de error para mostrar un mensaje
