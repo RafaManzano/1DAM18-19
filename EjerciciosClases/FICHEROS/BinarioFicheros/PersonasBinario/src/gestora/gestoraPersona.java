@@ -163,7 +163,7 @@ public class gestoraPersona {
 					persona = new PersonaImp(p);
 					persona = validar.modificarPersona(p);
 					//eliminarRegistro(ruta, tamanho);
-					introducir("modificado.dat", persona);
+					introducir("modificaciones.dat", persona);
 					//moos.flush();
 					//moos.close();
 				}
@@ -217,26 +217,34 @@ public class gestoraPersona {
 	 * Postcondiciones: Si la persona no esta eliminada se guarda en el fichero maestro y todo querdaria actualizado
 	 */
 	
-	 //El problema es que cuando llega la excepcion se va directamente al catch
+	 //El problema es que cuando llega la excepcion se va directamente al catch (se ha solucionado añadiendo un try catch en la misma linea de la instruccion)
 	public void guardarCambiosEliminados (String ruta, String eliminados, String maestro) {
 			MiObjectOutputStream oos = null;
 			ObjectInputStream mov = null;
 			ObjectInputStream del = null;
+			PersonaImp perMov;
+			PersonaImp perDel;
 			
 		try {
 			mov = new ObjectInputStream(new FileInputStream(ruta));
 			del = new ObjectInputStream(new FileInputStream(eliminados));
-			PersonaImp perMov = (PersonaImp) mov.readObject();
-			PersonaImp perDel = (PersonaImp) del.readObject();
+			perMov = (PersonaImp) mov.readObject();
+			perDel = (PersonaImp) del.readObject();
 			
 			while(perMov != null && perDel != null) {
-				if(!perMov.getDNI().equals(perDel.getDNI())) {
-					introducir(maestro, perMov);
-					perMov = (PersonaImp) mov.readObject();
+				if(perMov.getDNI().equals(perDel.getDNI())) {
+					try {
+						perMov = (PersonaImp) mov.readObject();
+						perDel = (PersonaImp) del.readObject();
+					}
+					catch(EOFException err) {
+						System.out.println("Fin de fichero");
+					}
+					
 				}
 				else {
+					introducir(maestro, perMov);
 					perMov = (PersonaImp) mov.readObject();
-					perDel = (PersonaImp) del.readObject();
 					/*
 					if(perDel == null) {
 						while(perMov != null) {
@@ -254,12 +262,8 @@ public class gestoraPersona {
 					perMov = (PersonaImp) mov.readObject();
 				}
 			} */
-			oos.close();
-			mov.close();
-			del.close();
+			
 		} 
-		
-		
 		catch(EOFException err) {
 			System.out.println("Fin de fichero");
 		}
@@ -274,9 +278,134 @@ public class gestoraPersona {
 			err.printStackTrace();
 		}
 		
+		/*
+		finally {
+			try {
+				mov = new ObjectInputStream(new FileInputStream(ruta));
+				perMov = (PersonaImp) mov.readObject();
+				
+				
+				while(perMov != null) {
+					introducir(maestro, perMov);
+					perMov = (PersonaImp) mov.readObject();
+				}
+			}
+			catch (EOFException err) {
+				System.out.println("Fin de fichero");
+			}
+			catch (ClassNotFoundException err) {
+				err.printStackTrace();
+			}
+			catch (IOException err) {
+				err.printStackTrace();
+			}
+				
+			}
+		*/
+	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: guardarCambiosModificados
+	 * Comentario: Este subprograma guarda los cambios en el fichero maestro para las personas que se han modificado
+	 * Cabecera: public void guardarCambiosEliminados (String ruta, String modificado, String maestro)
+	 * Precondiciones: Los ficheros deben estar creado
+	 * Entrada: - String ruta //Es la ruta del fichero de movimiento
+	 * 			- String modificado //Es la ruta donde se encuentra las personas que estan modificadas
+	 * Salida: No hay
+	 * E/S: - String maestro //Es la ruta donde se encuentra el fichero maestro
+	 * Postcondiciones: Si la persona esta modificada se guarda en el fichero maestro y todo querdaria actualizado
+	 */
+	
+	 //El problema es que cuando llega la excepcion se va directamente al catch (se ha solucionado añadiendo un try catch en la misma linea de la instruccion)
+	//Hay que revisar el codigo porque no esta depurado
+	public void guardarCambiosModificados (String ruta, String modificado, String maestro) {
+			MiObjectOutputStream oos = null;
+			ObjectInputStream mov = null;
+			ObjectInputStream mod = null;
+			PersonaImp perMov;
+			PersonaImp perMod;
 			
+		try {
+			mov = new ObjectInputStream(new FileInputStream(ruta));
+			mod = new ObjectInputStream(new FileInputStream(modificado));
+			perMov = (PersonaImp) mov.readObject();
+			perMod = (PersonaImp) mod.readObject();
+			
+			while(perMov != null && perMod != null) {
+				if(!perMov.getDNI().equals(perMod.getDNI())) {
+					
+						introducir(maestro, perMov);
+						perMov = (PersonaImp) mov.readObject();
+						perMod = (PersonaImp) mod.readObject();
+					
+					
+				}
+				else {
+					try {
+					introducir(maestro, perMod);
+					perMod = (PersonaImp) mod.readObject();
+					}
+					catch(EOFException err) {
+						System.out.println("Fin de fichero");
+					}
+					/*
+					if(perDel == null) {
+						while(perMov != null) {
+							introducir(maestro, perMov);
+							perMov = (PersonaImp) mov.readObject();
+						}
+					}
+					*/
+				}
+			}
+			
+			/*if(perMov != null) {
+				while(perMov != null) {
+					introducir(maestro, perMov);
+					perMov = (PersonaImp) mov.readObject();
+				}
+			} */
+			
+		} 
+		catch(EOFException err) {
+			System.out.println("Fin de fichero");
+		}
 		
+		catch (FileNotFoundException err) {
+			err.printStackTrace();
+		} 
+		catch (IOException err) {
+			err.printStackTrace();
+		}
+		catch (ClassNotFoundException err) {
+			err.printStackTrace();
+		}
 		
+		/*
+		finally {
+			try {
+				mov = new ObjectInputStream(new FileInputStream(ruta));
+				perMov = (PersonaImp) mov.readObject();
+				
+				
+				while(perMov != null) {
+					introducir(maestro, perMov);
+					perMov = (PersonaImp) mov.readObject();
+				}
+			}
+			catch (EOFException err) {
+				System.out.println("Fin de fichero");
+			}
+			catch (ClassNotFoundException err) {
+				err.printStackTrace();
+			}
+			catch (IOException err) {
+				err.printStackTrace();
+			}
+				
+			}
+		*/
 	}
 	
 	/*

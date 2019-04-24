@@ -19,17 +19,22 @@ public class conductorPersona {
 		String ruta = "p.dat";
 		String historicos = "historicos.dat";
 		String maestro = "maestro.dat";
+		String modificar = "modificaciones.dat";
 		
 		fich.crearFichero(ruta);
 		fich.crearFichero(historicos);
 		fich.crearFichero(maestro);
+		fich.crearFichero(modificar);
 		gestora.introducir(ruta, p1);
 		gestora.introducir(ruta, p2);
 		gestora.introducir(ruta, p3);
-		gestora.eliminar(ruta, "1A");
-		gestora.mostrarFichero(ruta);
-		gestora.mostrarFichero(historicos);
-		gestora.guardarCambiosEliminados(ruta, historicos, maestro);
+		//gestora.eliminar(ruta, "1A");
+		gestora.modificar(ruta, "1A", modificar);
+		//gestora.mostrarFichero(ruta);
+		//gestora.mostrarFichero(modificar);
+		//gestora.mostrarFichero(historicos);
+		//gestora.guardarCambiosEliminados(ruta, historicos, maestro);
+		gestora.guardarCambiosModificados(ruta, modificar, maestro);
 		gestora.mostrarFichero(maestro);
 	}
 
