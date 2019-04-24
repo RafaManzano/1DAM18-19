@@ -4,6 +4,7 @@ import java.io.*;
 
 import clases.MiObjectOutputStream;
 import clases.PersonaImp;
+import validaciones.*;
 
 public class gestoraPersona {
 
@@ -64,8 +65,7 @@ public class gestoraPersona {
 			while(p != null) {
 				if(p.getDNI().equals(dni)) {
 					//eliminarRegistro(ruta, tamanho);
-					p.setNombre("*");
-					moos.writeObject(p);
+					introducir("historicos.dat", p);
 					//moos.flush();
 					//moos.close();
 				}
@@ -76,9 +76,11 @@ public class gestoraPersona {
 			//ois.close();
 					
 		} 
+		
 		catch(EOFException err) {
-			System.out.println("Fin de fichero");
+			System.out.println("Fin de lectura");
 		}
+		
 		catch (FileNotFoundException err) {
 			err.printStackTrace();
 		} 
@@ -101,10 +103,7 @@ public class gestoraPersona {
 			catch(IOException err) {
 				err.printStackTrace();
 			}
-			
 		}
-		
-		
 	 }
 	 
 	/*
@@ -117,7 +116,7 @@ public class gestoraPersona {
     Salida: No hay
     E/S: - String ruta //La ruta del fichero debe ser correcta
     Postcondiciones: Marca en el fichero con "*" el registro ha eliminar
-    */
+    
 	 
 	public void eliminarRegistro(String ruta, int posicion) {
 		try {
@@ -132,35 +131,138 @@ public class gestoraPersona {
             err.printStackTrace();
         }
 	}
+	*/
+	 
+	 
+	/*
+	 * Interfaz
+	 * Nombre: modificar
+	 * Comentario: Este subprograma para al archivo de modificaciones las personas ya modificadas (El DNI no se puede modificar)
+	 * Cabecera: public void modificarPersona (String ruta, String dni, String rutaModifica)
+	 * Precondiciones: Los ficheros deben estar creados
+	 * Entrada: - String ruta //La ruta donde se encuentra el fichero
+	 * 			- String dni //El dni de la persona que se desea modificar
+	 * Salida: No hay
+	 * E/S: - String rutaModificar
+	 * Postcondiciones: En la ruta modificar se van a escribir las personas que se ha querido modificar
+	 */
+	 
+	 public void modificar (String ruta, String dni, String rutaModificar) {
+		 validacionesPersona validar = new validacionesPersona();
+		 ObjectInputStream ois = null;
+		 MiObjectOutputStream moos = null;
+		 PersonaImp persona = null;
+		try {
+			ois = new ObjectInputStream(new FileInputStream(ruta));
+			moos = new MiObjectOutputStream(new FileOutputStream(ruta, true));
+			//int tamanho = 0;
+			PersonaImp p = (PersonaImp) ois.readObject();
+			
+			while(p != null) {
+				if(p.getDNI().equals(dni)) {
+					persona = new PersonaImp(p);
+					persona = validar.modificarPersona(p);
+					//eliminarRegistro(ruta, tamanho);
+					introducir("modificado.dat", persona);
+					//moos.flush();
+					//moos.close();
+				}
+				
+				p = (PersonaImp) ois.readObject();
+				//tamanho += (p.getDNI().length() + p.getNombre().length() + p.getApellidos().length()) * 2 + 2;
+			}
+			//ois.close();
+					
+		} 
+		
+		catch(EOFException err) {
+			System.out.println("Fin de lectura");
+		}
+		
+		catch (FileNotFoundException err) {
+			err.printStackTrace();
+		} 
+		catch (IOException err) {
+			err.printStackTrace();
+		}
+		catch (ClassNotFoundException err) {
+			err.printStackTrace();
+		}
+		finally {
+			try {
+				if(ois != null) {
+				ois.close();
+				}
+				
+				if(moos != null) {
+					moos.close();
+				}
+			}
+			catch(IOException err) {
+				err.printStackTrace();
+			}
+		}
+	 }
 	
 	/*
 	 * Interfaz
-	 * Nombre: guardarCambios
-	 * Comentario: Este subprograma guarda los cambios en el fichero maestro
-	 * Cabecera: public void guardarCambios (String ruta)
+	 * Nombre: guardarCambiosEliminados
+	 * Comentario: Este subprograma guarda los cambios en el fichero maestro para las personas que se han eliminado
+	 * Cabecera: public void guardarCambiosEliminados (String ruta, String eliminados, String maestro)
 	 * Precondiciones: El fichero debe estar creado
-	 * Entrada: String ruta //Es la ruta del fichero de movimiento
+	 * Entrada: - String ruta //Es la ruta del fichero de movimiento
+	 * 			- String eliminados //Es la ruta donde se encuentra las personas que estan eliminadas
 	 * Salida: No hay
-	 * E/S: No hay
-	 * Postcondiciones: Guarda la informacion del fichero antiguo al nuevo
+	 * E/S: - String maestro //Es la ruta donde se encuentra el fichero maestro
+	 * Postcondiciones: Si la persona no esta eliminada se guarda en el fichero maestro y todo querdaria actualizado
 	 */
 	
-	public void guardarCambios (String ruta) {
-		try {
-			MiObjectOutputStream oos = new MiObjectOutputStream(new FileOutputStream("maestro.dat",true));
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ruta));
-			Object p;
+	 //El problema es que cuando llega la excepcion se va directamente al catch
+	public void guardarCambiosEliminados (String ruta, String eliminados, String maestro) {
+			MiObjectOutputStream oos = null;
+			ObjectInputStream mov = null;
+			ObjectInputStream del = null;
 			
-			while((p = ois.readObject()) != null) {
-				if(p instanceof PersonaImp) {
-					if(((PersonaImp) p).equals("*")) { //Si lo hace es magia
-							//Le tengo que dar una vuelta,
-							//Lo primero es descubrir quien tiene el asterisco y saber como funciona
+		try {
+			mov = new ObjectInputStream(new FileInputStream(ruta));
+			del = new ObjectInputStream(new FileInputStream(eliminados));
+			PersonaImp perMov = (PersonaImp) mov.readObject();
+			PersonaImp perDel = (PersonaImp) del.readObject();
+			
+			while(perMov != null && perDel != null) {
+				if(!perMov.getDNI().equals(perDel.getDNI())) {
+					introducir(maestro, perMov);
+					perMov = (PersonaImp) mov.readObject();
+				}
+				else {
+					perMov = (PersonaImp) mov.readObject();
+					perDel = (PersonaImp) del.readObject();
+					/*
+					if(perDel == null) {
+						while(perMov != null) {
+							introducir(maestro, perMov);
+							perMov = (PersonaImp) mov.readObject();
+						}
 					}
-				}	
+					*/
+				}
 			}
 			
+			/*if(perMov != null) {
+				while(perMov != null) {
+					introducir(maestro, perMov);
+					perMov = (PersonaImp) mov.readObject();
+				}
+			} */
+			oos.close();
+			mov.close();
+			del.close();
 		} 
+		
+		
+		catch(EOFException err) {
+			System.out.println("Fin de fichero");
+		}
 		
 		catch (FileNotFoundException err) {
 			err.printStackTrace();
@@ -172,9 +274,12 @@ public class gestoraPersona {
 			err.printStackTrace();
 		}
 		
+			
+		
+		
 	}
 	
-	 /*
+	/*
     Interfaz
     Nombre: mostrarFichero
     Comentario: Este subprorgama muestra el fichero completo

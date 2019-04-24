@@ -84,4 +84,28 @@ public class validacionesPersona {
 
         return respuesta;
     }
+    
+    /*
+    Interfaz
+    Nombre: ModificarPersona
+    Comentario: Este subprograma modifica el nombre y los apellidos de una persona
+    Cabecera: public PersonaImp modificarPersona(PersonaImp persona)
+    Precondiciones: No hay
+    Entrada: - PersonaImp persona //Es la persona que se desea modificar sus atributos
+    Salida: PersonaImp persona //La persona modificada
+    E/S: No hay
+    Postcondiciones: Asociado al nombre. La persona quedaria modificada
+    */
+    
+    public PersonaImp modificarPersona(PersonaImp persona) {
+    	Scanner teclado = new Scanner(System.in);
+    	
+    	System.out.println("Escriba su nombre");
+    	persona.setNombre(teclado.next()); 
+    	System.out.println("Escriba su apellidos");
+    	persona.setApellidos(teclado.next()); 
+    	
+    	return persona;
+    }
+	
 }
