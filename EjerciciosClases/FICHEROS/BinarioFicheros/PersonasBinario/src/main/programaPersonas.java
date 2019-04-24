@@ -3,6 +3,7 @@ package main;
 import java.util.*;
 
 import clases.PersonaImp;
+import ficheros.crearFicheros;
 import gestora.gestoraPersona;
 import menus.menuPersona;
 import validaciones.validacionesPersona;
@@ -46,11 +47,16 @@ public class programaPersonas {
 		char respuesta;
 		PersonaImp p;
 		String ruta = "persona.dat";
+		String maestro = "maestro.dat";
 		String dni;
 		Scanner teclado = new Scanner(System.in);
 		validacionesPersona validar = new validacionesPersona();
 		gestoraPersona gestora = new gestoraPersona();
 		menuPersona menus = new menuPersona();
+		crearFicheros fich = new crearFicheros();
+		
+		fich.crearFichero(ruta);
+		fich.crearFichero(maestro);
 		
 		do {
 			menus.menuPrincipal();
