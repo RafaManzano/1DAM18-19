@@ -1,34 +1,25 @@
 package Main;
 
-import java.io.*;
+import gestora.gestora;
 
-/*
-http://puntocomnoesunlenguaje.blogspot.com/2013/06/java-ficheros-acceso-aleatorio.html
- */
 public class Main {
 
     public static void main(String[] args) {
-
-        File f = new File("personas.txt");
-        try {
-            RandomAccessFile fichero = new RandomAccessFile(f, "rw");
-
-            //Indica la posicion a la que debe irse el puntero
-            fichero.seek(0);
-
-            //Devuelve donde se encuentra el puntero
-            System.out.println(fichero.getFilePointer());
-
-            //Avanza el numero de bytes introducidos por parametros
-            fichero.skipBytes(50);
-        }
-        catch(FileNotFoundException err) {
-            err.printStackTrace();
-        }
-        catch(IOException err) {
-            err.printStackTrace();
-        }
-
-
+        gestora ges = new gestora();
+        String ruta = "salida.txt";
+        //Leera la linea hasta que llegue al salto de linea
+        //Lo unico que se tendria que saber cuanto vale cada String para saber cuanto debes avanzar para colocarte en la siguiente linea
+        //El retorno de carro pesa 2 bytes
+        System.out.println(ges.leerFichero(ruta, 20));
+        //ges.escribirFichero(ruta, "Rafalito", 22);
+        ges.marcado(ruta, 45);
     }
+
 }
+
+
+
+
+
+
+

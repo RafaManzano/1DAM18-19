@@ -21,12 +21,22 @@ public class gestoraPersona {
 	
 	 public <T> int introducir(String ruta, T objeto) {
 	    	int error = 0;
+	    	File archivo = new File(ruta);
 	        try {
-	        	MiObjectOutputStream oos = new MiObjectOutputStream(new FileOutputStream(ruta, true));
-	            oos.writeObject(objeto);
-	            oos.flush(); //Por el binario no habria que ponerlo
-	            oos.close();
-	        } 
+	        	if(archivo.exists()) {
+	        		MiObjectOutputStream moos = new MiObjectOutputStream(new FileOutputStream(archivo, true));
+	        		moos.writeObject(objeto);
+	        		//oos.flush();
+	        		moos.close();
+	        	}
+	        	else {
+	        		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivo));
+	        		oos.writeObject(objeto);
+	        		//oos.flush();
+	        		oos.close();
+	        	}
+	        	
+	        }
 	        catch (IOException err) {
 	            err.printStackTrace();
 	        }
@@ -47,12 +57,13 @@ public class gestoraPersona {
 	 */
 	 
 	 //Comprobar si puedo coger el objeto entero
+	 //Tengo que corregir cosas
 	 public void eliminar (String ruta, String dni) {
 		try {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ruta));
-			Object p;
+			Object p = null;
 			
-			while((p = ois.readObject()) != null) {
+			while(true) {
 				if(p instanceof PersonaImp) {
 					if(((PersonaImp) p).equals(dni)) { //Si lo hace es magia
 						eliminarRegistro(ruta, (PersonaImp) p);
@@ -66,9 +77,12 @@ public class gestoraPersona {
 		catch (IOException err) {
 			err.printStackTrace();
 		}
+		/*
 		catch (ClassNotFoundException err) {
 			err.printStackTrace();
 		}
+		
+		*/
 	 }
 	 
 	/*
@@ -100,11 +114,75 @@ public class gestoraPersona {
 	 * Interfaz
 	 * Nombre: guardarCambios
 	 * Comentario: Este subprograma guarda los cambios en el fichero maestro
-	 * Cabecera: public void guardarCambios (String )
-	 * Precondiciones:
-	 * Entrada:
-	 * Salida:
-	 * E/S:
-	 * Postcondiciones:
+	 * Cabecera: public void guardarCambios (String ruta)
+	 * Precondiciones: El fichero debe estar creado
+	 * Entrada: String ruta //Es la ruta del fichero de movimiento
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: Guarda la informacion del fichero antiguo al nuevo
 	 */
+	
+	public void guardarCambios (String ruta) {
+		try {
+			MiObjectOutputStream oos = new MiObjectOutputStream(new FileOutputStream("maestro.dat",true));
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ruta));
+			Object p;
+			
+			while((p = ois.readObject()) != null) {
+				if(p instanceof PersonaImp) {
+					if(((PersonaImp) p).equals("*")) { //Si lo hace es magia
+							//Le tengo que dar una vuelta,
+							//Lo primero es descubrir quien tiene el asterisco y saber como funciona
+					}
+				}	
+			}
+			
+		} 
+		
+		catch (FileNotFoundException err) {
+			err.printStackTrace();
+		} 
+		catch (IOException err) {
+			err.printStackTrace();
+		}
+		catch (ClassNotFoundException err) {
+			err.printStackTrace();
+		}
+		
+	}
+	
+	 /*
+    Interfaz
+    Nombre: mostrarFichero
+    Comentario: Este subprorgama muestra el fichero completo
+    Cabecera: public void mostrarFichero(String ruta)
+    Precondiciones: El fichero debe estar creado
+    Entrada: - String ruta //La ruta donde se encuentra el fichero
+    Salida: No hay
+    E/S: No hay
+    Postcondiciones: Solo muestra el fichero completo
+    */
+	
+    public void mostrarFichero(String ruta) {
+        try {
+        	ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ruta));
+        	Object p;
+			
+			while(true) {
+				p = ois.readObject();
+				if(p instanceof PersonaImp) {
+					System.out.println(p.toString());
+				}	
+			}
+        } 
+        catch(EOFException err) {
+        	System.out.println("Fin de fichero");
+        }
+        catch (IOException err) {
+            err.printStackTrace();
+        }
+        catch (ClassNotFoundException err) {
+			err.printStackTrace();
+		}
+    }
 }

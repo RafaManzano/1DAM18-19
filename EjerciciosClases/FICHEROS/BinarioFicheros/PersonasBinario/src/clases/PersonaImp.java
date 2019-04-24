@@ -1,5 +1,7 @@
 package clases;
 
+import java.io.Serializable;
+
 import interfaces.Persona;
 
 /*
@@ -45,7 +47,7 @@ import interfaces.Persona;
  * No hay, de momento
  */
 
-public class PersonaImp implements Persona, Cloneable {
+public class PersonaImp implements Persona, Cloneable, Serializable {
 
 	//Atributos
 	private String dni;
