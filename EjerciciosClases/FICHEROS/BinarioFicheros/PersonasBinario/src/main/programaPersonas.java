@@ -3,7 +3,7 @@ package main;
 import java.util.*;
 
 import clases.PersonaImp;
-import ficheros.crearFicheros;
+import ficheros.gestionFicheros;
 import gestora.gestoraPersona;
 import menus.menuPersona;
 import validaciones.validacionesPersona;
@@ -55,7 +55,7 @@ public class programaPersonas {
 		validacionesPersona validar = new validacionesPersona();
 		gestoraPersona gestora = new gestoraPersona();
 		menuPersona menus = new menuPersona();
-		crearFicheros fich = new crearFicheros();
+		gestionFicheros fich = new gestionFicheros();
 		
 		/*
 		fich.crearFichero(rutaMov);
@@ -64,6 +64,12 @@ public class programaPersonas {
 		fich.crearFichero(rutaMod);
 		fich.ficheroPorDefecto(rutaMov);
 		*/
+		//gestora.mostrarFichero(rutaMov);
+		//gestora.mostrarFichero(rutaDel);
+		//gestora.mostrarFichero(rutaMod);
+		//gestora.mostrarFichero(maestro);
+		fich.primerosAjustes();
+		
 		do {
 			menus.menuPrincipal();
 			opcion = validar.leeryValidarOpcion();
@@ -77,7 +83,7 @@ public class programaPersonas {
 					gestora.mostrarFichero(rutaMov);
 					System.out.println("Introduce el dni de la persona que deseas eliminar");
 					dni = teclado.next();
-					gestora.eliminar(rutaMov, dni);
+					gestora.eliminar(rutaMov, dni, rutaDel);
 				break;
 					
 				case 3:
@@ -92,10 +98,10 @@ public class programaPersonas {
 		System.out.println("Quieres guardar el fichero en el maestro (S/N)");
 		respuesta = validar.leeryValidarRespuesta();
 		
-		if(respuesta == 's') {
+		if(respuesta == 'S') {
 			//System.out.println("Guardar en maestro");
 			gestora.guardarCambiosEliminados(rutaMov, rutaDel, maestro);
-			gestora.guardarCambiosModificados(maestro, rutaMod, maestro);
+			gestora.guardarCambiosModificados(rutaMov, rutaMod, maestro);
 		}
 		else {
 			System.out.println("Los cambios se mantienen en los ficheros correspondientes");

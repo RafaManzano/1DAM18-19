@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import clases.MiObjectOutputStream;
 import clases.PersonaImp;
 import gestora.gestoraPersona;
-import ficheros.crearFicheros;
+import ficheros.gestionFicheros;
 
 public class conductorPersona {
 	public static void main(String[] args) {
@@ -14,12 +14,12 @@ public class conductorPersona {
 		PersonaImp p2 = new PersonaImp("1A", "Rafael", "Manzano");
 		PersonaImp p3 = new PersonaImp("2P", "Gordo", "Master");
 		gestoraPersona gestora = new gestoraPersona();
-		crearFicheros fich = new crearFicheros();
+		gestionFicheros fich = new gestionFicheros();
 		//MiObjectOutputStream oos = new MiObjectOutputStream(new FileOutputStream("movi.dat", true));
-		String ruta = "p.dat";
-		String historicos = "historicos.dat";
-		String maestro = "maestro.dat";
-		String modificar = "modificaciones.dat";
+		String ruta = "r.dat";
+		String historicos = "rh.dat";
+		String maestro = "ra.dat";
+		String modificar = "rm.dat";
 		
 		fich.crearFichero(ruta);
 		fich.crearFichero(historicos);
@@ -28,7 +28,7 @@ public class conductorPersona {
 		gestora.introducir(ruta, p1);
 		gestora.introducir(ruta, p2);
 		gestora.introducir(ruta, p3);
-		//gestora.eliminar(ruta, "1A");
+		//gestora.eliminar(ruta, "1A", historicos);
 		gestora.modificar(ruta, "1A", modificar);
 		//gestora.mostrarFichero(ruta);
 		//gestora.mostrarFichero(modificar);

@@ -5,7 +5,7 @@ import java.io.*;
 import clases.PersonaImp;
 import gestora.gestoraPersona;
 
-public class crearFicheros {
+public class gestionFicheros {
 
 	/*
 	 * Interfaz
@@ -44,4 +44,42 @@ public class crearFicheros {
 		gestoraPersona gestora = new gestoraPersona();
 		gestora.introducir(ruta, p);
 	}
+	
+	 /*
+     * Interfaz
+     * Nombre: primerosAjustes
+     * Comentario: Este subprograma organiza los primeros ajustes necesarios para la creacion y carga de los ficheros
+     * Cabecera: public void primerosAjustes()
+     * Precondiciones: No hay
+     * Entrada: No hay
+     * Salida: No hay
+     * E/S: No hay
+     * Postcondiciones: Crea y carga los ficheros necesarios para la ejecucion del programa correctamente
+     */
+    
+    public void primerosAjustes() {
+    	String rutaMov = "movimiento.dat";
+		String rutaMaestro = "maestro.dat";
+		String rutaDel =  "historico.dat";
+		String rutaMod = "modificado.dat";
+    	File mov = new File(rutaMov);
+    	File del = new File(rutaDel);
+    	File mod = new File(rutaMod);
+    	File maestro = new File(rutaMaestro);
+
+    	if(!mov.exists()) {
+    		crearFichero(rutaMov);
+    		ficheroPorDefecto(rutaMov);
+    	}
+    	if(!del.exists()) {
+    		crearFichero(rutaDel);
+    	}
+    	if(!mod.exists()) {
+    		crearFichero(rutaMod);
+    	}
+    	if(!maestro.exists()) {
+    		crearFichero(rutaMaestro);
+    	}
+    	
+    }
 }

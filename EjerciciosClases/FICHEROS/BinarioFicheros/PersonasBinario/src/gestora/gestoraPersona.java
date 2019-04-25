@@ -4,7 +4,7 @@ import java.io.*;
 
 import clases.MiObjectOutputStream;
 import clases.PersonaImp;
-import ficheros.crearFicheros;
+import ficheros.gestionFicheros;
 import validaciones.*;
 
 public class gestoraPersona {
@@ -23,14 +23,12 @@ public class gestoraPersona {
 	
 	 public <T> int introducir(String ruta, T objeto) {
 	    	int error = 0;
-	    	File archivo = new File(ruta);
+	    	MiObjectOutputStream moos = null;
 	        try {
-	        	if(archivo.exists()) {
-	        		MiObjectOutputStream moos = new MiObjectOutputStream(new FileOutputStream(archivo, true));
-	        		moos.writeObject(objeto);
-	        		//oos.flush();
-	        		moos.close();
-	        	}
+	        	moos = new MiObjectOutputStream(new FileOutputStream(ruta, true));
+        		moos.writeObject(objeto);
+        		//oos.flush();
+        		moos.close();
 	        }
 	        catch (IOException err) {
 	            err.printStackTrace();
@@ -42,19 +40,21 @@ public class gestoraPersona {
 	 /*
 	    Interfaz
 	    Nombre: eliminar
-	    Comentario: Busca en el fichero el dni del objeto pasado por parametro y lo elimina (por marca)
-	    Cabecera: public void eliminar(String ruta, String dni)
+	    Comentario: Busca en el fichero el dni del objeto pasado por parametro y lo elimina pasandolo a un fichero de eliminacion
+	    Cabecera: public void eliminar(String ruta, String dni, String rutaEliminados)
 	    Precondiciones: El fichero debe estar creado
 	    Entrada: - String dni //Es el dni del objeto para su posterior eliminacion
+	    		 - String ruta //Es la ruta donde esta el fichero
 	    Salida: - int error //El codigo de error para mostrar un mensaje
-	    E/S: - String ruta //Es la ruta donde esta el fichero
+	    E/S: - String rutaEliminados //Es la ruta donde se guardan las eliminaciones del fichero
 	    Postcondiciones: Asociado al nombre. El codigo de error necesario para mostrar un mensaje (0 correcto y 1 no encontrado)
 	 */
 	 
 	 //Se queda en bucle infinito, hay problema con los cierres de los ficheros
-	 //Solucion Introducir en otro fichero de movimiento
+	 //Solucion 1 Introducir en otro fichero de movimiento
 	 //Solucion chunga intentar en el mismo fichero
-	 public void eliminar (String ruta, String dni) {
+	 //Solucionado Solucion 1
+	 public void eliminar (String ruta, String dni, String rutaEliminados) {
 		 ObjectInputStream ois = null;
 		 MiObjectOutputStream moos = null;
 		try {
@@ -66,7 +66,7 @@ public class gestoraPersona {
 			while(p != null) {
 				if(p.getDNI().equals(dni)) {
 					//eliminarRegistro(ruta, tamanho);
-					introducir("historicos.dat", p);
+					introducir(rutaEliminados, p);
 					//moos.flush();
 					//moos.close();
 				}
@@ -155,7 +155,7 @@ public class gestoraPersona {
 		 PersonaImp persona = null;
 		try {
 			ois = new ObjectInputStream(new FileInputStream(ruta));
-			moos = new MiObjectOutputStream(new FileOutputStream(ruta, true));
+			moos = new MiObjectOutputStream(new FileOutputStream(rutaModificar, true));
 			//int tamanho = 0;
 			PersonaImp p = (PersonaImp) ois.readObject();
 			
@@ -164,7 +164,7 @@ public class gestoraPersona {
 					persona = new PersonaImp(p);
 					persona = validar.modificarPersona(p);
 					//eliminarRegistro(ruta, tamanho);
-					introducir("modificaciones.dat", persona);
+					introducir(rutaModificar, persona);
 					//moos.flush();
 					//moos.close();
 				}
@@ -321,7 +321,6 @@ public class gestoraPersona {
 	 //El problema es que cuando llega la excepcion se va directamente al catch (se ha solucionado añadiendo un try catch en la misma linea de la instruccion)
 	//Hay que revisar el codigo porque no esta depurado
 	public void guardarCambiosModificados (String ruta, String modificado, String maestro) {
-			MiObjectOutputStream oos = null;
 			ObjectInputStream mov = null;
 			ObjectInputStream mod = null;
 			PersonaImp perMov;
@@ -344,6 +343,8 @@ public class gestoraPersona {
 					try {
 					introducir(maestro, perMod);
 					perMov = (PersonaImp) mov.readObject();
+					//Como salta la excepcion no se pone a null
+					//Primera idea ponerlo a null en el catch
 					perMod = (PersonaImp) mod.readObject();
 					}
 					catch(EOFException err) {
@@ -442,42 +443,5 @@ public class gestoraPersona {
 		}
     }
     
-    /*
-     * Interfaz
-     * Nombre: primerosAjustes
-     * Comentario: Este subprograma organiza los primeros ajustes necesarios para la creacion y carga de los ficheros
-     * Cabecera: public void primerosAjustes()
-     * Precondiciones: No hay
-     * Entrada: No hay
-     * Salida: No hay
-     * E/S: No hay
-     * Postcondiciones: Crea y carga los ficheros necesarios para la ejecucion del programa correctamente
-     */
-    
-    public void primerosAjustes() {
-    	crearFicheros fich = new crearFicheros();
-    	String rutaMov = "movimiento.dat";
-		String rutaMaestro = "maestro.dat";
-		String rutaDel =  "historico.dat";
-		String rutaMod = "modificado.dat";
-    	File mov = new File(rutaMov);
-    	File del = new File(rutaDel);
-    	File mod = new File(rutaMod);
-    	File maestro = new File(rutaMaestro);
-
-    	if(!mov.exists()) {
-    		fich.crearFichero(rutaMov);
-    		fich.ficheroPorDefecto(rutaMov);
-    	}
-    	if(!del.exists()) {
-    		fich.crearFichero(rutaDel);
-    	}
-    	if(!mod.exists()) {
-    		fich.crearFichero(rutaMod);
-    	}
-    	if(!maestro.exists()) {
-    		fich.crearFichero(rutaMaestro);
-    	}
-    	
-    }
+   
 }
