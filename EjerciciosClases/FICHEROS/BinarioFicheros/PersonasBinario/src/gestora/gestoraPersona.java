@@ -220,7 +220,6 @@ public class gestoraPersona {
 	
 	 //El problema es que cuando llega la excepcion se va directamente al catch (se ha solucionado añadiendo un try catch en la misma linea de la instruccion)
 	public void guardarCambiosEliminados (String ruta, String eliminados, String maestro) {
-			MiObjectOutputStream oos = null;
 			ObjectInputStream mov = null;
 			ObjectInputStream del = null;
 			PersonaImp perMov;
@@ -234,18 +233,33 @@ public class gestoraPersona {
 			
 			while(perMov != null && perDel != null) {
 				if(perMov.getDNI().equals(perDel.getDNI())) {
+					
 					try {
 						perMov = (PersonaImp) mov.readObject();
+					}
+					catch(EOFException err) {
+						System.out.println("Fin de fichero");
+						perMov = null;
+					}
+					
+					try {
 						perDel = (PersonaImp) del.readObject();
 					}
 					catch(EOFException err) {
 						System.out.println("Fin de fichero");
+						perDel = null;
 					}
 					
 				}
 				else {
 					introducir(maestro, perMov);
-					perMov = (PersonaImp) mov.readObject();
+					try {
+						perMov = (PersonaImp) mov.readObject();
+					}
+					catch(EOFException err) {
+						System.out.println("Fin de fichero");
+						perMov = null;
+					}
 					/*
 					if(perDel == null) {
 						while(perMov != null) {
@@ -257,13 +271,15 @@ public class gestoraPersona {
 				}
 			}
 			
-			/*if(perMov != null) {
+			if(perDel == null) {
 				while(perMov != null) {
 					introducir(maestro, perMov);
 					perMov = (PersonaImp) mov.readObject();
 				}
-			} */
+			} 
 			
+		mov.close(); 
+		del.close();
 		} 
 		catch(EOFException err) {
 			System.out.println("Fin de fichero");
@@ -278,6 +294,8 @@ public class gestoraPersona {
 		catch (ClassNotFoundException err) {
 			err.printStackTrace();
 		}
+		
+	
 		
 		/*
 		finally {
@@ -323,8 +341,8 @@ public class gestoraPersona {
 	public void guardarCambiosModificados (String ruta, String modificado, String maestro) {
 			ObjectInputStream mov = null;
 			ObjectInputStream mod = null;
-			PersonaImp perMov;
-			PersonaImp perMod;
+			PersonaImp perMov = null;
+			PersonaImp perMod = null;
 			
 		try {
 			mov = new ObjectInputStream(new FileInputStream(ruta));
@@ -335,21 +353,42 @@ public class gestoraPersona {
 			while(perMov != null && perMod != null) {
 				if(!perMov.getDNI().equals(perMod.getDNI())) {
 					introducir(maestro, perMov);
-					perMov = (PersonaImp) mov.readObject();
-					//perMod = (PersonaImp) mod.readObject();
-				}
-				
-				else {
 					try {
-					introducir(maestro, perMod);
-					perMov = (PersonaImp) mov.readObject();
-					//Como salta la excepcion no se pone a null
-					//Primera idea ponerlo a null en el catch
-					perMod = (PersonaImp) mod.readObject();
+						perMov = (PersonaImp) mov.readObject();
 					}
 					catch(EOFException err) {
 						System.out.println("Fin de fichero");
+						perMov = null;
 					}
+				}
+				
+				else {
+					introducir(maestro, perMod);
+					try {
+						perMod = (PersonaImp) mod.readObject();
+					}
+					catch(EOFException err) {
+						System.out.println("Fin de fichero");
+						perMod = null;
+					}
+					
+					try {
+						//Object o = mov.readObject();
+						perMov = (PersonaImp) mov.readObject();
+						
+					}
+					catch(EOFException err) {
+						System.out.println("Fin de fichero");
+						perMov = null;
+					}
+					
+					catch(ClassCastException err) {
+						System.out.println("Controlada ClassCastException");
+					}
+					
+					//Como salta la excepcion no se pone a null
+					//Primera idea ponerlo a null en el catch
+					
 					/*
 					if(perDel == null) {
 						while(perMov != null) {
@@ -361,13 +400,15 @@ public class gestoraPersona {
 				}
 			}
 			
-			/*if(perMov != null) {
+			if(perMod == null) {
 				while(perMov != null) {
-					introducir(maestro, perMov);
 					perMov = (PersonaImp) mov.readObject();
+					introducir(maestro, perMov);
 				}
-			} */
+			} 
 			
+		mov.close();
+		mod.close();
 		} 
 		catch(EOFException err) {
 			System.out.println("Fin de fichero");

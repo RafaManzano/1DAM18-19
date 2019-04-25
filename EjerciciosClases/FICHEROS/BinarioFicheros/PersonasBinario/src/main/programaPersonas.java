@@ -87,6 +87,7 @@ public class programaPersonas {
 				break;
 					
 				case 3:
+					gestora.mostrarFichero(rutaMov);
 					System.out.println("Introduce el dni de la persona que deseas modificar");
 					dni = teclado.next();
 					gestora.modificar(rutaMov, dni, rutaMod);
@@ -101,7 +102,9 @@ public class programaPersonas {
 		if(respuesta == 'S') {
 			//System.out.println("Guardar en maestro");
 			gestora.guardarCambiosEliminados(rutaMov, rutaDel, maestro);
-			gestora.guardarCambiosModificados(rutaMov, rutaMod, maestro);
+			gestora.mostrarFichero(maestro);
+			gestora.guardarCambiosModificados(maestro, rutaMod, maestro);
+			gestora.mostrarFichero(maestro);
 		}
 		else {
 			System.out.println("Los cambios se mantienen en los ficheros correspondientes");

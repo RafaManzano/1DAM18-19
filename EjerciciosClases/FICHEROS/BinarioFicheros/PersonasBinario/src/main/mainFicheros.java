@@ -7,7 +7,8 @@ public class mainFicheros {
 	public static void main(String[] args) {
 		gestionFicheros fich = new gestionFicheros();
 		
-		fich.primerosAjustes();
+		//fich.primerosAjustes();
+		fich.eliminarFicheros();
 	}
 
 }
