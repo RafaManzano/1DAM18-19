@@ -55,7 +55,7 @@ public class programaPersonas {
 		validacionesPersona validar = new validacionesPersona();
 		gestoraPersona gestora = new gestoraPersona();
 		menuPersona menus = new menuPersona();
-		gestionFicheros fich = new gestionFicheros();
+		//gestionFicheros fich = new gestionFicheros();
 		
 		/*
 		fich.crearFichero(rutaMov);
@@ -68,7 +68,7 @@ public class programaPersonas {
 		//gestora.mostrarFichero(rutaDel);
 		//gestora.mostrarFichero(rutaMod);
 		//gestora.mostrarFichero(maestro);
-		fich.primerosAjustes();
+		//fich.primerosAjustes();
 		
 		do {
 			menus.menuPrincipal();
