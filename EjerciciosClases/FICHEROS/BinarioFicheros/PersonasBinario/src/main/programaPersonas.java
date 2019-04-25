@@ -46,8 +46,10 @@ public class programaPersonas {
 		int opcion;
 		char respuesta;
 		PersonaImp p;
-		String ruta = "persona.dat";
+		String rutaMov = "movimiento.dat";
 		String maestro = "maestro.dat";
+		String rutaDel =  "historico.dat";
+		String rutaMod = "modificado.dat";
 		String dni;
 		Scanner teclado = new Scanner(System.in);
 		validacionesPersona validar = new validacionesPersona();
@@ -55,31 +57,33 @@ public class programaPersonas {
 		menuPersona menus = new menuPersona();
 		crearFicheros fich = new crearFicheros();
 		
-		fich.crearFichero(ruta);
+		/*
+		fich.crearFichero(rutaMov);
 		fich.crearFichero(maestro);
-		
+		fich.crearFichero(rutaDel);
+		fich.crearFichero(rutaMod);
+		fich.ficheroPorDefecto(rutaMov);
+		*/
 		do {
 			menus.menuPrincipal();
 			opcion = validar.leeryValidarOpcion();
 			switch(opcion) {
 				case 1:
 					p = validar.leeryValidarPersona();
-					gestora.introducir(ruta, p);
+					gestora.introducir(rutaMov, p);
 				break;
 				
 				case 2:
+					gestora.mostrarFichero(rutaMov);
 					System.out.println("Introduce el dni de la persona que deseas eliminar");
 					dni = teclado.next();
-					gestora.eliminar(ruta, dni);
+					gestora.eliminar(rutaMov, dni);
 				break;
 					
 				case 3:
-					System.out.println("En construccion");
-					/*
-					System.out.println("Inserte la persona con las modificaciones que desee");
-					p = validar.leeryValidarPersona();
-					gestora.introducir(ruta, p);
-					*/
+					System.out.println("Introduce el dni de la persona que deseas modificar");
+					dni = teclado.next();
+					gestora.modificar(rutaMov, dni, rutaMod);
 				break;
 			}
 		}
@@ -89,10 +93,12 @@ public class programaPersonas {
 		respuesta = validar.leeryValidarRespuesta();
 		
 		if(respuesta == 's') {
-			System.out.println("Guardar en maestro");
+			//System.out.println("Guardar en maestro");
+			gestora.guardarCambiosEliminados(rutaMov, rutaDel, maestro);
+			gestora.guardarCambiosModificados(maestro, rutaMod, maestro);
 		}
 		else {
-			System.out.println("Guardar en movimiento");
+			System.out.println("Los cambios se mantienen en los ficheros correspondientes");
 		}
 
 	}

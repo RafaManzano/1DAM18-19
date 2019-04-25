@@ -4,6 +4,7 @@ import java.io.*;
 
 import clases.MiObjectOutputStream;
 import clases.PersonaImp;
+import ficheros.crearFicheros;
 import validaciones.*;
 
 public class gestoraPersona {
@@ -334,16 +335,15 @@ public class gestoraPersona {
 			
 			while(perMov != null && perMod != null) {
 				if(!perMov.getDNI().equals(perMod.getDNI())) {
-					
-						introducir(maestro, perMov);
-						perMov = (PersonaImp) mov.readObject();
-						perMod = (PersonaImp) mod.readObject();
-					
-					
+					introducir(maestro, perMov);
+					perMov = (PersonaImp) mov.readObject();
+					//perMod = (PersonaImp) mod.readObject();
 				}
+				
 				else {
 					try {
 					introducir(maestro, perMod);
+					perMov = (PersonaImp) mov.readObject();
 					perMod = (PersonaImp) mod.readObject();
 					}
 					catch(EOFException err) {
@@ -440,5 +440,44 @@ public class gestoraPersona {
         catch (ClassNotFoundException err) {
 			err.printStackTrace();
 		}
+    }
+    
+    /*
+     * Interfaz
+     * Nombre: primerosAjustes
+     * Comentario: Este subprograma organiza los primeros ajustes necesarios para la creacion y carga de los ficheros
+     * Cabecera: public void primerosAjustes()
+     * Precondiciones: No hay
+     * Entrada: No hay
+     * Salida: No hay
+     * E/S: No hay
+     * Postcondiciones: Crea y carga los ficheros necesarios para la ejecucion del programa correctamente
+     */
+    
+    public void primerosAjustes() {
+    	crearFicheros fich = new crearFicheros();
+    	String rutaMov = "movimiento.dat";
+		String rutaMaestro = "maestro.dat";
+		String rutaDel =  "historico.dat";
+		String rutaMod = "modificado.dat";
+    	File mov = new File(rutaMov);
+    	File del = new File(rutaDel);
+    	File mod = new File(rutaMod);
+    	File maestro = new File(rutaMaestro);
+
+    	if(!mov.exists()) {
+    		fich.crearFichero(rutaMov);
+    		fich.ficheroPorDefecto(rutaMov);
+    	}
+    	if(!del.exists()) {
+    		fich.crearFichero(rutaDel);
+    	}
+    	if(!mod.exists()) {
+    		fich.crearFichero(rutaMod);
+    	}
+    	if(!maestro.exists()) {
+    		fich.crearFichero(rutaMaestro);
+    	}
+    	
     }
 }
