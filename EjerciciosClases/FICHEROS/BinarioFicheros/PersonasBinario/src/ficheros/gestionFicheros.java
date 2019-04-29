@@ -62,10 +62,12 @@ public class gestionFicheros {
 		String rutaMaestro = "maestro.dat";
 		String rutaDel =  "historico.dat";
 		String rutaMod = "modificado.dat";
+		String rutaAux = "auxiliar.dat";
     	File mov = new File(rutaMov);
     	File del = new File(rutaDel);
     	File mod = new File(rutaMod);
     	File maestro = new File(rutaMaestro);
+    	File aux = new File(rutaAux);
 
     	if(!mov.exists()) {
     		crearFichero(rutaMov);
@@ -80,6 +82,9 @@ public class gestionFicheros {
     	if(!maestro.exists()) {
     		crearFichero(rutaMaestro);
     	}
+    	if(!aux.exists()) {
+    		crearFichero(rutaAux);
+    	}
     	
     }
     
@@ -88,16 +93,19 @@ public class gestionFicheros {
     	String rutaMaestro = "maestro.dat";
     	String rutaDel =  "historico.dat";
     	String rutaMod = "modificado.dat";
+    	String rutaAux = "auxiliar.dat";
     	File mov = new File(rutaMov);
     	File del = new File(rutaDel);
     	File mod = new File(rutaMod);
     	File maestro = new File(rutaMaestro);
+    	File aux = new File(rutaAux);
     	
     	
     	mov.deleteOnExit();
     	del.deleteOnExit();
     	mod.deleteOnExit();
     	maestro.deleteOnExit();
+    	aux.deleteOnExit();
     }
 
 }

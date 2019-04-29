@@ -40,6 +40,9 @@ import validaciones.validacionesPersona;
  * 		GuardaMovimiento
  * Fin
  */
+
+//El metodo de guardar modificados guarda de mas habria que revisar que hacer
+//en caso de que no hay modificaciones o sea la misma
 public class programaPersonas {
 
 	public static void main(String[] args) {
@@ -50,6 +53,7 @@ public class programaPersonas {
 		String maestro = "maestro.dat";
 		String rutaDel =  "historico.dat";
 		String rutaMod = "modificado.dat";
+		String rutaAux = "auxiliar.dat";
 		String dni;
 		Scanner teclado = new Scanner(System.in);
 		validacionesPersona validar = new validacionesPersona();
@@ -101,9 +105,10 @@ public class programaPersonas {
 		
 		if(respuesta == 'S') {
 			//System.out.println("Guardar en maestro");
-			gestora.guardarCambiosEliminados(rutaMov, rutaDel, maestro);
-			gestora.mostrarFichero(maestro);
-			gestora.guardarCambiosModificados(maestro, rutaMod, maestro);
+			gestora.guardarCambiosEliminados(rutaMov, rutaDel, rutaAux);
+			//gestora.mostrarFichero(maestro);
+			gestora.guardarCambiosModificados(rutaAux, rutaMod, maestro);
+			System.out.println("Mostramos los datos introducidos en el maestro");
 			gestora.mostrarFichero(maestro);
 		}
 		else {
