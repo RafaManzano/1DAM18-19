@@ -21,6 +21,7 @@ public class gestionFicheros {
 	public void crearFichero(String ruta) {
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ruta));
+			oos.close();
 		}
 		catch(IOException err) {
 			err.printStackTrace();
@@ -82,9 +83,19 @@ public class gestionFicheros {
     	if(!maestro.exists()) {
     		crearFichero(rutaMaestro);
     	}
+    	else {
+    		mov.deleteOnExit();
+    		del.deleteOnExit();
+        	mod.deleteOnExit();
+        	aux.deleteOnExit();
+        	
+        	maestro.renameTo(mov);
+    	}
     	if(!aux.exists()) {
     		crearFichero(rutaAux);
     	}
+    	
+    	
     	
     }
     

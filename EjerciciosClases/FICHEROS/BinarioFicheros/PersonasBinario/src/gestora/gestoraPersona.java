@@ -13,20 +13,24 @@ public class gestoraPersona {
     Interfaz
     Nombre: introducir
     Comentario: Este subprograma anhade un nuevo objeto
-    Cabecera: public void introducir(String ruta, <T> objeto)
+    Cabecera: public boolean introducir(String ruta, <T> objeto)
     Precondiciones: El fichero debe existir
     Entrada: - <T> objeto //Es el objeto por anhadir
-    Salida: int error //El codigo de error para mostrar un mensaje
+    Salida: boolean error //Si el metodo responde con true, estara correctamente introducido y sino habra algun tipo de error
     E/S: - String ruta //Es la ruta donde esta el fichero
-    Postcondiciones: Asociado al nombre. El codigo de error necesario para mostrar un mensaje
-    */
+    Postcondiciones: Asociado al nombre. Si el metodo responde con true, estara correctamente introducido y sino habra algun tipo de error
+	*/
 	
-	 public <T> int introducir(String ruta, T objeto) {
-	    	int error = 0;
+	 public <T> boolean introducir(String ruta, T objeto) {
+	    	boolean error = false;
 	    	MiObjectOutputStream moos = null;
 	        try {
 	        	moos = new MiObjectOutputStream(new FileOutputStream(ruta, true));
-        		moos.writeObject(objeto);
+	        	if(objeto != null) {
+	        		moos.writeObject(objeto);
+	        		error = true;
+	        	}
+        		
         		//oos.flush();
         		moos.close();
 	        }
@@ -41,32 +45,33 @@ public class gestoraPersona {
 	    Interfaz
 	    Nombre: eliminar
 	    Comentario: Busca en el fichero el dni del objeto pasado por parametro y lo elimina pasandolo a un fichero de eliminacion
-	    Cabecera: public void eliminar(String ruta, String dni, String rutaEliminados)
+	    Cabecera: public boolean eliminar(String ruta, String dni, String rutaEliminados)
 	    Precondiciones: El fichero debe estar creado
 	    Entrada: - String dni //Es el dni del objeto para su posterior eliminacion
 	    		 - String ruta //Es la ruta donde esta el fichero
-	    Salida: - int error //El codigo de error para mostrar un mensaje
+	    Salida: - boolean error //Si el metodo responde con true, estara correctamente introducido y sino habra algun tipo de error
 	    E/S: - String rutaEliminados //Es la ruta donde se guardan las eliminaciones del fichero
-	    Postcondiciones: Asociado al nombre. El codigo de error necesario para mostrar un mensaje (0 correcto y 1 no encontrado)
+	    Postcondiciones: Asociado al nombre. //Si el metodo responde con true, estara correctamente introducido y sino habra algun tipo de error y queda introducido en el fichero de eliminados
 	 */
 	 
 	 //Se queda en bucle infinito, hay problema con los cierres de los ficheros
 	 //Solucion 1 Introducir en otro fichero de movimiento
 	 //Solucion chunga intentar en el mismo fichero
 	 //Solucionado Solucion 1
-	 public void eliminar (String ruta, String dni, String rutaEliminados) {
+	 public boolean eliminar (String ruta, String dni, String rutaEliminados) {
 		 ObjectInputStream ois = null;
-		 MiObjectOutputStream moos = null;
+		 boolean error = false;
+		 //MiObjectOutputStream moos = null;
 		try {
 			ois = new ObjectInputStream(new FileInputStream(ruta));
-			moos = new MiObjectOutputStream(new FileOutputStream(ruta, true));
+			//moos = new MiObjectOutputStream(new FileOutputStream(ruta, true));
 			//int tamanho = 0;
 			PersonaImp p = (PersonaImp) ois.readObject();
 			
 			while(p != null) {
 				if(p.getDNI().equals(dni)) {
 					//eliminarRegistro(ruta, tamanho);
-					introducir(rutaEliminados, p);
+					error = introducir(rutaEliminados, p);
 					//moos.flush();
 					//moos.close();
 				}
@@ -97,14 +102,18 @@ public class gestoraPersona {
 				ois.close();
 				}
 				
+				/*
 				if(moos != null) {
 					moos.close();
 				}
+				*/
 			}
 			catch(IOException err) {
 				err.printStackTrace();
 			}
 		}
+	
+		return error;
 	 }
 	 
 	/*
@@ -139,23 +148,25 @@ public class gestoraPersona {
 	 * Interfaz
 	 * Nombre: modificar
 	 * Comentario: Este subprograma para al archivo de modificaciones las personas ya modificadas (El DNI no se puede modificar)
-	 * Cabecera: public void modificarPersona (String ruta, String dni, String rutaModifica)
+	 * Cabecera: public boolean modificarPersona (String ruta, String dni, String rutaModifica)
 	 * Precondiciones: Los ficheros deben estar creados
 	 * Entrada: - String ruta //La ruta donde se encuentra el fichero
 	 * 			- String dni //El dni de la persona que se desea modificar
-	 * Salida: No hay
-	 * E/S: - String rutaModificar
-	 * Postcondiciones: En la ruta modificar se van a escribir las personas que se ha querido modificar
+	 * Salida: - boolean error //Si el metodo responde con true, estara correctamente introducido y sino habra algun tipo de error
+	 * E/S: - String rutaModificar //Es la ruta donde se van a guardar las modificaciones que se hagan
+	 * Postcondiciones: //Si el metodo responde con true, estara correctamente introducido y sino habra algun tipo de error y queda introducido en el fichero de modificaciones
 	 */
 	 
-	 public void modificar (String ruta, String dni, String rutaModificar) {
+	 public boolean modificar (String ruta, String dni, String rutaModificar) {
 		 validacionesPersona validar = new validacionesPersona();
 		 ObjectInputStream ois = null;
-		 MiObjectOutputStream moos = null;
+		 //MiObjectOutputStream moos = null;
 		 PersonaImp persona = null;
+		 boolean error = false;
+		 
 		try {
 			ois = new ObjectInputStream(new FileInputStream(ruta));
-			moos = new MiObjectOutputStream(new FileOutputStream(rutaModificar, true));
+			//moos = new MiObjectOutputStream(new FileOutputStream(rutaModificar, true));
 			//int tamanho = 0;
 			PersonaImp p = (PersonaImp) ois.readObject();
 			
@@ -164,7 +175,7 @@ public class gestoraPersona {
 					persona = new PersonaImp(p);
 					persona = validar.modificarPersona(p);
 					//eliminarRegistro(ruta, tamanho);
-					introducir(rutaModificar, persona);
+					error = introducir(rutaModificar, persona);
 					//moos.flush();
 					//moos.close();
 				}
@@ -194,15 +205,18 @@ public class gestoraPersona {
 				if(ois != null) {
 				ois.close();
 				}
-				
+				/*
 				if(moos != null) {
 					moos.close();
 				}
+				*/
 			}
 			catch(IOException err) {
 				err.printStackTrace();
 			}
 		}
+		
+		return error;
 	 }
 	
 	/*
@@ -225,11 +239,24 @@ public class gestoraPersona {
 			PersonaImp perMov = null;
 			PersonaImp perDel = null;
 			
-		try {
 			try {
 				mov = new ObjectInputStream(new FileInputStream(ruta));
 				del = new ObjectInputStream(new FileInputStream(eliminados));
-				perMov = (PersonaImp) mov.readObject();
+				try {
+					perMov = (PersonaImp) mov.readObject();
+				}
+				catch(EOFException err) {
+					err.printStackTrace();
+					perMov = null;
+				}
+				
+				try {
+					perDel = (PersonaImp) del.readObject();
+				}
+				catch(EOFException err) {
+					err.printStackTrace();
+					perDel = null;
+				}
 				perDel = (PersonaImp) del.readObject();
 				
 				while(perMov != null && perDel != null) {
@@ -272,10 +299,8 @@ public class gestoraPersona {
 					}
 				}
 			
-		}
-		catch(EOFException err) {
-			System.out.println("Fin de fichero");
-		}
+		
+		//Solo esta parte puesto que haya eliminaciones equivocadas no se anhadiran a nuestro archivo de movimiento
 		if(perDel == null) {
 			while(perMov != null) {
 				introducir(maestro, perMov);
@@ -298,10 +323,7 @@ public class gestoraPersona {
 		}
 		catch (ClassNotFoundException err) {
 			err.printStackTrace();
-		}
-	
-		
-		
+		}		
 	
 		
 		/*
@@ -330,6 +352,7 @@ public class gestoraPersona {
 		*/
 	}
 	
+	
 	/*
 	 * Interfaz
 	 * Nombre: guardarCambiosModificados
@@ -342,6 +365,7 @@ public class gestoraPersona {
 	 * E/S: - String maestro //Es la ruta donde se encuentra el fichero maestro
 	 * Postcondiciones: Si la persona esta modificada se guarda en el fichero maestro y todo querdaria actualizado
 	 */
+	//Este se queda como guardar porque es una prueba, luego se usa la V2
 	
 	 //El problema es que cuando llega la excepcion se va directamente al catch (se ha solucionado añadiendo un try catch en la misma linea de la instruccion)
 	//Hay que revisar el codigo porque no esta depurado
@@ -355,8 +379,20 @@ public class gestoraPersona {
 		try {
 			mov = new ObjectInputStream(new FileInputStream(ruta));
 			mod = new ObjectInputStream(new FileInputStream(modificado));
-			perMov = (PersonaImp) mov.readObject();
-			perMod = (PersonaImp)mod.readObject();
+			try {
+				perMov = (PersonaImp) mov.readObject();
+				
+			}
+			catch(EOFException err) {
+				perMov = null;
+			}
+			try {
+				perMod = (PersonaImp)mod.readObject();
+				
+			}
+			catch(EOFException err) {
+				perMod = null;
+			}
 			
 			while(perMov != null && perMod != null) {
 				if(!((PersonaImp) perMov).getDNI().equals(((PersonaImp) perMod).getDNI())) {
@@ -410,6 +446,8 @@ public class gestoraPersona {
 					*/
 				}
 			}
+			
+			//Solo esta parte puesto que haya modificaciones equivocadas no se anhadiran a nuestro archivo de movimiento
 			if(perMod == null) {
 				while(perMov != null) {
 					introducir(maestro, perMov);
@@ -468,7 +506,7 @@ public class gestoraPersona {
     Entrada: - String ruta //La ruta donde se encuentra el fichero
     Salida: No hay
     E/S: No hay
-    Postcondiciones: Solo muestra el fichero completo
+    Postcondiciones: Se muestra el fichero completo
     */
 	
     public void mostrarFichero(String ruta) {
@@ -501,13 +539,24 @@ public class gestoraPersona {
 		ObjectInputStream mod = null;
 		Object perMov = null;
 		Object perMod = null;
-		String dni = "-2253187412";
 		
 	try {
 		mov = new ObjectInputStream(new FileInputStream(ruta));
 		mod = new ObjectInputStream(new FileInputStream(modificado));
-		perMov =  mov.readObject();
-		perMod =  mod.readObject();
+		try {
+			perMov = (PersonaImp) mov.readObject();
+			
+		}
+		catch(EOFException err) {
+			perMov = null;
+		}
+		try {
+			perMod = (PersonaImp)mod.readObject();
+			
+		}
+		catch(EOFException err) {
+			perMod = null;
+		}
 		
 		while(perMov != null && perMod != null) {
 			if(perMov instanceof PersonaImp &&  perMod instanceof PersonaImp) 
@@ -569,14 +618,16 @@ public class gestoraPersona {
 			}
 		}
 		
-		/* Para cuando lo arregle lo tengo que descomentar. Puede que haya arreglado para que esto no tenga que estar en el codigo
+		//Con esto se anhaden todos los que faltan del fichero de movimientos
 		if(perMod == null) {
 			while(perMov != null) {
 				perMov = (PersonaImp) mov.readObject();
 				introducir(maestro, perMov);
 			}
-		} 
-		*/
+		}
+		
+		//Solo esta parte puesto que haya eliminaciones equivocadas no se anhadiran a nuestro archivo de movimiento
+		
 	mov.close();
 	mod.close();
 	} 
@@ -593,7 +644,7 @@ public class gestoraPersona {
 	catch (ClassNotFoundException err) {
 		err.printStackTrace();
 	}
-	}
+}
 	
 	/*
 	finally {

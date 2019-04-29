@@ -3,9 +3,9 @@ package main;
 import java.util.*;
 
 import clases.PersonaImp;
-import ficheros.gestionFicheros;
 import gestora.gestoraPersona;
 import menus.menuPersona;
+import resguardos.resguardosPersonas;
 import validaciones.validacionesPersona;
 
 /*
@@ -59,20 +59,15 @@ public class programaPersonas {
 		validacionesPersona validar = new validacionesPersona();
 		gestoraPersona gestora = new gestoraPersona();
 		menuPersona menus = new menuPersona();
-		//gestionFicheros fich = new gestionFicheros();
+		resguardosPersonas resguardo = new resguardosPersonas();
 		
-		/*
-		fich.crearFichero(rutaMov);
-		fich.crearFichero(maestro);
-		fich.crearFichero(rutaDel);
-		fich.crearFichero(rutaMod);
-		fich.ficheroPorDefecto(rutaMov);
-		*/
+		
 		//gestora.mostrarFichero(rutaMov);
 		//gestora.mostrarFichero(rutaDel);
 		//gestora.mostrarFichero(rutaMod);
 		//gestora.mostrarFichero(maestro);
-		//fich.primerosAjustes();
+		//gestora.mostrarFichero(rutaAux);
+		
 		
 		do {
 			menus.menuPrincipal();
@@ -80,6 +75,7 @@ public class programaPersonas {
 			switch(opcion) {
 				case 1:
 					p = validar.leeryValidarPersona();
+					//resguardo.introducir(rutaMov, p);
 					gestora.introducir(rutaMov, p);
 				break;
 				
@@ -87,6 +83,7 @@ public class programaPersonas {
 					gestora.mostrarFichero(rutaMov);
 					System.out.println("Introduce el dni de la persona que deseas eliminar");
 					dni = teclado.next();
+					//resguardo.eliminar(rutaMov, dni, rutaDel);
 					gestora.eliminar(rutaMov, dni, rutaDel);
 				break;
 					
@@ -94,6 +91,7 @@ public class programaPersonas {
 					gestora.mostrarFichero(rutaMov);
 					System.out.println("Introduce el dni de la persona que deseas modificar");
 					dni = teclado.next();
+					resguardo.modificar(rutaMov, dni, rutaMod);
 					gestora.modificar(rutaMov, dni, rutaMod);
 				break;
 			}
@@ -105,8 +103,11 @@ public class programaPersonas {
 		
 		if(respuesta == 'S') {
 			//System.out.println("Guardar en maestro");
+			//resguardo.guardarCambiosEliminados(rutaMov, rutaDel, rutaAux);
 			gestora.guardarCambiosEliminados(rutaMov, rutaDel, rutaAux);
+			//gestora.mostrarFichero(rutaAux);
 			//gestora.mostrarFichero(maestro);
+			//resguardo.guardarCambiosModificados(rutaAux, rutaMod, maestro);
 			gestora.guardarCambiosModificados(rutaAux, rutaMod, maestro);
 			System.out.println("Mostramos los datos introducidos en el maestro");
 			gestora.mostrarFichero(maestro);

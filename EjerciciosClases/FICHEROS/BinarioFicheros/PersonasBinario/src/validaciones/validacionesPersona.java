@@ -82,6 +82,8 @@ public class validacionesPersona {
 				*/
 			}
 			
+			mov.close();
+			
 		}
 		catch(EOFException err) {
 			System.out.println("Fin de fichero");
