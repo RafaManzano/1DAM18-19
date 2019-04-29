@@ -82,4 +82,22 @@ public class gestionFicheros {
     	}
     	
     }
+    
+    public void eliminarFicheros() {
+    	String rutaMov = "movimiento.dat";
+    	String rutaMaestro = "maestro.dat";
+    	String rutaDel =  "historico.dat";
+    	String rutaMod = "modificado.dat";
+    	File mov = new File(rutaMov);
+    	File del = new File(rutaDel);
+    	File mod = new File(rutaMod);
+    	File maestro = new File(rutaMaestro);
+    	
+    	
+    	mov.deleteOnExit();
+    	del.deleteOnExit();
+    	mod.deleteOnExit();
+    	maestro.deleteOnExit();
+    }
+
 }
