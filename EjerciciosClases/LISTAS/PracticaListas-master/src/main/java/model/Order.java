@@ -71,8 +71,12 @@ public class Order {
 	 * E/S: No hay
 	 * Postcondiciones: Asociado al nombre, si queda anhadido correctamente sera true, sino sera false
 	 */
-	public void addOrderLine(OrderLine orderLine) {
+	public boolean addOrderLine(OrderLine orderLine) {
+		boolean anhadido = false;
 		
+		anhadido = orderLines.add(orderLine);
+		
+		return anhadido;
 	}
 	
 	/*
@@ -86,8 +90,12 @@ public class Order {
 	 * E/S: No hay
 	 * Postcondiciones: Asociado al nombre, si queda elimando correctamente sera true, sino sera false
 	 */
-	public void removeOrderLine(OrderLine orderLine) {
-		//TODO Eliminar artículo
+	public boolean removeOrderLine(OrderLine orderLine) {
+		boolean eliminado = false;
+		
+		eliminado = orderLines.remove(orderLine);
+		
+		return eliminado;
 		
 	}
 	
@@ -103,9 +111,11 @@ public class Order {
 	 * Postcondiciones: Asociado al nombre, el producto encontrado
 	 */
 	public OrderLine getOrderLine(int position) {
-		//TODO Coger artículo
+		OrderLine lineaPedido;
 		
-		return null;
+		lineaPedido = orderLines.get(position);
+		
+		return lineaPedido;
 	}
 	
 	//SEGUNDA PARTE
