@@ -13,7 +13,7 @@ public class conductorPersona {
 		PersonaImp p1 = new PersonaImp();
 		PersonaImp p2 = new PersonaImp("1A", "Rafael", "Manzano");
 		PersonaImp p3 = new PersonaImp("2P", "Gordo", "Master");
-		PersonaImp p4 = new PersonaImp();
+		PersonaImp p4 = new PersonaImp("Esto","se","ralla");
 		gestoraPersona gestora = new gestoraPersona();
 		gestionFicheros fich = new gestionFicheros();
 		//MiObjectOutputStream oos = new MiObjectOutputStream(new FileOutputStream("movi.dat", true));
@@ -38,7 +38,7 @@ public class conductorPersona {
 		//gestora.mostrarFichero(modificar);
 		//gestora.mostrarFichero(historicos);
 		gestora.guardarCambiosEliminados(ruta, historicos, aux);
-		//gestora.mostrarFichero(aux);
+		gestora.mostrarFichero(aux);
 		gestora.guardarCambiosModificados(aux, modificar, maestro);
 		gestora.mostrarFichero(maestro);
 	}

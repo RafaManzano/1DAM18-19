@@ -1,5 +1,10 @@
 package validaciones;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Scanner;
 
 import clases.PersonaImp;
@@ -23,9 +28,15 @@ public class validacionesPersona {
 		String dni;
 		String nombre;
 		String apellidos;
+		boolean repetido;
 		
-		System.out.println("Escriba su DNI");
-		dni = teclado.next();
+		do {
+			System.out.println("Escriba su DNI");
+			dni = teclado.next();
+			repetido = comprobarDNIRepetido(dni, "movimiento.dat");
+		}
+		while(repetido == true);
+		
 		System.out.println("Escriba su nombre");
 		nombre = teclado.next();
 		System.out.println("Escriba su apellidos");
@@ -36,7 +47,57 @@ public class validacionesPersona {
 		return persona;
 	}
 	
-	 /*
+	/*
+	 * Interfaz
+	 * Nombre: comprobarDNIRepetido
+	 * Comentario: Este subprograma comprueba si el dni esta repetido en el fichero de movimiento
+	 * Cabecera: public boolean comprobarDNIRepetido (String dni, String rutaFichero)
+	 * Precondiciones: El fichero debe estar creado
+	 * Entrada: - String dni //El dni tiene que ser el que quieres buscar
+	 * 			- String rutaFichero //Es la ruta donde se encuentra el fichero
+	 * Salida: - No hay
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, si el dni esta repetido seria true y si el dni no esta repetido seria false
+	 */
+	 public boolean comprobarDNIRepetido(String dni, String rutaFichero) {
+		ObjectInputStream mov = null;
+		PersonaImp perMov = null;
+		boolean repetido = false;
+		
+		try {
+			mov = new ObjectInputStream(new FileInputStream(rutaFichero));
+			perMov = (PersonaImp) mov.readObject();
+			
+			while(perMov != null) {
+				if(perMov.getDNI().equals(dni)) {
+					repetido = true;
+				}
+				//try {
+					perMov = (PersonaImp) mov.readObject();
+				//}
+				/*
+				catch(EOFException err) {
+					Syste
+				}
+				*/
+			}
+			
+			mov.close();
+			
+		}
+		catch(EOFException err) {
+			System.out.println("Fin de fichero");
+		}
+		catch(IOException err) {
+			err.printStackTrace();
+		}
+		catch(ClassNotFoundException err) {
+			err.printStackTrace();
+		}
+		return repetido;
+	}
+
+	/*
     Interfaz
     Nombre: leeryValidarOpcion
     Comentario: Este subprograma lee y valida la opcion del menu
