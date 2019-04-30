@@ -369,6 +369,7 @@ public class gestoraPersona {
 	
 	 //El problema es que cuando llega la excepcion se va directamente al catch (se ha solucionado añadiendo un try catch en la misma linea de la instruccion)
 	//Hay que revisar el codigo porque no esta depurado
+	/*
 	public void guardar (String ruta, String modificado, String maestro) {
 			ObjectInputStream mov = null;
 			ObjectInputStream mod = null;
@@ -444,7 +445,7 @@ public class gestoraPersona {
 						}
 					}
 					*/
-				}
+				/*}
 			}
 			
 			//Solo esta parte puesto que haya modificaciones equivocadas no se anhadiran a nuestro archivo de movimiento
@@ -495,8 +496,9 @@ public class gestoraPersona {
 				
 			}
 		*/
+	/*
 	}
-	
+	*/
 	/*
     Interfaz
     Nombre: mostrarFichero
@@ -645,6 +647,19 @@ public class gestoraPersona {
 		err.printStackTrace();
 	}
 }
+
+	/*
+	    Interfaz
+	    Nombre: eliminar
+	    Comentario: Busca en el fichero el dni del objeto pasado por parametro y lo elimina pasandolo a un fichero de eliminacion
+	    Cabecera: public boolean eliminar(String ruta, String dni, String rutaEliminados)
+	    Precondiciones: El fichero debe estar creado
+	    Entrada: - String dni //Es el dni del objeto para su posterior eliminacion
+	    		 - String ruta //Es la ruta donde esta el fichero
+	    Salida: - boolean error //Si el metodo responde con true, estara correctamente introducido y sino habra algun tipo de error
+	    E/S: - String rutaEliminados //Es la ruta donde se guardan las eliminaciones del fichero
+	    Postcondiciones: Asociado al nombre. //Si el metodo responde con true, estara correctamente introducido y sino habra algun tipo de error y queda introducido en el fichero de eliminados
+	 */
 	
 	/*
 	finally {

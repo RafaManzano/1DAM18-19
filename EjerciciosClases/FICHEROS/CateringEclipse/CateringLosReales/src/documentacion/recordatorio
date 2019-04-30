@@ -1,7 +1,7 @@
 - Complementar los codigos de error en los subprogramas de gestion V
 - Realizar los resguardos de las gestoras V
 - Comprobar si usar las clases genericas  (<>) V
-- Diagrama de clases
+- Diagrama de clases 
 - Javadoc V
 - La idea de las clases se basa en dos clases(Mesa y Camarero). El camarero aparte de lo habitual, turno y array de mesas V
 - Las mesas por su parte tendra numero. Debera ser extensible para cualquier otra mesa y en un futuro tener el soporte para pedidos V
@@ -13,5 +13,4 @@
 - Probar todas las funcionalidades V
 - Revisar metodos e interfaces completas, probablemente crear otro proyecto nuevo y pasar la informacion relevante V
 - Terminar todo V
-- Pasar para que algun compañero me lo compruebe
 - Poner el id que se pueda introducir desde teclado V

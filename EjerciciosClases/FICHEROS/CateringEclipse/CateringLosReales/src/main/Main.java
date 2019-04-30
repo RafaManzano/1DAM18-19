@@ -88,6 +88,7 @@ public class Main {
 	menuCatering menus = new menuCatering();
 	String camareros = "camareros.txt";
 	String mesas = "mesas.txt";
+	String maestro = "maestro.txt";
 
 	do {
         menus.menuPrincpal();
@@ -186,7 +187,7 @@ public class Main {
 	    //Guardar en ficheros maestros
         //System.out.println("Pensar");
 		//reGe.guardarCambios(camareros);
-		validar.errores(geGe.guardarCambios(camareros));
+		validar.errores(geGe.guardarCambios(camareros, maestro));
         
 	}
 	else {

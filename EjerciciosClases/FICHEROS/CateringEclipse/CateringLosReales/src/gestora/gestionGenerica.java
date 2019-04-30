@@ -203,6 +203,7 @@ public class gestionGenerica {
      * Cabecera: public void guardarCambios(String ruta)
      * Precondiciones: El fichero (ruta) debe existir
      * Entrada: - String ruta //Es la ruta donde se encuentra el fichero antiguo
+     * 			- String maestro //Es la ruta donde se encuentra el fichero nuevo //maestro
      * Salida: int error //El codigo de error para mostrar un mensaje
      * E/S: No hay
      * Postcondiciones: Asociado al nombre. El codigo de error necesario para mostrar un mensaje (0 correcto y 3 camareros eliminados)
@@ -211,14 +212,15 @@ public class gestionGenerica {
     /**
      * Este subprograma guarda los cambios en el fichero maestro
      * @param ruta Es la ruta donde se encuentra el fichero antiguo
+     * @param maestro Es la ruta donde se encuentra el fichero nuevo //maestro
      * @return error El codigo de error para mostrar un mensaje
      */
     
-    public int guardarCambios(String ruta) {
+    public int guardarCambios(String ruta, String maestro) {
     	int error = 3;
     	try {
 			BufferedReader antiguo = new BufferedReader(new FileReader(ruta));
-			BufferedWriter nuevo = new BufferedWriter(new FileWriter("maestro.txt", true));
+			BufferedWriter nuevo = new BufferedWriter(new FileWriter(maestro, true));
 			String linea;
 			
 			while ((linea = antiguo.readLine()) != null) {
@@ -242,4 +244,16 @@ public class gestionGenerica {
 		}
     	return error;
     }
+
+	/*
+	Interfaz
+	Nombre: mostrarFichero
+	Comentario: Este subprorgama muestra el fichero completo
+	Cabecera: public void mostrarFichero(String ruta)
+	Precondiciones: El fichero debe estar creado
+	Entrada: - String ruta //La ruta donde se encuentra el fichero
+	Salida: No hay
+	E/S: No hay
+	Postcondiciones: Solo muestra el fichero completo
+	*/
 }
