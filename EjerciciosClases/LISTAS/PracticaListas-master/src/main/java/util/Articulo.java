@@ -20,6 +20,10 @@ public class Articulo {
 		this.lineaPedido = lineaPedido;
 	}
 	
+	public Articulo (OrderLine lineaPedido) {
+		this.lineaPedido = lineaPedido;
+	}
+	
 	public Articulo (Articulo cop) {
 		this.previous = cop.getPrevious();
 		this.next = cop.getNext();
