@@ -1,6 +1,7 @@
 package main.java.model;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 import java.util.Queue;
 
@@ -20,7 +21,7 @@ public class Supermarket {
 	private List<Order> orders;
 	
 	//TERCERA PARTE
-	private Queue<Order> orderQueue;
+	private Deque<Order> orderQueue;
 
 	public String getName() {
 		return name;
@@ -58,7 +59,7 @@ public class Supermarket {
 		return orderQueue;
 	}
 
-	public void setOrderQueue(Queue<Order> orderQueue) {
+	public void setOrderQueue(Deque<Order> orderQueue) {
 		this.orderQueue = orderQueue;
 	}
 
@@ -142,25 +143,60 @@ public class Supermarket {
 	
 	//TERCERA PARTE
 	//Cola de pedidos
+	/*
+	 * Interfaz
+	 * Nombre: pushOrder
+	 * Comentario: Este subprograma anhade un pedido
+	 * Cabecera: public void pushOrder(Order order)
+	 * Precondiciones:
+	 * Entrada: Order order //El pedido a anhadir
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: El pedido queda anhadido en la lista
+	 */
 	public void pushOrder(Order order) {
-		//TODO Añadir pedido
-		
+		orderQueue.add(order);
 	}
 	
+	/*
+	 * Interfaz
+	 * Nombre: popOrder
+	 * Comentario: Este subprograma obtiene un pedido
+	 * Cabecera: public void popOrder()
+	 * Precondiciones:
+	 * Entrada: 
+	 * Salida: Order pedido //El pedido que se ha encontrado
+	 * E/S: No hay
+	 * Postcondiciones: Se devuelve un pedido
+	 */
 	public Order popOrder() {
-		//TODO Obtener pedido
+		Order pedido;
 		
-		return null;
+		pedido = orderQueue.pop();
+		
+		return pedido;
 	}
 	
+	/*
+	 * Interfaz
+	 * Nombre: getFront
+	 * Comentario: Este subprograma obtiene el primero de la lista
+	 * Cabecera: public void getFront()
+	 * Precondiciones: No hay
+	 * Entrada: No hay
+	 * Salida: Order pedido //El pedido que se ha encontrado
+	 * E/S: No hay
+	 * Postcondiciones: Se devuelve un pedido que es el primero de la lista
+	 */
 	public Order getFront() {
-		//TODO Devuelve el primer pedido de la cola
-		//OJO!! No hay que sacarlo, solo devolver el primer pedido
+		Order pedido;
 		
-		return null;
+		pedido = orderQueue.getFirst();
+		
+		return pedido;
 	}
 	
-	//Operaciones
+	//Operaciones //Opcional
 	public void getMinPriceProduct() {
 		//TODO Devolver el producto con el precio más bajo
 		

@@ -67,23 +67,6 @@ public class ListaArticulos {
         return vacia;
     }
 
-   /*
-    * Interfaz
-    * Nombre: enlazar
-    * Comentario: Enlazamos los nodos entre si
-    * Cabecera: public void enlazar(Articulo primerNodo, Articulo segundoNodo)
-    * Precondiciones: Los articulos deben estar creados correctamente
-    * Entrada: - Articulo primerNodo
-    * 		   - Articulo segundoNodo
-    * Salida: No hay
-    * E/S: No hay
-    * Postcondiciones: Enlaza los dos nodos para que esten relacionados entre si
-    */
-    public void enlazar(Articulo primerNodo, Articulo segundoNodo) {
-        primerNodo.setNext (segundoNodo);
-        segundoNodo.setPrevious(primerNodo);
-    }
-
 	
 	/*
 	 * Interfaz
@@ -97,15 +80,21 @@ public class ListaArticulos {
 	 * Postcondiciones: El articulo queda insertado al final de la lista
 	 */
 	public void addArticulo(Articulo articulo) {
-		 Articulo nuevo = new Articulo(articulo);
-	        if (estaVacia()) {
-	            principio = nuevo;
-	            ultimo = null;
-	        } 
-	        else {
-	            enlazar(ultimo, nuevo);
-	            ultimo = nuevo;
-	        }
+		Articulo puntero;
+		
+		if (estaVacia()) {
+            principio = articulo;
+        } 
+        else {
+        	puntero = principio;
+        	
+        	while(puntero.getNext() != null) {
+        		puntero = puntero.getNext();
+        	}
+        	
+        	puntero.setNext(articulo);
+        	articulo.setPrevious(puntero);
+        }
 	}
 	
 	
@@ -145,17 +134,17 @@ public class ListaArticulos {
 	 * Postcondiciones: El articulo quedaria eliminado de la lista
 	 */
 	public void remove(Articulo articulo) {
-		if ( !estaVacia() ) {
-            Articulo fin = ultimo.getPrevious();
+		if (estaVacia()) {
             
-            if (fin == null) {
-                principio = null;
-                ultimo = null;
-            } 
-            else {
-                fin.setNext(null);
-                ultimo = fin;
-            }
+        } 
+        else {
+        	while(principio.getNext() != null) {
+        		principio = principio.getNext();
+        		if(principio.equals(articulo)) {
+        			principio.setNext(null);
+        			principio.setPrevious(null);
+        		}
+        	}
         }
     }
 	
@@ -176,26 +165,25 @@ public class ListaArticulos {
 		remove(ar);
 	}
 	
-	public void get(int position) {
-		// Crea una copia de la lista.
-        Articulo aux = inicio;
-        // Bandera para indicar si el valor existe.
-        boolean encontrado = false;
-        // Recorre la lista hasta encontrar el elemento o hasta 
-        // llegar al final de la lista.
-        while(aux != null && encontrado != true){
-            // Consulta si el valor del nodo es igual al de referencia.
-            if (referencia == aux.getValor()){
-                // Canbia el valor de la bandera.
-                encontrado = true;
-            }
-            else{
-                // Avansa al siguiente. nodo.
-                aux = aux.getSiguiente();
-            }
-        }
-        // Retorna el resultado de la bandera.
-        return encontrado;
-	}
+	/*
+	 * Interfaz
+	 * Nombre: obtenerPosicion
+	 * Comentario:
+	 * Cabecera: public void obtenerPosicion (int posicion)
+	 * Precondiciones: 
+	 * Entrada:
+	 * Salida:
+	 * E/S:
+	 * Postcondiciones:
+	 */
+	public void obtenerPosicion(int position) {
+		 if (principio != null){
+             Articulo aux = principio;
+         }  
+		 
+	     for (int cont = 0; cont < position; cont++){
+	   
+	     }
+	}                    
 
 }
