@@ -14,6 +14,8 @@ public class Supermarket {
 		this.orders = new ArrayList<Order>();
 	}
 	
+	
+	
 	private String name;
 	private Integer code;
 	
@@ -197,30 +199,112 @@ public class Supermarket {
 	}
 	
 	//Operaciones //Opcional
-	public void getMinPriceProduct() {
-		//TODO Devolver el producto con el precio más bajo
+	/*
+	 * Interfaz
+	 * Nombre: getMinPriceProduct
+	 * Comentario: Este subprograma devuelve el producto con el precio mas bajo
+	 * Cabecera: public Product getMinPriceProduct() 
+	 * Precondiciones: La lista tiene que tener productos
+	 * Entrada: No hay
+	 * Salida: Product producto
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, devuelve el prodcuto con el precio mas bajo
+	 */
+	public Product getMinPriceProduct() {
+		Product producto = null;
+		int cont = 0;
+		producto = products.get(cont);
+		
+		for (cont = 0; cont < products.size(); cont++) {
+			if(producto.getPrice() > products.get(cont).getPrice()) {
+				producto = products.get(cont);
+			}
+		}
+		
+		return producto;
 		
 	}
 	
-	public void getMaxPriceProduct() {
-		//TODO Devolver el producto con el precio más alto
+	/*
+	 * Interfaz
+	 * Nombre: getMaxPriceProduct
+	 * Comentario: Este subprograma devuelve el producto con el precio mas alto
+	 * Cabecera: public Product getMaxPriceProduct() 
+	 * Precondiciones: La lista tiene que tener productos
+	 * Entrada: No hay
+	 * Salida: Product producto
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, devuelve el prodcuto con el precio mas alto
+	 */
+	public Product getMaxPriceProduct() {
+		Product producto = null;
+		int cont = 0;
+		producto = products.get(cont);
+		
+		for (cont = 0; cont < products.size(); cont++) {
+			if(producto.getPrice() < products.get(cont).getPrice()) {
+				producto = products.get(cont);
+			}
+		}
+		
+		return producto;
+	}
+	
+	/*
+	 * Interfaz
+	 * Nombre: getAvgPriceProduct
+	 * Comentario: Este subprograma devuelve la media de los precios de todos los productos
+	 * Cabecera: public double getAvgPriceProduct() 
+	 * Precondiciones: La lista tiene que tener productos
+	 * Entrada: No hay
+	 * Salida: Double media //Es la media de los precios de los productos
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, devuelve la media de los precios de los productos
+	 */
+	public double getAvgPriceProduct() {
+		double media = 0.;
+		int cont = 0;
+		
+		
+		for (cont = 0; cont < products.size(); cont++) {
+			media += products.get(cont).getPrice();
+		}
+		
+		return media / (double)products.size();
 		
 	}
 	
-	public void getAvgPriceProduct() {
-		//TODO Devolver la media de precios de los productos
+	/*
+	 * Interfaz
+	 * Nombre: getPriceByCode
+	 * Comentario: Este subprograma devuelve el precio de un producto por su codigo (pasado por parametro)
+	 * Cabecera: public double getPriceByCode(Integer productCode) 
+	 * Precondiciones: La lista tiene que tener productos
+	 * Entrada: - Integer productCode
+	 * Salida: Double precio //Es el precio del producto buscado
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, devuelve el precio del producto buscado
+	 */
+	public double getPriceByCode(Integer productCode) {
+		double precio = 0.;
+		int cont = 0;
+
+		for (cont = 0; cont < products.size(); cont++) {
+			if(products.get(cont).getCode() == productCode) {
+				precio = products.get(cont).getPrice();
+			}
+		}
 		
+		return precio;
 	}
 	
-	public void getPriceByCode(Integer productCode) {
-		//TODO Delvover el precio del producto
-	}
-	
+	//No es obligatorio
 	public void getBestSellingProduct() {
 		//TODO Devolver el producto más vendido junto con el número de ventas
 		
 	}
 	
+	//No es obligatorio
 	public void getWorstSellingProduct() {
 		//TODO Devolver el producto más vendido junto con el número de ventas
 		

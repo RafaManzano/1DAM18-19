@@ -9,6 +9,14 @@ public class Product {
 		this.supermarket = supermarket;
 	}
 	
+	public Product() {
+		this.code = 0;
+		this.name = " ";
+		this.price = 0.0;
+		this.supermarket = null;
+	}
+	
+	
 	private Integer code;
 	private String name;
 	private Double price;

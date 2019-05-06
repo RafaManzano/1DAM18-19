@@ -2,6 +2,9 @@ package main.main;
 
 import java.util.Scanner;
 
+import main.java.model.Product;
+import main.java.model.Supermarket;
+
 /*
  * Nombre del programa: MainListas
  * Comentario: Este programa se encarga de hacer operaciones de los productos de un supermercado
@@ -51,8 +54,11 @@ public class MainListas {
 		int opcion = 0;
 		String nombre;
 		char respuesta = 0;
+		Product producto;
+		double media;
 		Scanner teclado = new Scanner(System.in);
 		ValidacionesListas validar = new ValidacionesListas();
+		Supermarket merca = new Supermarket("La tienda de Nzhdeh", 2);
 		
 		do {
 		System.out.println("Bienvenid@ al supermercado Nervion");
@@ -80,23 +86,31 @@ public class MainListas {
 					break;
 					
 					case 4:
-						System.out.println("ObtenerMasBarato");
+						//System.out.println("ObtenerMasBarato");
+						producto = merca.getMinPriceProduct();
+						System.out.println(producto.toString());
+						
 					break;
 					
 					case 5:
-						System.out.println("ObtenerProductoCaro");
+						//System.out.println("ObtenerProductoCaro");
+						producto = merca.getMaxPriceProduct();
+						System.out.println(producto.toString());
 					break;
 					
 					case 6:
-						System.out.println("ObtenerProductoMedio");
+						//System.out.println("ObtenerProductoMedio");
+						media = merca.getAvgPriceProduct();
+						System.out.println(media);
 					break;
 					
 					case 7:
-						System.out.println("ObtenerProductoMasVendido");
+						System.out.println("ObtenerProductoMasVendido en construccion");
+						
 					break;
 					
 					case 8:
-						System.out.println("ObtenerProductoMenosVendido");
+						System.out.println("ObtenerProductoMenosVendido en construccion");
 					break;
 					
 					case 9:
