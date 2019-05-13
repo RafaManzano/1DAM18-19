@@ -6,8 +6,8 @@ import main.java.model.OrderLine;
 public class ListaArticulos {
 	
 	//Atributos
-	private Articulo principio;
-	private Articulo ultimo;
+	private Articulo principio = null;
+	private Articulo ultimo = null;
 	
 	
 	//Constructores
@@ -46,6 +46,12 @@ public class ListaArticulos {
 		this.ultimo = ultimo;
 	}
 	
+	//toString
+	@Override
+	public String toString() {
+		return principio + ", " + ultimo;
+	}
+	
 	//Metodos
 	/*
 	 * Interfaz
@@ -80,20 +86,20 @@ public class ListaArticulos {
 	 * Postcondiciones: El articulo queda insertado al final de la lista
 	 */
 	public void addArticulo(Articulo articulo) {
-		Articulo puntero;
+		//Articulo puntero;
 		
 		if (estaVacia()) {
             principio = articulo;
         } 
         else {
-        	puntero = principio;
+        	//puntero = principio;
         	
-        	while(puntero.getNext() != null) {
-        		puntero = puntero.getNext();
+        	while(principio.getNext() != null) {
+        		principio = principio.getNext();
         	}
         	
-        	puntero.setNext(articulo);
-        	articulo.setPrevious(puntero);
+        	principio.setNext(articulo);
+        	articulo.setPrevious(principio);
         }
 	}
 	
@@ -116,10 +122,45 @@ public class ListaArticulos {
 	}
 	
 
+	/*
+	 * Interfaz
+	 * Nombre: Insert
+	 * Comentario: Este subprograma inserta un articulo en la posicion de la lista indicada
+	 * Cabecera: public void insert (Articulo articulo, int position)
+	 * Precondiciones: No hay
+	 * Entrada: - Articulo articulo //El articulo que se desea insertar
+	 * 		    - int position //Es la posicion donde se desea introducir
+	 * Salida: No hay
+	 * E/S: No hay
+	 * Postcondiciones: El articulo queda insertado en la lista
+	 */
 	
 	public void insert(Articulo articulo, int position) {
-		//TODO Insertar el articulo en la posicion indicada
+		//Articulo aux = principio;
+		if(estaVacia()) {
+			principio = articulo;
+		}
 		
+		else if(position == 0) {
+			articulo.setNext(principio);
+			//aux.setPrevious(articulo); Puede que no haga falta
+			principio = articulo;
+		}
+			else if(tamanhoLista() == position) {
+				articulo.setPrevious(ultimo);
+				ultimo = articulo;
+			}
+				else {
+					//while(principio.getNext() != null) {
+						for(int cont = 0; cont <= position; cont++) {
+							if(position == cont) {
+								articulo.setNext(principio.getNext());
+								articulo.setPrevious(principio.getPrevious());
+							}
+							principio = principio.getNext();
+						}
+					//}
+				}
 	}
 	
 	/*
@@ -135,7 +176,7 @@ public class ListaArticulos {
 	 */
 	public void remove(Articulo articulo) {
 		if (estaVacia()) {
-            
+			System.out.println("No hay elementos");
         } 
         else {
         	while(principio.getNext() != null) {
@@ -160,30 +201,45 @@ public class ListaArticulos {
 	 * Postcondiciones: El articulo quedaria eliminado de la lista
 	 */
 	public void eliminarLineaPedido(OrderLine lineaPedido) {
-		Articulo ar = new Articulo(lineaPedido);
+		//Articulo ar = new Articulo(lineaPedido);
 		
-		remove(ar);
+		if(estaVacia()) {
+			System.out.println("No hay elementos");
+		}
+		else {
+			while(principio.getNext() != null) {
+				if(principio.getLineaPedido().equals(lineaPedido)) {
+        			remove(principio);
+        		}
+        		principio = principio.getNext();
+			}
+		}
 	}
 	
 	/*
 	 * Interfaz
-	 * Nombre: obtenerPosicion
-	 * Comentario:
-	 * Cabecera: public void obtenerPosicion (int posicion)
-	 * Precondiciones: 
-	 * Entrada:
-	 * Salida:
-	 * E/S:
-	 * Postcondiciones:
+	 * Nombre: tamanhoLista
+	 * Comentario: Este subprograma te devuelve el tamanho total de la lista
+	 * Cabecera: public int tamanhoLista()
+	 * Precondiciones: No hay
+	 * Entrada: No hay
+	 * Salida: - int tamanho //Es el tamanho total de la lista
+	 * E/S: No hay
+	 * Postcondiciones: Asociado al nombre, el tamanho total de la lista
 	 */
-	public void obtenerPosicion(int position) {
-		 if (principio != null){
-             Articulo aux = principio;
-         }  
-		 
-	     for (int cont = 0; cont < position; cont++){
-	   
-	     }
-	}                    
+		public int tamanhoLista(){
+			int tamanho = 0;
+			 if (estaVacia()){
+	             tamanho = 0;
+	         }  
+			 
+			 else {
+				 while(principio.getNext() != null) {
+					 tamanho++;             
+				 }
+			 }
+			 
+			 return tamanho;
+		}	     
 
 }

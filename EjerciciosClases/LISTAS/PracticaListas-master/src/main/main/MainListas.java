@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import main.java.model.Product;
 import main.java.model.Supermarket;
+import main.java.util.Gestion;
 
 /*
  * Nombre del programa: MainListas
@@ -53,12 +54,14 @@ public class MainListas {
 	public static void main(String[] args) {
 		int opcion = 0;
 		String nombre;
+		String nombreProducto;
 		char respuesta = 0;
 		Product producto;
 		double media;
 		Scanner teclado = new Scanner(System.in);
 		ValidacionesListas validar = new ValidacionesListas();
 		Supermarket merca = new Supermarket("La tienda de Nzhdeh", 2);
+		Gestion gestion = new Gestion();
 		
 		do {
 		System.out.println("Bienvenid@ al supermercado Nervion");
@@ -79,6 +82,9 @@ public class MainListas {
 			
 					case 2:
 						System.out.println("AnahdirProductoNombre");
+						System.out.println("Introduce el nombre del producto");
+						nombreProducto = teclado.next();
+						gestion.buscarProductoPorNombre(nombre, merca.getProducts())
 					break;
 					
 					case 3:

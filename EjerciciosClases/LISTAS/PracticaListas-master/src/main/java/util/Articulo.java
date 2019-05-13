@@ -50,5 +50,11 @@ public class Articulo {
 		this.lineaPedido = lineaPedido;
 	}
 	
+	//toString
+	@Override
+	public String toString() {
+		return next + ", " + previous + ", " + lineaPedido.toString();
+	}
+	
 	
 }
