@@ -81,10 +81,10 @@ public class MainListas {
 					break;
 			
 					case 2:
-						System.out.println("AnahdirProductoNombre");
+						//System.out.println("AnahdirProductoNombre");
 						System.out.println("Introduce el nombre del producto");
 						nombreProducto = teclado.next();
-						gestion.buscarProductoPorNombre(nombre, merca.getProducts())
+						producto = gestion.buscarProductoPorNombre(nombre, merca.getProducts());
 					break;
 					
 					case 3:
