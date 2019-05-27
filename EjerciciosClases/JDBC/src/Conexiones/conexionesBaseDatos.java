@@ -1,6 +1,4 @@
 package Conexiones;
-
-import java.nio.channels.ConnectionPendingException;
 import java.sql.*;
 
 public class conexionesBaseDatos {
@@ -17,7 +15,7 @@ public class conexionesBaseDatos {
      */
 
     public Connection iniciarConexion() {
-        String sourceURL = "jdbc:sqlserver://localhost";
+        String sourceURL = "jdbc:sqlserver://localhost:1433";
         String usuario = "usuario";
         String password = "123";
         Connection conexion = null;

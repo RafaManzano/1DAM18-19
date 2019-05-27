@@ -9,7 +9,7 @@ public class Main {
         Connection conexion = null;
         Statement sentencia = null;
         ResultSet resultado = null;
-        String consulta = "SELECT ID, Nombre FROM Clientes";
+        String consulta = "SELECT ID, Palabra FROM Palabras";
         conexionesBaseDatos conexiones = new conexionesBaseDatos();
 
         conexion = conexiones.iniciarConexion();
@@ -17,8 +17,10 @@ public class Main {
         resultado = conexiones.usarSentencia(sentencia, consulta);
 
         try {
-            while (resultado.next())	// Recorremos el ResultSet
-                System.out.println("ID: " + resultado.getShort("ID") + ", Nombre: " + resultado.getString("Nombre"));
+            while (resultado.next()) {
+                System.out.println("ID: " + resultado.getShort("ID") + ", Palabra: " + resultado.getString("Palabra"));
+            }
+
         }
         catch(SQLException err) {
             err.printStackTrace();
