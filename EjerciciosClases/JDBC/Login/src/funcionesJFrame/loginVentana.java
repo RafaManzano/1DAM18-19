@@ -20,7 +20,7 @@ public class loginVentana extends JFrame {
     }
 
     public void inicializarComponentes() {
-    // creamos los componentes
+
     JLabel usu = new JLabel();
     JTextField usuario = new JTextField();
     JLabel cont = new JLabel();
@@ -35,7 +35,7 @@ public class loginVentana extends JFrame {
     pass.setBounds(150, 50, 100, 25);
     boton.setText("ENVIAR");
     boton.setBounds(50, 100, 200, 30);
-    // adicionamos los componentes a la ventana
+
     this.add(usu);
     this.add(usuario);
     this.add(cont);
