@@ -43,4 +43,5 @@ public class loginVentana extends JFrame {
     this.add(boton);
     }
 
+
     }
