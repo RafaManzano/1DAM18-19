@@ -6,18 +6,19 @@ public class conexionesBaseDatos {
     Interfaz
     Nombre: iniciarConexion
     Comentario: Este subprograma inicia la conexion con la base de datos
-    Cabecera: public Connection iniciarConexion()
-    Precondiciones: No hay
+    Cabecera: public Connection iniciarConexion(String usu, String pass)
+    Precondiciones: - El usuario debe estar correcto
+                    - La contraseña (pass) debe estar correcta
     Entrada: No hay
     Salida: - Connection conexion //El objeto para usar la conexion
     E/S: No hay
     Postcondiciones: Iniciaria la conexion con la base de datos
      */
 
-    public Connection iniciarConexion() {
+    public Connection iniciarConexion(String usu, String pass) {
         String sourceURL = "jdbc:sqlserver://localhost:1433";
-        String usuario = "usuario";
-        String password = "123";
+        String usuario = usu;
+        String password = pass;
         Connection conexion = null;
 
         try {
